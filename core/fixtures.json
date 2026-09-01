@@ -1,0 +1,268 @@
+{
+  "parse": [
+    {
+      "id": "cyrillic-run",
+      "input": "ног",
+      "glyphs": [
+        { "type": "character", "value": "н" },
+        { "type": "character", "value": "о" },
+        { "type": "character", "value": "г" }
+      ]
+    },
+    {
+      "id": "char-then-named",
+      "input": "g/elcyr.alt",
+      "glyphs": [
+        { "type": "character", "value": "g" },
+        { "type": "name", "value": "elcyr.alt" }
+      ]
+    },
+    {
+      "id": "consecutive-names",
+      "input": "/Zhecyr.alt/zhecyr.alt",
+      "glyphs": [
+        { "type": "name", "value": "Zhecyr.alt" },
+        { "type": "name", "value": "zhecyr.alt" }
+      ]
+    },
+    {
+      "id": "uppercase-mixed",
+      "input": "НГОEFLTBÞÆ",
+      "glyphs": [
+        { "type": "character", "value": "Н" },
+        { "type": "character", "value": "Г" },
+        { "type": "character", "value": "О" },
+        { "type": "character", "value": "E" },
+        { "type": "character", "value": "F" },
+        { "type": "character", "value": "L" },
+        { "type": "character", "value": "T" },
+        { "type": "character", "value": "B" },
+        { "type": "character", "value": "Þ" },
+        { "type": "character", "value": "Æ" }
+      ]
+    },
+    {
+      "id": "whitespace-separators",
+      "input": "  н о\nг\t  ",
+      "glyphs": [
+        { "type": "character", "value": "н" },
+        { "type": "character", "value": "о" },
+        { "type": "character", "value": "г" }
+      ]
+    },
+    {
+      "id": "empty-names-skipped",
+      "input": "a// b/",
+      "glyphs": [
+        { "type": "character", "value": "a" },
+        { "type": "character", "value": "b" }
+      ]
+    },
+    {
+      "id": "named-only",
+      "input": "/elcyr.alt",
+      "glyphs": [
+        { "type": "name", "value": "elcyr.alt" }
+      ]
+    },
+    {
+      "id": "empty",
+      "input": "",
+      "glyphs": []
+    },
+    {
+      "id": "whitespace-only",
+      "input": " \n\t ",
+      "glyphs": []
+    }
+  ],
+  "generate": [
+    {
+      "id": "simple-fontlab-lc",
+      "left": "но",
+      "right": "но",
+      "mode": "simple",
+      "format": "fontlab",
+      "expected": "н/н\nн/о\n\nо/н\nо/о"
+    },
+    {
+      "id": "mirror-fontlab-lc",
+      "left": "но",
+      "right": "но",
+      "mode": "mirror",
+      "format": "fontlab",
+      "expected": "н/н/н\nн/о/н\n\nо/н/о\nо/о/о"
+    },
+    {
+      "id": "simple-plain-lc",
+      "left": "но",
+      "right": "но",
+      "mode": "simple",
+      "format": "plain",
+      "expected": "нн\nно\n\nон\nоо"
+    },
+    {
+      "id": "mirror-plain-lc",
+      "left": "но",
+      "right": "но",
+      "mode": "mirror",
+      "format": "plain",
+      "expected": "ннн\nнон\n\nоно\nооо"
+    },
+    {
+      "id": "simple-glyphs-unicode",
+      "left": "но",
+      "right": "но",
+      "mode": "simple",
+      "format": "glyphs",
+      "expected": "нн\nно\n\nон\nоо"
+    },
+    {
+      "id": "mirror-glyphs-unicode",
+      "left": "но",
+      "right": "но",
+      "mode": "mirror",
+      "format": "glyphs",
+      "expected": "ннн\nнон\n\nоно\nооо"
+    },
+    {
+      "id": "uc-lc-fontlab",
+      "left": "НГ",
+      "right": "но",
+      "mode": "simple",
+      "format": "fontlab",
+      "expected": "Н/н\nН/о\n\nГ/н\nГ/о"
+    },
+    {
+      "id": "uc-lc-mirror-fontlab",
+      "left": "Н",
+      "right": "но",
+      "mode": "mirror",
+      "format": "fontlab",
+      "expected": "Н/н/Н\nН/о/Н"
+    },
+    {
+      "id": "named-fontlab-simple",
+      "left": "н/elcyr.alt",
+      "right": "н",
+      "mode": "simple",
+      "format": "fontlab",
+      "expected": "н/н\n\nelcyr.alt/н"
+    },
+    {
+      "id": "named-fontlab-mirror",
+      "left": "н",
+      "right": "/elcyr.alt",
+      "mode": "mirror",
+      "format": "fontlab",
+      "expected": "н/elcyr.alt/н"
+    },
+    {
+      "id": "named-plain-mirror",
+      "left": "н",
+      "right": "/elcyr.alt",
+      "mode": "mirror",
+      "format": "plain",
+      "expected": "нelcyr.altн"
+    },
+    {
+      "id": "glyphs-char-then-name",
+      "left": "н",
+      "right": "/elcyr.alt",
+      "mode": "simple",
+      "format": "glyphs",
+      "expected": "н/elcyr.alt"
+    },
+    {
+      "id": "glyphs-name-then-char-space",
+      "left": "/elcyr.alt",
+      "right": "н",
+      "mode": "simple",
+      "format": "glyphs",
+      "expected": "/elcyr.alt н"
+    },
+    {
+      "id": "glyphs-mirror-name-in-middle",
+      "left": "н",
+      "right": "/elcyr.alt",
+      "mode": "mirror",
+      "format": "glyphs",
+      "expected": "н/elcyr.alt н"
+    },
+    {
+      "id": "glyphs-mirror-named-sides",
+      "left": "/elcyr.alt",
+      "right": "н",
+      "mode": "mirror",
+      "format": "glyphs",
+      "expected": "/elcyr.alt н/elcyr.alt"
+    },
+    {
+      "id": "glyphs-consecutive-names",
+      "left": "/Zhecyr.alt",
+      "right": "/zhecyr.alt",
+      "mode": "simple",
+      "format": "glyphs",
+      "expected": "/Zhecyr.alt/zhecyr.alt"
+    },
+    {
+      "id": "glyphs-consecutive-names-mirror",
+      "left": "/Zhecyr.alt",
+      "right": "/zhecyr.alt",
+      "mode": "mirror",
+      "format": "glyphs",
+      "expected": "/Zhecyr.alt/zhecyr.alt/Zhecyr.alt"
+    },
+    {
+      "id": "char-named-x-char-fontlab",
+      "left": "g/elcyr.alt",
+      "right": "н",
+      "mode": "simple",
+      "format": "fontlab",
+      "expected": "g/н\n\nelcyr.alt/н"
+    },
+    {
+      "id": "empty-left",
+      "left": "",
+      "right": "но",
+      "mode": "simple",
+      "format": "fontlab",
+      "expected": ""
+    },
+    {
+      "id": "empty-right",
+      "left": "но",
+      "right": "   ",
+      "mode": "mirror",
+      "format": "glyphs",
+      "expected": ""
+    }
+  ],
+  "plan": [
+    {
+      "id": "empty",
+      "selected": [],
+      "expected": ""
+    },
+    {
+      "id": "punctuation-only",
+      "selected": ["-"],
+      "expected": ""
+    },
+    {
+      "id": "capitals-and-lowercase",
+      "selected": ["A", "a"],
+      "expected": "A/A/A A/a\na/a/a"
+    },
+    {
+      "id": "capitals-and-punctuation",
+      "selected": ["A", "-"],
+      "expected": "A/A/A A/-/A"
+    },
+    {
+      "id": "all",
+      "selected": ["A", "A.sc", "a", "-", "@", "1p", "1o"],
+      "expected": "A/A/A A/A.sc A/a A/-/A A/@/A A/1p/A A/1o/A\nA.sc/A.sc/A.sc A.sc/-/A.sc\na/a/a a/-/a a/@/a a/1p/a a/1o/a\n@/@/@ @/1p/@ @/1o/@\n1p/1p/1p 1p/-/1p\n1o/1o/1o 1o/-/1o"
+    }
+  ]
+}

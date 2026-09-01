@@ -1,0 +1,308 @@
+<Window x:Class="Gutenkern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gutenkern"
+        Icon="AppIcon.ico"
+        Width="560"
+        Height="760"
+        MinWidth="480"
+        MinHeight="680"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display">
+    <Window.Resources>
+        <SolidColorBrush x:Key="FieldBackgroundBrush" Color="#FAFAFA"/>
+        <SolidColorBrush x:Key="FieldBorderBrush" Color="#F2F2F2"/>
+        <Style TargetType="Hyperlink">
+            <Setter Property="TextDecorations" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotlightBrushKey}}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotlightBrushKey}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource FieldBorderBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource FieldBackgroundBrush}"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="FileMenuItem" Header="File">
+                <MenuItem x:Name="SaveMenuItem"
+                          Header="Save"
+                          Command="Save"
+                          InputGestureText="Ctrl+S"/>
+            </MenuItem>
+            <MenuItem x:Name="SettingsMenuItem"
+                      Header="Налаштування"
+                      Click="SettingsButton_Click"
+                      InputGestureText="Ctrl+,"/>
+            <MenuItem x:Name="HelpMenuItem" Header="Help">
+                <MenuItem x:Name="AboutMenuItem"
+                          Header="About Gutenkern"
+                          Click="AboutButton_Click"/>
+            </MenuItem>
+        </Menu>
+        <DockPanel Margin="16" Grid.IsSharedSizeScope="True">
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="Labels" MinWidth="88"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="GroupsLabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Групи"
+                   Padding="0,2,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Top"/>
+            <WrapPanel Grid.Row="0"
+                       Grid.Column="1"
+                       Orientation="Horizontal">
+                <CheckBox x:Name="GroupCapitals"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupSmallCaps"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupLowercase"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupPunctuation"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupNonAlphabetic"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupLiningFigures"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+                <CheckBox x:Name="GroupOldstyleFigures"
+                          Margin="0,0,16,6"
+                          Checked="PlanChanged"
+                          Unchecked="PlanChanged"/>
+            </WrapPanel>
+
+            <Label x:Name="PlanLabel"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Content="План"
+                   Padding="0,4,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Top"/>
+            <Border Grid.Row="2"
+                    Grid.Column="1"
+                    Height="100"
+                    Background="{DynamicResource FieldBackgroundBrush}"
+                    BorderBrush="{DynamicResource FieldBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    SnapsToDevicePixels="True">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              Padding="8,6">
+                    <StackPanel x:Name="PlanRows"/>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="Labels" MinWidth="88"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="64"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*" MinHeight="64"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="WhatLabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Що керним"
+                   Padding="0,4,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Top"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     x:Name="Field1"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     SpellCheck.IsEnabled="False"
+                     FontSize="13"
+                     TextChanged="FieldsChanged"/>
+
+            <Label x:Name="WithLabel"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Content="З чим керним"
+                   Padding="0,4,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Top"/>
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     x:Name="Field2"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     SpellCheck.IsEnabled="False"
+                     FontSize="13"
+                     TextChanged="FieldsChanged"/>
+        </Grid>
+
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="Labels" MinWidth="88"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="TypeLabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Тип"
+                   Padding="0,0,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <RadioButton x:Name="ModeSimple"
+                             Content="Прості (AB)"
+                             IsChecked="True"
+                             Margin="0,0,16,0"
+                             Checked="OptionsChanged"/>
+                <RadioButton x:Name="ModeMirror"
+                             Content="Дзеркальні (ABA)"
+                             Checked="OptionsChanged"/>
+            </StackPanel>
+
+            <Label x:Name="FormatLabel"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Формат"
+                   Padding="0,0,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <RadioButton x:Name="FormatPlain"
+                             Content="Простий"
+                             Margin="0,0,16,0"
+                             Checked="OptionsChanged"/>
+                <RadioButton x:Name="FormatFontLab"
+                             Content="FontLab"
+                             IsChecked="True"
+                             Margin="0,0,16,0"
+                             Checked="OptionsChanged"/>
+                <RadioButton x:Name="FormatGlyphs"
+                             Content="Glyphs"
+                             Checked="OptionsChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="0,16,0,0">
+            <Button x:Name="SaveButton"
+                    DockPanel.Dock="Right"
+                    Content="Зберегти..."
+                    MinWidth="110"
+                    Padding="16,6"
+                    Click="SaveButton_Click"
+                    IsEnabled="False"/>
+            <Button x:Name="CopyButton"
+                    DockPanel.Dock="Right"
+                    Content="Скопіювати"
+                    MinWidth="110"
+                    Margin="0,0,8,0"
+                    Padding="16,6"
+                    Click="CopyButton_Click"
+                    IsEnabled="False"/>
+        </DockPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="Labels" MinWidth="88"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="ResultLabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Результат"
+                   Padding="0,4,32,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Top"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     x:Name="ResultBox"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     HorizontalScrollBarVisibility="Disabled"
+                     VerticalScrollBarVisibility="Auto"
+                     FontFamily="Consolas"
+                     FontSize="13"
+                     IsUndoEnabled="False"
+                     SpellCheck.IsEnabled="False"/>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       x:Name="CountLabel"
+                       Margin="0,8,0,0"
+                       Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>
