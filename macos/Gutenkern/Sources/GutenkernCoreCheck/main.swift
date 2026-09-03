@@ -152,6 +152,12 @@ private func runSessionSnapshotChecks() -> Int {
         failures += 1
     }
 
+    let legacyPlain = SessionSnapshot(format: "plain").sanitized()
+    if legacyPlain.outputFormat != .fontlab || legacyPlain.format != "fontlab" {
+        fputs("SESSION FAIL legacy plain format: \(legacyPlain.format)\n", stderr)
+        failures += 1
+    }
+
     let emptyJSON = Data("{}".utf8)
     let decoded = SessionSnapshot.decoded(from: emptyJSON)
     if decoded != .empty {

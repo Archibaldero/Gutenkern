@@ -101,7 +101,6 @@ public partial class MainWindow : Window
         ResultLabel.Content = L10n.Result;
         ModeSimple.Content = L10n.TypeSimple;
         ModeMirror.Content = L10n.TypeMirror;
-        FormatPlain.Content = L10n.FormatPlain;
         FormatFontLab.Content = L10n.FormatFontLab;
         FormatGlyphs.Content = L10n.FormatGlyphs;
         GroupCapitals.Content = L10n.GroupLabel(KerningGroup.Capitals);
@@ -320,11 +319,6 @@ public partial class MainWindow : Window
 
     private OutputFormat SelectedFormat()
     {
-        if (FormatPlain?.IsChecked == true)
-        {
-            return OutputFormat.Plain;
-        }
-
         if (FormatGlyphs?.IsChecked == true)
         {
             return OutputFormat.Glyphs;
@@ -352,9 +346,6 @@ public partial class MainWindow : Window
         ModeSimple.IsChecked = session.PairModeValue != PairMode.Mirror;
         switch (session.OutputFormatValue)
         {
-            case OutputFormat.Plain:
-                FormatPlain.IsChecked = true;
-                break;
             case OutputFormat.Glyphs:
                 FormatGlyphs.IsChecked = true;
                 break;

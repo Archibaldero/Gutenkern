@@ -94,22 +94,6 @@
       "expected": "н/н/н\nн/о/н\n\nо/н/о\nо/о/о"
     },
     {
-      "id": "simple-plain-lc",
-      "left": "но",
-      "right": "но",
-      "mode": "simple",
-      "format": "plain",
-      "expected": "нн\nно\n\nон\nоо"
-    },
-    {
-      "id": "mirror-plain-lc",
-      "left": "но",
-      "right": "но",
-      "mode": "mirror",
-      "format": "plain",
-      "expected": "ннн\nнон\n\nоно\nооо"
-    },
-    {
       "id": "simple-glyphs-unicode",
       "left": "но",
       "right": "но",
@@ -156,14 +140,6 @@
       "mode": "mirror",
       "format": "fontlab",
       "expected": "н/elcyr.alt/н"
-    },
-    {
-      "id": "named-plain-mirror",
-      "left": "н",
-      "right": "/elcyr.alt",
-      "mode": "mirror",
-      "format": "plain",
-      "expected": "нelcyr.altн"
     },
     {
       "id": "glyphs-char-then-name",

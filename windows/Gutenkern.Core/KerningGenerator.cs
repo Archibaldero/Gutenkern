@@ -16,7 +16,6 @@ public enum PairMode
 
 public enum OutputFormat
 {
-    Plain,
     FontLab,
     Glyphs
 }
@@ -106,8 +105,6 @@ public static class KerningGenerator
     {
         switch (format)
         {
-            case OutputFormat.Plain:
-                return string.Concat(glyphs.Select(PlainValue));
             case OutputFormat.FontLab:
                 return string.Join("/", glyphs.Select(PlainValue));
             case OutputFormat.Glyphs:

@@ -34,7 +34,6 @@ public sealed class SessionSnapshot
 
     public OutputFormat OutputFormatValue => Format switch
     {
-        "plain" => OutputFormat.Plain,
         "glyphs" => OutputFormat.Glyphs,
         _ => OutputFormat.FontLab
     };
@@ -65,7 +64,6 @@ public sealed class SessionSnapshot
             Mode = mode == PairMode.Mirror ? "mirror" : "simple",
             Format = format switch
             {
-                OutputFormat.Plain => "plain",
                 OutputFormat.Glyphs => "glyphs",
                 _ => "fontlab"
             }

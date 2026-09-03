@@ -83,7 +83,6 @@ struct ContentView: View {
 
                 labeledRow(L10n.format) {
                     Picker(L10n.format, selection: $session.format) {
-                        Text(L10n.formatPlain).tag(OutputFormat.plain)
                         Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
                         Text(L10n.formatGlyphs).tag(OutputFormat.glyphs)
                     }

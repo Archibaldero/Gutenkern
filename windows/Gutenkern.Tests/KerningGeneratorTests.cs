@@ -68,7 +68,6 @@ public sealed class KerningGeneratorTests
 
     private static OutputFormat ParseFormat(string value) => value switch
     {
-        "plain" => OutputFormat.Plain,
         "fontlab" => OutputFormat.FontLab,
         "glyphs" => OutputFormat.Glyphs,
         _ => throw new InvalidOperationException($"Unknown format: {value}")

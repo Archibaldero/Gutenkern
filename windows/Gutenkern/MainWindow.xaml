@@ -234,10 +234,6 @@
                         Grid.Column="1"
                         Orientation="Horizontal"
                         VerticalAlignment="Center">
-                <RadioButton x:Name="FormatPlain"
-                             Content="Простий"
-                             Margin="0,0,16,0"
-                             Checked="OptionsChanged"/>
                 <RadioButton x:Name="FormatFontLab"
                              Content="FontLab"
                              IsChecked="True"

@@ -11,7 +11,6 @@ public enum PairMode: String, Equatable, Hashable, Sendable, CaseIterable {
 }
 
 public enum OutputFormat: String, Equatable, Hashable, Sendable, CaseIterable {
-    case plain
     case fontlab
     case glyphs
 }
@@ -98,8 +97,6 @@ public enum KerningGenerator {
 
     public static func formatGlyphs(_ glyphs: [Glyph], as format: OutputFormat) -> String {
         switch format {
-        case .plain:
-            return glyphs.map(plainValue).joined()
         case .fontlab:
             return glyphs.map(plainValue).joined(separator: "/")
         case .glyphs:

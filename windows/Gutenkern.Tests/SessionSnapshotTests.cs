@@ -41,6 +41,18 @@ public sealed class SessionSnapshotTests
     }
 
     [Fact]
+    public void Sanitize_maps_legacy_plain_format_to_fontlab()
+    {
+        var snapshot = SessionSnapshot.Sanitize(new SessionSnapshot
+        {
+            Format = "plain"
+        });
+
+        Assert.Equal(OutputFormat.FontLab, snapshot.OutputFormatValue);
+        Assert.Equal("fontlab", snapshot.Format);
+    }
+
+    [Fact]
     public void Sanitize_null_returns_empty()
     {
         var snapshot = SessionSnapshot.Sanitize(null);

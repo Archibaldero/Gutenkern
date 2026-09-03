@@ -56,7 +56,6 @@ enum L10n {
     static var typeSimple: String { t("typeSimple") }
     static var typeMirror: String { t("typeMirror") }
     static var format: String { t("format") }
-    static var formatPlain: String { t("formatPlain") }
     static var formatFontLab: String { t("formatFontLab") }
     static var formatGlyphs: String { t("formatGlyphs") }
     static var result: String { t("result") }

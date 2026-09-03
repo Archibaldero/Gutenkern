@@ -38,7 +38,6 @@ internal static class L10n
     public static string TypeSimple => T("typeSimple");
     public static string TypeMirror => T("typeMirror");
     public static string Format => T("format");
-    public static string FormatPlain => T("formatPlain");
     public static string FormatFontLab => T("formatFontLab");
     public static string FormatGlyphs => T("formatGlyphs");
     public static string Result => T("result");
