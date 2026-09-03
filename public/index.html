@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gutenkern — the public-domain reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">G</span>
+        <div>
+          <h1>Gutenkern</h1>
+          <p class="tagline">A quiet corner for public-domain literature</p>
+        </div>
+      </div>
+      <div class="search">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search titles, authors, themes…"
+          autocomplete="off"
+        />
+        <select id="subject-select" aria-label="Filter by subject">
+          <option value="">All subjects</option>
+        </select>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="library-view">
+        <div class="section-heading">
+          <h2>Library</h2>
+          <span id="result-count" class="count"></span>
+        </div>
+        <div id="book-grid" class="book-grid"></div>
+        <p id="empty-state" class="empty" hidden>No books match your search.</p>
+      </section>
+
+      <section id="reader-view" hidden>
+        <button id="back-button" class="back">← Back to library</button>
+        <article id="reader" class="reader"></article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Gutenkern · texts in the public domain</span>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

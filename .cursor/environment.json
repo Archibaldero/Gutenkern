@@ -1,0 +1,11 @@
+{
+  "name": "Gutenkern",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "dev-server",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [3000]
+}

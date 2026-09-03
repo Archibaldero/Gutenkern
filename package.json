@@ -1,0 +1,23 @@
+{
+  "name": "gutenkern",
+  "version": "0.1.0",
+  "description": "Gutenkern — a lightweight reader for public-domain literature.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0"
+  },
+  "license": "MIT"
+}
