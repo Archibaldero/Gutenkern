@@ -18,9 +18,11 @@ struct GutenkernApp: App {
         .windowResizability(.contentSize)
         .defaultPosition(.center)
 
-        Settings {
+        Window(L10n.settings, id: "settings") {
             SettingsView()
         }
+        .windowResizability(.contentSize)
+        .defaultPosition(.center)
     }
 }
 
@@ -35,10 +37,21 @@ private struct AboutCommands: Commands {
                 openWindow(id: "about")
             }
         }
+        CommandGroup(replacing: .appSettings) {
+            Button(settingsTitle) {
+                openWindow(id: "settings")
+            }
+            .keyboardShortcut(",", modifiers: .command)
+        }
     }
 
     private var aboutTitle: String {
         let _ = languageSettings.preference
         return L10n.about
+    }
+
+    private var settingsTitle: String {
+        let _ = languageSettings.preference
+        return L10n.settings
     }
 }

@@ -180,7 +180,13 @@ enum L10n {
     private static func plural(_ count: Int) -> Plural {
         let n = abs(count)
         switch LanguageSettings.shared.resolvedLanguage {
-        case "pl", "uk":
+        case "pl":
+            if n == 1 { return .one }
+            let n10 = n % 10
+            let n100 = n % 100
+            if (2...4).contains(n10) && !(12...14).contains(n100) { return .few }
+            return .many
+        case "uk":
             let n10 = n % 10
             let n100 = n % 100
             if n10 == 1 && n100 != 11 { return .one }

@@ -189,6 +189,17 @@ internal static class L10n
         switch (Language)
         {
             case "pl":
+                if (n == 1)
+                {
+                    return PluralCategory.One;
+                }
+
+                if (n % 10 is >= 2 and <= 4 && n % 100 is not (>= 12 and <= 14))
+                {
+                    return PluralCategory.Few;
+                }
+
+                return PluralCategory.Many;
             case "uk":
                 var n10 = n % 10;
                 var n100 = n % 100;
