@@ -1,0 +1,1600 @@
+FontLab 8 — дефолтні гліфи з панелі Font Window
+========================================================================
+
+Джерело: встановлений FontLab 8.app (не копіювалось з інших шрифтів).
+Імена гліфів — production/friendly з standard.nam, для Latin Pro — як у ot_lpro.enc.
+Формат рядка:  символ   ім'я_FontLab   U+XXXX   UNICODE NAME
+
+SCRIPTS: Unicode-діапазон ∩ script батьківського алфавіту (Latn/Grek).
+Кирилиця — готові codepage-файли FontLab.
+NUMBERS: Categories › Basic Digits.
+LATIN PRO: encoding OpenType LatPro (ot_lpro.enc), лише нелітерні слоти.
+  Пропущено літери (Lu/Ll/Lt/Lo), які вже є в SCRIPTS або є літерами
+  (лігатури fi/fl, florin, грецькі ΔΩμπ, Wgrave тощо).
+  Spacing-акценти (Lm: circumflex, caron, macron) залишені — це не алфавіт.
+
+ПІДСУМОК
+------------------------------------------------------------------------
+SCRIPTS › LATIN
+  Basic                  52
+  Additional             64
+  Extended              128
+  Advanced              208
+  IPA extensions         96
+SCRIPTS › CYRILLIC
+  Basic                  94
+  Extended              162
+  Historic               34
+SCRIPTS › GREEK
+  Basic                  70
+  Archaic letters        10
+  Extended              233
+  SCRIPTS разом        1151
+NUMBERS
+  Basic Digits           10
+BASICS › Latin Pro
+  нелітерні символи     125
+УСЬОГО                 1286
+
+
+========================================================================
+SCRIPTS › LATIN
+========================================================================
+
+------------------------------------------------------------------------
+LATIN › Basic  (52)
+ASCII (U+0020–U+007F), лише символи зі script=Latin. Це A–Z і a–z.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+A    A                            U+0041     LATIN CAPITAL LETTER A
+B    B                            U+0042     LATIN CAPITAL LETTER B
+C    C                            U+0043     LATIN CAPITAL LETTER C
+D    D                            U+0044     LATIN CAPITAL LETTER D
+E    E                            U+0045     LATIN CAPITAL LETTER E
+F    F                            U+0046     LATIN CAPITAL LETTER F
+G    G                            U+0047     LATIN CAPITAL LETTER G
+H    H                            U+0048     LATIN CAPITAL LETTER H
+I    I                            U+0049     LATIN CAPITAL LETTER I
+J    J                            U+004A     LATIN CAPITAL LETTER J
+K    K                            U+004B     LATIN CAPITAL LETTER K
+L    L                            U+004C     LATIN CAPITAL LETTER L
+M    M                            U+004D     LATIN CAPITAL LETTER M
+N    N                            U+004E     LATIN CAPITAL LETTER N
+O    O                            U+004F     LATIN CAPITAL LETTER O
+P    P                            U+0050     LATIN CAPITAL LETTER P
+Q    Q                            U+0051     LATIN CAPITAL LETTER Q
+R    R                            U+0052     LATIN CAPITAL LETTER R
+S    S                            U+0053     LATIN CAPITAL LETTER S
+T    T                            U+0054     LATIN CAPITAL LETTER T
+U    U                            U+0055     LATIN CAPITAL LETTER U
+V    V                            U+0056     LATIN CAPITAL LETTER V
+W    W                            U+0057     LATIN CAPITAL LETTER W
+X    X                            U+0058     LATIN CAPITAL LETTER X
+Y    Y                            U+0059     LATIN CAPITAL LETTER Y
+Z    Z                            U+005A     LATIN CAPITAL LETTER Z
+a    a                            U+0061     LATIN SMALL LETTER A
+b    b                            U+0062     LATIN SMALL LETTER B
+c    c                            U+0063     LATIN SMALL LETTER C
+d    d                            U+0064     LATIN SMALL LETTER D
+e    e                            U+0065     LATIN SMALL LETTER E
+f    f                            U+0066     LATIN SMALL LETTER F
+g    g                            U+0067     LATIN SMALL LETTER G
+h    h                            U+0068     LATIN SMALL LETTER H
+i    i                            U+0069     LATIN SMALL LETTER I
+j    j                            U+006A     LATIN SMALL LETTER J
+k    k                            U+006B     LATIN SMALL LETTER K
+l    l                            U+006C     LATIN SMALL LETTER L
+m    m                            U+006D     LATIN SMALL LETTER M
+n    n                            U+006E     LATIN SMALL LETTER N
+o    o                            U+006F     LATIN SMALL LETTER O
+p    p                            U+0070     LATIN SMALL LETTER P
+q    q                            U+0071     LATIN SMALL LETTER Q
+r    r                            U+0072     LATIN SMALL LETTER R
+s    s                            U+0073     LATIN SMALL LETTER S
+t    t                            U+0074     LATIN SMALL LETTER T
+u    u                            U+0075     LATIN SMALL LETTER U
+v    v                            U+0076     LATIN SMALL LETTER V
+w    w                            U+0077     LATIN SMALL LETTER W
+x    x                            U+0078     LATIN SMALL LETTER X
+y    y                            U+0079     LATIN SMALL LETTER Y
+z    z                            U+007A     LATIN SMALL LETTER Z
+
+Імена через пробіл:
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x
+y z
+
+------------------------------------------------------------------------
+LATIN › Additional  (64)
+ISO 8859-1 / Latin-1 (U+00A0–U+00FF), лише script=Latin. Західноєвропейські літери (À, æ, ß, þ…) плюс ª º.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+ª    ordfeminine                  U+00AA     FEMININE ORDINAL INDICATOR
+º    ordmasculine                 U+00BA     MASCULINE ORDINAL INDICATOR
+À    Agrave                       U+00C0     LATIN CAPITAL LETTER A WITH GRAVE
+Á    Aacute                       U+00C1     LATIN CAPITAL LETTER A WITH ACUTE
+Â    Acircumflex                  U+00C2     LATIN CAPITAL LETTER A WITH CIRCUMFLEX
+Ã    Atilde                       U+00C3     LATIN CAPITAL LETTER A WITH TILDE
+Ä    Adieresis                    U+00C4     LATIN CAPITAL LETTER A WITH DIAERESIS
+Å    Aring                        U+00C5     LATIN CAPITAL LETTER A WITH RING ABOVE
+Æ    AE                           U+00C6     LATIN CAPITAL LETTER AE
+Ç    Ccedilla                     U+00C7     LATIN CAPITAL LETTER C WITH CEDILLA
+È    Egrave                       U+00C8     LATIN CAPITAL LETTER E WITH GRAVE
+É    Eacute                       U+00C9     LATIN CAPITAL LETTER E WITH ACUTE
+Ê    Ecircumflex                  U+00CA     LATIN CAPITAL LETTER E WITH CIRCUMFLEX
+Ë    Edieresis                    U+00CB     LATIN CAPITAL LETTER E WITH DIAERESIS
+Ì    Igrave                       U+00CC     LATIN CAPITAL LETTER I WITH GRAVE
+Í    Iacute                       U+00CD     LATIN CAPITAL LETTER I WITH ACUTE
+Î    Icircumflex                  U+00CE     LATIN CAPITAL LETTER I WITH CIRCUMFLEX
+Ï    Idieresis                    U+00CF     LATIN CAPITAL LETTER I WITH DIAERESIS
+Ð    Eth                          U+00D0     LATIN CAPITAL LETTER ETH
+Ñ    Ntilde                       U+00D1     LATIN CAPITAL LETTER N WITH TILDE
+Ò    Ograve                       U+00D2     LATIN CAPITAL LETTER O WITH GRAVE
+Ó    Oacute                       U+00D3     LATIN CAPITAL LETTER O WITH ACUTE
+Ô    Ocircumflex                  U+00D4     LATIN CAPITAL LETTER O WITH CIRCUMFLEX
+Õ    Otilde                       U+00D5     LATIN CAPITAL LETTER O WITH TILDE
+Ö    Odieresis                    U+00D6     LATIN CAPITAL LETTER O WITH DIAERESIS
+Ø    Oslash                       U+00D8     LATIN CAPITAL LETTER O WITH STROKE
+Ù    Ugrave                       U+00D9     LATIN CAPITAL LETTER U WITH GRAVE
+Ú    Uacute                       U+00DA     LATIN CAPITAL LETTER U WITH ACUTE
+Û    Ucircumflex                  U+00DB     LATIN CAPITAL LETTER U WITH CIRCUMFLEX
+Ü    Udieresis                    U+00DC     LATIN CAPITAL LETTER U WITH DIAERESIS
+Ý    Yacute                       U+00DD     LATIN CAPITAL LETTER Y WITH ACUTE
+Þ    Thorn                        U+00DE     LATIN CAPITAL LETTER THORN
+ß    germandbls                   U+00DF     LATIN SMALL LETTER SHARP S
+à    agrave                       U+00E0     LATIN SMALL LETTER A WITH GRAVE
+á    aacute                       U+00E1     LATIN SMALL LETTER A WITH ACUTE
+â    acircumflex                  U+00E2     LATIN SMALL LETTER A WITH CIRCUMFLEX
+ã    atilde                       U+00E3     LATIN SMALL LETTER A WITH TILDE
+ä    adieresis                    U+00E4     LATIN SMALL LETTER A WITH DIAERESIS
+å    aring                        U+00E5     LATIN SMALL LETTER A WITH RING ABOVE
+æ    ae                           U+00E6     LATIN SMALL LETTER AE
+ç    ccedilla                     U+00E7     LATIN SMALL LETTER C WITH CEDILLA
+è    egrave                       U+00E8     LATIN SMALL LETTER E WITH GRAVE
+é    eacute                       U+00E9     LATIN SMALL LETTER E WITH ACUTE
+ê    ecircumflex                  U+00EA     LATIN SMALL LETTER E WITH CIRCUMFLEX
+ë    edieresis                    U+00EB     LATIN SMALL LETTER E WITH DIAERESIS
+ì    igrave                       U+00EC     LATIN SMALL LETTER I WITH GRAVE
+í    iacute                       U+00ED     LATIN SMALL LETTER I WITH ACUTE
+î    icircumflex                  U+00EE     LATIN SMALL LETTER I WITH CIRCUMFLEX
+ï    idieresis                    U+00EF     LATIN SMALL LETTER I WITH DIAERESIS
+ð    eth                          U+00F0     LATIN SMALL LETTER ETH
+ñ    ntilde                       U+00F1     LATIN SMALL LETTER N WITH TILDE
+ò    ograve                       U+00F2     LATIN SMALL LETTER O WITH GRAVE
+ó    oacute                       U+00F3     LATIN SMALL LETTER O WITH ACUTE
+ô    ocircumflex                  U+00F4     LATIN SMALL LETTER O WITH CIRCUMFLEX
+õ    otilde                       U+00F5     LATIN SMALL LETTER O WITH TILDE
+ö    odieresis                    U+00F6     LATIN SMALL LETTER O WITH DIAERESIS
+ø    oslash                       U+00F8     LATIN SMALL LETTER O WITH STROKE
+ù    ugrave                       U+00F9     LATIN SMALL LETTER U WITH GRAVE
+ú    uacute                       U+00FA     LATIN SMALL LETTER U WITH ACUTE
+û    ucircumflex                  U+00FB     LATIN SMALL LETTER U WITH CIRCUMFLEX
+ü    udieresis                    U+00FC     LATIN SMALL LETTER U WITH DIAERESIS
+ý    yacute                       U+00FD     LATIN SMALL LETTER Y WITH ACUTE
+þ    thorn                        U+00FE     LATIN SMALL LETTER THORN
+ÿ    ydieresis                    U+00FF     LATIN SMALL LETTER Y WITH DIAERESIS
+
+Імена через пробіл:
+ordfeminine ordmasculine Agrave Aacute Acircumflex Atilde Adieresis Aring AE Ccedilla Egrave Eacute
+Ecircumflex Edieresis Igrave Iacute Icircumflex Idieresis Eth Ntilde Ograve Oacute Ocircumflex
+Otilde Odieresis Oslash Ugrave Uacute Ucircumflex Udieresis Yacute Thorn germandbls agrave aacute
+acircumflex atilde adieresis aring ae ccedilla egrave eacute ecircumflex edieresis igrave iacute
+icircumflex idieresis eth ntilde ograve oacute ocircumflex otilde odieresis oslash ugrave uacute
+ucircumflex udieresis yacute thorn ydieresis
+
+------------------------------------------------------------------------
+LATIN › Extended  (128)
+Latin Extended-A (U+0100–U+017F). Центральна Європа, балтійські, турецька тощо (Ā, č, ł, œ, š, ž…).
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+Ā    Amacron                      U+0100     LATIN CAPITAL LETTER A WITH MACRON
+ā    amacron                      U+0101     LATIN SMALL LETTER A WITH MACRON
+Ă    Abreve                       U+0102     LATIN CAPITAL LETTER A WITH BREVE
+ă    abreve                       U+0103     LATIN SMALL LETTER A WITH BREVE
+Ą    Aogonek                      U+0104     LATIN CAPITAL LETTER A WITH OGONEK
+ą    aogonek                      U+0105     LATIN SMALL LETTER A WITH OGONEK
+Ć    Cacute                       U+0106     LATIN CAPITAL LETTER C WITH ACUTE
+ć    cacute                       U+0107     LATIN SMALL LETTER C WITH ACUTE
+Ĉ    Ccircumflex                  U+0108     LATIN CAPITAL LETTER C WITH CIRCUMFLEX
+ĉ    ccircumflex                  U+0109     LATIN SMALL LETTER C WITH CIRCUMFLEX
+Ċ    Cdotaccent                   U+010A     LATIN CAPITAL LETTER C WITH DOT ABOVE
+ċ    cdotaccent                   U+010B     LATIN SMALL LETTER C WITH DOT ABOVE
+Č    Ccaron                       U+010C     LATIN CAPITAL LETTER C WITH CARON
+č    ccaron                       U+010D     LATIN SMALL LETTER C WITH CARON
+Ď    Dcaron                       U+010E     LATIN CAPITAL LETTER D WITH CARON
+ď    dcaron                       U+010F     LATIN SMALL LETTER D WITH CARON
+Đ    Dcroat                       U+0110     LATIN CAPITAL LETTER D WITH STROKE
+đ    dcroat                       U+0111     LATIN SMALL LETTER D WITH STROKE
+Ē    Emacron                      U+0112     LATIN CAPITAL LETTER E WITH MACRON
+ē    emacron                      U+0113     LATIN SMALL LETTER E WITH MACRON
+Ĕ    Ebreve                       U+0114     LATIN CAPITAL LETTER E WITH BREVE
+ĕ    ebreve                       U+0115     LATIN SMALL LETTER E WITH BREVE
+Ė    Edotaccent                   U+0116     LATIN CAPITAL LETTER E WITH DOT ABOVE
+ė    edotaccent                   U+0117     LATIN SMALL LETTER E WITH DOT ABOVE
+Ę    Eogonek                      U+0118     LATIN CAPITAL LETTER E WITH OGONEK
+ę    eogonek                      U+0119     LATIN SMALL LETTER E WITH OGONEK
+Ě    Ecaron                       U+011A     LATIN CAPITAL LETTER E WITH CARON
+ě    ecaron                       U+011B     LATIN SMALL LETTER E WITH CARON
+Ĝ    Gcircumflex                  U+011C     LATIN CAPITAL LETTER G WITH CIRCUMFLEX
+ĝ    gcircumflex                  U+011D     LATIN SMALL LETTER G WITH CIRCUMFLEX
+Ğ    Gbreve                       U+011E     LATIN CAPITAL LETTER G WITH BREVE
+ğ    gbreve                       U+011F     LATIN SMALL LETTER G WITH BREVE
+Ġ    Gdotaccent                   U+0120     LATIN CAPITAL LETTER G WITH DOT ABOVE
+ġ    gdotaccent                   U+0121     LATIN SMALL LETTER G WITH DOT ABOVE
+Ģ    Gcommaaccent                 U+0122     LATIN CAPITAL LETTER G WITH CEDILLA
+ģ    gcommaaccent                 U+0123     LATIN SMALL LETTER G WITH CEDILLA
+Ĥ    Hcircumflex                  U+0124     LATIN CAPITAL LETTER H WITH CIRCUMFLEX
+ĥ    hcircumflex                  U+0125     LATIN SMALL LETTER H WITH CIRCUMFLEX
+Ħ    Hbar                         U+0126     LATIN CAPITAL LETTER H WITH STROKE
+ħ    hbar                         U+0127     LATIN SMALL LETTER H WITH STROKE
+Ĩ    Itilde                       U+0128     LATIN CAPITAL LETTER I WITH TILDE
+ĩ    itilde                       U+0129     LATIN SMALL LETTER I WITH TILDE
+Ī    Imacron                      U+012A     LATIN CAPITAL LETTER I WITH MACRON
+ī    imacron                      U+012B     LATIN SMALL LETTER I WITH MACRON
+Ĭ    Ibreve                       U+012C     LATIN CAPITAL LETTER I WITH BREVE
+ĭ    ibreve                       U+012D     LATIN SMALL LETTER I WITH BREVE
+Į    Iogonek                      U+012E     LATIN CAPITAL LETTER I WITH OGONEK
+į    iogonek                      U+012F     LATIN SMALL LETTER I WITH OGONEK
+İ    Idotaccent                   U+0130     LATIN CAPITAL LETTER I WITH DOT ABOVE
+ı    dotlessi                     U+0131     LATIN SMALL LETTER DOTLESS I
+Ĳ    IJ                           U+0132     LATIN CAPITAL LIGATURE IJ
+ĳ    ij                           U+0133     LATIN SMALL LIGATURE IJ
+Ĵ    Jcircumflex                  U+0134     LATIN CAPITAL LETTER J WITH CIRCUMFLEX
+ĵ    jcircumflex                  U+0135     LATIN SMALL LETTER J WITH CIRCUMFLEX
+Ķ    Kcommaaccent                 U+0136     LATIN CAPITAL LETTER K WITH CEDILLA
+ķ    kcommaaccent                 U+0137     LATIN SMALL LETTER K WITH CEDILLA
+ĸ    kgreenlandic                 U+0138     LATIN SMALL LETTER KRA
+Ĺ    Lacute                       U+0139     LATIN CAPITAL LETTER L WITH ACUTE
+ĺ    lacute                       U+013A     LATIN SMALL LETTER L WITH ACUTE
+Ļ    Lcommaaccent                 U+013B     LATIN CAPITAL LETTER L WITH CEDILLA
+ļ    lcommaaccent                 U+013C     LATIN SMALL LETTER L WITH CEDILLA
+Ľ    Lcaron                       U+013D     LATIN CAPITAL LETTER L WITH CARON
+ľ    lcaron                       U+013E     LATIN SMALL LETTER L WITH CARON
+Ŀ    Ldot                         U+013F     LATIN CAPITAL LETTER L WITH MIDDLE DOT
+ŀ    ldot                         U+0140     LATIN SMALL LETTER L WITH MIDDLE DOT
+Ł    Lslash                       U+0141     LATIN CAPITAL LETTER L WITH STROKE
+ł    lslash                       U+0142     LATIN SMALL LETTER L WITH STROKE
+Ń    Nacute                       U+0143     LATIN CAPITAL LETTER N WITH ACUTE
+ń    nacute                       U+0144     LATIN SMALL LETTER N WITH ACUTE
+Ņ    Ncommaaccent                 U+0145     LATIN CAPITAL LETTER N WITH CEDILLA
+ņ    ncommaaccent                 U+0146     LATIN SMALL LETTER N WITH CEDILLA
+Ň    Ncaron                       U+0147     LATIN CAPITAL LETTER N WITH CARON
+ň    ncaron                       U+0148     LATIN SMALL LETTER N WITH CARON
+ŉ    napostrophe                  U+0149     LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
+Ŋ    Eng                          U+014A     LATIN CAPITAL LETTER ENG
+ŋ    eng                          U+014B     LATIN SMALL LETTER ENG
+Ō    Omacron                      U+014C     LATIN CAPITAL LETTER O WITH MACRON
+ō    omacron                      U+014D     LATIN SMALL LETTER O WITH MACRON
+Ŏ    Obreve                       U+014E     LATIN CAPITAL LETTER O WITH BREVE
+ŏ    obreve                       U+014F     LATIN SMALL LETTER O WITH BREVE
+Ő    Ohungarumlaut                U+0150     LATIN CAPITAL LETTER O WITH DOUBLE ACUTE
+ő    ohungarumlaut                U+0151     LATIN SMALL LETTER O WITH DOUBLE ACUTE
+Œ    OE                           U+0152     LATIN CAPITAL LIGATURE OE
+œ    oe                           U+0153     LATIN SMALL LIGATURE OE
+Ŕ    Racute                       U+0154     LATIN CAPITAL LETTER R WITH ACUTE
+ŕ    racute                       U+0155     LATIN SMALL LETTER R WITH ACUTE
+Ŗ    Rcommaaccent                 U+0156     LATIN CAPITAL LETTER R WITH CEDILLA
+ŗ    rcommaaccent                 U+0157     LATIN SMALL LETTER R WITH CEDILLA
+Ř    Rcaron                       U+0158     LATIN CAPITAL LETTER R WITH CARON
+ř    rcaron                       U+0159     LATIN SMALL LETTER R WITH CARON
+Ś    Sacute                       U+015A     LATIN CAPITAL LETTER S WITH ACUTE
+ś    sacute                       U+015B     LATIN SMALL LETTER S WITH ACUTE
+Ŝ    Scircumflex                  U+015C     LATIN CAPITAL LETTER S WITH CIRCUMFLEX
+ŝ    scircumflex                  U+015D     LATIN SMALL LETTER S WITH CIRCUMFLEX
+Ş    Scedilla                     U+015E     LATIN CAPITAL LETTER S WITH CEDILLA
+ş    scedilla                     U+015F     LATIN SMALL LETTER S WITH CEDILLA
+Š    Scaron                       U+0160     LATIN CAPITAL LETTER S WITH CARON
+š    scaron                       U+0161     LATIN SMALL LETTER S WITH CARON
+Ţ    Tcedilla                     U+0162     LATIN CAPITAL LETTER T WITH CEDILLA
+ţ    tcedilla                     U+0163     LATIN SMALL LETTER T WITH CEDILLA
+Ť    Tcaron                       U+0164     LATIN CAPITAL LETTER T WITH CARON
+ť    tcaron                       U+0165     LATIN SMALL LETTER T WITH CARON
+Ŧ    Tbar                         U+0166     LATIN CAPITAL LETTER T WITH STROKE
+ŧ    tbar                         U+0167     LATIN SMALL LETTER T WITH STROKE
+Ũ    Utilde                       U+0168     LATIN CAPITAL LETTER U WITH TILDE
+ũ    utilde                       U+0169     LATIN SMALL LETTER U WITH TILDE
+Ū    Umacron                      U+016A     LATIN CAPITAL LETTER U WITH MACRON
+ū    umacron                      U+016B     LATIN SMALL LETTER U WITH MACRON
+Ŭ    Ubreve                       U+016C     LATIN CAPITAL LETTER U WITH BREVE
+ŭ    ubreve                       U+016D     LATIN SMALL LETTER U WITH BREVE
+Ů    Uring                        U+016E     LATIN CAPITAL LETTER U WITH RING ABOVE
+ů    uring                        U+016F     LATIN SMALL LETTER U WITH RING ABOVE
+Ű    Uhungarumlaut                U+0170     LATIN CAPITAL LETTER U WITH DOUBLE ACUTE
+ű    uhungarumlaut                U+0171     LATIN SMALL LETTER U WITH DOUBLE ACUTE
+Ų    Uogonek                      U+0172     LATIN CAPITAL LETTER U WITH OGONEK
+ų    uogonek                      U+0173     LATIN SMALL LETTER U WITH OGONEK
+Ŵ    Wcircumflex                  U+0174     LATIN CAPITAL LETTER W WITH CIRCUMFLEX
+ŵ    wcircumflex                  U+0175     LATIN SMALL LETTER W WITH CIRCUMFLEX
+Ŷ    Ycircumflex                  U+0176     LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
+ŷ    ycircumflex                  U+0177     LATIN SMALL LETTER Y WITH CIRCUMFLEX
+Ÿ    Ydieresis                    U+0178     LATIN CAPITAL LETTER Y WITH DIAERESIS
+Ź    Zacute                       U+0179     LATIN CAPITAL LETTER Z WITH ACUTE
+ź    zacute                       U+017A     LATIN SMALL LETTER Z WITH ACUTE
+Ż    Zdotaccent                   U+017B     LATIN CAPITAL LETTER Z WITH DOT ABOVE
+ż    zdotaccent                   U+017C     LATIN SMALL LETTER Z WITH DOT ABOVE
+Ž    Zcaron                       U+017D     LATIN CAPITAL LETTER Z WITH CARON
+ž    zcaron                       U+017E     LATIN SMALL LETTER Z WITH CARON
+ſ    longs                        U+017F     LATIN SMALL LETTER LONG S
+
+Імена через пробіл:
+Amacron amacron Abreve abreve Aogonek aogonek Cacute cacute Ccircumflex ccircumflex Cdotaccent
+cdotaccent Ccaron ccaron Dcaron dcaron Dcroat dcroat Emacron emacron Ebreve ebreve Edotaccent
+edotaccent Eogonek eogonek Ecaron ecaron Gcircumflex gcircumflex Gbreve gbreve Gdotaccent gdotaccent
+Gcommaaccent gcommaaccent Hcircumflex hcircumflex Hbar hbar Itilde itilde Imacron imacron Ibreve
+ibreve Iogonek iogonek Idotaccent dotlessi IJ ij Jcircumflex jcircumflex Kcommaaccent kcommaaccent
+kgreenlandic Lacute lacute Lcommaaccent lcommaaccent Lcaron lcaron Ldot ldot Lslash lslash Nacute
+nacute Ncommaaccent ncommaaccent Ncaron ncaron napostrophe Eng eng Omacron omacron Obreve obreve
+Ohungarumlaut ohungarumlaut OE oe Racute racute Rcommaaccent rcommaaccent Rcaron rcaron Sacute
+sacute Scircumflex scircumflex Scedilla scedilla Scaron scaron Tcedilla tcedilla Tcaron tcaron Tbar
+tbar Utilde utilde Umacron umacron Ubreve ubreve Uring uring Uhungarumlaut uhungarumlaut Uogonek
+uogonek Wcircumflex wcircumflex Ycircumflex ycircumflex Ydieresis Zacute zacute Zdotaccent
+zdotaccent Zcaron zcaron longs
+
+------------------------------------------------------------------------
+LATIN › Advanced  (208)
+Latin Extended-B (U+0180–U+024F). Африканські, фонетичні, історичні латинські літери.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+ƀ    bstroke                      U+0180     LATIN SMALL LETTER B WITH STROKE
+Ɓ    Bhook                        U+0181     LATIN CAPITAL LETTER B WITH HOOK
+Ƃ    Btopbar                      U+0182     LATIN CAPITAL LETTER B WITH TOPBAR
+ƃ    btopbar                      U+0183     LATIN SMALL LETTER B WITH TOPBAR
+Ƅ    Tonesix                      U+0184     LATIN CAPITAL LETTER TONE SIX
+ƅ    tonesix                      U+0185     LATIN SMALL LETTER TONE SIX
+Ɔ    Oopen                        U+0186     LATIN CAPITAL LETTER OPEN O
+Ƈ    Chook                        U+0187     LATIN CAPITAL LETTER C WITH HOOK
+ƈ    chook                        U+0188     LATIN SMALL LETTER C WITH HOOK
+Ɖ    Dafrican                     U+0189     LATIN CAPITAL LETTER AFRICAN D
+Ɗ    Dhook                        U+018A     LATIN CAPITAL LETTER D WITH HOOK
+Ƌ    Dtopbar                      U+018B     LATIN CAPITAL LETTER D WITH TOPBAR
+ƌ    dtopbar                      U+018C     LATIN SMALL LETTER D WITH TOPBAR
+ƍ    deltaturned                  U+018D     LATIN SMALL LETTER TURNED DELTA
+Ǝ    Ereversed                    U+018E     LATIN CAPITAL LETTER REVERSED E
+Ə    Schwa                        U+018F     LATIN CAPITAL LETTER SCHWA
+Ɛ    Eopen                        U+0190     LATIN CAPITAL LETTER OPEN E
+Ƒ    Fhook                        U+0191     LATIN CAPITAL LETTER F WITH HOOK
+ƒ    florin                       U+0192     LATIN SMALL LETTER F WITH HOOK
+Ɠ    Ghook                        U+0193     LATIN CAPITAL LETTER G WITH HOOK
+Ɣ    Gamma-lt                     U+0194     LATIN CAPITAL LETTER GAMMA
+ƕ    hv                           U+0195     LATIN SMALL LETTER HV
+Ɩ    Iotaafrican                  U+0196     LATIN CAPITAL LETTER IOTA
+Ɨ    Istroke                      U+0197     LATIN CAPITAL LETTER I WITH STROKE
+Ƙ    Khook                        U+0198     LATIN CAPITAL LETTER K WITH HOOK
+ƙ    khook                        U+0199     LATIN SMALL LETTER K WITH HOOK
+ƚ    lbar                         U+019A     LATIN SMALL LETTER L WITH BAR
+ƛ    lambdastroke                 U+019B     LATIN SMALL LETTER LAMBDA WITH STROKE
+Ɯ    Mturned                      U+019C     LATIN CAPITAL LETTER TURNED M
+Ɲ    Nhookleft                    U+019D     LATIN CAPITAL LETTER N WITH LEFT HOOK
+ƞ    nlongrightleg                U+019E     LATIN SMALL LETTER N WITH LONG RIGHT LEG
+Ɵ    Obar                         U+019F     LATIN CAPITAL LETTER O WITH MIDDLE TILDE
+Ơ    Ohorn                        U+01A0     LATIN CAPITAL LETTER O WITH HORN
+ơ    ohorn                        U+01A1     LATIN SMALL LETTER O WITH HORN
+Ƣ    Oi                           U+01A2     LATIN CAPITAL LETTER OI
+ƣ    oi                           U+01A3     LATIN SMALL LETTER OI
+Ƥ    Phook                        U+01A4     LATIN CAPITAL LETTER P WITH HOOK
+ƥ    phook                        U+01A5     LATIN SMALL LETTER P WITH HOOK
+Ʀ    yr                           U+01A6     LATIN LETTER YR
+Ƨ    Tonetwo                      U+01A7     LATIN CAPITAL LETTER TONE TWO
+ƨ    tonetwo                      U+01A8     LATIN SMALL LETTER TONE TWO
+Ʃ    Esh                          U+01A9     LATIN CAPITAL LETTER ESH
+ƪ    eshreversedloop              U+01AA     LATIN LETTER REVERSED ESH LOOP
+ƫ    tpalatalhook                 U+01AB     LATIN SMALL LETTER T WITH PALATAL HOOK
+Ƭ    Thook                        U+01AC     LATIN CAPITAL LETTER T WITH HOOK
+ƭ    thook                        U+01AD     LATIN SMALL LETTER T WITH HOOK
+Ʈ    Tretroflexhook               U+01AE     LATIN CAPITAL LETTER T WITH RETROFLEX HOOK
+Ư    Uhorn                        U+01AF     LATIN CAPITAL LETTER U WITH HORN
+ư    uhorn                        U+01B0     LATIN SMALL LETTER U WITH HORN
+Ʊ    Upsilonafrican               U+01B1     LATIN CAPITAL LETTER UPSILON
+Ʋ    Vhook                        U+01B2     LATIN CAPITAL LETTER V WITH HOOK
+Ƴ    Yhook                        U+01B3     LATIN CAPITAL LETTER Y WITH HOOK
+ƴ    yhook                        U+01B4     LATIN SMALL LETTER Y WITH HOOK
+Ƶ    Zstroke                      U+01B5     LATIN CAPITAL LETTER Z WITH STROKE
+ƶ    zstroke                      U+01B6     LATIN SMALL LETTER Z WITH STROKE
+Ʒ    Ezh                          U+01B7     LATIN CAPITAL LETTER EZH
+Ƹ    Ezhreversed                  U+01B8     LATIN CAPITAL LETTER EZH REVERSED
+ƹ    ezhreversed                  U+01B9     LATIN SMALL LETTER EZH REVERSED
+ƺ    ezhtail                      U+01BA     LATIN SMALL LETTER EZH WITH TAIL
+ƻ    twostroke                    U+01BB     LATIN LETTER TWO WITH STROKE
+Ƽ    Tonefive                     U+01BC     LATIN CAPITAL LETTER TONE FIVE
+ƽ    tonefive                     U+01BD     LATIN SMALL LETTER TONE FIVE
+ƾ    glottalinvertedstroke        U+01BE     LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE
+ƿ    wynn                         U+01BF     LATIN LETTER WYNN
+ǀ    clickdental                  U+01C0     LATIN LETTER DENTAL CLICK
+ǁ    clicklateral                 U+01C1     LATIN LETTER LATERAL CLICK
+ǂ    clickalveolar                U+01C2     LATIN LETTER ALVEOLAR CLICK
+ǃ    clickretroflex               U+01C3     LATIN LETTER RETROFLEX CLICK
+Ǆ    DZcaron                      U+01C4     LATIN CAPITAL LETTER DZ WITH CARON
+ǅ    Dzcaron                      U+01C5     LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
+ǆ    dzcaron                      U+01C6     LATIN SMALL LETTER DZ WITH CARON
+Ǉ    LJ                           U+01C7     LATIN CAPITAL LETTER LJ
+ǈ    Lj                           U+01C8     LATIN CAPITAL LETTER L WITH SMALL LETTER J
+ǉ    lj                           U+01C9     LATIN SMALL LETTER LJ
+Ǌ    NJ                           U+01CA     LATIN CAPITAL LETTER NJ
+ǋ    Nj                           U+01CB     LATIN CAPITAL LETTER N WITH SMALL LETTER J
+ǌ    nj                           U+01CC     LATIN SMALL LETTER NJ
+Ǎ    Acaron                       U+01CD     LATIN CAPITAL LETTER A WITH CARON
+ǎ    acaron                       U+01CE     LATIN SMALL LETTER A WITH CARON
+Ǐ    Icaron                       U+01CF     LATIN CAPITAL LETTER I WITH CARON
+ǐ    icaron                       U+01D0     LATIN SMALL LETTER I WITH CARON
+Ǒ    Ocaron                       U+01D1     LATIN CAPITAL LETTER O WITH CARON
+ǒ    ocaron                       U+01D2     LATIN SMALL LETTER O WITH CARON
+Ǔ    Ucaron                       U+01D3     LATIN CAPITAL LETTER U WITH CARON
+ǔ    ucaron                       U+01D4     LATIN SMALL LETTER U WITH CARON
+Ǖ    Udieresismacron              U+01D5     LATIN CAPITAL LETTER U WITH DIAERESIS AND MACRON
+ǖ    udieresismacron              U+01D6     LATIN SMALL LETTER U WITH DIAERESIS AND MACRON
+Ǘ    Udieresisacute               U+01D7     LATIN CAPITAL LETTER U WITH DIAERESIS AND ACUTE
+ǘ    udieresisacute               U+01D8     LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE
+Ǚ    Udieresiscaron               U+01D9     LATIN CAPITAL LETTER U WITH DIAERESIS AND CARON
+ǚ    udieresiscaron               U+01DA     LATIN SMALL LETTER U WITH DIAERESIS AND CARON
+Ǜ    Udieresisgrave               U+01DB     LATIN CAPITAL LETTER U WITH DIAERESIS AND GRAVE
+ǜ    udieresisgrave               U+01DC     LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE
+ǝ    eturned                      U+01DD     LATIN SMALL LETTER TURNED E
+Ǟ    Adieresismacron              U+01DE     LATIN CAPITAL LETTER A WITH DIAERESIS AND MACRON
+ǟ    adieresismacron              U+01DF     LATIN SMALL LETTER A WITH DIAERESIS AND MACRON
+Ǡ    Adotmacron                   U+01E0     LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON
+ǡ    adotmacron                   U+01E1     LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON
+Ǣ    AEmacron                     U+01E2     LATIN CAPITAL LETTER AE WITH MACRON
+ǣ    aemacron                     U+01E3     LATIN SMALL LETTER AE WITH MACRON
+Ǥ    Gstroke                      U+01E4     LATIN CAPITAL LETTER G WITH STROKE
+ǥ    gstroke                      U+01E5     LATIN SMALL LETTER G WITH STROKE
+Ǧ    Gcaron                       U+01E6     LATIN CAPITAL LETTER G WITH CARON
+ǧ    gcaron                       U+01E7     LATIN SMALL LETTER G WITH CARON
+Ǩ    Kcaron                       U+01E8     LATIN CAPITAL LETTER K WITH CARON
+ǩ    kcaron                       U+01E9     LATIN SMALL LETTER K WITH CARON
+Ǫ    Oogonek                      U+01EA     LATIN CAPITAL LETTER O WITH OGONEK
+ǫ    oogonek                      U+01EB     LATIN SMALL LETTER O WITH OGONEK
+Ǭ    Oogonekmacron                U+01EC     LATIN CAPITAL LETTER O WITH OGONEK AND MACRON
+ǭ    oogonekmacron                U+01ED     LATIN SMALL LETTER O WITH OGONEK AND MACRON
+Ǯ    Ezhcaron                     U+01EE     LATIN CAPITAL LETTER EZH WITH CARON
+ǯ    ezhcaron                     U+01EF     LATIN SMALL LETTER EZH WITH CARON
+ǰ    jcaron                       U+01F0     LATIN SMALL LETTER J WITH CARON
+Ǳ    DZ                           U+01F1     LATIN CAPITAL LETTER DZ
+ǲ    Dz                           U+01F2     LATIN CAPITAL LETTER D WITH SMALL LETTER Z
+ǳ    dz                           U+01F3     LATIN SMALL LETTER DZ
+Ǵ    Gacute                       U+01F4     LATIN CAPITAL LETTER G WITH ACUTE
+ǵ    gacute                       U+01F5     LATIN SMALL LETTER G WITH ACUTE
+Ƕ    Hwair                        U+01F6     LATIN CAPITAL LETTER HWAIR
+Ƿ    Wynn                         U+01F7     LATIN CAPITAL LETTER WYNN
+Ǹ    Ngrave                       U+01F8     LATIN CAPITAL LETTER N WITH GRAVE
+ǹ    ngrave                       U+01F9     LATIN SMALL LETTER N WITH GRAVE
+Ǻ    Aringacute                   U+01FA     LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
+ǻ    aringacute                   U+01FB     LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
+Ǽ    AEacute                      U+01FC     LATIN CAPITAL LETTER AE WITH ACUTE
+ǽ    aeacute                      U+01FD     LATIN SMALL LETTER AE WITH ACUTE
+Ǿ    Oslashacute                  U+01FE     LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
+ǿ    oslashacute                  U+01FF     LATIN SMALL LETTER O WITH STROKE AND ACUTE
+Ȁ    Adblgrave                    U+0200     LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
+ȁ    adblgrave                    U+0201     LATIN SMALL LETTER A WITH DOUBLE GRAVE
+Ȃ    Ainvertedbreve               U+0202     LATIN CAPITAL LETTER A WITH INVERTED BREVE
+ȃ    ainvertedbreve               U+0203     LATIN SMALL LETTER A WITH INVERTED BREVE
+Ȅ    Edblgrave                    U+0204     LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
+ȅ    edblgrave                    U+0205     LATIN SMALL LETTER E WITH DOUBLE GRAVE
+Ȇ    Einvertedbreve               U+0206     LATIN CAPITAL LETTER E WITH INVERTED BREVE
+ȇ    einvertedbreve               U+0207     LATIN SMALL LETTER E WITH INVERTED BREVE
+Ȉ    Idblgrave                    U+0208     LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
+ȉ    idblgrave                    U+0209     LATIN SMALL LETTER I WITH DOUBLE GRAVE
+Ȋ    Iinvertedbreve               U+020A     LATIN CAPITAL LETTER I WITH INVERTED BREVE
+ȋ    iinvertedbreve               U+020B     LATIN SMALL LETTER I WITH INVERTED BREVE
+Ȍ    Odblgrave                    U+020C     LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
+ȍ    odblgrave                    U+020D     LATIN SMALL LETTER O WITH DOUBLE GRAVE
+Ȏ    Oinvertedbreve               U+020E     LATIN CAPITAL LETTER O WITH INVERTED BREVE
+ȏ    oinvertedbreve               U+020F     LATIN SMALL LETTER O WITH INVERTED BREVE
+Ȑ    Rdblgrave                    U+0210     LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
+ȑ    rdblgrave                    U+0211     LATIN SMALL LETTER R WITH DOUBLE GRAVE
+Ȓ    Rinvertedbreve               U+0212     LATIN CAPITAL LETTER R WITH INVERTED BREVE
+ȓ    rinvertedbreve               U+0213     LATIN SMALL LETTER R WITH INVERTED BREVE
+Ȕ    Udblgrave                    U+0214     LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
+ȕ    udblgrave                    U+0215     LATIN SMALL LETTER U WITH DOUBLE GRAVE
+Ȗ    Uinvertedbreve               U+0216     LATIN CAPITAL LETTER U WITH INVERTED BREVE
+ȗ    uinvertedbreve               U+0217     LATIN SMALL LETTER U WITH INVERTED BREVE
+Ș    Scommaaccent                 U+0218     LATIN CAPITAL LETTER S WITH COMMA BELOW
+ș    scommaaccent                 U+0219     LATIN SMALL LETTER S WITH COMMA BELOW
+Ț    Tcommaaccent                 U+021A     LATIN CAPITAL LETTER T WITH COMMA BELOW
+ț    tcommaaccent                 U+021B     LATIN SMALL LETTER T WITH COMMA BELOW
+Ȝ    Yogh                         U+021C     LATIN CAPITAL LETTER YOGH
+ȝ    yogh                         U+021D     LATIN SMALL LETTER YOGH
+Ȟ    Hcaron                       U+021E     LATIN CAPITAL LETTER H WITH CARON
+ȟ    hcaron                       U+021F     LATIN SMALL LETTER H WITH CARON
+Ƞ    Nlongrightleg                U+0220     LATIN CAPITAL LETTER N WITH LONG RIGHT LEG
+ȡ    dcurl                        U+0221     LATIN SMALL LETTER D WITH CURL
+Ȣ    Ou                           U+0222     LATIN CAPITAL LETTER OU
+ȣ    ou                           U+0223     LATIN SMALL LETTER OU
+Ȥ    Zhook                        U+0224     LATIN CAPITAL LETTER Z WITH HOOK
+ȥ    zhook                        U+0225     LATIN SMALL LETTER Z WITH HOOK
+Ȧ    Adotaccent                   U+0226     LATIN CAPITAL LETTER A WITH DOT ABOVE
+ȧ    adotaccent                   U+0227     LATIN SMALL LETTER A WITH DOT ABOVE
+Ȩ    Ecedilla                     U+0228     LATIN CAPITAL LETTER E WITH CEDILLA
+ȩ    ecedilla                     U+0229     LATIN SMALL LETTER E WITH CEDILLA
+Ȫ    Odieresismacron              U+022A     LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON
+ȫ    odieresismacron              U+022B     LATIN SMALL LETTER O WITH DIAERESIS AND MACRON
+Ȭ    Otildemacron                 U+022C     LATIN CAPITAL LETTER O WITH TILDE AND MACRON
+ȭ    otildemacron                 U+022D     LATIN SMALL LETTER O WITH TILDE AND MACRON
+Ȯ    Odotaccent                   U+022E     LATIN CAPITAL LETTER O WITH DOT ABOVE
+ȯ    odotaccent                   U+022F     LATIN SMALL LETTER O WITH DOT ABOVE
+Ȱ    Odotaccentmacron             U+0230     LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON
+ȱ    odotaccentmacron             U+0231     LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON
+Ȳ    Ymacron                      U+0232     LATIN CAPITAL LETTER Y WITH MACRON
+ȳ    ymacron                      U+0233     LATIN SMALL LETTER Y WITH MACRON
+ȴ    lcurl                        U+0234     LATIN SMALL LETTER L WITH CURL
+ȵ    ncurl                        U+0235     LATIN SMALL LETTER N WITH CURL
+ȶ    tcurl                        U+0236     LATIN SMALL LETTER T WITH CURL
+ȷ    dotlessj                     U+0237     LATIN SMALL LETTER DOTLESS J
+ȸ    dbdigraph                    U+0238     LATIN SMALL LETTER DB DIGRAPH
+ȹ    qpdigraph                    U+0239     LATIN SMALL LETTER QP DIGRAPH
+Ⱥ    Astroke                      U+023A     LATIN CAPITAL LETTER A WITH STROKE
+Ȼ    Cstroke                      U+023B     LATIN CAPITAL LETTER C WITH STROKE
+ȼ    cstroke                      U+023C     LATIN SMALL LETTER C WITH STROKE
+Ƚ    Lbar                         U+023D     LATIN CAPITAL LETTER L WITH BAR
+Ⱦ    Tdiagonalstroke              U+023E     LATIN CAPITAL LETTER T WITH DIAGONAL STROKE
+ȿ    sswashtail                   U+023F     LATIN SMALL LETTER S WITH SWASH TAIL
+ɀ    zswashtail                   U+0240     LATIN SMALL LETTER Z WITH SWASH TAIL
+Ɂ    Glottalstop                  U+0241     LATIN CAPITAL LETTER GLOTTAL STOP
+ɂ    glottalstopsmall             U+0242     LATIN SMALL LETTER GLOTTAL STOP
+Ƀ    Bstroke                      U+0243     LATIN CAPITAL LETTER B WITH STROKE
+Ʉ    Ubar                         U+0244     LATIN CAPITAL LETTER U BAR
+Ʌ    Vturned                      U+0245     LATIN CAPITAL LETTER TURNED V
+Ɇ    Estroke                      U+0246     LATIN CAPITAL LETTER E WITH STROKE
+ɇ    estroke                      U+0247     LATIN SMALL LETTER E WITH STROKE
+Ɉ    Jstroke                      U+0248     LATIN CAPITAL LETTER J WITH STROKE
+ɉ    jstroke                      U+0249     LATIN SMALL LETTER J WITH STROKE
+Ɋ    Qsmallhooktail               U+024A     LATIN CAPITAL LETTER SMALL Q WITH HOOK TAIL
+ɋ    qhooktail                    U+024B     LATIN SMALL LETTER Q WITH HOOK TAIL
+Ɍ    Rstroke                      U+024C     LATIN CAPITAL LETTER R WITH STROKE
+ɍ    rstroke                      U+024D     LATIN SMALL LETTER R WITH STROKE
+Ɏ    Ystroke                      U+024E     LATIN CAPITAL LETTER Y WITH STROKE
+ɏ    ystroke                      U+024F     LATIN SMALL LETTER Y WITH STROKE
+
+Імена через пробіл:
+bstroke Bhook Btopbar btopbar Tonesix tonesix Oopen Chook chook Dafrican Dhook Dtopbar dtopbar
+deltaturned Ereversed Schwa Eopen Fhook florin Ghook Gamma-lt hv Iotaafrican Istroke Khook khook
+lbar lambdastroke Mturned Nhookleft nlongrightleg Obar Ohorn ohorn Oi oi Phook phook yr Tonetwo
+tonetwo Esh eshreversedloop tpalatalhook Thook thook Tretroflexhook Uhorn uhorn Upsilonafrican Vhook
+Yhook yhook Zstroke zstroke Ezh Ezhreversed ezhreversed ezhtail twostroke Tonefive tonefive
+glottalinvertedstroke wynn clickdental clicklateral clickalveolar clickretroflex DZcaron Dzcaron
+dzcaron LJ Lj lj NJ Nj nj Acaron acaron Icaron icaron Ocaron ocaron Ucaron ucaron Udieresismacron
+udieresismacron Udieresisacute udieresisacute Udieresiscaron udieresiscaron Udieresisgrave
+udieresisgrave eturned Adieresismacron adieresismacron Adotmacron adotmacron AEmacron aemacron
+Gstroke gstroke Gcaron gcaron Kcaron kcaron Oogonek oogonek Oogonekmacron oogonekmacron Ezhcaron
+ezhcaron jcaron DZ Dz dz Gacute gacute Hwair Wynn Ngrave ngrave Aringacute aringacute AEacute
+aeacute Oslashacute oslashacute Adblgrave adblgrave Ainvertedbreve ainvertedbreve Edblgrave
+edblgrave Einvertedbreve einvertedbreve Idblgrave idblgrave Iinvertedbreve iinvertedbreve Odblgrave
+odblgrave Oinvertedbreve oinvertedbreve Rdblgrave rdblgrave Rinvertedbreve rinvertedbreve Udblgrave
+udblgrave Uinvertedbreve uinvertedbreve Scommaaccent scommaaccent Tcommaaccent tcommaaccent Yogh
+yogh Hcaron hcaron Nlongrightleg dcurl Ou ou Zhook zhook Adotaccent adotaccent Ecedilla ecedilla
+Odieresismacron odieresismacron Otildemacron otildemacron Odotaccent odotaccent Odotaccentmacron
+odotaccentmacron Ymacron ymacron lcurl ncurl tcurl dotlessj dbdigraph qpdigraph Astroke Cstroke
+cstroke Lbar Tdiagonalstroke sswashtail zswashtail Glottalstop glottalstopsmall Bstroke Ubar Vturned
+Estroke estroke Jstroke jstroke Qsmallhooktail qhooktail Rstroke rstroke Ystroke ystroke
+
+------------------------------------------------------------------------
+LATIN › IPA extensions  (96)
+IPA Extensions (U+0250–U+02AF).
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+ɐ    aturned                      U+0250     LATIN SMALL LETTER TURNED A
+ɑ    alpha-ipa                    U+0251     LATIN SMALL LETTER ALPHA
+ɒ    alphaturned                  U+0252     LATIN SMALL LETTER TURNED ALPHA
+ɓ    bhook                        U+0253     LATIN SMALL LETTER B WITH HOOK
+ɔ    oopen                        U+0254     LATIN SMALL LETTER OPEN O
+ɕ    ccurl                        U+0255     LATIN SMALL LETTER C WITH CURL
+ɖ    dtail                        U+0256     LATIN SMALL LETTER D WITH TAIL
+ɗ    dhook                        U+0257     LATIN SMALL LETTER D WITH HOOK
+ɘ    ereversed-ipa                U+0258     LATIN SMALL LETTER REVERSED E
+ə    schwa                        U+0259     LATIN SMALL LETTER SCHWA
+ɚ    schwahook                    U+025A     LATIN SMALL LETTER SCHWA WITH HOOK
+ɛ    eopen                        U+025B     LATIN SMALL LETTER OPEN E
+ɜ    eopenreversed                U+025C     LATIN SMALL LETTER REVERSED OPEN E
+ɝ    eopenreversedhook            U+025D     LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
+ɞ    eopenreversedclosed          U+025E     LATIN SMALL LETTER CLOSED REVERSED OPEN E
+ɟ    dotlessjstroke               U+025F     LATIN SMALL LETTER DOTLESS J WITH STROKE
+ɠ    ghook                        U+0260     LATIN SMALL LETTER G WITH HOOK
+ɡ    gscript-ipa                  U+0261     LATIN SMALL LETTER SCRIPT G
+ɢ    Gsmall                       U+0262     LATIN LETTER SMALL CAPITAL G
+ɣ    gamma-ipa                    U+0263     LATIN SMALL LETTER GAMMA
+ɤ    ramshorn                     U+0264     LATIN SMALL LETTER RAMS HORN
+ɥ    hturned                      U+0265     LATIN SMALL LETTER TURNED H
+ɦ    hhook                        U+0266     LATIN SMALL LETTER H WITH HOOK
+ɧ    henghook                     U+0267     LATIN SMALL LETTER HENG WITH HOOK
+ɨ    istroke                      U+0268     LATIN SMALL LETTER I WITH STROKE
+ɩ    iota-ipa                     U+0269     LATIN SMALL LETTER IOTA
+ɪ    Ismall                       U+026A     LATIN LETTER SMALL CAPITAL I
+ɫ    lmiddletilde                 U+026B     LATIN SMALL LETTER L WITH MIDDLE TILDE
+ɬ    lbelt                        U+026C     LATIN SMALL LETTER L WITH BELT
+ɭ    lhookretroflex               U+026D     LATIN SMALL LETTER L WITH RETROFLEX HOOK
+ɮ    lezh                         U+026E     LATIN SMALL LETTER LEZH
+ɯ    mturned                      U+026F     LATIN SMALL LETTER TURNED M
+ɰ    mlonglegturned               U+0270     LATIN SMALL LETTER TURNED M WITH LONG LEG
+ɱ    mhook                        U+0271     LATIN SMALL LETTER M WITH HOOK
+ɲ    nhookleft                    U+0272     LATIN SMALL LETTER N WITH LEFT HOOK
+ɳ    nhookretroflex               U+0273     LATIN SMALL LETTER N WITH RETROFLEX HOOK
+ɴ    Nsmall                       U+0274     LATIN LETTER SMALL CAPITAL N
+ɵ    obarred                      U+0275     LATIN SMALL LETTER BARRED O
+ɶ    OEsmall                      U+0276     LATIN LETTER SMALL CAPITAL OE
+ɷ    omegaclosed                  U+0277     LATIN SMALL LETTER CLOSED OMEGA
+ɸ    phi-ipa                      U+0278     LATIN SMALL LETTER PHI
+ɹ    rturned                      U+0279     LATIN SMALL LETTER TURNED R
+ɺ    rlonglegturned               U+027A     LATIN SMALL LETTER TURNED R WITH LONG LEG
+ɻ    rhookturned                  U+027B     LATIN SMALL LETTER TURNED R WITH HOOK
+ɼ    rlongleg                     U+027C     LATIN SMALL LETTER R WITH LONG LEG
+ɽ    rtail-ipa                    U+027D     LATIN SMALL LETTER R WITH TAIL
+ɾ    rfishhook                    U+027E     LATIN SMALL LETTER R WITH FISHHOOK
+ɿ    rfishhookreversed            U+027F     LATIN SMALL LETTER REVERSED R WITH FISHHOOK
+ʀ    Rsmall                       U+0280     LATIN LETTER SMALL CAPITAL R
+ʁ    Rinvertedsmall               U+0281     LATIN LETTER SMALL CAPITAL INVERTED R
+ʂ    shook                        U+0282     LATIN SMALL LETTER S WITH HOOK
+ʃ    esh                          U+0283     LATIN SMALL LETTER ESH
+ʄ    dotlessjstrokehook           U+0284     LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
+ʅ    eshsquatreversed             U+0285     LATIN SMALL LETTER SQUAT REVERSED ESH
+ʆ    eshcurl                      U+0286     LATIN SMALL LETTER ESH WITH CURL
+ʇ    tturned                      U+0287     LATIN SMALL LETTER TURNED T
+ʈ    tretroflexhook               U+0288     LATIN SMALL LETTER T WITH RETROFLEX HOOK
+ʉ    ubar                         U+0289     LATIN SMALL LETTER U BAR
+ʊ    upsilon-ipa                  U+028A     LATIN SMALL LETTER UPSILON
+ʋ    vhook                        U+028B     LATIN SMALL LETTER V WITH HOOK
+ʌ    vturned                      U+028C     LATIN SMALL LETTER TURNED V
+ʍ    wturned                      U+028D     LATIN SMALL LETTER TURNED W
+ʎ    yturned                      U+028E     LATIN SMALL LETTER TURNED Y
+ʏ    Ysmall                       U+028F     LATIN LETTER SMALL CAPITAL Y
+ʐ    zretroflexhook               U+0290     LATIN SMALL LETTER Z WITH RETROFLEX HOOK
+ʑ    zcurl                        U+0291     LATIN SMALL LETTER Z WITH CURL
+ʒ    ezh                          U+0292     LATIN SMALL LETTER EZH
+ʓ    ezhcurl                      U+0293     LATIN SMALL LETTER EZH WITH CURL
+ʔ    glottalstop                  U+0294     LATIN LETTER GLOTTAL STOP
+ʕ    pharyngealvoicedfricative    U+0295     LATIN LETTER PHARYNGEAL VOICED FRICATIVE
+ʖ    glottalstopinverted          U+0296     LATIN LETTER INVERTED GLOTTAL STOP
+ʗ    Cstretched                   U+0297     LATIN LETTER STRETCHED C
+ʘ    clickbilabial                U+0298     LATIN LETTER BILABIAL CLICK
+ʙ    Bsmall                       U+0299     LATIN LETTER SMALL CAPITAL B
+ʚ    eopenclosed                  U+029A     LATIN SMALL LETTER CLOSED OPEN E
+ʛ    Ghooksmall                   U+029B     LATIN LETTER SMALL CAPITAL G WITH HOOK
+ʜ    Hsmall                       U+029C     LATIN LETTER SMALL CAPITAL H
+ʝ    jcrossedtail                 U+029D     LATIN SMALL LETTER J WITH CROSSED-TAIL
+ʞ    kturned                      U+029E     LATIN SMALL LETTER TURNED K
+ʟ    Lsmall                       U+029F     LATIN LETTER SMALL CAPITAL L
+ʠ    qhook                        U+02A0     LATIN SMALL LETTER Q WITH HOOK
+ʡ    glottalstopstroke            U+02A1     LATIN LETTER GLOTTAL STOP WITH STROKE
+ʢ    glottalstopstrokereversed    U+02A2     LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE
+ʣ    dzed                         U+02A3     LATIN SMALL LETTER DZ DIGRAPH
+ʤ    dezh                         U+02A4     LATIN SMALL LETTER DEZH DIGRAPH
+ʥ    dzedcurl                     U+02A5     LATIN SMALL LETTER DZ DIGRAPH WITH CURL
+ʦ    ts                           U+02A6     LATIN SMALL LETTER TS DIGRAPH
+ʧ    tesh                         U+02A7     LATIN SMALL LETTER TESH DIGRAPH
+ʨ    tccurl                       U+02A8     LATIN SMALL LETTER TC DIGRAPH WITH CURL
+ʩ    feng                         U+02A9     LATIN SMALL LETTER FENG DIGRAPH
+ʪ    ls                           U+02AA     LATIN SMALL LETTER LS DIGRAPH
+ʫ    lzed                         U+02AB     LATIN SMALL LETTER LZ DIGRAPH
+ʬ    percussivebilabial           U+02AC     LATIN LETTER BILABIAL PERCUSSIVE
+ʭ    percussivebidental           U+02AD     LATIN LETTER BIDENTAL PERCUSSIVE
+ʮ    hfishhookturned              U+02AE     LATIN SMALL LETTER TURNED H WITH FISHHOOK
+ʯ    handtailfishhookturned       U+02AF     LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
+
+Імена через пробіл:
+aturned alpha-ipa alphaturned bhook oopen ccurl dtail dhook ereversed-ipa schwa schwahook eopen
+eopenreversed eopenreversedhook eopenreversedclosed dotlessjstroke ghook gscript-ipa Gsmall
+gamma-ipa ramshorn hturned hhook henghook istroke iota-ipa Ismall lmiddletilde lbelt lhookretroflex
+lezh mturned mlonglegturned mhook nhookleft nhookretroflex Nsmall obarred OEsmall omegaclosed
+phi-ipa rturned rlonglegturned rhookturned rlongleg rtail-ipa rfishhook rfishhookreversed Rsmall
+Rinvertedsmall shook esh dotlessjstrokehook eshsquatreversed eshcurl tturned tretroflexhook ubar
+upsilon-ipa vhook vturned wturned yturned Ysmall zretroflexhook zcurl ezh ezhcurl glottalstop
+pharyngealvoicedfricative glottalstopinverted Cstretched clickbilabial Bsmall eopenclosed Ghooksmall
+Hsmall jcrossedtail kturned Lsmall qhook glottalstopstroke glottalstopstrokereversed dzed dezh
+dzedcurl ts tesh tccurl feng ls lzed percussivebilabial percussivebidental hfishhookturned
+handtailfishhookturned
+
+========================================================================
+SCRIPTS › CYRILLIC
+========================================================================
+
+------------------------------------------------------------------------
+CYRILLIC › Basic  (94)
+FontLab codepage cyrl_basic.cpg. Російська абетка + Ё/ё + українські/білоруські/сербські/македонські розширення, включно з Ґ/ґ.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+А    Acyr                         U+0410     CYRILLIC CAPITAL LETTER A
+Б    Becyr                        U+0411     CYRILLIC CAPITAL LETTER BE
+В    Vecyr                        U+0412     CYRILLIC CAPITAL LETTER VE
+Г    Gecyr                        U+0413     CYRILLIC CAPITAL LETTER GHE
+Д    Decyr                        U+0414     CYRILLIC CAPITAL LETTER DE
+Е    Iecyr                        U+0415     CYRILLIC CAPITAL LETTER IE
+Ж    Zhecyr                       U+0416     CYRILLIC CAPITAL LETTER ZHE
+З    Zecyr                        U+0417     CYRILLIC CAPITAL LETTER ZE
+И    Icyr                         U+0418     CYRILLIC CAPITAL LETTER I
+Й    Ishortcyr                    U+0419     CYRILLIC CAPITAL LETTER SHORT I
+К    Kacyr                        U+041A     CYRILLIC CAPITAL LETTER KA
+Л    Elcyr                        U+041B     CYRILLIC CAPITAL LETTER EL
+М    Emcyr                        U+041C     CYRILLIC CAPITAL LETTER EM
+Н    Encyr                        U+041D     CYRILLIC CAPITAL LETTER EN
+О    Ocyr                         U+041E     CYRILLIC CAPITAL LETTER O
+П    Pecyr                        U+041F     CYRILLIC CAPITAL LETTER PE
+Р    Ercyr                        U+0420     CYRILLIC CAPITAL LETTER ER
+С    Escyr                        U+0421     CYRILLIC CAPITAL LETTER ES
+Т    Tecyr                        U+0422     CYRILLIC CAPITAL LETTER TE
+У    Ucyr                         U+0423     CYRILLIC CAPITAL LETTER U
+Ф    Efcyr                        U+0424     CYRILLIC CAPITAL LETTER EF
+Х    Hacyr                        U+0425     CYRILLIC CAPITAL LETTER HA
+Ц    Tsecyr                       U+0426     CYRILLIC CAPITAL LETTER TSE
+Ч    Checyr                       U+0427     CYRILLIC CAPITAL LETTER CHE
+Ш    Shacyr                       U+0428     CYRILLIC CAPITAL LETTER SHA
+Щ    Shchacyr                     U+0429     CYRILLIC CAPITAL LETTER SHCHA
+Ъ    Hardcyr                      U+042A     CYRILLIC CAPITAL LETTER HARD SIGN
+Ы    Ylongcyr                     U+042B     CYRILLIC CAPITAL LETTER YERU
+Ь    Softcyr                      U+042C     CYRILLIC CAPITAL LETTER SOFT SIGN
+Э    Ereversedcyr                 U+042D     CYRILLIC CAPITAL LETTER E
+Ю    Yucyr                        U+042E     CYRILLIC CAPITAL LETTER YU
+Я    Yacyr                        U+042F     CYRILLIC CAPITAL LETTER YA
+Ё    Iocyr                        U+0401     CYRILLIC CAPITAL LETTER IO
+Ђ    Djecyr                       U+0402     CYRILLIC CAPITAL LETTER DJE
+Ѓ    Gjecyr                       U+0403     CYRILLIC CAPITAL LETTER GJE
+Ґ    Geupcyr                      U+0490     CYRILLIC CAPITAL LETTER GHE WITH UPTURN
+Є    Eukrcyr                      U+0404     CYRILLIC CAPITAL LETTER UKRAINIAN IE
+Ѕ    Dzecyr                       U+0405     CYRILLIC CAPITAL LETTER DZE
+І    Iukrcyr                      U+0406     CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
+Ї    Yukrcyr                      U+0407     CYRILLIC CAPITAL LETTER YI
+Ј    Jecyr                        U+0408     CYRILLIC CAPITAL LETTER JE
+Љ    Ljecyr                       U+0409     CYRILLIC CAPITAL LETTER LJE
+Њ    Njecyr                       U+040A     CYRILLIC CAPITAL LETTER NJE
+Ћ    Tshecyr                      U+040B     CYRILLIC CAPITAL LETTER TSHE
+Ќ    Kjecyr                       U+040C     CYRILLIC CAPITAL LETTER KJE
+Ў    Ushortcyr                    U+040E     CYRILLIC CAPITAL LETTER SHORT U
+Џ    Dzhecyr                      U+040F     CYRILLIC CAPITAL LETTER DZHE
+а    acyr                         U+0430     CYRILLIC SMALL LETTER A
+б    becyr                        U+0431     CYRILLIC SMALL LETTER BE
+в    vecyr                        U+0432     CYRILLIC SMALL LETTER VE
+г    gecyr                        U+0433     CYRILLIC SMALL LETTER GHE
+д    decyr                        U+0434     CYRILLIC SMALL LETTER DE
+е    iecyr                        U+0435     CYRILLIC SMALL LETTER IE
+ж    zhecyr                       U+0436     CYRILLIC SMALL LETTER ZHE
+з    zecyr                        U+0437     CYRILLIC SMALL LETTER ZE
+и    icyr                         U+0438     CYRILLIC SMALL LETTER I
+й    ishortcyr                    U+0439     CYRILLIC SMALL LETTER SHORT I
+к    kacyr                        U+043A     CYRILLIC SMALL LETTER KA
+л    elcyr                        U+043B     CYRILLIC SMALL LETTER EL
+м    emcyr                        U+043C     CYRILLIC SMALL LETTER EM
+н    encyr                        U+043D     CYRILLIC SMALL LETTER EN
+о    ocyr                         U+043E     CYRILLIC SMALL LETTER O
+п    pecyr                        U+043F     CYRILLIC SMALL LETTER PE
+р    ercyr                        U+0440     CYRILLIC SMALL LETTER ER
+с    escyr                        U+0441     CYRILLIC SMALL LETTER ES
+т    tecyr                        U+0442     CYRILLIC SMALL LETTER TE
+у    ucyr                         U+0443     CYRILLIC SMALL LETTER U
+ф    efcyr                        U+0444     CYRILLIC SMALL LETTER EF
+х    hacyr                        U+0445     CYRILLIC SMALL LETTER HA
+ц    tsecyr                       U+0446     CYRILLIC SMALL LETTER TSE
+ч    checyr                       U+0447     CYRILLIC SMALL LETTER CHE
+ш    shacyr                       U+0448     CYRILLIC SMALL LETTER SHA
+щ    shchacyr                     U+0449     CYRILLIC SMALL LETTER SHCHA
+ъ    hardcyr                      U+044A     CYRILLIC SMALL LETTER HARD SIGN
+ы    ylongcyr                     U+044B     CYRILLIC SMALL LETTER YERU
+ь    softcyr                      U+044C     CYRILLIC SMALL LETTER SOFT SIGN
+э    ereversedcyr                 U+044D     CYRILLIC SMALL LETTER E
+ю    yucyr                        U+044E     CYRILLIC SMALL LETTER YU
+я    yacyr                        U+044F     CYRILLIC SMALL LETTER YA
+ё    iocyr                        U+0451     CYRILLIC SMALL LETTER IO
+ђ    djecyr                       U+0452     CYRILLIC SMALL LETTER DJE
+ѓ    gjecyr                       U+0453     CYRILLIC SMALL LETTER GJE
+ґ    geupcyr                      U+0491     CYRILLIC SMALL LETTER GHE WITH UPTURN
+є    eukrcyr                      U+0454     CYRILLIC SMALL LETTER UKRAINIAN IE
+ѕ    dzecyr                       U+0455     CYRILLIC SMALL LETTER DZE
+і    iukrcyr                      U+0456     CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+ї    yukrcyr                      U+0457     CYRILLIC SMALL LETTER YI
+ј    jecyr                        U+0458     CYRILLIC SMALL LETTER JE
+љ    ljecyr                       U+0459     CYRILLIC SMALL LETTER LJE
+њ    njecyr                       U+045A     CYRILLIC SMALL LETTER NJE
+ћ    tshecyr                      U+045B     CYRILLIC SMALL LETTER TSHE
+ќ    kjecyr                       U+045C     CYRILLIC SMALL LETTER KJE
+ў    ushortcyr                    U+045E     CYRILLIC SMALL LETTER SHORT U
+џ    dzhecyr                      U+045F     CYRILLIC SMALL LETTER DZHE
+
+Імена через пробіл:
+Acyr Becyr Vecyr Gecyr Decyr Iecyr Zhecyr Zecyr Icyr Ishortcyr Kacyr Elcyr Emcyr Encyr Ocyr Pecyr
+Ercyr Escyr Tecyr Ucyr Efcyr Hacyr Tsecyr Checyr Shacyr Shchacyr Hardcyr Ylongcyr Softcyr
+Ereversedcyr Yucyr Yacyr Iocyr Djecyr Gjecyr Geupcyr Eukrcyr Dzecyr Iukrcyr Yukrcyr Jecyr Ljecyr
+Njecyr Tshecyr Kjecyr Ushortcyr Dzhecyr acyr becyr vecyr gecyr decyr iecyr zhecyr zecyr icyr
+ishortcyr kacyr elcyr emcyr encyr ocyr pecyr ercyr escyr tecyr ucyr efcyr hacyr tsecyr checyr shacyr
+shchacyr hardcyr ylongcyr softcyr ereversedcyr yucyr yacyr iocyr djecyr gjecyr geupcyr eukrcyr
+dzecyr iukrcyr yukrcyr jecyr ljecyr njecyr tshecyr kjecyr ushortcyr dzhecyr
+
+------------------------------------------------------------------------
+CYRILLIC › Extended  (162)
+FontLab codepage cyrl_ext.cpg. Решта кирилиці BMP (U+0400, U+040D, U+0450, U+045D, U+048A–U+04F9, U+0500–U+052F).
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+Ѐ    Iegravecyr                   U+0400     CYRILLIC CAPITAL LETTER IE WITH GRAVE
+Ѝ    Igravecyr                    U+040D     CYRILLIC CAPITAL LETTER I WITH GRAVE
+ѐ    iegravecyr                   U+0450     CYRILLIC SMALL LETTER IE WITH GRAVE
+ѝ    igravecyr                    U+045D     CYRILLIC SMALL LETTER I WITH GRAVE
+Ҋ    Ishortsharptailcyr           U+048A     CYRILLIC CAPITAL LETTER SHORT I WITH TAIL
+ҋ    ishortsharptailcyr           U+048B     CYRILLIC SMALL LETTER SHORT I WITH TAIL
+Ҍ    Semisoftcyr                  U+048C     CYRILLIC CAPITAL LETTER SEMISOFT SIGN
+ҍ    semisoftcyr                  U+048D     CYRILLIC SMALL LETTER SEMISOFT SIGN
+Ҏ    Ertickcyr                    U+048E     CYRILLIC CAPITAL LETTER ER WITH TICK
+ҏ    ertickcyr                    U+048F     CYRILLIC SMALL LETTER ER WITH TICK
+Ғ    Gestrokecyr                  U+0492     CYRILLIC CAPITAL LETTER GHE WITH STROKE
+ғ    gestrokecyr                  U+0493     CYRILLIC SMALL LETTER GHE WITH STROKE
+Ҕ    Gehookcyr                    U+0494     CYRILLIC CAPITAL LETTER GHE WITH MIDDLE HOOK
+ҕ    gehookcyr                    U+0495     CYRILLIC SMALL LETTER GHE WITH MIDDLE HOOK
+Җ    Zhetailcyr                   U+0496     CYRILLIC CAPITAL LETTER ZHE WITH DESCENDER
+җ    zhetailcyr                   U+0497     CYRILLIC SMALL LETTER ZHE WITH DESCENDER
+Ҙ    Zetailcyr                    U+0498     CYRILLIC CAPITAL LETTER ZE WITH DESCENDER
+ҙ    zetailcyr                    U+0499     CYRILLIC SMALL LETTER ZE WITH DESCENDER
+Қ    Katailcyr                    U+049A     CYRILLIC CAPITAL LETTER KA WITH DESCENDER
+қ    katailcyr                    U+049B     CYRILLIC SMALL LETTER KA WITH DESCENDER
+Ҝ    Kaverticalstrokecyr          U+049C     CYRILLIC CAPITAL LETTER KA WITH VERTICAL STROKE
+ҝ    kaverticalstrokecyr          U+049D     CYRILLIC SMALL LETTER KA WITH VERTICAL STROKE
+Ҟ    Kastrokecyr                  U+049E     CYRILLIC CAPITAL LETTER KA WITH STROKE
+ҟ    kastrokecyr                  U+049F     CYRILLIC SMALL LETTER KA WITH STROKE
+Ҡ    Kabashkcyr                   U+04A0     CYRILLIC CAPITAL LETTER BASHKIR KA
+ҡ    kabashkcyr                   U+04A1     CYRILLIC SMALL LETTER BASHKIR KA
+Ң    Entailcyr                    U+04A2     CYRILLIC CAPITAL LETTER EN WITH DESCENDER
+ң    entailcyr                    U+04A3     CYRILLIC SMALL LETTER EN WITH DESCENDER
+Ҥ    Engecyr                      U+04A4     CYRILLIC CAPITAL LIGATURE EN GHE
+ҥ    engecyr                      U+04A5     CYRILLIC SMALL LIGATURE EN GHE
+Ҧ    Pehookcyr                    U+04A6     CYRILLIC CAPITAL LETTER PE WITH MIDDLE HOOK
+ҧ    pehookcyr                    U+04A7     CYRILLIC SMALL LETTER PE WITH MIDDLE HOOK
+Ҩ    Haabkhcyr                    U+04A8     CYRILLIC CAPITAL LETTER ABKHASIAN HA
+ҩ    haabkhcyr                    U+04A9     CYRILLIC SMALL LETTER ABKHASIAN HA
+Ҫ    Estailcyr                    U+04AA     CYRILLIC CAPITAL LETTER ES WITH DESCENDER
+ҫ    estailcyr                    U+04AB     CYRILLIC SMALL LETTER ES WITH DESCENDER
+Ҭ    Tetailcyr                    U+04AC     CYRILLIC CAPITAL LETTER TE WITH DESCENDER
+ҭ    tetailcyr                    U+04AD     CYRILLIC SMALL LETTER TE WITH DESCENDER
+Ү    Ustraightcyr                 U+04AE     CYRILLIC CAPITAL LETTER STRAIGHT U
+ү    ustraightcyr                 U+04AF     CYRILLIC SMALL LETTER STRAIGHT U
+Ұ    Ustraightstrokecyr           U+04B0     CYRILLIC CAPITAL LETTER STRAIGHT U WITH STROKE
+ұ    ustraightstrokecyr           U+04B1     CYRILLIC SMALL LETTER STRAIGHT U WITH STROKE
+Ҳ    Xatailcyr                    U+04B2     CYRILLIC CAPITAL LETTER HA WITH DESCENDER
+ҳ    xatailcyr                    U+04B3     CYRILLIC SMALL LETTER HA WITH DESCENDER
+Ҵ    Tetsecyr                     U+04B4     CYRILLIC CAPITAL LIGATURE TE TSE
+ҵ    tetsecyr                     U+04B5     CYRILLIC SMALL LIGATURE TE TSE
+Ҷ    Chetailcyr                   U+04B6     CYRILLIC CAPITAL LETTER CHE WITH DESCENDER
+ҷ    chetailcyr                   U+04B7     CYRILLIC SMALL LETTER CHE WITH DESCENDER
+Ҹ    Chevertcyr                   U+04B8     CYRILLIC CAPITAL LETTER CHE WITH VERTICAL STROKE
+ҹ    chevertcyr                   U+04B9     CYRILLIC SMALL LETTER CHE WITH VERTICAL STROKE
+Һ    Shhacyr                      U+04BA     CYRILLIC CAPITAL LETTER SHHA
+һ    shhacyr                      U+04BB     CYRILLIC SMALL LETTER SHHA
+Ҽ    Cheabkhcyr                   U+04BC     CYRILLIC CAPITAL LETTER ABKHASIAN CHE
+ҽ    cheabkhcyr                   U+04BD     CYRILLIC SMALL LETTER ABKHASIAN CHE
+Ҿ    Cheabkhtailcyr               U+04BE     CYRILLIC CAPITAL LETTER ABKHASIAN CHE WITH DESCENDER
+ҿ    cheabkhtailcyr               U+04BF     CYRILLIC SMALL LETTER ABKHASIAN CHE WITH DESCENDER
+Ӏ    Palochkacyr                  U+04C0     CYRILLIC LETTER PALOCHKA
+Ӂ    Zhebrevecyr                  U+04C1     CYRILLIC CAPITAL LETTER ZHE WITH BREVE
+ӂ    zhebrevecyr                  U+04C2     CYRILLIC SMALL LETTER ZHE WITH BREVE
+Ӄ    Kahookcyr                    U+04C3     CYRILLIC CAPITAL LETTER KA WITH HOOK
+ӄ    kahookcyr                    U+04C4     CYRILLIC SMALL LETTER KA WITH HOOK
+Ӆ    Elsharptailcyr               U+04C5     CYRILLIC CAPITAL LETTER EL WITH TAIL
+ӆ    elsharptailcyr               U+04C6     CYRILLIC SMALL LETTER EL WITH TAIL
+Ӈ    Enhookcyr                    U+04C7     CYRILLIC CAPITAL LETTER EN WITH HOOK
+ӈ    enhookcyr                    U+04C8     CYRILLIC SMALL LETTER EN WITH HOOK
+Ӊ    Ensharptailcyr               U+04C9     CYRILLIC CAPITAL LETTER EN WITH TAIL
+ӊ    ensharptailcyr               U+04CA     CYRILLIC SMALL LETTER EN WITH TAIL
+Ӌ    Chekhakascyr                 U+04CB     CYRILLIC CAPITAL LETTER KHAKASSIAN CHE
+ӌ    chekhakascyr                 U+04CC     CYRILLIC SMALL LETTER KHAKASSIAN CHE
+Ӎ    Emsharptailcyr               U+04CD     CYRILLIC CAPITAL LETTER EM WITH TAIL
+ӎ    emsharptailcyr               U+04CE     CYRILLIC SMALL LETTER EM WITH TAIL
+ӏ    palochkacyr                  U+04CF     CYRILLIC SMALL LETTER PALOCHKA
+Ӑ    Abrevecyr                    U+04D0     CYRILLIC CAPITAL LETTER A WITH BREVE
+ӑ    abrevecyr                    U+04D1     CYRILLIC SMALL LETTER A WITH BREVE
+Ӓ    Adieresiscyr                 U+04D2     CYRILLIC CAPITAL LETTER A WITH DIAERESIS
+ӓ    adieresiscyr                 U+04D3     CYRILLIC SMALL LETTER A WITH DIAERESIS
+Ӕ    Aiecyr                       U+04D4     CYRILLIC CAPITAL LIGATURE A IE
+ӕ    aiecyr                       U+04D5     CYRILLIC SMALL LIGATURE A IE
+Ӗ    Iebrevecyr                   U+04D6     CYRILLIC CAPITAL LETTER IE WITH BREVE
+ӗ    iebrevecyr                   U+04D7     CYRILLIC SMALL LETTER IE WITH BREVE
+Ә    Schwacyr                     U+04D8     CYRILLIC CAPITAL LETTER SCHWA
+ә    schwacyr                     U+04D9     CYRILLIC SMALL LETTER SCHWA
+Ӛ    Schwadieresiscyr             U+04DA     CYRILLIC CAPITAL LETTER SCHWA WITH DIAERESIS
+ӛ    schwadieresiscyr             U+04DB     CYRILLIC SMALL LETTER SCHWA WITH DIAERESIS
+Ӝ    Zhedieresiscyr               U+04DC     CYRILLIC CAPITAL LETTER ZHE WITH DIAERESIS
+ӝ    zhedieresiscyr               U+04DD     CYRILLIC SMALL LETTER ZHE WITH DIAERESIS
+Ӟ    Zedieresiscyr                U+04DE     CYRILLIC CAPITAL LETTER ZE WITH DIAERESIS
+ӟ    zedieresiscyr                U+04DF     CYRILLIC SMALL LETTER ZE WITH DIAERESIS
+Ӡ    Dzeabkhcyr                   U+04E0     CYRILLIC CAPITAL LETTER ABKHASIAN DZE
+ӡ    dzeabkhcyr                   U+04E1     CYRILLIC SMALL LETTER ABKHASIAN DZE
+Ӣ    Imacroncyr                   U+04E2     CYRILLIC CAPITAL LETTER I WITH MACRON
+ӣ    imacroncyr                   U+04E3     CYRILLIC SMALL LETTER I WITH MACRON
+Ӥ    Idieresiscyr                 U+04E4     CYRILLIC CAPITAL LETTER I WITH DIAERESIS
+ӥ    idieresiscyr                 U+04E5     CYRILLIC SMALL LETTER I WITH DIAERESIS
+Ӧ    Odieresiscyr                 U+04E6     CYRILLIC CAPITAL LETTER O WITH DIAERESIS
+ӧ    odieresiscyr                 U+04E7     CYRILLIC SMALL LETTER O WITH DIAERESIS
+Ө    Obarcyr                      U+04E8     CYRILLIC CAPITAL LETTER BARRED O
+ө    obarcyr                      U+04E9     CYRILLIC SMALL LETTER BARRED O
+Ӫ    Obardieresiscyr              U+04EA     CYRILLIC CAPITAL LETTER BARRED O WITH DIAERESIS
+ӫ    obardieresiscyr              U+04EB     CYRILLIC SMALL LETTER BARRED O WITH DIAERESIS
+Ӭ    Ereverseddieresiscyr         U+04EC     CYRILLIC CAPITAL LETTER E WITH DIAERESIS
+ӭ    ereverseddieresiscyr         U+04ED     CYRILLIC SMALL LETTER E WITH DIAERESIS
+Ӯ    Umacroncyr                   U+04EE     CYRILLIC CAPITAL LETTER U WITH MACRON
+ӯ    umacroncyr                   U+04EF     CYRILLIC SMALL LETTER U WITH MACRON
+Ӱ    Udieresiscyr                 U+04F0     CYRILLIC CAPITAL LETTER U WITH DIAERESIS
+ӱ    udieresiscyr                 U+04F1     CYRILLIC SMALL LETTER U WITH DIAERESIS
+Ӳ    Uacutedblcyr                 U+04F2     CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE
+ӳ    uacutedblcyr                 U+04F3     CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
+Ӵ    Chedieresiscyr               U+04F4     CYRILLIC CAPITAL LETTER CHE WITH DIAERESIS
+ӵ    chedieresiscyr               U+04F5     CYRILLIC SMALL LETTER CHE WITH DIAERESIS
+Ӷ    Getailcyr                    U+04F6     CYRILLIC CAPITAL LETTER GHE WITH DESCENDER
+ӷ    getailcyr                    U+04F7     CYRILLIC SMALL LETTER GHE WITH DESCENDER
+Ӹ    Ylongdieresiscyr             U+04F8     CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
+ӹ    ylongdieresiscyr             U+04F9     CYRILLIC SMALL LETTER YERU WITH DIAERESIS
+Ԁ    Dekomicyr                    U+0500     CYRILLIC CAPITAL LETTER KOMI DE
+ԁ    dekomicyr                    U+0501     CYRILLIC SMALL LETTER KOMI DE
+Ԃ    Djekomicyr                   U+0502     CYRILLIC CAPITAL LETTER KOMI DJE
+ԃ    djekomicyr                   U+0503     CYRILLIC SMALL LETTER KOMI DJE
+Ԅ    Zjekomicyr                   U+0504     CYRILLIC CAPITAL LETTER KOMI ZJE
+ԅ    zjekomicyr                   U+0505     CYRILLIC SMALL LETTER KOMI ZJE
+Ԇ    Dzjekomicyr                  U+0506     CYRILLIC CAPITAL LETTER KOMI DZJE
+ԇ    dzjekomicyr                  U+0507     CYRILLIC SMALL LETTER KOMI DZJE
+Ԉ    Ljekomicyr                   U+0508     CYRILLIC CAPITAL LETTER KOMI LJE
+ԉ    ljekomicyr                   U+0509     CYRILLIC SMALL LETTER KOMI LJE
+Ԋ    Njekomicyr                   U+050A     CYRILLIC CAPITAL LETTER KOMI NJE
+ԋ    njekomicyr                   U+050B     CYRILLIC SMALL LETTER KOMI NJE
+Ԍ    Sjekomicyr                   U+050C     CYRILLIC CAPITAL LETTER KOMI SJE
+ԍ    sjekomicyr                   U+050D     CYRILLIC SMALL LETTER KOMI SJE
+Ԏ    Tjekomicyr                   U+050E     CYRILLIC CAPITAL LETTER KOMI TJE
+ԏ    tjekomicyr                   U+050F     CYRILLIC SMALL LETTER KOMI TJE
+Ԑ    Reversedzecyr                U+0510     CYRILLIC CAPITAL LETTER REVERSED ZE
+ԑ    reversedzecyr                U+0511     CYRILLIC SMALL LETTER REVERSED ZE
+Ԓ    Elhookcyr                    U+0512     CYRILLIC CAPITAL LETTER EL WITH HOOK
+ԓ    elhookcyr                    U+0513     CYRILLIC SMALL LETTER EL WITH HOOK
+Ԕ    Lhacyr                       U+0514     CYRILLIC CAPITAL LETTER LHA
+ԕ    lhacyr                       U+0515     CYRILLIC SMALL LETTER LHA
+Ԗ    Rhacyr                       U+0516     CYRILLIC CAPITAL LETTER RHA
+ԗ    rhacyr                       U+0517     CYRILLIC SMALL LETTER RHA
+Ԙ    Yaecyr                       U+0518     CYRILLIC CAPITAL LETTER YAE
+ԙ    yaecyr                       U+0519     CYRILLIC SMALL LETTER YAE
+Ԛ    Qacyr                        U+051A     CYRILLIC CAPITAL LETTER QA
+ԛ    qacyr                        U+051B     CYRILLIC SMALL LETTER QA
+Ԝ    Wecyr                        U+051C     CYRILLIC CAPITAL LETTER WE
+ԝ    wecyr                        U+051D     CYRILLIC SMALL LETTER WE
+Ԟ    Kaaleutcyr                   U+051E     CYRILLIC CAPITAL LETTER ALEUT KA
+ԟ    kaaleutcyr                   U+051F     CYRILLIC SMALL LETTER ALEUT KA
+Ԡ    Elmiddlehookcyr              U+0520     CYRILLIC CAPITAL LETTER EL WITH MIDDLE HOOK
+ԡ    elmiddlehookcyr              U+0521     CYRILLIC SMALL LETTER EL WITH MIDDLE HOOK
+Ԣ    Enmiddlehookcyr              U+0522     CYRILLIC CAPITAL LETTER EN WITH MIDDLE HOOK
+ԣ    enmiddlehookcyr              U+0523     CYRILLIC SMALL LETTER EN WITH MIDDLE HOOK
+Ԥ    Petailcyr                    U+0524     CYRILLIC CAPITAL LETTER PE WITH DESCENDER
+ԥ    petailcyr                    U+0525     CYRILLIC SMALL LETTER PE WITH DESCENDER
+Ԧ    Shhatailcyr                  U+0526     CYRILLIC CAPITAL LETTER SHHA WITH DESCENDER
+ԧ    shhatailcyr                  U+0527     CYRILLIC SMALL LETTER SHHA WITH DESCENDER
+Ԩ    Enhookleftcyr                U+0528     CYRILLIC CAPITAL LETTER EN WITH LEFT HOOK
+ԩ    enhookleftcyr                U+0529     CYRILLIC SMALL LETTER EN WITH LEFT HOOK
+Ԫ    Dzzhecyr                     U+052A     CYRILLIC CAPITAL LETTER DZZHE
+ԫ    dzzhecyr                     U+052B     CYRILLIC SMALL LETTER DZZHE
+Ԭ    Dchecyr                      U+052C     CYRILLIC CAPITAL LETTER DCHE
+ԭ    dchecyr                      U+052D     CYRILLIC SMALL LETTER DCHE
+Ԯ    Eltailcyr                    U+052E     CYRILLIC CAPITAL LETTER EL WITH DESCENDER
+ԯ    eltailcyr                    U+052F     CYRILLIC SMALL LETTER EL WITH DESCENDER
+
+Імена через пробіл:
+Iegravecyr Igravecyr iegravecyr igravecyr Ishortsharptailcyr ishortsharptailcyr Semisoftcyr
+semisoftcyr Ertickcyr ertickcyr Gestrokecyr gestrokecyr Gehookcyr gehookcyr Zhetailcyr zhetailcyr
+Zetailcyr zetailcyr Katailcyr katailcyr Kaverticalstrokecyr kaverticalstrokecyr Kastrokecyr
+kastrokecyr Kabashkcyr kabashkcyr Entailcyr entailcyr Engecyr engecyr Pehookcyr pehookcyr Haabkhcyr
+haabkhcyr Estailcyr estailcyr Tetailcyr tetailcyr Ustraightcyr ustraightcyr Ustraightstrokecyr
+ustraightstrokecyr Xatailcyr xatailcyr Tetsecyr tetsecyr Chetailcyr chetailcyr Chevertcyr chevertcyr
+Shhacyr shhacyr Cheabkhcyr cheabkhcyr Cheabkhtailcyr cheabkhtailcyr Palochkacyr Zhebrevecyr
+zhebrevecyr Kahookcyr kahookcyr Elsharptailcyr elsharptailcyr Enhookcyr enhookcyr Ensharptailcyr
+ensharptailcyr Chekhakascyr chekhakascyr Emsharptailcyr emsharptailcyr palochkacyr Abrevecyr
+abrevecyr Adieresiscyr adieresiscyr Aiecyr aiecyr Iebrevecyr iebrevecyr Schwacyr schwacyr
+Schwadieresiscyr schwadieresiscyr Zhedieresiscyr zhedieresiscyr Zedieresiscyr zedieresiscyr
+Dzeabkhcyr dzeabkhcyr Imacroncyr imacroncyr Idieresiscyr idieresiscyr Odieresiscyr odieresiscyr
+Obarcyr obarcyr Obardieresiscyr obardieresiscyr Ereverseddieresiscyr ereverseddieresiscyr Umacroncyr
+umacroncyr Udieresiscyr udieresiscyr Uacutedblcyr uacutedblcyr Chedieresiscyr chedieresiscyr
+Getailcyr getailcyr Ylongdieresiscyr ylongdieresiscyr Dekomicyr dekomicyr Djekomicyr djekomicyr
+Zjekomicyr zjekomicyr Dzjekomicyr dzjekomicyr Ljekomicyr ljekomicyr Njekomicyr njekomicyr Sjekomicyr
+sjekomicyr Tjekomicyr tjekomicyr Reversedzecyr reversedzecyr Elhookcyr elhookcyr Lhacyr lhacyr
+Rhacyr rhacyr Yaecyr yaecyr Qacyr qacyr Wecyr wecyr Kaaleutcyr kaaleutcyr Elmiddlehookcyr
+elmiddlehookcyr Enmiddlehookcyr enmiddlehookcyr Petailcyr petailcyr Shhatailcyr shhatailcyr
+Enhookleftcyr enhookleftcyr Dzzhecyr dzzhecyr Dchecyr dchecyr Eltailcyr eltailcyr
+
+------------------------------------------------------------------------
+CYRILLIC › Historic  (34)
+FontLab codepage cyrl_hist.cpg. Історичні літери U+0460–U+0481.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+Ѡ    Omegacyr                     U+0460     CYRILLIC CAPITAL LETTER OMEGA
+ѡ    omegacyr                     U+0461     CYRILLIC SMALL LETTER OMEGA
+Ѣ    Yatcyr                       U+0462     CYRILLIC CAPITAL LETTER YAT
+ѣ    yatcyr                       U+0463     CYRILLIC SMALL LETTER YAT
+Ѥ    Eiotifiedcyr                 U+0464     CYRILLIC CAPITAL LETTER IOTIFIED E
+ѥ    eiotifiedcyr                 U+0465     CYRILLIC SMALL LETTER IOTIFIED E
+Ѧ    Yuslittlecyr                 U+0466     CYRILLIC CAPITAL LETTER LITTLE YUS
+ѧ    yuslittlecyr                 U+0467     CYRILLIC SMALL LETTER LITTLE YUS
+Ѩ    Yuslittleiotifiedcyr         U+0468     CYRILLIC CAPITAL LETTER IOTIFIED LITTLE YUS
+ѩ    yuslittleiotifiedcyr         U+0469     CYRILLIC SMALL LETTER IOTIFIED LITTLE YUS
+Ѫ    Yusbigcyr                    U+046A     CYRILLIC CAPITAL LETTER BIG YUS
+ѫ    yusbigcyr                    U+046B     CYRILLIC SMALL LETTER BIG YUS
+Ѭ    Yusbigiotifiedcyr            U+046C     CYRILLIC CAPITAL LETTER IOTIFIED BIG YUS
+ѭ    yusbigiotifiedcyr            U+046D     CYRILLIC SMALL LETTER IOTIFIED BIG YUS
+Ѯ    Ksicyr                       U+046E     CYRILLIC CAPITAL LETTER KSI
+ѯ    ksicyr                       U+046F     CYRILLIC SMALL LETTER KSI
+Ѱ    Psicyr                       U+0470     CYRILLIC CAPITAL LETTER PSI
+ѱ    psicyr                       U+0471     CYRILLIC SMALL LETTER PSI
+Ѳ    Fitacyr                      U+0472     CYRILLIC CAPITAL LETTER FITA
+ѳ    fitacyr                      U+0473     CYRILLIC SMALL LETTER FITA
+Ѵ    Izhitsacyr                   U+0474     CYRILLIC CAPITAL LETTER IZHITSA
+ѵ    izhitsacyr                   U+0475     CYRILLIC SMALL LETTER IZHITSA
+Ѷ    Izhitsagravedblcyr           U+0476     CYRILLIC CAPITAL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
+ѷ    izhitsagravedblcyr           U+0477     CYRILLIC SMALL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT
+Ѹ    Ukcyr                        U+0478     CYRILLIC CAPITAL LETTER UK
+ѹ    ukcyr                        U+0479     CYRILLIC SMALL LETTER UK
+Ѻ    Omegaroundcyr                U+047A     CYRILLIC CAPITAL LETTER ROUND OMEGA
+ѻ    omegaroundcyr                U+047B     CYRILLIC SMALL LETTER ROUND OMEGA
+Ѽ    Omegatitlocyr                U+047C     CYRILLIC CAPITAL LETTER OMEGA WITH TITLO
+ѽ    omegatitlocyr                U+047D     CYRILLIC SMALL LETTER OMEGA WITH TITLO
+Ѿ    Otcyr                        U+047E     CYRILLIC CAPITAL LETTER OT
+ѿ    otcyr                        U+047F     CYRILLIC SMALL LETTER OT
+Ҁ    Koppacyr                     U+0480     CYRILLIC CAPITAL LETTER KOPPA
+ҁ    koppacyr                     U+0481     CYRILLIC SMALL LETTER KOPPA
+
+Імена через пробіл:
+Omegacyr omegacyr Yatcyr yatcyr Eiotifiedcyr eiotifiedcyr Yuslittlecyr yuslittlecyr
+Yuslittleiotifiedcyr yuslittleiotifiedcyr Yusbigcyr yusbigcyr Yusbigiotifiedcyr yusbigiotifiedcyr
+Ksicyr ksicyr Psicyr psicyr Fitacyr fitacyr Izhitsacyr izhitsacyr Izhitsagravedblcyr
+izhitsagravedblcyr Ukcyr ukcyr Omegaroundcyr omegaroundcyr Omegatitlocyr omegatitlocyr Otcyr otcyr
+Koppacyr koppacyr
+
+========================================================================
+SCRIPTS › GREEK
+========================================================================
+
+------------------------------------------------------------------------
+GREEK › Basic  (70)
+Basic Greek (U+0384–U+03CE), script=Greek. Монотонна грецька + tonos.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+΄    tonos                        U+0384     GREEK TONOS
+Ά    Alphatonos                   U+0386     GREEK CAPITAL LETTER ALPHA WITH TONOS
+Έ    Epsilontonos                 U+0388     GREEK CAPITAL LETTER EPSILON WITH TONOS
+Ή    Etatonos                     U+0389     GREEK CAPITAL LETTER ETA WITH TONOS
+Ί    Iotatonos                    U+038A     GREEK CAPITAL LETTER IOTA WITH TONOS
+Ό    Omicrontonos                 U+038C     GREEK CAPITAL LETTER OMICRON WITH TONOS
+Ύ    Upsilontonos                 U+038E     GREEK CAPITAL LETTER UPSILON WITH TONOS
+Ώ    Omegatonos                   U+038F     GREEK CAPITAL LETTER OMEGA WITH TONOS
+ΐ    iotadieresistonos            U+0390     GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS
+Α    Alpha                        U+0391     GREEK CAPITAL LETTER ALPHA
+Β    Beta                         U+0392     GREEK CAPITAL LETTER BETA
+Γ    Gamma                        U+0393     GREEK CAPITAL LETTER GAMMA
+Δ    Delta                        U+0394     GREEK CAPITAL LETTER DELTA
+Ε    Epsilon                      U+0395     GREEK CAPITAL LETTER EPSILON
+Ζ    Zeta                         U+0396     GREEK CAPITAL LETTER ZETA
+Η    Eta                          U+0397     GREEK CAPITAL LETTER ETA
+Θ    Theta                        U+0398     GREEK CAPITAL LETTER THETA
+Ι    Iota                         U+0399     GREEK CAPITAL LETTER IOTA
+Κ    Kappa                        U+039A     GREEK CAPITAL LETTER KAPPA
+Λ    Lambda                       U+039B     GREEK CAPITAL LETTER LAMDA
+Μ    Mu                           U+039C     GREEK CAPITAL LETTER MU
+Ν    Nu                           U+039D     GREEK CAPITAL LETTER NU
+Ξ    Xi                           U+039E     GREEK CAPITAL LETTER XI
+Ο    Omicron                      U+039F     GREEK CAPITAL LETTER OMICRON
+Π    Pi                           U+03A0     GREEK CAPITAL LETTER PI
+Ρ    Rho                          U+03A1     GREEK CAPITAL LETTER RHO
+Σ    Sigma                        U+03A3     GREEK CAPITAL LETTER SIGMA
+Τ    Tau                          U+03A4     GREEK CAPITAL LETTER TAU
+Υ    Upsilon                      U+03A5     GREEK CAPITAL LETTER UPSILON
+Φ    Phi                          U+03A6     GREEK CAPITAL LETTER PHI
+Χ    Chi                          U+03A7     GREEK CAPITAL LETTER CHI
+Ψ    Psi                          U+03A8     GREEK CAPITAL LETTER PSI
+Ω    Omega                        U+03A9     GREEK CAPITAL LETTER OMEGA
+Ϊ    Iotadieresis                 U+03AA     GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
+Ϋ    Upsilondieresis              U+03AB     GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
+ά    alphatonos                   U+03AC     GREEK SMALL LETTER ALPHA WITH TONOS
+έ    epsilontonos                 U+03AD     GREEK SMALL LETTER EPSILON WITH TONOS
+ή    etatonos                     U+03AE     GREEK SMALL LETTER ETA WITH TONOS
+ί    iotatonos                    U+03AF     GREEK SMALL LETTER IOTA WITH TONOS
+ΰ    upsilondieresistonos         U+03B0     GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
+α    alpha                        U+03B1     GREEK SMALL LETTER ALPHA
+β    beta                         U+03B2     GREEK SMALL LETTER BETA
+γ    gamma                        U+03B3     GREEK SMALL LETTER GAMMA
+δ    delta                        U+03B4     GREEK SMALL LETTER DELTA
+ε    epsilon                      U+03B5     GREEK SMALL LETTER EPSILON
+ζ    zeta                         U+03B6     GREEK SMALL LETTER ZETA
+η    eta                          U+03B7     GREEK SMALL LETTER ETA
+θ    theta                        U+03B8     GREEK SMALL LETTER THETA
+ι    iota                         U+03B9     GREEK SMALL LETTER IOTA
+κ    kappa                        U+03BA     GREEK SMALL LETTER KAPPA
+λ    lambda                       U+03BB     GREEK SMALL LETTER LAMDA
+μ    mu                           U+03BC     GREEK SMALL LETTER MU
+ν    nu                           U+03BD     GREEK SMALL LETTER NU
+ξ    xi                           U+03BE     GREEK SMALL LETTER XI
+ο    omicron                      U+03BF     GREEK SMALL LETTER OMICRON
+π    pi                           U+03C0     GREEK SMALL LETTER PI
+ρ    rho                          U+03C1     GREEK SMALL LETTER RHO
+ς    sigmafinal                   U+03C2     GREEK SMALL LETTER FINAL SIGMA
+σ    sigma                        U+03C3     GREEK SMALL LETTER SIGMA
+τ    tau                          U+03C4     GREEK SMALL LETTER TAU
+υ    upsilon                      U+03C5     GREEK SMALL LETTER UPSILON
+φ    phi                          U+03C6     GREEK SMALL LETTER PHI
+χ    chi                          U+03C7     GREEK SMALL LETTER CHI
+ψ    psi                          U+03C8     GREEK SMALL LETTER PSI
+ω    omega                        U+03C9     GREEK SMALL LETTER OMEGA
+ϊ    iotadieresis                 U+03CA     GREEK SMALL LETTER IOTA WITH DIALYTIKA
+ϋ    upsilondieresis              U+03CB     GREEK SMALL LETTER UPSILON WITH DIALYTIKA
+ό    omicrontonos                 U+03CC     GREEK SMALL LETTER OMICRON WITH TONOS
+ύ    upsilontonos                 U+03CD     GREEK SMALL LETTER UPSILON WITH TONOS
+ώ    omegatonos                   U+03CE     GREEK SMALL LETTER OMEGA WITH TONOS
+
+Імена через пробіл:
+tonos Alphatonos Epsilontonos Etatonos Iotatonos Omicrontonos Upsilontonos Omegatonos
+iotadieresistonos Alpha Beta Gamma Delta Epsilon Zeta Eta Theta Iota Kappa Lambda Mu Nu Xi Omicron
+Pi Rho Sigma Tau Upsilon Phi Chi Psi Omega Iotadieresis Upsilondieresis alphatonos epsilontonos
+etatonos iotatonos upsilondieresistonos alpha beta gamma delta epsilon zeta eta theta iota kappa
+lambda mu nu xi omicron pi rho sigmafinal sigma tau upsilon phi chi psi omega iotadieresis
+upsilondieresis omicrontonos upsilontonos omegatonos
+
+------------------------------------------------------------------------
+GREEK › Archaic letters  (10)
+Archaic letters (U+03D8–U+03E1): archaic koppa, stigma, digamma, koppa, sampi.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+Ϙ    Koppaarchaic                 U+03D8     GREEK LETTER ARCHAIC KOPPA
+ϙ    koppaarchaic                 U+03D9     GREEK SMALL LETTER ARCHAIC KOPPA
+Ϛ    Stigma                       U+03DA     GREEK LETTER STIGMA
+ϛ    stigma                       U+03DB     GREEK SMALL LETTER STIGMA
+Ϝ    Digamma                      U+03DC     GREEK LETTER DIGAMMA
+ϝ    digamma                      U+03DD     GREEK SMALL LETTER DIGAMMA
+Ϟ    Koppa                        U+03DE     GREEK LETTER KOPPA
+ϟ    koppa                        U+03DF     GREEK SMALL LETTER KOPPA
+Ϡ    Sampi                        U+03E0     GREEK LETTER SAMPI
+ϡ    sampi                        U+03E1     GREEK SMALL LETTER SAMPI
+
+Імена через пробіл:
+Koppaarchaic koppaarchaic Stigma stigma Digamma digamma Koppa koppa Sampi sampi
+
+------------------------------------------------------------------------
+GREEK › Extended  (233)
+Greek Extended (U+1F00–U+1FFF). Політонічна грецька.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+ἀ    alphalenis                   U+1F00     GREEK SMALL LETTER ALPHA WITH PSILI
+ἁ    alphaasper                   U+1F01     GREEK SMALL LETTER ALPHA WITH DASIA
+ἂ    alphalenisgrave              U+1F02     GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA
+ἃ    alphaaspergrave              U+1F03     GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA
+ἄ    alphalenisacute              U+1F04     GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA
+ἅ    alphaasperacute              U+1F05     GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA
+ἆ    alphalenistilde              U+1F06     GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI
+ἇ    alphaaspertilde              U+1F07     GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI
+Ἀ    Alphalenis                   U+1F08     GREEK CAPITAL LETTER ALPHA WITH PSILI
+Ἁ    Alphaasper                   U+1F09     GREEK CAPITAL LETTER ALPHA WITH DASIA
+Ἂ    Alphalenisgrave              U+1F0A     GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA
+Ἃ    Alphaaspergrave              U+1F0B     GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA
+Ἄ    Alphalenisacute              U+1F0C     GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA
+Ἅ    Alphaasperacute              U+1F0D     GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA
+Ἆ    Alphalenistilde              U+1F0E     GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI
+Ἇ    Alphaaspertilde              U+1F0F     GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI
+ἐ    epsilonlenis                 U+1F10     GREEK SMALL LETTER EPSILON WITH PSILI
+ἑ    epsilonasper                 U+1F11     GREEK SMALL LETTER EPSILON WITH DASIA
+ἒ    epsilonlenisgrave            U+1F12     GREEK SMALL LETTER EPSILON WITH PSILI AND VARIA
+ἓ    epsilonaspergrave            U+1F13     GREEK SMALL LETTER EPSILON WITH DASIA AND VARIA
+ἔ    epsilonlenisacute            U+1F14     GREEK SMALL LETTER EPSILON WITH PSILI AND OXIA
+ἕ    epsilonasperacute            U+1F15     GREEK SMALL LETTER EPSILON WITH DASIA AND OXIA
+Ἐ    Epsilonlenis                 U+1F18     GREEK CAPITAL LETTER EPSILON WITH PSILI
+Ἑ    Epsilonasper                 U+1F19     GREEK CAPITAL LETTER EPSILON WITH DASIA
+Ἒ    Epsilonlenisgrave            U+1F1A     GREEK CAPITAL LETTER EPSILON WITH PSILI AND VARIA
+Ἓ    Epsilonaspergrave            U+1F1B     GREEK CAPITAL LETTER EPSILON WITH DASIA AND VARIA
+Ἔ    Epsilonlenisacute            U+1F1C     GREEK CAPITAL LETTER EPSILON WITH PSILI AND OXIA
+Ἕ    Epsilonasperacute            U+1F1D     GREEK CAPITAL LETTER EPSILON WITH DASIA AND OXIA
+ἠ    etalenis                     U+1F20     GREEK SMALL LETTER ETA WITH PSILI
+ἡ    etaasper                     U+1F21     GREEK SMALL LETTER ETA WITH DASIA
+ἢ    etalenisgrave                U+1F22     GREEK SMALL LETTER ETA WITH PSILI AND VARIA
+ἣ    etaaspergrave                U+1F23     GREEK SMALL LETTER ETA WITH DASIA AND VARIA
+ἤ    etalenisacute                U+1F24     GREEK SMALL LETTER ETA WITH PSILI AND OXIA
+ἥ    etaasperacute                U+1F25     GREEK SMALL LETTER ETA WITH DASIA AND OXIA
+ἦ    etalenistilde                U+1F26     GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI
+ἧ    etaaspertilde                U+1F27     GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI
+Ἠ    Etalenis                     U+1F28     GREEK CAPITAL LETTER ETA WITH PSILI
+Ἡ    Etaasper                     U+1F29     GREEK CAPITAL LETTER ETA WITH DASIA
+Ἢ    Etalenisgrave                U+1F2A     GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA
+Ἣ    Etaaspergrave                U+1F2B     GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA
+Ἤ    Etalenisacute                U+1F2C     GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA
+Ἥ    Etaasperacute                U+1F2D     GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA
+Ἦ    Etalenistilde                U+1F2E     GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI
+Ἧ    Etaaspertilde                U+1F2F     GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI
+ἰ    iotalenis                    U+1F30     GREEK SMALL LETTER IOTA WITH PSILI
+ἱ    iotaasper                    U+1F31     GREEK SMALL LETTER IOTA WITH DASIA
+ἲ    iotalenisgrave               U+1F32     GREEK SMALL LETTER IOTA WITH PSILI AND VARIA
+ἳ    iotaaspergrave               U+1F33     GREEK SMALL LETTER IOTA WITH DASIA AND VARIA
+ἴ    iotalenisacute               U+1F34     GREEK SMALL LETTER IOTA WITH PSILI AND OXIA
+ἵ    iotaasperacute               U+1F35     GREEK SMALL LETTER IOTA WITH DASIA AND OXIA
+ἶ    iotalenistilde               U+1F36     GREEK SMALL LETTER IOTA WITH PSILI AND PERISPOMENI
+ἷ    iotaaspertilde               U+1F37     GREEK SMALL LETTER IOTA WITH DASIA AND PERISPOMENI
+Ἰ    Iotalenis                    U+1F38     GREEK CAPITAL LETTER IOTA WITH PSILI
+Ἱ    Iotaasper                    U+1F39     GREEK CAPITAL LETTER IOTA WITH DASIA
+Ἲ    Iotalenisgrave               U+1F3A     GREEK CAPITAL LETTER IOTA WITH PSILI AND VARIA
+Ἳ    Iotaaspergrave               U+1F3B     GREEK CAPITAL LETTER IOTA WITH DASIA AND VARIA
+Ἴ    Iotalenisacute               U+1F3C     GREEK CAPITAL LETTER IOTA WITH PSILI AND OXIA
+Ἵ    Iotaasperacute               U+1F3D     GREEK CAPITAL LETTER IOTA WITH DASIA AND OXIA
+Ἶ    Iotalenistilde               U+1F3E     GREEK CAPITAL LETTER IOTA WITH PSILI AND PERISPOMENI
+Ἷ    Iotaaspertilde               U+1F3F     GREEK CAPITAL LETTER IOTA WITH DASIA AND PERISPOMENI
+ὀ    omicronlenis                 U+1F40     GREEK SMALL LETTER OMICRON WITH PSILI
+ὁ    omicronasper                 U+1F41     GREEK SMALL LETTER OMICRON WITH DASIA
+ὂ    omicronlenisgrave            U+1F42     GREEK SMALL LETTER OMICRON WITH PSILI AND VARIA
+ὃ    omicronaspergrave            U+1F43     GREEK SMALL LETTER OMICRON WITH DASIA AND VARIA
+ὄ    omicronlenisacute            U+1F44     GREEK SMALL LETTER OMICRON WITH PSILI AND OXIA
+ὅ    omicronasperacute            U+1F45     GREEK SMALL LETTER OMICRON WITH DASIA AND OXIA
+Ὀ    Omicronlenis                 U+1F48     GREEK CAPITAL LETTER OMICRON WITH PSILI
+Ὁ    Omicronasper                 U+1F49     GREEK CAPITAL LETTER OMICRON WITH DASIA
+Ὂ    Omicronlenisgrave            U+1F4A     GREEK CAPITAL LETTER OMICRON WITH PSILI AND VARIA
+Ὃ    Omicronaspergrave            U+1F4B     GREEK CAPITAL LETTER OMICRON WITH DASIA AND VARIA
+Ὄ    Omicronlenisacute            U+1F4C     GREEK CAPITAL LETTER OMICRON WITH PSILI AND OXIA
+Ὅ    Omicronasperacute            U+1F4D     GREEK CAPITAL LETTER OMICRON WITH DASIA AND OXIA
+ὐ    upsilonlenis                 U+1F50     GREEK SMALL LETTER UPSILON WITH PSILI
+ὑ    upsilonasper                 U+1F51     GREEK SMALL LETTER UPSILON WITH DASIA
+ὒ    upsilonlenisgrave            U+1F52     GREEK SMALL LETTER UPSILON WITH PSILI AND VARIA
+ὓ    upsilonaspergrave            U+1F53     GREEK SMALL LETTER UPSILON WITH DASIA AND VARIA
+ὔ    upsilonlenisacute            U+1F54     GREEK SMALL LETTER UPSILON WITH PSILI AND OXIA
+ὕ    upsilonasperacute            U+1F55     GREEK SMALL LETTER UPSILON WITH DASIA AND OXIA
+ὖ    upsilonlenistilde            U+1F56     GREEK SMALL LETTER UPSILON WITH PSILI AND PERISPOMENI
+ὗ    upsilonaspertilde            U+1F57     GREEK SMALL LETTER UPSILON WITH DASIA AND PERISPOMENI
+Ὑ    Upsilonasper                 U+1F59     GREEK CAPITAL LETTER UPSILON WITH DASIA
+Ὓ    Upsilonaspergrave            U+1F5B     GREEK CAPITAL LETTER UPSILON WITH DASIA AND VARIA
+Ὕ    Upsilonasperacute            U+1F5D     GREEK CAPITAL LETTER UPSILON WITH DASIA AND OXIA
+Ὗ    Upsilonaspertilde            U+1F5F     GREEK CAPITAL LETTER UPSILON WITH DASIA AND PERISPOMENI
+ὠ    omegalenis                   U+1F60     GREEK SMALL LETTER OMEGA WITH PSILI
+ὡ    omegaasper                   U+1F61     GREEK SMALL LETTER OMEGA WITH DASIA
+ὢ    omegalenisgrave              U+1F62     GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA
+ὣ    omegaaspergrave              U+1F63     GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA
+ὤ    omegalenisacute              U+1F64     GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA
+ὥ    omegaasperacute              U+1F65     GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA
+ὦ    omegalenistilde              U+1F66     GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI
+ὧ    omegaaspertilde              U+1F67     GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI
+Ὠ    Omegalenis                   U+1F68     GREEK CAPITAL LETTER OMEGA WITH PSILI
+Ὡ    Omegaasper                   U+1F69     GREEK CAPITAL LETTER OMEGA WITH DASIA
+Ὢ    Omegalenisgrave              U+1F6A     GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA
+Ὣ    Omegaaspergrave              U+1F6B     GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA
+Ὤ    Omegalenisacute              U+1F6C     GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA
+Ὥ    Omegaasperacute              U+1F6D     GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA
+Ὦ    Omegalenistilde              U+1F6E     GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI
+Ὧ    Omegaaspertilde              U+1F6F     GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI
+ὰ    alphagrave                   U+1F70     GREEK SMALL LETTER ALPHA WITH VARIA
+ά    alphaacute                   U+1F71     GREEK SMALL LETTER ALPHA WITH OXIA
+ὲ    epsilongrave                 U+1F72     GREEK SMALL LETTER EPSILON WITH VARIA
+έ    epsilonacute                 U+1F73     GREEK SMALL LETTER EPSILON WITH OXIA
+ὴ    etagrave                     U+1F74     GREEK SMALL LETTER ETA WITH VARIA
+ή    etaacute                     U+1F75     GREEK SMALL LETTER ETA WITH OXIA
+ὶ    iotagrave                    U+1F76     GREEK SMALL LETTER IOTA WITH VARIA
+ί    iotaacute                    U+1F77     GREEK SMALL LETTER IOTA WITH OXIA
+ὸ    omicrongrave                 U+1F78     GREEK SMALL LETTER OMICRON WITH VARIA
+ό    omicronacute                 U+1F79     GREEK SMALL LETTER OMICRON WITH OXIA
+ὺ    upsilongrave                 U+1F7A     GREEK SMALL LETTER UPSILON WITH VARIA
+ύ    upsilonacute                 U+1F7B     GREEK SMALL LETTER UPSILON WITH OXIA
+ὼ    omegagrave                   U+1F7C     GREEK SMALL LETTER OMEGA WITH VARIA
+ώ    omegaacute                   U+1F7D     GREEK SMALL LETTER OMEGA WITH OXIA
+ᾀ    alphalenisiotasub            U+1F80     GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI
+ᾁ    alphaasperiotasub            U+1F81     GREEK SMALL LETTER ALPHA WITH DASIA AND YPOGEGRAMMENI
+ᾂ    alphalenisgraveiotasub       U+1F82     GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+ᾃ    alphaaspergraveiotasub       U+1F83     GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+ᾄ    alphalenisacuteiotasub       U+1F84     GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+ᾅ    alphaasperacuteiotasub       U+1F85     GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+ᾆ    alphalenistildeiotasub       U+1F86     GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+ᾇ    alphaaspertildeiotasub       U+1F87     GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+ᾈ    Alphalenisiotasub            U+1F88     GREEK CAPITAL LETTER ALPHA WITH PSILI AND PROSGEGRAMMENI
+ᾉ    Alphaasperiotasub            U+1F89     GREEK CAPITAL LETTER ALPHA WITH DASIA AND PROSGEGRAMMENI
+ᾊ    Alphalenisgraveiotasub       U+1F8A     GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+ᾋ    Alphaaspergraveiotasub       U+1F8B     GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+ᾌ    Alphalenisacuteiotasub       U+1F8C     GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+ᾍ    Alphaasperacuteiotasub       U+1F8D     GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+ᾎ    Alphalenistildeiotasub       U+1F8E     GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+ᾏ    Alphaaspertildeiotasub       U+1F8F     GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+ᾐ    etalenisiotasub              U+1F90     GREEK SMALL LETTER ETA WITH PSILI AND YPOGEGRAMMENI
+ᾑ    etaasperiotasub              U+1F91     GREEK SMALL LETTER ETA WITH DASIA AND YPOGEGRAMMENI
+ᾒ    etalenisgraveiotasub         U+1F92     GREEK SMALL LETTER ETA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+ᾓ    etaaspergraveiotasub         U+1F93     GREEK SMALL LETTER ETA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+ᾔ    etalenisacuteiotasub         U+1F94     GREEK SMALL LETTER ETA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+ᾕ    etaasperacuteiotasub         U+1F95     GREEK SMALL LETTER ETA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+ᾖ    etalenistildeiotasub         U+1F96     GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+ᾗ    etaaspertildeiotasub         U+1F97     GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+ᾘ    Etalenisiotasub              U+1F98     GREEK CAPITAL LETTER ETA WITH PSILI AND PROSGEGRAMMENI
+ᾙ    Etaasperiotasub              U+1F99     GREEK CAPITAL LETTER ETA WITH DASIA AND PROSGEGRAMMENI
+ᾚ    Etalenisgraveiotasub         U+1F9A     GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+ᾛ    Etaaspergraveiotasub         U+1F9B     GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+ᾜ    Etalenisacuteiotasub         U+1F9C     GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+ᾝ    Etaasperacuteiotasub         U+1F9D     GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+ᾞ    Etalenistildeiotasub         U+1F9E     GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+ᾟ    Etaaspertildeiotasub         U+1F9F     GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+ᾠ    omegalenisiotasub            U+1FA0     GREEK SMALL LETTER OMEGA WITH PSILI AND YPOGEGRAMMENI
+ᾡ    omegaasperiotasub            U+1FA1     GREEK SMALL LETTER OMEGA WITH DASIA AND YPOGEGRAMMENI
+ᾢ    omegalenisgraveiotasub       U+1FA2     GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA AND YPOGEGRAMMENI
+ᾣ    omegaaspergraveiotasub       U+1FA3     GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA AND YPOGEGRAMMENI
+ᾤ    omegalenisacuteiotasub       U+1FA4     GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA AND YPOGEGRAMMENI
+ᾥ    omegaasperacuteiotasub       U+1FA5     GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA AND YPOGEGRAMMENI
+ᾦ    omegalenistildeiotasub       U+1FA6     GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+ᾧ    omegaaspertildeiotasub       U+1FA7     GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+ᾨ    Omegalenisiotasub            U+1FA8     GREEK CAPITAL LETTER OMEGA WITH PSILI AND PROSGEGRAMMENI
+ᾩ    Omegaasperiotasub            U+1FA9     GREEK CAPITAL LETTER OMEGA WITH DASIA AND PROSGEGRAMMENI
+ᾪ    Omegalenisgraveiotasub       U+1FAA     GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA AND PROSGEGRAMMENI
+ᾫ    Omegaaspergraveiotasub       U+1FAB     GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA AND PROSGEGRAMMENI
+ᾬ    Omegalenisacuteiotasub       U+1FAC     GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA AND PROSGEGRAMMENI
+ᾭ    Omegaasperacuteiotasub       U+1FAD     GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA AND PROSGEGRAMMENI
+ᾮ    Omegalenistildeiotasub       U+1FAE     GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+ᾯ    Omegaaspertildeiotasub       U+1FAF     GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+ᾰ    alphabreve                   U+1FB0     GREEK SMALL LETTER ALPHA WITH VRACHY
+ᾱ    alphawithmacron              U+1FB1     GREEK SMALL LETTER ALPHA WITH MACRON
+ᾲ    alphagraveiotasub            U+1FB2     GREEK SMALL LETTER ALPHA WITH VARIA AND YPOGEGRAMMENI
+ᾳ    alphaiotasub                 U+1FB3     GREEK SMALL LETTER ALPHA WITH YPOGEGRAMMENI
+ᾴ    alphaacuteiotasub            U+1FB4     GREEK SMALL LETTER ALPHA WITH OXIA AND YPOGEGRAMMENI
+ᾶ    alphatilde                   U+1FB6     GREEK SMALL LETTER ALPHA WITH PERISPOMENI
+ᾷ    alphatildeiotasub            U+1FB7     GREEK SMALL LETTER ALPHA WITH PERISPOMENI AND YPOGEGRAMMENI
+Ᾰ    Alphabreve                   U+1FB8     GREEK CAPITAL LETTER ALPHA WITH VRACHY
+Ᾱ    Alphawithmacron              U+1FB9     GREEK CAPITAL LETTER ALPHA WITH MACRON
+Ὰ    Alphagrave                   U+1FBA     GREEK CAPITAL LETTER ALPHA WITH VARIA
+Ά    Alphaacute                   U+1FBB     GREEK CAPITAL LETTER ALPHA WITH OXIA
+ᾼ    Alphaiotasub                 U+1FBC     GREEK CAPITAL LETTER ALPHA WITH PROSGEGRAMMENI
+᾽    koronis                      U+1FBD     GREEK KORONIS
+ι    iotaadscript                 U+1FBE     GREEK PROSGEGRAMMENI
+᾿    lenis                        U+1FBF     GREEK PSILI
+῀    tilde-gr                     U+1FC0     GREEK PERISPOMENI
+῁    dieresistilde                U+1FC1     GREEK DIALYTIKA AND PERISPOMENI
+ῂ    etagraveiotasub              U+1FC2     GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI
+ῃ    etaiotasub                   U+1FC3     GREEK SMALL LETTER ETA WITH YPOGEGRAMMENI
+ῄ    etaacuteiotasub              U+1FC4     GREEK SMALL LETTER ETA WITH OXIA AND YPOGEGRAMMENI
+ῆ    etatilde                     U+1FC6     GREEK SMALL LETTER ETA WITH PERISPOMENI
+ῇ    etatildeiotasub              U+1FC7     GREEK SMALL LETTER ETA WITH PERISPOMENI AND YPOGEGRAMMENI
+Ὲ    Epsilongrave                 U+1FC8     GREEK CAPITAL LETTER EPSILON WITH VARIA
+Έ    Epsilonacute                 U+1FC9     GREEK CAPITAL LETTER EPSILON WITH OXIA
+Ὴ    Etagrave                     U+1FCA     GREEK CAPITAL LETTER ETA WITH VARIA
+Ή    Etaacute                     U+1FCB     GREEK CAPITAL LETTER ETA WITH OXIA
+ῌ    Etaiotasub                   U+1FCC     GREEK CAPITAL LETTER ETA WITH PROSGEGRAMMENI
+῍    lenisgrave                   U+1FCD     GREEK PSILI AND VARIA
+῎    lenisacute                   U+1FCE     GREEK PSILI AND OXIA
+῏    lenistilde                   U+1FCF     GREEK PSILI AND PERISPOMENI
+ῐ    iotabreve                    U+1FD0     GREEK SMALL LETTER IOTA WITH VRACHY
+ῑ    iotawithmacron               U+1FD1     GREEK SMALL LETTER IOTA WITH MACRON
+ῒ    iotadieresisgrave            U+1FD2     GREEK SMALL LETTER IOTA WITH DIALYTIKA AND VARIA
+ΐ    iotadieresisacute            U+1FD3     GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA
+ῖ    iotatilde                    U+1FD6     GREEK SMALL LETTER IOTA WITH PERISPOMENI
+ῗ    iotadieresistilde            U+1FD7     GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI
+Ῐ    Iotabreve                    U+1FD8     GREEK CAPITAL LETTER IOTA WITH VRACHY
+Ῑ    Iotawithmacron               U+1FD9     GREEK CAPITAL LETTER IOTA WITH MACRON
+Ὶ    Iotagrave                    U+1FDA     GREEK CAPITAL LETTER IOTA WITH VARIA
+Ί    Iotaacute                    U+1FDB     GREEK CAPITAL LETTER IOTA WITH OXIA
+῝    aspergrave                   U+1FDD     GREEK DASIA AND VARIA
+῞    asperacute                   U+1FDE     GREEK DASIA AND OXIA
+῟    aspertilde                   U+1FDF     GREEK DASIA AND PERISPOMENI
+ῠ    upsilonbreve                 U+1FE0     GREEK SMALL LETTER UPSILON WITH VRACHY
+ῡ    upsilonwithmacron            U+1FE1     GREEK SMALL LETTER UPSILON WITH MACRON
+ῢ    upsilondieresisgrave         U+1FE2     GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND VARIA
+ΰ    upsilondieresisacute         U+1FE3     GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND OXIA
+ῤ    rholenis                     U+1FE4     GREEK SMALL LETTER RHO WITH PSILI
+ῥ    rhoasper                     U+1FE5     GREEK SMALL LETTER RHO WITH DASIA
+ῦ    upsilontilde                 U+1FE6     GREEK SMALL LETTER UPSILON WITH PERISPOMENI
+ῧ    upsilondieresistilde         U+1FE7     GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI
+Ῠ    Upsilonbreve                 U+1FE8     GREEK CAPITAL LETTER UPSILON WITH VRACHY
+Ῡ    Upsilonwithmacron            U+1FE9     GREEK CAPITAL LETTER UPSILON WITH MACRON
+Ὺ    Upsilongrave                 U+1FEA     GREEK CAPITAL LETTER UPSILON WITH VARIA
+Ύ    Upsilonacute                 U+1FEB     GREEK CAPITAL LETTER UPSILON WITH OXIA
+Ῥ    Rhoasper                     U+1FEC     GREEK CAPITAL LETTER RHO WITH DASIA
+῭    dieresisgrave                U+1FED     GREEK DIALYTIKA AND VARIA
+΅    dieresisacute                U+1FEE     GREEK DIALYTIKA AND OXIA
+`    grave-gr                     U+1FEF     GREEK VARIA
+ῲ    omegagraveiotasub            U+1FF2     GREEK SMALL LETTER OMEGA WITH VARIA AND YPOGEGRAMMENI
+ῳ    omegaiotasub                 U+1FF3     GREEK SMALL LETTER OMEGA WITH YPOGEGRAMMENI
+ῴ    omegaacuteiotasub            U+1FF4     GREEK SMALL LETTER OMEGA WITH OXIA AND YPOGEGRAMMENI
+ῶ    omegatilde                   U+1FF6     GREEK SMALL LETTER OMEGA WITH PERISPOMENI
+ῷ    omegatildeiotasub            U+1FF7     GREEK SMALL LETTER OMEGA WITH PERISPOMENI AND YPOGEGRAMMENI
+Ὸ    Omicrongrave                 U+1FF8     GREEK CAPITAL LETTER OMICRON WITH VARIA
+Ό    Omicronacute                 U+1FF9     GREEK CAPITAL LETTER OMICRON WITH OXIA
+Ὼ    Omegagrave                   U+1FFA     GREEK CAPITAL LETTER OMEGA WITH VARIA
+Ώ    Omegaacute                   U+1FFB     GREEK CAPITAL LETTER OMEGA WITH OXIA
+ῼ    Omegaiotasub                 U+1FFC     GREEK CAPITAL LETTER OMEGA WITH PROSGEGRAMMENI
+´    acute-gr                     U+1FFD     GREEK OXIA
+῾    asper                        U+1FFE     GREEK DASIA
+
+Імена через пробіл:
+alphalenis alphaasper alphalenisgrave alphaaspergrave alphalenisacute alphaasperacute
+alphalenistilde alphaaspertilde Alphalenis Alphaasper Alphalenisgrave Alphaaspergrave
+Alphalenisacute Alphaasperacute Alphalenistilde Alphaaspertilde epsilonlenis epsilonasper
+epsilonlenisgrave epsilonaspergrave epsilonlenisacute epsilonasperacute Epsilonlenis Epsilonasper
+Epsilonlenisgrave Epsilonaspergrave Epsilonlenisacute Epsilonasperacute etalenis etaasper
+etalenisgrave etaaspergrave etalenisacute etaasperacute etalenistilde etaaspertilde Etalenis
+Etaasper Etalenisgrave Etaaspergrave Etalenisacute Etaasperacute Etalenistilde Etaaspertilde
+iotalenis iotaasper iotalenisgrave iotaaspergrave iotalenisacute iotaasperacute iotalenistilde
+iotaaspertilde Iotalenis Iotaasper Iotalenisgrave Iotaaspergrave Iotalenisacute Iotaasperacute
+Iotalenistilde Iotaaspertilde omicronlenis omicronasper omicronlenisgrave omicronaspergrave
+omicronlenisacute omicronasperacute Omicronlenis Omicronasper Omicronlenisgrave Omicronaspergrave
+Omicronlenisacute Omicronasperacute upsilonlenis upsilonasper upsilonlenisgrave upsilonaspergrave
+upsilonlenisacute upsilonasperacute upsilonlenistilde upsilonaspertilde Upsilonasper
+Upsilonaspergrave Upsilonasperacute Upsilonaspertilde omegalenis omegaasper omegalenisgrave
+omegaaspergrave omegalenisacute omegaasperacute omegalenistilde omegaaspertilde Omegalenis
+Omegaasper Omegalenisgrave Omegaaspergrave Omegalenisacute Omegaasperacute Omegalenistilde
+Omegaaspertilde alphagrave alphaacute epsilongrave epsilonacute etagrave etaacute iotagrave
+iotaacute omicrongrave omicronacute upsilongrave upsilonacute omegagrave omegaacute
+alphalenisiotasub alphaasperiotasub alphalenisgraveiotasub alphaaspergraveiotasub
+alphalenisacuteiotasub alphaasperacuteiotasub alphalenistildeiotasub alphaaspertildeiotasub
+Alphalenisiotasub Alphaasperiotasub Alphalenisgraveiotasub Alphaaspergraveiotasub
+Alphalenisacuteiotasub Alphaasperacuteiotasub Alphalenistildeiotasub Alphaaspertildeiotasub
+etalenisiotasub etaasperiotasub etalenisgraveiotasub etaaspergraveiotasub etalenisacuteiotasub
+etaasperacuteiotasub etalenistildeiotasub etaaspertildeiotasub Etalenisiotasub Etaasperiotasub
+Etalenisgraveiotasub Etaaspergraveiotasub Etalenisacuteiotasub Etaasperacuteiotasub
+Etalenistildeiotasub Etaaspertildeiotasub omegalenisiotasub omegaasperiotasub omegalenisgraveiotasub
+omegaaspergraveiotasub omegalenisacuteiotasub omegaasperacuteiotasub omegalenistildeiotasub
+omegaaspertildeiotasub Omegalenisiotasub Omegaasperiotasub Omegalenisgraveiotasub
+Omegaaspergraveiotasub Omegalenisacuteiotasub Omegaasperacuteiotasub Omegalenistildeiotasub
+Omegaaspertildeiotasub alphabreve alphawithmacron alphagraveiotasub alphaiotasub alphaacuteiotasub
+alphatilde alphatildeiotasub Alphabreve Alphawithmacron Alphagrave Alphaacute Alphaiotasub koronis
+iotaadscript lenis tilde-gr dieresistilde etagraveiotasub etaiotasub etaacuteiotasub etatilde
+etatildeiotasub Epsilongrave Epsilonacute Etagrave Etaacute Etaiotasub lenisgrave lenisacute
+lenistilde iotabreve iotawithmacron iotadieresisgrave iotadieresisacute iotatilde iotadieresistilde
+Iotabreve Iotawithmacron Iotagrave Iotaacute aspergrave asperacute aspertilde upsilonbreve
+upsilonwithmacron upsilondieresisgrave upsilondieresisacute rholenis rhoasper upsilontilde
+upsilondieresistilde Upsilonbreve Upsilonwithmacron Upsilongrave Upsilonacute Rhoasper dieresisgrave
+dieresisacute grave-gr omegagraveiotasub omegaiotasub omegaacuteiotasub omegatilde omegatildeiotasub
+Omicrongrave Omicronacute Omegagrave Omegaacute Omegaiotasub acute-gr asper
+
+========================================================================
+NUMBERS › Basic Digits
+========================================================================
+
+------------------------------------------------------------------------
+Categories › Number › Basic Digits  (10)
+Цифри 0–9 з сайдбару CATEGORIES. Імена як у FontLab / Latin Pro.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+0    zero                         U+0030     DIGIT ZERO
+1    one                          U+0031     DIGIT ONE
+2    two                          U+0032     DIGIT TWO
+3    three                        U+0033     DIGIT THREE
+4    four                         U+0034     DIGIT FOUR
+5    five                         U+0035     DIGIT FIVE
+6    six                          U+0036     DIGIT SIX
+7    seven                        U+0037     DIGIT SEVEN
+8    eight                        U+0038     DIGIT EIGHT
+9    nine                         U+0039     DIGIT NINE
+
+Імена через пробіл:
+zero one two three four five six seven eight nine
+
+========================================================================
+BASICS › Latin Pro — нелітерні символи
+========================================================================
+
+------------------------------------------------------------------------
+OpenType LatPro (ot_lpro.enc)  (125)
+Пунктуація, валюта, математика, spacing-акценти, case/salt альтернативи.
+Без літер, які вже перелічені в SCRIPTS (і без інших Lu/Ll/Lt/Lo).
+Імена — як у encoding Latin Pro (наприклад uni00A0, grave.case).
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+␣    space                        U+0020     SPACE
+!    exclam                       U+0021     EXCLAMATION MARK
+"    quotedbl                     U+0022     QUOTATION MARK
+#    numbersign                   U+0023     NUMBER SIGN
+$    dollar                       U+0024     DOLLAR SIGN
+%    percent                      U+0025     PERCENT SIGN
+&    ampersand                    U+0026     AMPERSAND
+'    quotesingle                  U+0027     APOSTROPHE
+(    parenleft                    U+0028     LEFT PARENTHESIS
+)    parenright                   U+0029     RIGHT PARENTHESIS
+*    asterisk                     U+002A     ASTERISK
++    plus                         U+002B     PLUS SIGN
+,    comma                        U+002C     COMMA
+-    hyphen                       U+002D     HYPHEN-MINUS
+.    period                       U+002E     FULL STOP
+/    slash                        U+002F     SOLIDUS
+:    colon                        U+003A     COLON
+;    semicolon                    U+003B     SEMICOLON
+<    less                         U+003C     LESS-THAN SIGN
+=    equal                        U+003D     EQUALS SIGN
+>    greater                      U+003E     GREATER-THAN SIGN
+?    question                     U+003F     QUESTION MARK
+@    at                           U+0040     COMMERCIAL AT
+[    bracketleft                  U+005B     LEFT SQUARE BRACKET
+\    backslash                    U+005C     REVERSE SOLIDUS
+]    bracketright                 U+005D     RIGHT SQUARE BRACKET
+^    asciicircum                  U+005E     CIRCUMFLEX ACCENT
+_    underscore                   U+005F     LOW LINE
+`    grave                        U+0060     GRAVE ACCENT
+{    braceleft                    U+007B     LEFT CURLY BRACKET
+|    bar                          U+007C     VERTICAL LINE
+}    braceright                   U+007D     RIGHT CURLY BRACKET
+~    asciitilde                   U+007E     TILDE
+⍽    uni00A0                      U+00A0     NO-BREAK SPACE
+¡    exclamdown                   U+00A1     INVERTED EXCLAMATION MARK
+¢    cent                         U+00A2     CENT SIGN
+£    sterling                     U+00A3     POUND SIGN
+¤    currency                     U+00A4     CURRENCY SIGN
+¥    yen                          U+00A5     YEN SIGN
+¦    brokenbar                    U+00A6     BROKEN BAR
+§    section                      U+00A7     SECTION SIGN
+¨    dieresis                     U+00A8     DIAERESIS
+©    copyright                    U+00A9     COPYRIGHT SIGN
+«    guillemotleft                U+00AB     LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
+¬    logicalnot                   U+00AC     NOT SIGN
+—    uni00AD                      U+00AD     SOFT HYPHEN
+®    registered                   U+00AE     REGISTERED SIGN
+¯    macron                       U+00AF     MACRON
+°    degree                       U+00B0     DEGREE SIGN
+±    plusminus                    U+00B1     PLUS-MINUS SIGN
+²    twosuperior                  U+00B2     SUPERSCRIPT TWO
+³    threesuperior                U+00B3     SUPERSCRIPT THREE
+´    acute                        U+00B4     ACUTE ACCENT
+¶    paragraph                    U+00B6     PILCROW SIGN
+·    periodcentered               U+00B7     MIDDLE DOT
+¸    cedilla                      U+00B8     CEDILLA
+¹    onesuperior                  U+00B9     SUPERSCRIPT ONE
+»    guillemotright               U+00BB     RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+¼    onequarter                   U+00BC     VULGAR FRACTION ONE QUARTER
+½    onehalf                      U+00BD     VULGAR FRACTION ONE HALF
+¾    threequarters                U+00BE     VULGAR FRACTION THREE QUARTERS
+¿    questiondown                 U+00BF     INVERTED QUESTION MARK
+×    multiply                     U+00D7     MULTIPLICATION SIGN
+÷    divide                       U+00F7     DIVISION SIGN
+ˆ    circumflex                   U+02C6     MODIFIER LETTER CIRCUMFLEX ACCENT
+ˇ    caron                        U+02C7     CARON
+ˉ    uni02C9                      U+02C9     MODIFIER LETTER MACRON
+˘    breve                        U+02D8     BREVE
+˙    dotaccent                    U+02D9     DOT ABOVE
+˚    ring                         U+02DA     RING ABOVE
+˛    ogonek                       U+02DB     OGONEK
+˜    tilde                        U+02DC     SMALL TILDE
+˝    hungarumlaut                 U+02DD     DOUBLE ACUTE ACCENT
+–    endash                       U+2013     EN DASH
+—    emdash                       U+2014     EM DASH
+‘    quoteleft                    U+2018     LEFT SINGLE QUOTATION MARK
+’    quoteright                   U+2019     RIGHT SINGLE QUOTATION MARK
+‚    quotesinglbase               U+201A     SINGLE LOW-9 QUOTATION MARK
+“    quotedblleft                 U+201C     LEFT DOUBLE QUOTATION MARK
+”    quotedblright                U+201D     RIGHT DOUBLE QUOTATION MARK
+„    quotedblbase                 U+201E     DOUBLE LOW-9 QUOTATION MARK
+†    dagger                       U+2020     DAGGER
+‡    daggerdbl                    U+2021     DOUBLE DAGGER
+•    bullet                       U+2022     BULLET
+…    ellipsis                     U+2026     HORIZONTAL ELLIPSIS
+‰    perthousand                  U+2030     PER MILLE SIGN
+‹    guilsinglleft                U+2039     SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+›    guilsinglright               U+203A     SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+⁄    fraction                     U+2044     FRACTION SLASH
+₣    franc                        U+20A3     FRENCH FRANC SIGN
+₤    lira                         U+20A4     LIRA SIGN
+₧    peseta                       U+20A7     PESETA SIGN
+€    Euro                         U+20AC     EURO SIGN
+™    trademark                    U+2122     TRADE MARK SIGN
+℮    estimated                    U+212E     ESTIMATED SYMBOL
+∂    partialdiff                  U+2202     PARTIAL DIFFERENTIAL
+∆    Delta                        U+2206     INCREMENT
+∏    product                      U+220F     N-ARY PRODUCT
+∑    summation                    U+2211     N-ARY SUMMATION
+−    minus                        U+2212     MINUS SIGN
+∕    uni2215                      U+2215     DIVISION SLASH
+∙    uni2219                      U+2219     BULLET OPERATOR
+√    radical                      U+221A     SQUARE ROOT
+∞    infinity                     U+221E     INFINITY
+∫    integral                     U+222B     INTEGRAL
+≈    approxequal                  U+2248     ALMOST EQUAL TO
+≠    notequal                     U+2260     NOT EQUAL TO
+≤    lessequal                    U+2264     LESS-THAN OR EQUAL TO
+≥    greaterequal                 U+2265     GREATER-THAN OR EQUAL TO
+◊    lozenge                      U+25CA     LOZENGE
+—    commaaccent                  —          <unknown>
+    uniF8FF                      U+F8FF     
+`    grave.case                   U+0060     GRAVE ACCENT  [case]
+¨    dieresis.case                U+00A8     DIAERESIS  [case]
+¯    macron.case                  U+00AF     MACRON  [case]
+´    acute.case                   U+00B4     ACUTE ACCENT  [case]
+ˆ    circumflex.case              U+02C6     MODIFIER LETTER CIRCUMFLEX ACCENT  [case]
+ˇ    caron.case                   U+02C7     CARON  [case]
+˘    breve.case                   U+02D8     BREVE  [case]
+˙    dotaccent.case               U+02D9     DOT ABOVE  [case]
+˚    ring.case                    U+02DA     RING ABOVE  [case]
+˜    tilde.case                   U+02DC     SMALL TILDE  [case]
+˝    hungarumlaut.case            U+02DD     DOUBLE ACUTE ACCENT  [case]
+ˇ    caron.salt                   U+02C7     CARON  [salt]
+—    commaaccent.salt             —          (salt) <unknown>
+
+Імена через пробіл:
+space exclam quotedbl numbersign dollar percent ampersand quotesingle parenleft parenright asterisk
+plus comma hyphen period slash colon semicolon less equal greater question at bracketleft backslash
+bracketright asciicircum underscore grave braceleft bar braceright asciitilde uni00A0 exclamdown
+cent sterling currency yen brokenbar section dieresis copyright guillemotleft logicalnot uni00AD
+registered macron degree plusminus twosuperior threesuperior acute paragraph periodcentered cedilla
+onesuperior guillemotright onequarter onehalf threequarters questiondown multiply divide circumflex
+caron uni02C9 breve dotaccent ring ogonek tilde hungarumlaut endash emdash quoteleft quoteright
+quotesinglbase quotedblleft quotedblright quotedblbase dagger daggerdbl bullet ellipsis perthousand
+guilsinglleft guilsinglright fraction franc lira peseta Euro trademark estimated partialdiff Delta
+product summation minus uni2215 uni2219 radical infinity integral approxequal notequal lessequal
+greaterequal lozenge commaaccent uniF8FF grave.case dieresis.case macron.case acute.case
+circumflex.case caron.case breve.case dotaccent.case ring.case tilde.case hungarumlaut.case
+caron.salt commaaccent.salt
+
+========================================================================
+Усі унікальні імена (алфавітно, для копіювання)
+========================================================================
+a A aacute Aacute Abreve abreve Abrevecyr abrevecyr Acaron acaron Acircumflex acircumflex acute acute-gr acute.case Acyr acyr Adblgrave adblgrave adieresis Adieresis Adieresiscyr adieresiscyr Adieresismacron adieresismacron adotaccent Adotaccent Adotmacron adotmacron AE ae aeacute AEacute AEmacron aemacron agrave Agrave Aiecyr aiecyr ainvertedbreve Ainvertedbreve Alpha alpha alpha-ipa Alphaacute alphaacute alphaacuteiotasub Alphaasper alphaasper alphaasperacute Alphaasperacute Alphaasperacuteiotasub alphaasperacuteiotasub Alphaaspergrave alphaaspergrave Alphaaspergraveiotasub alphaaspergraveiotasub Alphaasperiotasub alphaasperiotasub Alphaaspertilde alphaaspertilde Alphaaspertildeiotasub alphaaspertildeiotasub Alphabreve alphabreve alphagrave Alphagrave alphagraveiotasub alphaiotasub Alphaiotasub alphalenis Alphalenis alphalenisacute Alphalenisacute alphalenisacuteiotasub Alphalenisacuteiotasub alphalenisgrave Alphalenisgrave alphalenisgraveiotasub Alphalenisgraveiotasub alphalenisiotasub Alphalenisiotasub alphalenistilde Alphalenistilde alphalenistildeiotasub Alphalenistildeiotasub alphatilde alphatildeiotasub Alphatonos alphatonos alphaturned alphawithmacron Alphawithmacron Amacron amacron ampersand Aogonek aogonek approxequal Aring aring aringacute Aringacute asciicircum asciitilde asper asperacute aspergrave aspertilde asterisk Astroke at atilde Atilde aturned b B backslash bar Becyr becyr beta Beta bhook Bhook braceleft braceright bracketleft bracketright breve breve.case brokenbar Bsmall bstroke Bstroke btopbar Btopbar bullet c C cacute Cacute caron caron.case caron.salt Ccaron ccaron Ccedilla ccedilla ccircumflex Ccircumflex ccurl cdotaccent Cdotaccent cedilla cent cheabkhcyr Cheabkhcyr cheabkhtailcyr Cheabkhtailcyr checyr Checyr Chedieresiscyr chedieresiscyr Chekhakascyr chekhakascyr Chetailcyr chetailcyr Chevertcyr chevertcyr chi Chi Chook chook circumflex circumflex.case clickalveolar clickbilabial clickdental clicklateral clickretroflex colon comma commaaccent commaaccent.salt copyright Cstretched cstroke Cstroke currency d D Dafrican dagger daggerdbl dbdigraph dcaron Dcaron dchecyr Dchecyr dcroat Dcroat dcurl Decyr decyr degree Dekomicyr dekomicyr delta Delta deltaturned dezh Dhook dhook dieresis dieresis.case dieresisacute dieresisgrave dieresistilde Digamma digamma divide Djecyr djecyr djekomicyr Djekomicyr dollar dotaccent dotaccent.case dotlessi dotlessj dotlessjstroke dotlessjstrokehook dtail dtopbar Dtopbar dz Dz DZ dzcaron DZcaron Dzcaron Dzeabkhcyr dzeabkhcyr Dzecyr dzecyr dzed dzedcurl dzhecyr Dzhecyr Dzjekomicyr dzjekomicyr Dzzhecyr dzzhecyr E e eacute Eacute ebreve Ebreve Ecaron ecaron ecedilla Ecedilla ecircumflex Ecircumflex Edblgrave edblgrave edieresis Edieresis Edotaccent edotaccent efcyr Efcyr egrave Egrave eight einvertedbreve Einvertedbreve Eiotifiedcyr eiotifiedcyr Elcyr elcyr Elhookcyr elhookcyr ellipsis elmiddlehookcyr Elmiddlehookcyr elsharptailcyr Elsharptailcyr Eltailcyr eltailcyr Emacron emacron emcyr Emcyr emdash emsharptailcyr Emsharptailcyr Encyr encyr endash eng Eng Engecyr engecyr enhookcyr Enhookcyr Enhookleftcyr enhookleftcyr Enmiddlehookcyr enmiddlehookcyr Ensharptailcyr ensharptailcyr Entailcyr entailcyr eogonek Eogonek Eopen eopen eopenclosed eopenreversed eopenreversedclosed eopenreversedhook Epsilon epsilon Epsilonacute epsilonacute Epsilonasper epsilonasper epsilonasperacute Epsilonasperacute epsilonaspergrave Epsilonaspergrave Epsilongrave epsilongrave Epsilonlenis epsilonlenis Epsilonlenisacute epsilonlenisacute Epsilonlenisgrave epsilonlenisgrave Epsilontonos epsilontonos equal Ercyr ercyr Ereversed ereversed-ipa Ereversedcyr ereversedcyr Ereverseddieresiscyr ereverseddieresiscyr ertickcyr Ertickcyr Escyr escyr Esh esh eshcurl eshreversedloop eshsquatreversed estailcyr Estailcyr estimated Estroke estroke eta Eta Etaacute etaacute etaacuteiotasub Etaasper etaasper etaasperacute Etaasperacute Etaasperacuteiotasub etaasperacuteiotasub Etaaspergrave etaaspergrave etaaspergraveiotasub Etaaspergraveiotasub Etaasperiotasub etaasperiotasub Etaaspertilde etaaspertilde Etaaspertildeiotasub etaaspertildeiotasub etagrave Etagrave etagraveiotasub etaiotasub Etaiotasub Etalenis etalenis Etalenisacute etalenisacute etalenisacuteiotasub Etalenisacuteiotasub Etalenisgrave etalenisgrave etalenisgraveiotasub Etalenisgraveiotasub etalenisiotasub Etalenisiotasub Etalenistilde etalenistilde Etalenistildeiotasub etalenistildeiotasub etatilde etatildeiotasub etatonos Etatonos eth Eth eturned Eukrcyr eukrcyr Euro exclam exclamdown Ezh ezh Ezhcaron ezhcaron ezhcurl ezhreversed Ezhreversed ezhtail f F feng Fhook fitacyr Fitacyr five florin four fraction franc g G Gacute gacute gamma Gamma gamma-ipa Gamma-lt gbreve Gbreve gcaron Gcaron gcircumflex Gcircumflex Gcommaaccent gcommaaccent gdotaccent Gdotaccent gecyr Gecyr gehookcyr Gehookcyr germandbls gestrokecyr Gestrokecyr Getailcyr getailcyr geupcyr Geupcyr Ghook ghook Ghooksmall Gjecyr gjecyr glottalinvertedstroke Glottalstop glottalstop glottalstopinverted glottalstopsmall glottalstopstroke glottalstopstrokereversed grave grave-gr grave.case greater greaterequal gscript-ipa Gsmall Gstroke gstroke guillemotleft guillemotright guilsinglleft guilsinglright H h haabkhcyr Haabkhcyr hacyr Hacyr handtailfishhookturned hardcyr Hardcyr Hbar hbar hcaron Hcaron hcircumflex Hcircumflex henghook hfishhookturned hhook Hsmall hturned hungarumlaut hungarumlaut.case hv Hwair hyphen i I iacute Iacute Ibreve ibreve icaron Icaron icircumflex Icircumflex icyr Icyr Idblgrave idblgrave Idieresis idieresis idieresiscyr Idieresiscyr Idotaccent Iebrevecyr iebrevecyr iecyr Iecyr Iegravecyr iegravecyr igrave Igrave Igravecyr igravecyr iinvertedbreve Iinvertedbreve ij IJ imacron Imacron imacroncyr Imacroncyr infinity integral iocyr Iocyr iogonek Iogonek iota Iota iota-ipa Iotaacute iotaacute iotaadscript Iotaafrican iotaasper Iotaasper Iotaasperacute iotaasperacute iotaaspergrave Iotaaspergrave Iotaaspertilde iotaaspertilde iotabreve Iotabreve Iotadieresis iotadieresis iotadieresisacute iotadieresisgrave iotadieresistilde iotadieresistonos iotagrave Iotagrave iotalenis Iotalenis Iotalenisacute iotalenisacute iotalenisgrave Iotalenisgrave iotalenistilde Iotalenistilde iotatilde iotatonos Iotatonos iotawithmacron Iotawithmacron ishortcyr Ishortcyr ishortsharptailcyr Ishortsharptailcyr Ismall Istroke istroke itilde Itilde iukrcyr Iukrcyr Izhitsacyr izhitsacyr Izhitsagravedblcyr izhitsagravedblcyr J j jcaron jcircumflex Jcircumflex jcrossedtail jecyr Jecyr Jstroke jstroke k K Kaaleutcyr kaaleutcyr Kabashkcyr kabashkcyr Kacyr kacyr kahookcyr Kahookcyr Kappa kappa kastrokecyr Kastrokecyr Katailcyr katailcyr kaverticalstrokecyr Kaverticalstrokecyr Kcaron kcaron kcommaaccent Kcommaaccent kgreenlandic khook Khook kjecyr Kjecyr Koppa koppa koppaarchaic Koppaarchaic koppacyr Koppacyr koronis ksicyr Ksicyr kturned l L Lacute lacute lambda Lambda lambdastroke Lbar lbar lbelt Lcaron lcaron lcommaaccent Lcommaaccent lcurl Ldot ldot lenis lenisacute lenisgrave lenistilde less lessequal lezh lhacyr Lhacyr lhookretroflex lira Lj lj LJ Ljecyr ljecyr Ljekomicyr ljekomicyr lmiddletilde logicalnot longs lozenge ls lslash Lslash Lsmall lzed M m macron macron.case mhook minus mlonglegturned mturned Mturned mu Mu multiply n N Nacute nacute napostrophe ncaron Ncaron ncommaaccent Ncommaaccent ncurl Ngrave ngrave Nhookleft nhookleft nhookretroflex nine NJ Nj nj njecyr Njecyr njekomicyr Njekomicyr Nlongrightleg nlongrightleg notequal Nsmall Ntilde ntilde Nu nu numbersign o O oacute Oacute Obar obarcyr Obarcyr obardieresiscyr Obardieresiscyr obarred Obreve obreve ocaron Ocaron ocircumflex Ocircumflex ocyr Ocyr Odblgrave odblgrave Odieresis odieresis Odieresiscyr odieresiscyr Odieresismacron odieresismacron odotaccent Odotaccent odotaccentmacron Odotaccentmacron oe OE OEsmall ogonek Ograve ograve Ohorn ohorn ohungarumlaut Ohungarumlaut oi Oi Oinvertedbreve oinvertedbreve omacron Omacron omega Omega omegaacute Omegaacute omegaacuteiotasub omegaasper Omegaasper omegaasperacute Omegaasperacute omegaasperacuteiotasub Omegaasperacuteiotasub omegaaspergrave Omegaaspergrave Omegaaspergraveiotasub omegaaspergraveiotasub omegaasperiotasub Omegaasperiotasub Omegaaspertilde omegaaspertilde omegaaspertildeiotasub Omegaaspertildeiotasub omegaclosed omegacyr Omegacyr omegagrave Omegagrave omegagraveiotasub omegaiotasub Omegaiotasub omegalenis Omegalenis omegalenisacute Omegalenisacute Omegalenisacuteiotasub omegalenisacuteiotasub omegalenisgrave Omegalenisgrave Omegalenisgraveiotasub omegalenisgraveiotasub omegalenisiotasub Omegalenisiotasub Omegalenistilde omegalenistilde omegalenistildeiotasub Omegalenistildeiotasub Omegaroundcyr omegaroundcyr omegatilde omegatildeiotasub Omegatitlocyr omegatitlocyr Omegatonos omegatonos Omicron omicron Omicronacute omicronacute Omicronasper omicronasper omicronasperacute Omicronasperacute Omicronaspergrave omicronaspergrave omicrongrave Omicrongrave omicronlenis Omicronlenis Omicronlenisacute omicronlenisacute omicronlenisgrave Omicronlenisgrave Omicrontonos omicrontonos one onehalf onequarter onesuperior oogonek Oogonek oogonekmacron Oogonekmacron oopen Oopen ordfeminine ordmasculine Oslash oslash oslashacute Oslashacute otcyr Otcyr otilde Otilde Otildemacron otildemacron Ou ou p P Palochkacyr palochkacyr paragraph parenleft parenright partialdiff Pecyr pecyr pehookcyr Pehookcyr percent percussivebidental percussivebilabial period periodcentered perthousand peseta petailcyr Petailcyr pharyngealvoicedfricative Phi phi phi-ipa phook Phook pi Pi plus plusminus product Psi psi psicyr Psicyr Q q qacyr Qacyr qhook qhooktail qpdigraph Qsmallhooktail question questiondown quotedbl quotedblbase quotedblleft quotedblright quoteleft quoteright quotesinglbase quotesingle r R Racute racute radical ramshorn rcaron Rcaron Rcommaaccent rcommaaccent Rdblgrave rdblgrave registered reversedzecyr Reversedzecyr rfishhook rfishhookreversed Rhacyr rhacyr Rho rho Rhoasper rhoasper rholenis rhookturned ring ring.case Rinvertedbreve rinvertedbreve Rinvertedsmall rlongleg rlonglegturned Rsmall rstroke Rstroke rtail-ipa rturned s S sacute Sacute sampi Sampi Scaron scaron Scedilla scedilla schwa Schwa Schwacyr schwacyr schwadieresiscyr Schwadieresiscyr schwahook Scircumflex scircumflex scommaaccent Scommaaccent section semicolon semisoftcyr Semisoftcyr seven shacyr Shacyr shchacyr Shchacyr shhacyr Shhacyr Shhatailcyr shhatailcyr shook sigma Sigma sigmafinal six Sjekomicyr sjekomicyr slash Softcyr softcyr space sswashtail sterling Stigma stigma summation T t tau Tau tbar Tbar Tcaron tcaron tccurl Tcedilla tcedilla Tcommaaccent tcommaaccent tcurl Tdiagonalstroke tecyr Tecyr tesh Tetailcyr tetailcyr Tetsecyr tetsecyr theta Theta thook Thook Thorn thorn three threequarters threesuperior tilde tilde-gr tilde.case tjekomicyr Tjekomicyr Tonefive tonefive tonesix Tonesix tonetwo Tonetwo tonos tpalatalhook trademark Tretroflexhook tretroflexhook ts tsecyr Tsecyr Tshecyr tshecyr tturned two twostroke twosuperior u U Uacute uacute Uacutedblcyr uacutedblcyr ubar Ubar Ubreve ubreve ucaron Ucaron ucircumflex Ucircumflex ucyr Ucyr Udblgrave udblgrave Udieresis udieresis Udieresisacute udieresisacute Udieresiscaron udieresiscaron Udieresiscyr udieresiscyr Udieresisgrave udieresisgrave Udieresismacron udieresismacron ugrave Ugrave Uhorn uhorn Uhungarumlaut uhungarumlaut Uinvertedbreve uinvertedbreve ukcyr Ukcyr umacron Umacron Umacroncyr umacroncyr underscore uni00A0 uni00AD uni02C9 uni2215 uni2219 uniF8FF uogonek Uogonek Upsilon upsilon upsilon-ipa Upsilonacute upsilonacute Upsilonafrican upsilonasper Upsilonasper upsilonasperacute Upsilonasperacute upsilonaspergrave Upsilonaspergrave upsilonaspertilde Upsilonaspertilde Upsilonbreve upsilonbreve upsilondieresis Upsilondieresis upsilondieresisacute upsilondieresisgrave upsilondieresistilde upsilondieresistonos Upsilongrave upsilongrave upsilonlenis upsilonlenisacute upsilonlenisgrave upsilonlenistilde upsilontilde Upsilontonos upsilontonos upsilonwithmacron Upsilonwithmacron Uring uring Ushortcyr ushortcyr Ustraightcyr ustraightcyr ustraightstrokecyr Ustraightstrokecyr utilde Utilde V v vecyr Vecyr Vhook vhook vturned Vturned W w wcircumflex Wcircumflex Wecyr wecyr wturned wynn Wynn x X xatailcyr Xatailcyr Xi xi y Y yacute Yacute Yacyr yacyr yaecyr Yaecyr yatcyr Yatcyr ycircumflex Ycircumflex Ydieresis ydieresis yen yhook Yhook Ylongcyr ylongcyr Ylongdieresiscyr ylongdieresiscyr ymacron Ymacron Yogh yogh yr Ysmall Ystroke ystroke yturned yucyr Yucyr Yukrcyr yukrcyr Yusbigcyr yusbigcyr yusbigiotifiedcyr Yusbigiotifiedcyr yuslittlecyr Yuslittlecyr yuslittleiotifiedcyr Yuslittleiotifiedcyr z Z zacute Zacute zcaron Zcaron zcurl zdotaccent Zdotaccent zecyr Zecyr zedieresiscyr Zedieresiscyr zero Zeta zeta Zetailcyr zetailcyr zhebrevecyr Zhebrevecyr zhecyr Zhecyr Zhedieresiscyr zhedieresiscyr zhetailcyr Zhetailcyr zhook Zhook zjekomicyr Zjekomicyr zretroflexhook Zstroke zstroke zswashtail
+
+Унікальних імен: 1285
