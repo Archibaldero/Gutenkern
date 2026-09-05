@@ -51,10 +51,6 @@ enum L10n {
     ]
 
     static var fieldWhat: String { t("fieldWhat") }
-    static var fieldWith: String { t("fieldWith") }
-    static var type: String { t("type") }
-    static var typeSimple: String { t("typeSimple") }
-    static var typeMirror: String { t("typeMirror") }
     static var format: String { t("format") }
     static var formatFontLab: String { t("formatFontLab") }
     static var formatGlyphs: String { t("formatGlyphs") }

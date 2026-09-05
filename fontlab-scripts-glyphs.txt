@@ -7,7 +7,6 @@ FontLab 8 — дефолтні гліфи з панелі Font Window
 
 SCRIPTS: Unicode-діапазон ∩ script батьківського алфавіту (Latn/Grek).
 Кирилиця — готові codepage-файли FontLab.
-NUMBERS: Categories › Basic Digits.
 LATIN PRO: encoding OpenType LatPro (ot_lpro.enc), лише нелітерні слоти.
   Пропущено літери (Lu/Ll/Lt/Lo), які вже є в SCRIPTS або є літерами
   (лігатури fi/fl, florin, грецькі ΔΩμπ, Wgrave тощо).
@@ -32,8 +31,10 @@ SCRIPTS › GREEK
   SCRIPTS разом        1151
 NUMBERS
   Basic Digits           10
+PUNCTUATION
+  пунктуація               20
 BASICS › Latin Pro
-  нелітерні символи     125
+  нелітерні символи     105
 УСЬОГО                 1286
 
 
@@ -1441,38 +1442,65 @@ ch   glyph                        unicode    unicode_name
 zero one two three four five six seven eight nine
 
 ========================================================================
+PUNCTUATION
+========================================================================
+
+------------------------------------------------------------------------
+Categories / Latin Pro — пунктуація  (20)
+Окрема кернінгова група «Пунктуація» (−). Решта символів Latin Pro — неалфавітні.
+------------------------------------------------------------------------
+ch   glyph                        unicode    unicode_name
+!    exclam                       U+0021     EXCLAMATION MARK
+"    quotedbl                     U+0022     QUOTATION MARK
+'    quotesingle                  U+0027     APOSTROPHE
+,    comma                        U+002C     COMMA
+-    hyphen                       U+002D     HYPHEN-MINUS
+.    period                       U+002E     FULL STOP
+:    colon                        U+003A     COLON
+;    semicolon                    U+003B     SEMICOLON
+?    question                     U+003F     QUESTION MARK
+¡    exclamdown                   U+00A1     INVERTED EXCLAMATION MARK
+¿    questiondown                 U+00BF     INVERTED QUESTION MARK
+–    endash                       U+2013     EN DASH
+—    emdash                       U+2014     EM DASH
+‘    quoteleft                    U+2018     LEFT SINGLE QUOTATION MARK
+’    quoteright                   U+2019     RIGHT SINGLE QUOTATION MARK
+‚    quotesinglbase               U+201A     SINGLE LOW-9 QUOTATION MARK
+“    quotedblleft                 U+201C     LEFT DOUBLE QUOTATION MARK
+”    quotedblright                U+201D     RIGHT DOUBLE QUOTATION MARK
+„    quotedblbase                 U+201E     DOUBLE LOW-9 QUOTATION MARK
+…    ellipsis                     U+2026     HORIZONTAL ELLIPSIS
+
+Імена через пробіл:
+exclam quotedbl quotesingle comma hyphen period colon semicolon question exclamdown questiondown
+endash emdash quoteleft quoteright quotesinglbase quotedblleft quotedblright quotedblbase ellipsis
+
+
+========================================================================
 BASICS › Latin Pro — нелітерні символи
 ========================================================================
 
 ------------------------------------------------------------------------
-OpenType LatPro (ot_lpro.enc)  (125)
-Пунктуація, валюта, математика, spacing-акценти, case/salt альтернативи.
+OpenType LatPro (ot_lpro.enc)  (105)
+Валюта, математика, spacing-акценти, case/salt альтернативи.
+Пунктуація винесена в окрему секцію PUNCTUATION.
 Без літер, які вже перелічені в SCRIPTS (і без інших Lu/Ll/Lt/Lo).
 Імена — як у encoding Latin Pro (наприклад uni00A0, grave.case).
 ------------------------------------------------------------------------
 ch   glyph                        unicode    unicode_name
 ␣    space                        U+0020     SPACE
-!    exclam                       U+0021     EXCLAMATION MARK
-"    quotedbl                     U+0022     QUOTATION MARK
 #    numbersign                   U+0023     NUMBER SIGN
 $    dollar                       U+0024     DOLLAR SIGN
 %    percent                      U+0025     PERCENT SIGN
 &    ampersand                    U+0026     AMPERSAND
-'    quotesingle                  U+0027     APOSTROPHE
 (    parenleft                    U+0028     LEFT PARENTHESIS
 )    parenright                   U+0029     RIGHT PARENTHESIS
 *    asterisk                     U+002A     ASTERISK
 +    plus                         U+002B     PLUS SIGN
-,    comma                        U+002C     COMMA
--    hyphen                       U+002D     HYPHEN-MINUS
-.    period                       U+002E     FULL STOP
 /    slash                        U+002F     SOLIDUS
-:    colon                        U+003A     COLON
-;    semicolon                    U+003B     SEMICOLON
 <    less                         U+003C     LESS-THAN SIGN
 =    equal                        U+003D     EQUALS SIGN
 >    greater                      U+003E     GREATER-THAN SIGN
-?    question                     U+003F     QUESTION MARK
 @    at                           U+0040     COMMERCIAL AT
 [    bracketleft                  U+005B     LEFT SQUARE BRACKET
 \    backslash                    U+005C     REVERSE SOLIDUS
@@ -1485,7 +1513,6 @@ _    underscore                   U+005F     LOW LINE
 }    braceright                   U+007D     RIGHT CURLY BRACKET
 ~    asciitilde                   U+007E     TILDE
 ⍽    uni00A0                      U+00A0     NO-BREAK SPACE
-¡    exclamdown                   U+00A1     INVERTED EXCLAMATION MARK
 ¢    cent                         U+00A2     CENT SIGN
 £    sterling                     U+00A3     POUND SIGN
 ¤    currency                     U+00A4     CURRENCY SIGN
@@ -1512,7 +1539,6 @@ _    underscore                   U+005F     LOW LINE
 ¼    onequarter                   U+00BC     VULGAR FRACTION ONE QUARTER
 ½    onehalf                      U+00BD     VULGAR FRACTION ONE HALF
 ¾    threequarters                U+00BE     VULGAR FRACTION THREE QUARTERS
-¿    questiondown                 U+00BF     INVERTED QUESTION MARK
 ×    multiply                     U+00D7     MULTIPLICATION SIGN
 ÷    divide                       U+00F7     DIVISION SIGN
 ˆ    circumflex                   U+02C6     MODIFIER LETTER CIRCUMFLEX ACCENT
@@ -1524,18 +1550,9 @@ _    underscore                   U+005F     LOW LINE
 ˛    ogonek                       U+02DB     OGONEK
 ˜    tilde                        U+02DC     SMALL TILDE
 ˝    hungarumlaut                 U+02DD     DOUBLE ACUTE ACCENT
-–    endash                       U+2013     EN DASH
-—    emdash                       U+2014     EM DASH
-‘    quoteleft                    U+2018     LEFT SINGLE QUOTATION MARK
-’    quoteright                   U+2019     RIGHT SINGLE QUOTATION MARK
-‚    quotesinglbase               U+201A     SINGLE LOW-9 QUOTATION MARK
-“    quotedblleft                 U+201C     LEFT DOUBLE QUOTATION MARK
-”    quotedblright                U+201D     RIGHT DOUBLE QUOTATION MARK
-„    quotedblbase                 U+201E     DOUBLE LOW-9 QUOTATION MARK
 †    dagger                       U+2020     DAGGER
 ‡    daggerdbl                    U+2021     DOUBLE DAGGER
 •    bullet                       U+2022     BULLET
-…    ellipsis                     U+2026     HORIZONTAL ELLIPSIS
 ‰    perthousand                  U+2030     PER MILLE SIGN
 ‹    guilsinglleft                U+2039     SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 ›    guilsinglright               U+203A     SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
@@ -1591,7 +1608,6 @@ product summation minus uni2215 uni2219 radical infinity integral approxequal no
 greaterequal lozenge commaaccent uniF8FF grave.case dieresis.case macron.case acute.case
 circumflex.case caron.case breve.case dotaccent.case ring.case tilde.case hungarumlaut.case
 caron.salt commaaccent.salt
-
 ========================================================================
 Усі унікальні імена (алфавітно, для копіювання)
 ========================================================================

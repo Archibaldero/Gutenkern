@@ -36,47 +36,37 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
         format = try container.decodeIfPresent(String.self, forKey: .format) ?? OutputFormat.fontlab.rawValue
     }
 
-    public var selectedGroups: Set<KerningGroup> {
-        Set(groups.compactMap(KerningGroup.init(rawValue:)))
-    }
-
     public var completedRecipeSet: Set<String> {
         Set(completedRecipes)
-    }
-
-    public var pairMode: PairMode {
-        PairMode(rawValue: mode) ?? .simple
     }
 
     public var outputFormat: OutputFormat {
         OutputFormat(rawValue: format) ?? .fontlab
     }
 
+    public var pairMode: PairMode {
+        PairMode(rawValue: mode) ?? .simple
+    }
+
     public func sanitized() -> SessionSnapshot {
         Self.make(
             field1: field1,
-            field2: field2,
-            selectedGroups: selectedGroups,
             completedRecipes: completedRecipeSet,
-            mode: pairMode,
             format: outputFormat
         )
     }
 
     public static func make(
         field1: String,
-        field2: String,
-        selectedGroups: Set<KerningGroup>,
         completedRecipes: Set<String>,
-        mode: PairMode,
         format: OutputFormat
     ) -> SessionSnapshot {
         SessionSnapshot(
             field1: field1,
-            field2: field2,
-            groups: KerningGroup.allCases.filter { selectedGroups.contains($0) }.map(\.rawValue),
+            field2: "",
+            groups: [],
             completedRecipes: completedRecipes.filter { !$0.isEmpty }.sorted(),
-            mode: mode.rawValue,
+            mode: PairMode.simple.rawValue,
             format: format.rawValue
         )
     }

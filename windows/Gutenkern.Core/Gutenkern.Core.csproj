@@ -6,4 +6,7 @@
     <RootNamespace>Gutenkern</RootNamespace>
     <AssemblyName>Gutenkern.Core</AssemblyName>
   </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\core\glyph-dictionary.json" LogicalName="Gutenkern.glyph-dictionary.json" />
+  </ItemGroup>
 </Project>

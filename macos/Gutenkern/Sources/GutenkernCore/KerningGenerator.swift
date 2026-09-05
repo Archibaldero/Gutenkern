@@ -17,39 +17,58 @@ public enum OutputFormat: String, Equatable, Hashable, Sendable, CaseIterable {
 
 public enum KerningGenerator {
     public static func parse(_ input: String) -> [Glyph] {
-        var glyphs: [Glyph] = []
+        parseTokens(input).map(\.glyph)
+    }
+
+    public static func parseTokens(_ input: String) -> [ParsedToken] {
+        var tokens: [ParsedToken] = []
         var index = input.startIndex
+        var utf16Offset = 0
 
         while index < input.endIndex {
             let character = input[index]
             if character.isWhitespace {
+                utf16Offset += character.utf16.count
                 index = input.index(after: index)
                 continue
             }
 
             if character == "/" {
-                let nameStart = input.index(after: index)
-                var nameEnd = nameStart
-                while nameEnd < input.endIndex {
-                    let next = input[nameEnd]
+                let slashOffset = utf16Offset
+                utf16Offset += character.utf16.count
+                index = input.index(after: index)
+                let nameStart = index
+                while index < input.endIndex {
+                    let next = input[index]
                     if next == "/" || next.isWhitespace {
                         break
                     }
-                    nameEnd = input.index(after: nameEnd)
+                    utf16Offset += next.utf16.count
+                    index = input.index(after: index)
                 }
-                let name = String(input[nameStart..<nameEnd])
+                let name = String(input[nameStart..<index])
                 if !name.isEmpty {
-                    glyphs.append(.name(name))
+                    tokens.append(ParsedToken(
+                        glyph: .name(name),
+                        start: slashOffset,
+                        length: utf16Offset - slashOffset
+                    ))
                 }
-                index = nameEnd
                 continue
             }
 
-            glyphs.append(.character(character))
+            let start = utf16Offset
+            let length = character.utf16.count
+            tokens.append(ParsedToken(
+                glyph: .character(character),
+                start: start,
+                length: length
+            ))
+            utf16Offset += length
             index = input.index(after: index)
         }
 
-        return glyphs
+        return tokens
     }
 
     public static func generate(
@@ -58,8 +77,36 @@ public enum KerningGenerator {
         mode: PairMode,
         format: OutputFormat
     ) -> String {
-        let leftGlyphs = parse(left)
-        let rightGlyphs = parse(right)
+        generate(leftGlyphs: parse(left), rightGlyphs: parse(right), mode: mode, format: format)
+    }
+
+    public static func generate(_ input: String, format: OutputFormat) -> String {
+        generate(GlyphClassifier.classify(input), format: format)
+    }
+
+    public static func generate(_ classified: ClassificationResult, format: OutputFormat) -> String {
+        var sections: [String] = []
+        for recipe in KerningPlan.recipes {
+            guard
+                let left = classified.glyphs(for: recipe.left),
+                let right = classified.glyphs(for: recipe.right)
+            else {
+                continue
+            }
+            let section = generate(leftGlyphs: left, rightGlyphs: right, mode: recipe.mode, format: format)
+            if !section.isEmpty {
+                sections.append(section)
+            }
+        }
+        return sections.joined(separator: "\n\n\n")
+    }
+
+    public static func generate(
+        leftGlyphs: [Glyph],
+        rightGlyphs: [Glyph],
+        mode: PairMode,
+        format: OutputFormat
+    ) -> String {
         guard !leftGlyphs.isEmpty, !rightGlyphs.isEmpty else {
             return ""
         }
@@ -93,6 +140,24 @@ public enum KerningGenerator {
             return 0
         }
         return leftCount * rightCount
+    }
+
+    public static func pairCount(_ input: String) -> Int {
+        pairCount(GlyphClassifier.classify(input))
+    }
+
+    public static func pairCount(_ classified: ClassificationResult) -> Int {
+        var total = 0
+        for recipe in KerningPlan.recipes {
+            guard
+                let left = classified.glyphs(for: recipe.left),
+                let right = classified.glyphs(for: recipe.right)
+            else {
+                continue
+            }
+            total += left.count * right.count
+        }
+        return total
     }
 
     public static func formatGlyphs(_ glyphs: [Glyph], as format: OutputFormat) -> String {

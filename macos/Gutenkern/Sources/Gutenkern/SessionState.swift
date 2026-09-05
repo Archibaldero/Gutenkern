@@ -10,10 +10,7 @@ final class SessionState: ObservableObject {
     private static let debounce: TimeInterval = 0.3
 
     @Published var field1: String
-    @Published var field2: String
-    @Published var selectedGroups: Set<KerningGroup>
     @Published var completedRecipes: Set<String>
-    @Published var mode: PairMode
     @Published var format: OutputFormat
 
     private var cancellables = Set<AnyCancellable>()
@@ -23,10 +20,7 @@ final class SessionState: ObservableObject {
     private init() {
         let snapshot = Self.load()
         field1 = snapshot.field1
-        field2 = snapshot.field2
-        selectedGroups = snapshot.selectedGroups
         completedRecipes = snapshot.completedRecipeSet
-        mode = snapshot.pairMode
         format = snapshot.outputFormat
         observeChanges()
         terminateObserver = NotificationCenter.default.addObserver(
@@ -46,10 +40,7 @@ final class SessionState: ObservableObject {
 
     private func observeChanges() {
         bind($field1)
-        bind($field2)
-        bind($selectedGroups)
         bind($completedRecipes)
-        bind($mode)
         bind($format)
     }
 
@@ -74,10 +65,7 @@ final class SessionState: ObservableObject {
     private func snapshot() -> SessionSnapshot {
         SessionSnapshot.make(
             field1: field1,
-            field2: field2,
-            selectedGroups: selectedGroups,
             completedRecipes: completedRecipes,
-            mode: mode,
             format: format
         )
     }

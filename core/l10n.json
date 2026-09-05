@@ -1,10 +1,6 @@
 {
   "en": {
     "fieldWhat": "What we kern",
-    "fieldWith": "With what",
-    "type": "Type",
-    "typeSimple": "Simple (AB)",
-    "typeMirror": "Mirrored (ABA)",
     "format": "Format",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -42,10 +38,6 @@
   },
   "uk": {
     "fieldWhat": "Що керним",
-    "fieldWith": "З чим керним",
-    "type": "Тип",
-    "typeSimple": "Прості (AB)",
-    "typeMirror": "Дзеркальні (ABA)",
     "format": "Формат",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -83,10 +75,6 @@
   },
   "de": {
     "fieldWhat": "Was kernen",
-    "fieldWith": "Womit kernen",
-    "type": "Typ",
-    "typeSimple": "Einfach (AB)",
-    "typeMirror": "Gespiegelt (ABA)",
     "format": "Format",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -124,10 +112,6 @@
   },
   "fr": {
     "fieldWhat": "À créner",
-    "fieldWith": "Avec quoi",
-    "type": "Type",
-    "typeSimple": "Simples (AB)",
-    "typeMirror": "En miroir (ABA)",
     "format": "Format",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -165,10 +149,6 @@
   },
   "pl": {
     "fieldWhat": "Co kernujemy",
-    "fieldWith": "Z czym",
-    "type": "Typ",
-    "typeSimple": "Proste (AB)",
-    "typeMirror": "Lustrzane (ABA)",
     "format": "Format",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -206,10 +186,6 @@
   },
   "cs": {
     "fieldWhat": "Co kernujeme",
-    "fieldWith": "S čím",
-    "type": "Typ",
-    "typeSimple": "Jednoduché (AB)",
-    "typeMirror": "Zrcadlové (ABA)",
     "format": "Formát",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -247,10 +223,6 @@
   },
   "es": {
     "fieldWhat": "Qué kernamos",
-    "fieldWith": "Con qué",
-    "type": "Tipo",
-    "typeSimple": "Simples (AB)",
-    "typeMirror": "Espejo (ABA)",
     "format": "Formato",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -288,10 +260,6 @@
   },
   "sv": {
     "fieldWhat": "Vad vi kernar",
-    "fieldWith": "Med vad",
-    "type": "Typ",
-    "typeSimple": "Enkla (AB)",
-    "typeMirror": "Speglade (ABA)",
     "format": "Format",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",
@@ -329,10 +297,6 @@
   },
   "it": {
     "fieldWhat": "Cosa kerniamo",
-    "fieldWith": "Con cosa",
-    "type": "Tipo",
-    "typeSimple": "Semplici (AB)",
-    "typeMirror": "Speculari (ABA)",
     "format": "Formato",
     "formatFontLab": "FontLab",
     "formatGlyphs": "Glyphs",

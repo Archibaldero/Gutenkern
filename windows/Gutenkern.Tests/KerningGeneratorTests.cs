@@ -52,6 +52,40 @@ public sealed class KerningGeneratorTests
         }
     }
 
+    [Fact]
+    public void Classify_matches_all_fixtures()
+    {
+        var fixtures = FixturesFile.Load();
+        Assert.NotEmpty(fixtures.Classify);
+
+        foreach (var testCase in fixtures.Classify)
+        {
+            var classified = GlyphClassifier.Classify(testCase.Input);
+            var groups = classified.Groups.Select(KerningPlan.Code).ToList();
+            var unknown = classified.Unknown.Select(token => token.Glyph switch
+            {
+                NameGlyph name => name.Value,
+                CharacterGlyph character => character.Value,
+                _ => ""
+            }).ToList();
+            Assert.Equal(testCase.Groups, groups);
+            Assert.Equal(testCase.Unknown, unknown);
+        }
+    }
+
+    [Fact]
+    public void GenerateAll_matches_all_fixtures()
+    {
+        var fixtures = FixturesFile.Load();
+        Assert.NotEmpty(fixtures.GenerateAll);
+
+        foreach (var testCase in fixtures.GenerateAll)
+        {
+            var actual = KerningGenerator.Generate(testCase.Input, ParseFormat(testCase.Format));
+            Assert.Equal(testCase.Expected, actual);
+        }
+    }
+
     private static (string Type, string Value) Describe(Glyph glyph) => glyph switch
     {
         CharacterGlyph character => ("character", character.Value),
@@ -93,6 +127,8 @@ internal sealed class Fixtures
     public List<ParseCase> Parse { get; set; } = [];
     public List<GenerateCase> Generate { get; set; } = [];
     public List<PlanCase> Plan { get; set; } = [];
+    public List<ClassifyCase> Classify { get; set; } = [];
+    public List<GenerateAllCase> GenerateAll { get; set; } = [];
 }
 
 internal sealed class ParseCase
@@ -122,5 +158,21 @@ internal sealed class PlanCase
 {
     public string Id { get; set; } = "";
     public List<string> Selected { get; set; } = [];
+    public string Expected { get; set; } = "";
+}
+
+internal sealed class ClassifyCase
+{
+    public string Id { get; set; } = "";
+    public string Input { get; set; } = "";
+    public List<string> Groups { get; set; } = [];
+    public List<string> Unknown { get; set; } = [];
+}
+
+internal sealed class GenerateAllCase
+{
+    public string Id { get; set; } = "";
+    public string Input { get; set; } = "";
+    public string Format { get; set; } = "";
     public string Expected { get; set; } = "";
 }

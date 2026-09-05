@@ -33,10 +33,6 @@ internal static class L10n
     }
 
     public static string FieldWhat => T("fieldWhat");
-    public static string FieldWith => T("fieldWith");
-    public static string Type => T("type");
-    public static string TypeSimple => T("typeSimple");
-    public static string TypeMirror => T("typeMirror");
     public static string Format => T("format");
     public static string FormatFontLab => T("formatFontLab");
     public static string FormatGlyphs => T("formatGlyphs");

@@ -17,6 +17,8 @@ public partial class MainWindow : Window
     private readonly DispatcherTimer _persistTimer;
     private readonly HashSet<string> _completedRecipes = [];
     private bool _restoring;
+    private bool _highlighting;
+    private string _highlightedText = "\0";
 
     public MainWindow()
     {
@@ -93,23 +95,12 @@ public partial class MainWindow : Window
     private void ApplyLocalization()
     {
         WhatLabel.Content = L10n.FieldWhat;
-        WithLabel.Content = L10n.FieldWith;
         GroupsLabel.Content = L10n.Groups;
         PlanLabel.Content = L10n.Plan;
-        TypeLabel.Content = L10n.Type;
         FormatLabel.Content = L10n.Format;
         ResultLabel.Content = L10n.Result;
-        ModeSimple.Content = L10n.TypeSimple;
-        ModeMirror.Content = L10n.TypeMirror;
         FormatFontLab.Content = L10n.FormatFontLab;
         FormatGlyphs.Content = L10n.FormatGlyphs;
-        GroupCapitals.Content = L10n.GroupLabel(KerningGroup.Capitals);
-        GroupSmallCaps.Content = L10n.GroupLabel(KerningGroup.SmallCaps);
-        GroupLowercase.Content = L10n.GroupLabel(KerningGroup.Lowercase);
-        GroupPunctuation.Content = L10n.GroupLabel(KerningGroup.Punctuation);
-        GroupNonAlphabetic.Content = L10n.GroupLabel(KerningGroup.NonAlphabetic);
-        GroupLiningFigures.Content = L10n.GroupLabel(KerningGroup.LiningFigures);
-        GroupOldstyleFigures.Content = L10n.GroupLabel(KerningGroup.OldstyleFigures);
         SaveButton.Content = L10n.SaveEllipsis;
         CopyButton.Content = _copiedTimer.IsEnabled ? L10n.Copied : L10n.Copy;
         FileMenuItem.Header = L10n.File;
@@ -151,6 +142,11 @@ public partial class MainWindow : Window
 
     private void FieldsChanged(object sender, TextChangedEventArgs e)
     {
+        if (_highlighting)
+        {
+            return;
+        }
+
         Refresh();
         SchedulePersist();
     }
@@ -158,12 +154,6 @@ public partial class MainWindow : Window
     private void OptionsChanged(object sender, RoutedEventArgs e)
     {
         Refresh();
-        SchedulePersist();
-    }
-
-    private void PlanChanged(object sender, RoutedEventArgs e)
-    {
-        RefreshPlan();
         SchedulePersist();
     }
 
@@ -218,28 +208,37 @@ public partial class MainWindow : Window
 
     private void Refresh()
     {
-        if (Field1 is null || Field2 is null || ResultBox is null || CopyButton is null || CountLabel is null || SaveButton is null)
+        if (Field1 is null || ResultBox is null || CopyButton is null || CountLabel is null || SaveButton is null)
         {
             return;
         }
 
-        var mode = ModeMirror?.IsChecked == true ? PairMode.Mirror : PairMode.Simple;
-        var output = KerningGenerator.Generate(Field1.Text, Field2.Text, mode, SelectedFormat());
+        var input = FieldText();
+        var classified = GlyphClassifier.Classify(input);
+        if (input != _highlightedText)
+        {
+            HighlightUnknowns(input, classified);
+            _highlightedText = input;
+        }
+        if (GroupsText is not null)
+        {
+            GroupsText.Text = classified.GroupsText;
+        }
+
+        var output = KerningGenerator.Generate(classified, SelectedFormat());
         ResultBox.Text = output;
         CopyButton.IsEnabled = output.Length > 0;
         SaveButton.IsEnabled = output.Length > 0;
-        CountLabel.Text = L10n.PairCount(KerningGenerator.PairCount(Field1.Text, Field2.Text));
-        RefreshPlan();
+        CountLabel.Text = L10n.PairCount(KerningGenerator.PairCount(classified));
+        RefreshPlan(classified.Groups);
     }
 
-    private void RefreshPlan()
+    private void RefreshPlan(IReadOnlyList<KerningGroup> selected)
     {
         if (PlanRows is null)
         {
             return;
         }
-
-        var selected = SelectedGroups();
 
         PlanRows.Children.Clear();
         foreach (var row in KerningPlan.Rows(selected))
@@ -271,7 +270,7 @@ public partial class MainWindow : Window
                 _completedRecipes.Remove(recipe);
             }
 
-            RefreshPlan();
+            Refresh();
             SchedulePersist();
         };
 
@@ -304,19 +303,6 @@ public partial class MainWindow : Window
         };
     }
 
-    private HashSet<KerningGroup> SelectedGroups()
-    {
-        var selected = new HashSet<KerningGroup>();
-        if (GroupCapitals?.IsChecked == true) selected.Add(KerningGroup.Capitals);
-        if (GroupSmallCaps?.IsChecked == true) selected.Add(KerningGroup.SmallCaps);
-        if (GroupLowercase?.IsChecked == true) selected.Add(KerningGroup.Lowercase);
-        if (GroupPunctuation?.IsChecked == true) selected.Add(KerningGroup.Punctuation);
-        if (GroupNonAlphabetic?.IsChecked == true) selected.Add(KerningGroup.NonAlphabetic);
-        if (GroupLiningFigures?.IsChecked == true) selected.Add(KerningGroup.LiningFigures);
-        if (GroupOldstyleFigures?.IsChecked == true) selected.Add(KerningGroup.OldstyleFigures);
-        return selected;
-    }
-
     private OutputFormat SelectedFormat()
     {
         if (FormatGlyphs?.IsChecked == true)
@@ -327,23 +313,107 @@ public partial class MainWindow : Window
         return OutputFormat.FontLab;
     }
 
+    private string FieldText()
+    {
+        if (Field1 is null)
+        {
+            return "";
+        }
+
+        var text = new TextRange(Field1.Document.ContentStart, Field1.Document.ContentEnd).Text;
+        return text.TrimEnd('\r', '\n');
+    }
+
+    private void SetFieldText(string text)
+    {
+        if (Field1 is null)
+        {
+            return;
+        }
+
+        _highlighting = true;
+        Field1.Document.Blocks.Clear();
+        var paragraph = new Paragraph(new Run(text)) { Margin = new Thickness(0) };
+        Field1.Document.Blocks.Add(paragraph);
+        _highlighting = false;
+        _highlightedText = "\0";
+    }
+
+    private void HighlightUnknowns(string text, ClassificationResult classified)
+    {
+        if (Field1 is null || _highlighting)
+        {
+            return;
+        }
+
+        var caret = new TextRange(Field1.Document.ContentStart, Field1.CaretPosition).Text.Length;
+        var unknown = classified.Unknown
+            .Select(token => (token.Start, End: token.Start + token.Length))
+            .OrderBy(range => range.Start)
+            .ToList();
+        var paragraph = new Paragraph { Margin = new Thickness(0) };
+        var index = 0;
+        foreach (var (start, end) in unknown)
+        {
+            if (start > index)
+            {
+                paragraph.Inlines.Add(new Run(text[index..start]));
+            }
+
+            var run = new Run(text[start..Math.Min(end, text.Length)])
+            {
+                Foreground = Brushes.IndianRed
+            };
+            paragraph.Inlines.Add(run);
+            index = Math.Min(end, text.Length);
+        }
+
+        if (index < text.Length)
+        {
+            paragraph.Inlines.Add(new Run(text[index..]));
+        }
+
+        if (paragraph.Inlines.Count == 0)
+        {
+            paragraph.Inlines.Add(new Run(text));
+        }
+
+        _highlighting = true;
+        Field1.Document.Blocks.Clear();
+        Field1.Document.Blocks.Add(paragraph);
+        SetCaret(Field1, caret);
+        _highlighting = false;
+    }
+
+    private static void SetCaret(RichTextBox box, int offset)
+    {
+        var pointer = box.Document.ContentStart;
+        var seen = 0;
+        while (pointer is not null)
+        {
+            if (pointer.GetPointerContext(LogicalDirection.Forward) == TextPointerContext.Text)
+            {
+                var run = pointer.GetTextInRun(LogicalDirection.Forward);
+                if (seen + run.Length >= offset)
+                {
+                    box.CaretPosition = pointer.GetPositionAtOffset(offset - seen) ?? box.Document.ContentEnd;
+                    return;
+                }
+
+                seen += run.Length;
+            }
+
+            pointer = pointer.GetNextContextPosition(LogicalDirection.Forward);
+        }
+
+        box.CaretPosition = box.Document.ContentEnd;
+    }
+
     private void RestoreSession()
     {
         _restoring = true;
         var session = AppSettings.Session;
-        Field1.Text = session.Field1;
-        Field2.Text = session.Field2;
-
-        GroupCapitals.IsChecked = session.SelectedGroups.Contains(KerningGroup.Capitals);
-        GroupSmallCaps.IsChecked = session.SelectedGroups.Contains(KerningGroup.SmallCaps);
-        GroupLowercase.IsChecked = session.SelectedGroups.Contains(KerningGroup.Lowercase);
-        GroupPunctuation.IsChecked = session.SelectedGroups.Contains(KerningGroup.Punctuation);
-        GroupNonAlphabetic.IsChecked = session.SelectedGroups.Contains(KerningGroup.NonAlphabetic);
-        GroupLiningFigures.IsChecked = session.SelectedGroups.Contains(KerningGroup.LiningFigures);
-        GroupOldstyleFigures.IsChecked = session.SelectedGroups.Contains(KerningGroup.OldstyleFigures);
-
-        ModeMirror.IsChecked = session.PairModeValue == PairMode.Mirror;
-        ModeSimple.IsChecked = session.PairModeValue != PairMode.Mirror;
+        SetFieldText(session.Field1);
         switch (session.OutputFormatValue)
         {
             case OutputFormat.Glyphs:
@@ -376,17 +446,14 @@ public partial class MainWindow : Window
 
     private void PersistSession()
     {
-        if (Field1 is null || Field2 is null)
+        if (Field1 is null)
         {
             return;
         }
 
         AppSettings.Session = SessionSnapshot.From(
-            Field1.Text,
-            Field2.Text,
-            SelectedGroups(),
+            FieldText(),
             _completedRecipes,
-            ModeMirror?.IsChecked == true ? PairMode.Mirror : PairMode.Simple,
             SelectedFormat());
         AppSettings.Save();
     }

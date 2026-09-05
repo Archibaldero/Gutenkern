@@ -39,10 +39,7 @@ internal static class AppSettings
             Session = SessionSnapshot.Sanitize(new SessionSnapshot
             {
                 Field1 = model.Field1 ?? "",
-                Field2 = model.Field2 ?? "",
-                Groups = model.Groups ?? [],
                 CompletedRecipes = model.CompletedRecipes ?? [],
-                Mode = model.Mode ?? "simple",
                 Format = model.Format ?? "fontlab"
             });
         }
@@ -67,10 +64,7 @@ internal static class AppSettings
             {
                 Language = Language,
                 Field1 = Session.Field1,
-                Field2 = Session.Field2,
-                Groups = Session.Groups.ToList(),
                 CompletedRecipes = Session.CompletedRecipes.ToList(),
-                Mode = Session.Mode,
                 Format = Session.Format
             }, JsonOptions));
         }

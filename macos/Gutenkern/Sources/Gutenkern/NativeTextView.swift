@@ -5,16 +5,23 @@ struct NativeTextView: View {
     @Binding var text: String
     var isEditable: Bool = true
     var font: NSFont = .systemFont(ofSize: NSFont.systemFontSize)
+    var unknownRanges: [NSRange] = []
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        Representable(text: $text, isEditable: isEditable, font: font, colorScheme: colorScheme)
-            .background(Color(nsColor: FieldChrome.background(colorScheme)))
-            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .strokeBorder(Color(nsColor: FieldChrome.border(colorScheme)), lineWidth: 1)
-            }
+        Representable(
+            text: $text,
+            isEditable: isEditable,
+            font: font,
+            unknownRanges: unknownRanges,
+            colorScheme: colorScheme
+        )
+        .background(Color(nsColor: FieldChrome.background(colorScheme)))
+        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                .strokeBorder(Color(nsColor: FieldChrome.border(colorScheme)), lineWidth: 1)
+        }
     }
 }
 
@@ -22,6 +29,7 @@ private struct Representable: NSViewRepresentable {
     @Binding var text: String
     var isEditable: Bool
     var font: NSFont
+    var unknownRanges: [NSRange]
     var colorScheme: ColorScheme
 
     func makeCoordinator() -> Coordinator {
@@ -35,6 +43,7 @@ private struct Representable: NSViewRepresentable {
         textView.string = text
         configure(textView)
         configureScrollView(scrollView)
+        applyHighlights(textView)
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = false
         scrollView.autohidesScrollers = true
@@ -47,8 +56,13 @@ private struct Representable: NSViewRepresentable {
         configureScrollView(scrollView)
         context.coordinator.text = $text
         if textView.string != text {
+            let selected = textView.selectedRange
             textView.string = text
+            let maxLocation = (text as NSString).length
+            let location = min(selected.location, maxLocation)
+            textView.setSelectedRange(NSRange(location: location, length: 0))
         }
+        applyHighlights(textView)
     }
 
     private func configureScrollView(_ scrollView: NSScrollView) {
@@ -69,8 +83,8 @@ private struct Representable: NSViewRepresentable {
         textView.isEditable = isEditable
         textView.isSelectable = true
         textView.font = font
-        textView.allowsUndo = true
-        textView.isRichText = false
+        textView.allowsUndo = isEditable
+        textView.isRichText = isEditable
         textView.importsGraphics = false
         textView.usesFindBar = true
         textView.isAutomaticQuoteSubstitutionEnabled = false
@@ -84,6 +98,27 @@ private struct Representable: NSViewRepresentable {
         textView.drawsBackground = true
         textView.backgroundColor = FieldChrome.background(colorScheme)
         textView.focusRingType = .none
+        textView.typingAttributes = [
+            .font: font,
+            .foregroundColor: NSColor.textColor
+        ]
+    }
+
+    private func applyHighlights(_ textView: NSTextView) {
+        guard isEditable, let storage = textView.textStorage else {
+            return
+        }
+
+        let full = NSRange(location: 0, length: storage.length)
+        storage.beginEditing()
+        storage.addAttribute(.foregroundColor, value: NSColor.textColor, range: full)
+        for range in unknownRanges {
+            let clamped = NSIntersectionRange(range, full)
+            if clamped.length > 0 {
+                storage.addAttribute(.foregroundColor, value: FieldChrome.unknown, range: clamped)
+            }
+        }
+        storage.endEditing()
     }
 
     final class Coordinator: NSObject, NSTextViewDelegate {
@@ -101,6 +136,13 @@ private struct Representable: NSViewRepresentable {
 }
 
 enum FieldChrome {
+    static let unknown = NSColor(
+        srgbRed: 205.0 / 255.0,
+        green: 92.0 / 255.0,
+        blue: 92.0 / 255.0,
+        alpha: 1
+    )
+
     static func background(_ scheme: ColorScheme) -> NSColor {
         scheme == .dark ? darkBackground : lightBackground
     }

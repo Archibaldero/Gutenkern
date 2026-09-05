@@ -22,9 +22,12 @@ public enum OutputFormat
 
 public static class KerningGenerator
 {
-    public static List<Glyph> Parse(string input)
+    public static List<Glyph> Parse(string input) =>
+        ParseTokens(input).Select(token => token.Glyph).ToList();
+
+    public static List<ParsedToken> ParseTokens(string input)
     {
-        var glyphs = new List<Glyph>();
+        var tokens = new List<ParsedToken>();
         var index = 0;
 
         while (index < input.Length)
@@ -38,6 +41,7 @@ public static class KerningGenerator
 
             if (character == '/')
             {
+                var slash = index;
                 index++;
                 var start = index;
                 while (index < input.Length && input[index] != '/' && !char.IsWhiteSpace(input[index]))
@@ -48,24 +52,56 @@ public static class KerningGenerator
                 var name = input[start..index];
                 if (name.Length > 0)
                 {
-                    glyphs.Add(new NameGlyph(name));
+                    tokens.Add(new ParsedToken(new NameGlyph(name), slash, index - slash));
                 }
 
                 continue;
             }
 
             var elementLength = StringInfo.GetNextTextElementLength(input, index);
-            glyphs.Add(new CharacterGlyph(input.Substring(index, elementLength)));
+            tokens.Add(new ParsedToken(
+                new CharacterGlyph(input.Substring(index, elementLength)),
+                index,
+                elementLength));
             index += elementLength;
         }
 
-        return glyphs;
+        return tokens;
     }
 
-    public static string Generate(string left, string right, PairMode mode, OutputFormat format)
+    public static string Generate(string left, string right, PairMode mode, OutputFormat format) =>
+        Generate(Parse(left), Parse(right), mode, format);
+
+    public static string Generate(string input, OutputFormat format) =>
+        Generate(GlyphClassifier.Classify(input), format);
+
+    public static string Generate(ClassificationResult classified, OutputFormat format)
     {
-        var leftGlyphs = Parse(left);
-        var rightGlyphs = Parse(right);
+        var sections = new List<string>();
+        foreach (var recipe in KerningPlan.Recipes)
+        {
+            if (!classified.TryGet(recipe.Left, out var left) ||
+                !classified.TryGet(recipe.Right, out var right))
+            {
+                continue;
+            }
+
+            var section = Generate(left, right, recipe.Mode, format);
+            if (section.Length > 0)
+            {
+                sections.Add(section);
+            }
+        }
+
+        return string.Join("\n\n\n", sections);
+    }
+
+    public static string Generate(
+        IReadOnlyList<Glyph> leftGlyphs,
+        IReadOnlyList<Glyph> rightGlyphs,
+        PairMode mode,
+        OutputFormat format)
+    {
         if (leftGlyphs.Count == 0 || rightGlyphs.Count == 0)
         {
             return string.Empty;
@@ -99,6 +135,25 @@ public static class KerningGenerator
         }
 
         return leftCount * rightCount;
+    }
+
+    public static int PairCount(string input) => PairCount(GlyphClassifier.Classify(input));
+
+    public static int PairCount(ClassificationResult classified)
+    {
+        var total = 0;
+        foreach (var recipe in KerningPlan.Recipes)
+        {
+            if (!classified.TryGet(recipe.Left, out var left) ||
+                !classified.TryGet(recipe.Right, out var right))
+            {
+                continue;
+            }
+
+            total += left.Count * right.Count;
+        }
+
+        return total;
     }
 
     public static string FormatGlyphs(IReadOnlyList<Glyph> glyphs, OutputFormat format)

@@ -10,27 +10,30 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var didCopy = false
 
+    private var classified: ClassificationResult {
+        GlyphClassifier.classify(session.field1)
+    }
+
     private var output: String {
-        KerningGenerator.generate(
-            left: session.field1,
-            right: session.field2,
-            mode: session.mode,
-            format: session.format
-        )
+        KerningGenerator.generate(classified, format: session.format)
     }
 
     private var pairCount: Int {
-        KerningGenerator.pairCount(left: session.field1, right: session.field2)
+        KerningGenerator.pairCount(classified)
     }
 
     private var planRows: [[String]] {
-        KerningPlan.rows(selected: session.selectedGroups)
+        KerningPlan.rows(selected: Set(classified.groups))
+    }
+
+    private var unknownRanges: [NSRange] {
+        classified.unknown.map { NSRange(location: $0.start, length: $0.length) }
     }
 
     private var labelWidth: CGFloat {
         let _ = languageSettings.preference
         let font = NSFont.preferredFont(forTextStyle: .headline)
-        let labels = [L10n.groups, L10n.plan, L10n.fieldWhat, L10n.fieldWith, L10n.type, L10n.format, L10n.result]
+        let labels = [L10n.groups, L10n.plan, L10n.fieldWhat, L10n.format, L10n.result]
         let widest = labels.map { ($0 as NSString).size(withAttributes: [.font: font]).width }.max() ?? 116
         return ceil(widest)
     }
@@ -41,22 +44,33 @@ struct ContentView: View {
     private static let labelFieldSpacing: CGFloat = 32
 
     var body: some View {
+        HStack(alignment: .top, spacing: 16) {
+            leftColumn
+            resultColumn
+        }
+        .id(languageSettings.preference)
+        .padding(16)
+        .frame(minWidth: 780, minHeight: 640)
+        .onChange(of: scenePhase) { phase in
+            if phase != .active {
+                session.persistNow()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
+            session.persistNow()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { _ in
+            session.persistNow()
+        }
+    }
+
+    private var leftColumn: some View {
         VStack(alignment: .leading, spacing: Self.groupSpacing) {
             VStack(alignment: .leading, spacing: Self.itemSpacing) {
                 HStack(alignment: .top, spacing: Self.labelFieldSpacing) {
                     rowLabel(L10n.groups)
                         .padding(.top, 2)
-                    Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
-                        ForEach(0 ..< (KerningGroup.allCases.count + 1) / 2, id: \.self) { row in
-                            GridRow {
-                                groupToggle(KerningGroup.allCases[row * 2])
-                                if row * 2 + 1 < KerningGroup.allCases.count {
-                                    groupToggle(KerningGroup.allCases[row * 2 + 1])
-                                }
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    groupsField
                 }
 
                 HStack(alignment: .top, spacing: Self.labelFieldSpacing) {
@@ -66,48 +80,18 @@ struct ContentView: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: Self.itemSpacing) {
-                labeledField(L10n.fieldWhat, text: $session.field1, minHeight: 72)
-                labeledField(L10n.fieldWith, text: $session.field2, minHeight: 72)
+            labeledField(L10n.fieldWhat, minHeight: 120)
+
+            labeledRow(L10n.format) {
+                Picker(L10n.format, selection: $session.format) {
+                    Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
+                    Text(L10n.formatGlyphs).tag(OutputFormat.glyphs)
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
             }
 
-            VStack(alignment: .leading, spacing: Self.itemSpacing) {
-                labeledRow(L10n.type) {
-                    Picker(L10n.type, selection: $session.mode) {
-                        Text(L10n.typeSimple).tag(PairMode.simple)
-                        Text(L10n.typeMirror).tag(PairMode.mirror)
-                    }
-                    .pickerStyle(.segmented)
-                    .labelsHidden()
-                }
-
-                labeledRow(L10n.format) {
-                    Picker(L10n.format, selection: $session.format) {
-                        Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
-                        Text(L10n.formatGlyphs).tag(OutputFormat.glyphs)
-                    }
-                    .pickerStyle(.segmented)
-                    .labelsHidden()
-                }
-            }
-
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(alignment: .top, spacing: Self.labelFieldSpacing) {
-                    rowLabel(L10n.result)
-                        .padding(.top, 4)
-                    NativeTextView(
-                        text: .constant(output),
-                        isEditable: false,
-                        font: .monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
-                    )
-                    .frame(minHeight: 140)
-                }
-
-                Text(L10n.pairCount(pairCount))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .padding(.leading, labelWidth + Self.labelFieldSpacing)
-            }
+            Spacer(minLength: 0)
 
             HStack {
                 Spacer()
@@ -123,20 +107,43 @@ struct ContentView: View {
                 .keyboardShortcut("s")
             }
         }
-        .id(languageSettings.preference)
-        .padding(16)
-        .frame(minWidth: 540, minHeight: 760)
-        .onChange(of: scenePhase) { phase in
-            if phase != .active {
-                session.persistNow()
+        .frame(minWidth: 340, maxHeight: .infinity, alignment: .top)
+    }
+
+    private var resultColumn: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .top, spacing: Self.labelFieldSpacing) {
+                rowLabel(L10n.result)
+                    .padding(.top, 4)
+                NativeTextView(
+                    text: .constant(output),
+                    isEditable: false,
+                    font: .monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            Text(L10n.pairCount(pairCount))
+                .font(.callout)
+                .foregroundStyle(.secondary)
+                .padding(.leading, labelWidth + Self.labelFieldSpacing)
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
-            session.persistNow()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { _ in
-            session.persistNow()
-        }
+        .frame(minWidth: 300, maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+
+    private var groupsField: some View {
+        Text(classified.groupsText)
+            .font(.system(size: NSFont.systemFontSize, design: .monospaced))
+            .frame(maxWidth: .infinity, minHeight: 20, alignment: .leading)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+            .background(Color(nsColor: FieldChrome.background(colorScheme)))
+            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .strokeBorder(Color(nsColor: FieldChrome.border(colorScheme)), lineWidth: 1)
+            }
     }
 
     @ViewBuilder
@@ -156,7 +163,7 @@ struct ContentView: View {
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 6)
-        .frame(maxWidth: .infinity, minHeight: 88, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 88, maxHeight: 100, alignment: .topLeading)
         .background(Color(nsColor: FieldChrome.background(colorScheme)))
         .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
         .overlay {
@@ -190,33 +197,12 @@ struct ContentView: View {
         }
     }
 
-    private func groupToggle(_ group: KerningGroup) -> some View {
-        Toggle(isOn: groupBinding(group)) {
-            Text(L10n.groupLabel(group))
-                .lineLimit(1)
-        }
-        .toggleStyle(.checkbox)
-    }
-
-    private func groupBinding(_ group: KerningGroup) -> Binding<Bool> {
-        Binding(
-            get: { session.selectedGroups.contains(group) },
-            set: { isOn in
-                if isOn {
-                    session.selectedGroups.insert(group)
-                } else {
-                    session.selectedGroups.remove(group)
-                }
-            }
-        )
-    }
-
     @ViewBuilder
-    private func labeledField(_ title: String, text: Binding<String>, minHeight: CGFloat) -> some View {
+    private func labeledField(_ title: String, minHeight: CGFloat) -> some View {
         HStack(alignment: .top, spacing: Self.labelFieldSpacing) {
             rowLabel(title)
                 .padding(.top, 4)
-            NativeTextView(text: text)
+            NativeTextView(text: $session.field1, unknownRanges: unknownRanges)
                 .frame(minHeight: minHeight)
         }
     }

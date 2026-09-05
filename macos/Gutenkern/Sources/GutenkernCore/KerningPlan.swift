@@ -38,12 +38,12 @@ public enum KerningPlan {
         rows(selected: selected).map { $0.joined(separator: " ") }.joined(separator: "\n")
     }
 
-    private struct Recipe {
-        let left: KerningGroup
-        let right: KerningGroup
-        let mode: PairMode
+    public struct Recipe: Equatable, Sendable {
+        public let left: KerningGroup
+        public let right: KerningGroup
+        public let mode: PairMode
 
-        var line: String {
+        public var line: String {
             switch mode {
             case .simple:
                 return "\(left.rawValue)/\(right.rawValue)"
@@ -53,7 +53,7 @@ public enum KerningPlan {
         }
     }
 
-    private static let recipes: [Recipe] = [
+    public static let recipes: [Recipe] = [
         Recipe(left: .capitals, right: .capitals, mode: .mirror),
         Recipe(left: .capitals, right: .smallCaps, mode: .simple),
         Recipe(left: .capitals, right: .lowercase, mode: .simple),

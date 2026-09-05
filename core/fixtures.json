@@ -240,5 +240,87 @@
       "selected": ["A", "A.sc", "a", "-", "@", "1p", "1o"],
       "expected": "A/A/A A/A.sc A/a A/-/A A/@/A A/1p/A A/1o/A\nA.sc/A.sc/A.sc A.sc/-/A.sc\na/a/a a/-/a a/@/a a/1p/a a/1o/a\n@/@/@ @/1p/@ @/1o/@\n1p/1p/1p 1p/-/1p\n1o/1o/1o 1o/-/1o"
     }
+  ],
+  "classify": [
+    {
+      "id": "letters-and-punct",
+      "input": "Aa.",
+      "groups": ["A", "a", "-"],
+      "unknown": []
+    },
+    {
+      "id": "small-caps-suffix",
+      "input": "/A.sc /agrave.sc",
+      "groups": ["A.sc"],
+      "unknown": []
+    },
+    {
+      "id": "punctuation-chars",
+      "input": "-–—:;!?",
+      "groups": ["-"],
+      "unknown": []
+    },
+    {
+      "id": "nonalphabetic",
+      "input": "$€",
+      "groups": ["@"],
+      "unknown": []
+    },
+    {
+      "id": "plain-digits",
+      "input": "01 /zero /one",
+      "groups": ["1p"],
+      "unknown": []
+    },
+    {
+      "id": "pnum-drops-plain",
+      "input": "01 /zero.pnum /one.pnum",
+      "groups": ["1p"],
+      "unknown": []
+    },
+    {
+      "id": "onum",
+      "input": "/zero.onum /one.onum",
+      "groups": ["1o"],
+      "unknown": []
+    },
+    {
+      "id": "pnum-onum-drops-onum",
+      "input": "/zero.onum /zero.pnum.onum /one.onum.pnum",
+      "groups": ["1o"],
+      "unknown": []
+    },
+    {
+      "id": "unknown-name",
+      "input": "A /missing.alt",
+      "groups": ["A"],
+      "unknown": ["missing.alt"]
+    }
+  ],
+  "generateAll": [
+    {
+      "id": "capitals-and-period",
+      "input": "A.",
+      "format": "fontlab",
+      "expected": "A/A/A\n\n\nA/./A"
+    },
+    {
+      "id": "capitals-lowercase",
+      "input": "Aa",
+      "format": "fontlab",
+      "expected": "A/A/A\n\n\nA/a\n\n\na/a/a"
+    },
+    {
+      "id": "pnum-only-pairs",
+      "input": "/zero /zero.pnum",
+      "format": "fontlab",
+      "expected": "zero.pnum/zero.pnum/zero.pnum"
+    },
+    {
+      "id": "empty",
+      "input": "",
+      "format": "fontlab",
+      "expected": ""
+    }
   ]
 }

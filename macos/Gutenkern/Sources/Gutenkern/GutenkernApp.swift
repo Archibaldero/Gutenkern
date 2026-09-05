@@ -7,7 +7,7 @@ struct GutenkernApp: App {
             ContentView()
         }
         .windowResizability(.contentMinSize)
-        .defaultSize(width: 560, height: 760)
+        .defaultSize(width: 920, height: 760)
         .commands {
             AboutCommands()
         }

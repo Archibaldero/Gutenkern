@@ -9,7 +9,12 @@ struct GutenkernCoreCheck {
         let fixtures = try JSONDecoder().decode(Fixtures.self, from: data)
         var failures = 0
 
-        if fixtures.parse.isEmpty || fixtures.generate.isEmpty || fixtures.plan.isEmpty {
+        if fixtures.parse.isEmpty
+            || fixtures.generate.isEmpty
+            || fixtures.plan.isEmpty
+            || fixtures.classify.isEmpty
+            || fixtures.generateAll.isEmpty
+        {
             fputs("fixtures.json has no cases\n", stderr)
             exit(1)
         }
@@ -82,6 +87,42 @@ struct GutenkernCoreCheck {
             }
         }
 
+        for testCase in fixtures.classify {
+            let classified = GlyphClassifier.classify(testCase.input)
+            let groups = classified.groups.map(\.rawValue)
+            let unknown = classified.unknown.map { token -> String in
+                switch token.glyph {
+                case .character(let character):
+                    return String(character)
+                case .name(let name):
+                    return name
+                }
+            }
+            if groups != testCase.groups || unknown != testCase.unknown {
+                fputs(
+                    "CLASSIFY FAIL \(testCase.id)\n  expected groups: \(testCase.groups) unknown: \(testCase.unknown)\n  actual groups:   \(groups) unknown: \(unknown)\n",
+                    stderr
+                )
+                failures += 1
+            }
+        }
+
+        for testCase in fixtures.generateAll {
+            guard let format = OutputFormat(rawValue: testCase.format) else {
+                fputs("GENERATEALL FAIL \(testCase.id): unknown format \(testCase.format)\n", stderr)
+                failures += 1
+                continue
+            }
+            let actual = KerningGenerator.generate(testCase.input, format: format)
+            if actual != testCase.expected {
+                fputs(
+                    "GENERATEALL FAIL \(testCase.id)\n  expected:\n\(testCase.expected)\n  actual:\n\(actual)\n",
+                    stderr
+                )
+                failures += 1
+            }
+        }
+
         if failures > 0 {
             fputs("\(failures) fixture(s) failed\n", stderr)
             exit(1)
@@ -93,7 +134,12 @@ struct GutenkernCoreCheck {
             exit(1)
         }
 
-        print("All \(fixtures.parse.count + fixtures.generate.count + fixtures.plan.count) fixtures passed")
+        let fixtureCount = fixtures.parse.count
+            + fixtures.generate.count
+            + fixtures.plan.count
+            + fixtures.classify.count
+            + fixtures.generateAll.count
+        print("All \(fixtureCount) fixtures passed")
     }
 
     private static func resolveFixturesURL() throws -> URL {
@@ -127,21 +173,21 @@ private func runSessionSnapshotChecks() -> Int {
 
     let dirty = SessionSnapshot(
         field1: "AV",
-        field2: "To",
+        field2: "ignored",
         groups: ["A", "unknown", "a"],
         completedRecipes: ["A/A/A", "", "a/a/a"],
         mode: "mirror",
         format: "glyphs"
     ).sanitized()
-    if dirty.groups != ["A", "a"] {
-        fputs("SESSION FAIL groups: \(dirty.groups)\n", stderr)
+    if dirty.field1 != "AV" || !dirty.field2.isEmpty || !dirty.groups.isEmpty {
+        fputs("SESSION FAIL field/groups: \(dirty.field1) \(dirty.field2) \(dirty.groups)\n", stderr)
         failures += 1
     }
     if dirty.completedRecipes != ["A/A/A", "a/a/a"] {
         fputs("SESSION FAIL recipes: \(dirty.completedRecipes)\n", stderr)
         failures += 1
     }
-    if dirty.pairMode != .mirror || dirty.outputFormat != .glyphs {
+    if dirty.pairMode != .simple || dirty.outputFormat != .glyphs {
         fputs("SESSION FAIL mode/format: \(dirty.mode) \(dirty.format)\n", stderr)
         failures += 1
     }
@@ -187,6 +233,8 @@ private struct Fixtures: Decodable {
     let parse: [ParseCase]
     let generate: [GenerateCase]
     let plan: [PlanCase]
+    let classify: [ClassifyCase]
+    let generateAll: [GenerateAllCase]
 }
 
 private struct ParseCase: Decodable {
@@ -212,5 +260,19 @@ private struct GenerateCase: Decodable {
 private struct PlanCase: Decodable {
     let id: String
     let selected: [String]
+    let expected: String
+}
+
+private struct ClassifyCase: Decodable {
+    let id: String
+    let input: String
+    let groups: [String]
+    let unknown: [String]
+}
+
+private struct GenerateAllCase: Decodable {
+    let id: String
+    let input: String
+    let format: String
     let expected: String
 }

@@ -104,14 +104,14 @@ public static class KerningPlan
         return result;
     }
 
-    private readonly record struct Recipe(KerningGroup Left, KerningGroup Right, PairMode Mode)
+    public readonly record struct Recipe(KerningGroup Left, KerningGroup Right, PairMode Mode)
     {
         public string Line => Mode == PairMode.Simple
             ? $"{Code(Left)}/{Code(Right)}"
             : $"{Code(Left)}/{Code(Right)}/{Code(Left)}";
     }
 
-    private static readonly Recipe[] Recipes =
+    public static IReadOnlyList<Recipe> Recipes { get; } =
     [
         new(KerningGroup.Capitals, KerningGroup.Capitals, PairMode.Mirror),
         new(KerningGroup.Capitals, KerningGroup.SmallCaps, PairMode.Simple),
