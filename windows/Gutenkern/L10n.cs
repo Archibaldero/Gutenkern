@@ -143,7 +143,7 @@ internal static class L10n
             }
 
             return JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(
-                File.ReadAllText(path)) ?? [];
+                System.IO.File.ReadAllText(path)) ?? [];
         }
         catch
         {
@@ -154,13 +154,13 @@ internal static class L10n
     private static string? CatalogPath()
     {
         var nextToExe = Path.Combine(AppContext.BaseDirectory, "l10n.json");
-        if (File.Exists(nextToExe))
+        if (System.IO.File.Exists(nextToExe))
         {
             return nextToExe;
         }
 
         var fromSource = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "core", "l10n.json"));
-        return File.Exists(fromSource) ? fromSource : null;
+        return System.IO.File.Exists(fromSource) ? fromSource : null;
     }
 
     private enum PluralCategory
