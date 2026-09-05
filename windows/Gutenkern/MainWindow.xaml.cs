@@ -283,14 +283,14 @@ public partial class MainWindow : Window
         }
         else
         {
-            link.Foreground = SystemColors.HotlightBrush;
-            run.Foreground = SystemColors.HotlightBrush;
+            link.Foreground = SystemColors.HotTrackBrush;
+            run.Foreground = SystemColors.HotTrackBrush;
             run.TextDecorations = new TextDecorationCollection
             {
                 new TextDecoration
                 {
                     Location = TextDecorationLocation.Underline,
-                    Pen = new Pen(SystemColors.HotlightBrush, 1) { DashStyle = DashStyles.Dot },
+                    Pen = new Pen(SystemColors.HotTrackBrush, 1) { DashStyle = DashStyles.Dot },
                     PenOffset = 1
                 }
             };
