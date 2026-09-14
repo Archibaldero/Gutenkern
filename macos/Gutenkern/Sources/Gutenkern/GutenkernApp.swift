@@ -1,13 +1,14 @@
+import GutenkernCore
 import SwiftUI
 
 @main
 struct GutenkernApp: App {
     var body: some Scene {
-        Window("Gutenkern", id: "main") {
+        Window("", id: "main") {
             ContentView()
         }
         .windowResizability(.contentMinSize)
-        .defaultSize(width: 920, height: 760)
+        .defaultSize(width: 760, height: 760)
         .commands {
             AboutCommands()
         }
@@ -28,6 +29,7 @@ struct GutenkernApp: App {
 
 private struct AboutCommands: Commands {
     @ObservedObject private var languageSettings = LanguageSettings.shared
+    @ObservedObject private var session = SessionState.shared
     @Environment(\.openWindow) private var openWindow
 
     var body: some Commands {
@@ -42,6 +44,15 @@ private struct AboutCommands: Commands {
                 openWindow(id: "settings")
             }
             .keyboardShortcut(",", modifiers: .command)
+            Divider()
+            Picker(formatTitle, selection: $session.format) {
+                Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
+                Text(L10n.formatGlyphs).tag(OutputFormat.glyphs)
+            }
+            Button(resetTitle) {
+                NotificationCenter.default.post(name: .gutenkernResetProgress, object: nil)
+            }
+            .disabled(!session.hasProgress)
         }
     }
 
@@ -53,5 +64,15 @@ private struct AboutCommands: Commands {
     private var settingsTitle: String {
         let _ = languageSettings.preference
         return L10n.settings
+    }
+
+    private var formatTitle: String {
+        let _ = languageSettings.preference
+        return L10n.format
+    }
+
+    private var resetTitle: String {
+        let _ = languageSettings.preference
+        return L10n.resetProgress
     }
 }

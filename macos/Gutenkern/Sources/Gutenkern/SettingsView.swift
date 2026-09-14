@@ -1,8 +1,10 @@
 import AppKit
+import GutenkernCore
 import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject private var languageSettings = LanguageSettings.shared
+    @ObservedObject private var session = SessionState.shared
 
     var body: some View {
         let _ = languageSettings.preference
@@ -13,6 +15,15 @@ struct SettingsView: View {
                     Text(language.nativeName).tag(language.code)
                 }
             }
+            Picker(L10n.format, selection: $session.format) {
+                Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
+                Text(L10n.formatGlyphs).tag(OutputFormat.glyphs)
+            }
+            .pickerStyle(.segmented)
+            Button(L10n.resetProgress) {
+                NotificationCenter.default.post(name: .gutenkernResetProgress, object: nil)
+            }
+            .disabled(!session.hasProgress)
         }
         .padding(20)
         .frame(width: 380)

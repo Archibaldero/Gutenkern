@@ -16,12 +16,7 @@ struct NativeTextView: View {
             unknownRanges: unknownRanges,
             colorScheme: colorScheme
         )
-        .background(Color(nsColor: FieldChrome.background(colorScheme)))
-        .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 4, style: .continuous)
-                .strokeBorder(Color(nsColor: FieldChrome.border(colorScheme)), lineWidth: 1)
-        }
+        .fieldChrome(colorScheme)
     }
 }
 
@@ -132,6 +127,17 @@ private struct Representable: NSViewRepresentable {
             guard let textView = notification.object as? NSTextView else { return }
             text.wrappedValue = textView.string
         }
+    }
+}
+
+extension View {
+    func fieldChrome(_ colorScheme: ColorScheme) -> some View {
+        background(Color(nsColor: FieldChrome.background(colorScheme)))
+            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .strokeBorder(Color(nsColor: FieldChrome.border(colorScheme)), lineWidth: 1)
+            }
     }
 }
 

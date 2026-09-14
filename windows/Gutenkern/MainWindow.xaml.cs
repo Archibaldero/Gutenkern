@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,22 +13,36 @@ namespace Gutenkern;
 public partial class MainWindow : Window
 {
     private static readonly RoutedCommand OpenSettingsCommand = new();
-    private static readonly RoutedCommand CopyResultCommand = new();
-    private readonly DispatcherTimer _copiedTimer;
     private readonly DispatcherTimer _persistTimer;
+    private readonly DispatcherTimer _toastTimer;
     private readonly HashSet<string> _completedRecipes = [];
-    private bool _restoring;
+    private readonly HashSet<string> _completedBlocks = [];
+    private readonly MarkHistory _markHistory = new();
+    private bool _restoring = true;
     private bool _highlighting;
+    private bool _lastActionWasMark;
+    private bool _ignoringCategorySync;
     private string _highlightedText = "\0";
+    private string _output = "";
+    private string _resultText = "\0";
+    private Dictionary<string, HashSet<string>> _previousGroupKeys = [];
+    private HashSet<string> _warningGroupIds = [];
+    private HashSet<string> _newUnkernedKeys = [];
+    private List<RecipeSection> _recipeSections = [];
+    private ResultLayout _layout = ResultLayout.Empty;
+    private OutputFormat _format = OutputFormat.FontLab;
 
     public MainWindow()
     {
         InitializeComponent();
-        _copiedTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5) };
-        _copiedTimer.Tick += (_, _) =>
+        _toastTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+        _toastTimer.Tick += (_, _) =>
         {
-            _copiedTimer.Stop();
-            CopyButton.Content = L10n.Copy;
+            _toastTimer.Stop();
+            if (CopiedToast is not null)
+            {
+                CopiedToast.Visibility = Visibility.Collapsed;
+            }
         };
         _persistTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(300) };
         _persistTimer.Tick += (_, _) =>
@@ -39,23 +54,56 @@ public partial class MainWindow : Window
         CommandBindings.Add(new CommandBinding(
             ApplicationCommands.Save,
             SaveButton_Click,
-            (_, e) => e.CanExecute = !string.IsNullOrEmpty(ResultBox?.Text)));
-        CommandBindings.Add(new CommandBinding(
-            CopyResultCommand,
-            CopyButton_Click,
-            (_, e) => e.CanExecute = !string.IsNullOrEmpty(ResultBox?.Text)));
+            (_, e) => e.CanExecute = !string.IsNullOrEmpty(_output)));
         CommandBindings.Add(new CommandBinding(OpenSettingsCommand, (_, _) => OpenSettings()));
         InputBindings.Add(new KeyBinding(OpenSettingsCommand, Key.OemComma, ModifierKeys.Control));
-        InputBindings.Add(new KeyBinding(CopyResultCommand, Key.C, ModifierKeys.Control | ModifierKeys.Shift));
         ApplyFieldChrome();
         SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
         RestoreSession();
         Refresh();
+        Loaded += (_, _) =>
+        {
+            PromptFormatIfNeeded();
+            _restoring = false;
+        };
+        ResultBox.AddHandler(ScrollViewer.ScrollChangedEvent, new ScrollChangedEventHandler(Result_ScrollChanged), true);
+    }
+
+    public OutputFormat CurrentFormat() => _format;
+
+    public bool HasProgress() => _completedBlocks.Count > 0 || _completedRecipes.Count > 0;
+
+    public void SetFormat(OutputFormat format)
+    {
+        if (_format == format)
+        {
+            return;
+        }
+
+        _format = format;
+        SyncFormatMenus();
+        Refresh();
+        SchedulePersist();
+    }
+
+    public void ResetProgress()
+    {
+        ApplyState(new KerningMarkState([]));
+    }
+
+    protected override void OnPreviewKeyDown(KeyEventArgs e)
+    {
+        base.OnPreviewKeyDown(e);
+        if (HandleMarkHistoryKey(e))
+        {
+            e.Handled = true;
+        }
     }
 
     protected override void OnClosed(EventArgs e)
     {
         _persistTimer.Stop();
+        _toastTimer.Stop();
         PersistSession();
         SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
         base.OnClosed(e);
@@ -94,20 +142,28 @@ public partial class MainWindow : Window
 
     private void ApplyLocalization()
     {
-        WhatLabel.Content = L10n.FieldWhat;
-        GroupsLabel.Content = L10n.Groups;
-        PlanLabel.Content = L10n.Plan;
-        FormatLabel.Content = L10n.Format;
-        ResultLabel.Content = L10n.Result;
-        FormatFontLab.Content = L10n.FormatFontLab;
-        FormatGlyphs.Content = L10n.FormatGlyphs;
+        WhatLabel.Text = L10n.FieldWhat;
+        ResultLabel.Text = L10n.Result;
+        ResultPlaceholder.Text = L10n.ResultPlaceholder;
+        CopyAllButton.Content = L10n.CopyAll;
         SaveButton.Content = L10n.SaveEllipsis;
-        CopyButton.Content = _copiedTimer.IsEnabled ? L10n.Copied : L10n.Copy;
+        SaveAndOpenButton.Content = L10n.SaveAndOpenEllipsis;
+        UndoMenuItem.Header = L10n.Undo;
+        RedoMenuItem.Header = L10n.Redo;
         FileMenuItem.Header = L10n.File;
         SaveMenuItem.Header = L10n.Save;
         SettingsMenuItem.Header = L10n.Settings;
+        SettingsWindowMenuItem.Header = L10n.Settings;
+        FormatFontLabMenu.Header = L10n.FormatFontLab;
+        FormatGlyphsMenu.Header = L10n.FormatGlyphs;
+        ResetProgressMenu.Header = L10n.ResetProgress;
         HelpMenuItem.Header = L10n.Help;
         AboutMenuItem.Header = L10n.About;
+        if (CopiedToastText is not null)
+        {
+            CopiedToastText.Text = L10n.GroupCopied;
+        }
+        RebuildCategoryList();
     }
 
     internal void ReloadLocalization()
@@ -147,32 +203,36 @@ public partial class MainWindow : Window
             return;
         }
 
+        _lastActionWasMark = false;
         Refresh();
         SchedulePersist();
     }
 
-    private void OptionsChanged(object sender, RoutedEventArgs e)
+    private void FormatMenu_Click(object sender, RoutedEventArgs e)
     {
-        Refresh();
-        SchedulePersist();
+        SetFormat(sender == FormatGlyphsMenu ? OutputFormat.Glyphs : OutputFormat.FontLab);
     }
 
-    private void CopyButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (string.IsNullOrEmpty(ResultBox.Text))
-        {
-            return;
-        }
+    private void CopyAll_Click(object sender, RoutedEventArgs e) => CopyText(_output);
 
-        Clipboard.SetText(ResultBox.Text);
-        CopyButton.Content = L10n.Copied;
-        _copiedTimer.Stop();
-        _copiedTimer.Start();
+    private void SaveButton_Click(object sender, RoutedEventArgs e) => SaveOutput(open: false);
+
+    private void SaveAndOpen_Click(object sender, RoutedEventArgs e) => SaveOutput(open: true);
+
+    private void ResetProgress_Click(object sender, RoutedEventArgs e) => ResetProgress();
+
+    private void UndoMarks_Click(object sender, RoutedEventArgs e) => UndoMarks();
+
+    private void RedoMarks_Click(object sender, RoutedEventArgs e) => RedoMarks();
+
+    private void SaveOutput(bool open)
+    {
+        SaveText(_output, open);
     }
 
-    private void SaveButton_Click(object sender, RoutedEventArgs e)
+    private void SaveText(string text, bool open)
     {
-        if (string.IsNullOrEmpty(ResultBox.Text))
+        if (string.IsNullOrEmpty(text))
         {
             return;
         }
@@ -193,7 +253,11 @@ public partial class MainWindow : Window
 
         try
         {
-            File.WriteAllText(dialog.FileName, ResultBox.Text);
+            File.WriteAllText(dialog.FileName, text);
+            if (open)
+            {
+                Process.Start(new ProcessStartInfo(dialog.FileName) { UseShellExecute = true });
+            }
         }
         catch (Exception ex)
         {
@@ -208,109 +272,387 @@ public partial class MainWindow : Window
 
     private void Refresh()
     {
-        if (Field1 is null || ResultBox is null || CopyButton is null || CountLabel is null || SaveButton is null)
+        if (Field1 is null || SaveButton is null || ResultBox is null)
         {
             return;
         }
 
-        var input = FieldText();
-        var classified = GlyphClassifier.Classify(input);
-        if (input != _highlightedText)
-        {
-            HighlightUnknowns(input, classified);
-            _highlightedText = input;
-        }
-        if (GroupsText is not null)
-        {
-            GroupsText.Text = classified.GroupsText;
-        }
-
-        var output = KerningGenerator.Generate(classified, SelectedFormat());
-        ResultBox.Text = output;
-        CopyButton.IsEnabled = output.Length > 0;
-        SaveButton.IsEnabled = output.Length > 0;
-        CountLabel.Text = L10n.PairCount(KerningGenerator.PairCount(classified));
-        RefreshPlan(classified.Groups);
+        var text = FieldText();
+        var classified = GlyphClassifier.Classify(text);
+        HighlightUnknowns(text, classified);
+        _recipeSections = KerningGenerator.GenerateRecipeSections(classified, _format);
+        _layout = ResultLayout.Build(_recipeSections, ResultLayoutMode.Row);
+        _output = _layout.Text;
+        SyncCompletion();
+        RefreshNewUnkerned();
+        UpdateResultDocument();
+        RebuildCategoryList();
+        UpdateFooter();
+        SyncFormatMenus();
+        ResultPlaceholder.Visibility = string.IsNullOrEmpty(_output) ? Visibility.Visible : Visibility.Collapsed;
+        CopyAllButton.IsEnabled = !string.IsNullOrEmpty(_output);
+        SaveButton.IsEnabled = !string.IsNullOrEmpty(_output);
+        SaveAndOpenButton.IsEnabled = !string.IsNullOrEmpty(_output);
+        ResetProgressMenu.IsEnabled = HasProgress();
     }
 
-    private void RefreshPlan(IReadOnlyList<KerningGroup> selected)
+    private void UpdateFooter()
     {
-        if (PlanRows is null)
+        var total = _layout.Tokens.Count;
+        var done = _completedBlocks.Intersect(_layout.Tokens.Select(token => token.Key)).Count();
+        if (TotalPairCount is not null)
+        {
+            TotalPairCount.Text = L10n.PairProgress(done, total);
+            TotalPairCount.Visibility = total == 0 ? Visibility.Hidden : Visibility.Visible;
+        }
+    }
+
+    private void RebuildCategoryList()
+    {
+        if (CategoryList is null)
         {
             return;
         }
 
-        PlanRows.Children.Clear();
-        foreach (var row in KerningPlan.Rows(selected))
+        var selected = CategoryList.SelectedItem is ListBoxItem selectedItem
+            ? selectedItem.Tag as KerningGroup?
+            : null;
+        _ignoringCategorySync = true;
+        CategoryList.Items.Clear();
+        var progressByCategory = _layout.ProgressByCategory(_completedBlocks);
+        foreach (var group in Enum.GetValues<KerningGroup>())
         {
-            var wrap = new WrapPanel { Orientation = Orientation.Horizontal };
-            foreach (var recipe in row)
+            var available = _layout.HasCategory(group);
+            progressByCategory.TryGetValue(group, out var progress);
+            var item = new ListBoxItem
             {
-                wrap.Children.Add(PlanToken(recipe));
+                Content = L10n.GroupSidebarLabel(group, progress.Done, progress.Total),
+                Tag = group,
+                IsEnabled = available,
+                Foreground = available
+                    ? SystemColors.ControlTextBrush
+                    : SystemColors.GrayTextBrush
+            };
+            CategoryList.Items.Add(item);
+            if (selected == group && item.IsEnabled)
+            {
+                item.IsSelected = true;
+            }
+        }
+        _ignoringCategorySync = false;
+    }
+
+    private void CategoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_ignoringCategorySync
+            || CategoryList.SelectedItem is not ListBoxItem item
+            || item.Tag is not KerningGroup group
+            || !_layout.CategoryStarts.TryGetValue(group, out var start))
+        {
+            return;
+        }
+
+        _ignoringCategorySync = true;
+        ScrollResultTo(start);
+        Dispatcher.BeginInvoke(() => _ignoringCategorySync = false, DispatcherPriority.Background);
+    }
+
+    private void Result_ScrollChanged(object sender, ScrollChangedEventArgs e)
+    {
+        if (_ignoringCategorySync || ResultBox is null || _layout.IsEmpty)
+        {
+            return;
+        }
+
+        var pointer = ResultBox.GetPositionFromPoint(new Point(8, 8), true);
+        if (pointer is null)
+        {
+            return;
+        }
+
+        var index = OffsetFromStart(pointer);
+        var category = _layout.CategoryAtUtf16(index);
+        if (category is null)
+        {
+            return;
+        }
+
+        _ignoringCategorySync = true;
+        foreach (ListBoxItem item in CategoryList.Items)
+        {
+            item.IsSelected = item.Tag is KerningGroup group && group == category;
+        }
+        _ignoringCategorySync = false;
+    }
+
+    private void UpdateResultDocument()
+    {
+        if (ResultBox is null)
+        {
+            return;
+        }
+
+        var state = CurrentMarkState();
+        if (_resultText == _layout.Text)
+        {
+            ApplyResultMarks(state);
+            return;
+        }
+
+        var paragraph = new Paragraph { Background = Brushes.Transparent };
+        ResultBox.Document.Background = Brushes.Transparent;
+        var cursor = 0;
+        foreach (var token in _layout.Tokens)
+        {
+            if (token.Utf16Start > cursor)
+            {
+                paragraph.Inlines.Add(new Run(_layout.Text[cursor..token.Utf16Start]));
             }
 
-            PlanRows.Children.Add(wrap);
+            var run = new Run(token.Display) { Tag = token };
+            ApplyTokenStyle(run, token, state);
+            paragraph.Inlines.Add(run);
+            cursor = token.Utf16End;
+        }
+
+        if (cursor < _layout.Text.Length)
+        {
+            paragraph.Inlines.Add(new Run(_layout.Text[cursor..]));
+        }
+
+        if (paragraph.Inlines.Count == 0)
+        {
+            paragraph.Inlines.Add(new Run(""));
+        }
+
+        ResultBox.Document.Blocks.Clear();
+        ResultBox.Document.Blocks.Add(paragraph);
+        _resultText = _layout.Text;
+    }
+
+    private void ApplyResultMarks(KerningMarkState state)
+    {
+        if (ResultBox.Document.Blocks.FirstBlock is not Paragraph paragraph)
+        {
+            return;
+        }
+
+        foreach (var inline in paragraph.Inlines)
+        {
+            if (inline is Run run && run.Tag is ResultToken token)
+            {
+                ApplyTokenStyle(run, token, state);
+            }
         }
     }
 
-    private TextBlock PlanToken(string recipe)
+    private void ApplyTokenStyle(Run run, ResultToken token, KerningMarkState state)
     {
-        var done = _completedRecipes.Contains(recipe);
-        var run = new Run(recipe);
-        var link = new Hyperlink(run)
+        if (state.PairMark(token.Key) == PairMark.Done)
         {
-            Cursor = Cursors.Hand,
-            TextDecorations = new TextDecorationCollection(),
-            Focusable = false
-        };
-        link.Click += (_, _) =>
-        {
-            if (!_completedRecipes.Add(recipe))
-            {
-                _completedRecipes.Remove(recipe);
-            }
-
-            Refresh();
-            SchedulePersist();
-        };
-
-        if (done)
-        {
-            link.Foreground = SystemColors.WindowTextBrush;
-            run.Foreground = SystemColors.WindowTextBrush;
             run.TextDecorations = TextDecorations.Strikethrough;
+            run.FontWeight = FontWeights.Normal;
+            run.Foreground = SystemColors.WindowTextBrush;
+            return;
+        }
+
+        run.TextDecorations = null;
+        if (_newUnkernedKeys.Contains(token.Key))
+        {
+            run.FontWeight = FontWeights.Bold;
+            run.Foreground = NewPairBrush();
         }
         else
         {
-            link.Foreground = SystemColors.HotTrackBrush;
-            run.Foreground = SystemColors.HotTrackBrush;
-            run.TextDecorations = new TextDecorationCollection
-            {
-                new TextDecoration
-                {
-                    Location = TextDecorationLocation.Underline,
-                    Pen = new Pen(SystemColors.HotTrackBrush, 1) { DashStyle = DashStyles.Dot },
-                    PenOffset = 1
-                }
-            };
+            run.FontWeight = FontWeights.Normal;
+            run.Foreground = SystemColors.WindowTextBrush;
         }
-
-        return new TextBlock(link)
-        {
-            FontFamily = new FontFamily("Consolas"),
-            FontSize = 13,
-            Margin = new Thickness(0, 0, 8, 2)
-        };
     }
 
-    private OutputFormat SelectedFormat()
+    private static Brush NewPairBrush() =>
+        new SolidColorBrush(Color.FromRgb(0xFF, 0x40, 0x00));
+
+    private void RefreshNewUnkerned()
     {
-        if (FormatGlyphs?.IsChecked == true)
+        var current = _layout.KeysByGroup();
+        var updated = NewUnkernedNotice.Update(
+            _previousGroupKeys,
+            current,
+            _completedBlocks,
+            _warningGroupIds,
+            _newUnkernedKeys);
+        _warningGroupIds = updated.WarningGroupIds;
+        _newUnkernedKeys = updated.NewKeys;
+        _previousGroupKeys = current;
+    }
+
+    private void Result_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+    {
+        var selection = ResultBox.Selection;
+        var selectedText = selection.Text.Replace("\r", "");
+        var start = OffsetFromStart(selection.Start);
+        var tokens = selectedText.Length > 0
+            ? _layout.TokensInUtf16(start, selectedText.Length)
+            : _layout.TokensInUtf16(start, 0);
+        var keys = tokens.Select(token => token.Key).ToList();
+        var copyText = selectedText.Length > 0 ? selectedText : tokens.FirstOrDefault()?.Display ?? "";
+        var saveText = selectedText.Length > 0 ? selectedText : _layout.Text;
+        var state = CurrentMarkState();
+
+        var menu = new ContextMenu();
+        menu.Items.Add(MenuItem(L10n.Copy, () => CopyText(copyText), copyText.Length > 0));
+        menu.Items.Add(MenuItem(
+            L10n.StrikeThrough,
+            () => ApplyState(ResultSelectionMarks.Strike(keys, state)),
+            ResultSelectionMarks.CanStrike(keys, state)));
+        menu.Items.Add(MenuItem(
+            L10n.ClearStrike,
+            () => ApplyState(ResultSelectionMarks.Unstrike(keys, state)),
+            ResultSelectionMarks.CanUnstrike(keys, state)));
+        menu.Items.Add(MenuItem(L10n.SaveAsFile, () => SaveText(saveText, false), saveText.Length > 0));
+        ResultBox.ContextMenu = menu;
+    }
+
+    private int OffsetFromStart(TextPointer pointer) =>
+        new TextRange(ResultBox.Document.ContentStart, pointer).Text.Replace("\r", "").Length;
+
+    private void ScrollResultTo(int utf16Start)
+    {
+        if (ResultBox.Document.Blocks.FirstBlock is not Paragraph paragraph)
         {
-            return OutputFormat.Glyphs;
+            return;
         }
 
-        return OutputFormat.FontLab;
+        var seen = 0;
+        foreach (var inline in paragraph.Inlines)
+        {
+            if (inline is not Run run)
+            {
+                continue;
+            }
+
+            var length = run.Text.Length;
+            if (seen + length >= utf16Start)
+            {
+                run.BringIntoView();
+                return;
+            }
+
+            seen += length;
+        }
+    }
+
+    private static MenuItem MenuItem(string header, Action action, bool enabled)
+    {
+        var item = new MenuItem { Header = header, IsEnabled = enabled };
+        item.Click += (_, _) => action();
+        return item;
+    }
+
+    private void CopyText(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
+
+        Clipboard.SetText(text);
+        ShowCopiedToast(L10n.GroupCopied);
+    }
+
+    private void ApplyState(KerningMarkState state, bool record = true)
+    {
+        if (record)
+        {
+            _markHistory.Record(CurrentMarkState(), state);
+            _lastActionWasMark = true;
+        }
+
+        var completion = CurrentCompletion();
+        completion.ApplyDone(state.Done, _recipeSections);
+        ApplyCompletion(completion);
+        RefreshNewUnkerned();
+        RebuildCategoryList();
+        UpdateFooter();
+        ApplyResultMarks(CurrentMarkState());
+        SchedulePersist();
+    }
+
+    private void UndoMarks()
+    {
+        var previous = _markHistory.Undo(CurrentMarkState());
+        if (previous is null)
+        {
+            return;
+        }
+
+        ApplyState(previous, record: false);
+    }
+
+    private void RedoMarks()
+    {
+        var next = _markHistory.Redo(CurrentMarkState());
+        if (next is null)
+        {
+            return;
+        }
+
+        ApplyState(next, record: false);
+    }
+
+    private bool HandleMarkHistoryKey(KeyEventArgs e)
+    {
+        if (!Keyboard.Modifiers.HasFlag(ModifierKeys.Control) || !IsZKey(e))
+        {
+            return false;
+        }
+
+        if (!_lastActionWasMark)
+        {
+            return false;
+        }
+
+        if (Keyboard.Modifiers.HasFlag(ModifierKeys.Shift))
+        {
+            if (!_markHistory.CanRedo)
+            {
+                return false;
+            }
+
+            RedoMarks();
+            return true;
+        }
+
+        if (!_markHistory.CanUndo)
+        {
+            return false;
+        }
+
+        UndoMarks();
+        return true;
+    }
+
+    private static bool IsZKey(KeyEventArgs e) => e.Key == Key.Z || e.SystemKey == Key.Z;
+
+    private KerningMarkState CurrentMarkState() => new(_completedBlocks);
+
+    private void ShowCopiedToast(string text)
+    {
+        if (CopiedToast is null || CopiedToastText is null)
+        {
+            return;
+        }
+
+        CopiedToastText.Text = text;
+        CopiedToast.Visibility = Visibility.Visible;
+        _toastTimer.Stop();
+        _toastTimer.Start();
+    }
+
+    private void SyncFormatMenus()
+    {
+        FormatFontLabMenu.IsChecked = _format == OutputFormat.FontLab;
+        FormatGlyphsMenu.IsChecked = _format == OutputFormat.Glyphs;
     }
 
     private string FieldText()
@@ -341,7 +683,7 @@ public partial class MainWindow : Window
 
     private void HighlightUnknowns(string text, ClassificationResult classified)
     {
-        if (Field1 is null || _highlighting)
+        if (Field1 is null || _highlighting || text == _highlightedText)
         {
             return;
         }
@@ -383,6 +725,7 @@ public partial class MainWindow : Window
         Field1.Document.Blocks.Add(paragraph);
         SetCaret(Field1, caret);
         _highlighting = false;
+        _highlightedText = text;
     }
 
     private static void SetCaret(RichTextBox box, int offset)
@@ -409,28 +752,76 @@ public partial class MainWindow : Window
         box.CaretPosition = box.Document.ContentEnd;
     }
 
+    private KerningCompletion CurrentCompletion() =>
+        new(_completedRecipes, _completedBlocks);
+
+    private void ApplyCompletion(KerningCompletion completion)
+    {
+        _completedRecipes.Clear();
+        foreach (var recipe in completion.Recipes)
+        {
+            _completedRecipes.Add(recipe);
+        }
+
+        _completedBlocks.Clear();
+        foreach (var block in completion.Blocks)
+        {
+            _completedBlocks.Add(block);
+        }
+    }
+
+    private void SyncCompletion()
+    {
+        var completion = CurrentCompletion();
+        completion.Sync(_recipeSections);
+        if (completion.Recipes.SetEquals(_completedRecipes) &&
+            completion.Blocks.SetEquals(_completedBlocks))
+        {
+            return;
+        }
+
+        ApplyCompletion(completion);
+        if (!_restoring)
+        {
+            SchedulePersist();
+        }
+    }
+
     private void RestoreSession()
     {
         _restoring = true;
         var session = AppSettings.Session;
         SetFieldText(session.Field1);
-        switch (session.OutputFormatValue)
-        {
-            case OutputFormat.Glyphs:
-                FormatGlyphs.IsChecked = true;
-                break;
-            default:
-                FormatFontLab.IsChecked = true;
-                break;
-        }
-
+        _format = session.OutputFormatValue;
         _completedRecipes.Clear();
         foreach (var recipe in session.CompletedRecipes)
         {
             _completedRecipes.Add(recipe);
         }
 
-        _restoring = false;
+        _completedBlocks.Clear();
+        foreach (var block in session.CompletedBlocks)
+        {
+            _completedBlocks.Add(block);
+        }
+
+        SyncFormatMenus();
+    }
+
+    private void PromptFormatIfNeeded()
+    {
+        if (AppSettings.HasChosenFormat)
+        {
+            return;
+        }
+
+        var window = new FormatChoiceWindow { Owner = this };
+        window.ShowDialog();
+        _format = window.Selected;
+        AppSettings.HasChosenFormat = true;
+        SyncFormatMenus();
+        Refresh();
+        PersistSession();
     }
 
     private void SchedulePersist()
@@ -454,7 +845,8 @@ public partial class MainWindow : Window
         AppSettings.Session = SessionSnapshot.From(
             FieldText(),
             _completedRecipes,
-            SelectedFormat());
+            _completedBlocks,
+            _format);
         AppSettings.Save();
     }
 }

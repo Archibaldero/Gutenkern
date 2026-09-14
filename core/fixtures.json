@@ -51,10 +51,20 @@
       ]
     },
     {
-      "id": "empty-names-skipped",
+      "id": "escaped-slash",
+      "input": "a//b",
+      "glyphs": [
+        { "type": "character", "value": "a" },
+        { "type": "character", "value": "/" },
+        { "type": "character", "value": "b" }
+      ]
+    },
+    {
+      "id": "escaped-slash-then-empty-name",
       "input": "a// b/",
       "glyphs": [
         { "type": "character", "value": "a" },
+        { "type": "character", "value": "/" },
         { "type": "character", "value": "b" }
       ]
     },
@@ -83,7 +93,7 @@
       "right": "но",
       "mode": "simple",
       "format": "fontlab",
-      "expected": "н/н\nн/о\n\nо/н\nо/о"
+      "expected": "/н/н\n/н/о\n\n/о/н\n/о/о"
     },
     {
       "id": "mirror-fontlab-lc",
@@ -91,7 +101,7 @@
       "right": "но",
       "mode": "mirror",
       "format": "fontlab",
-      "expected": "н/н/н\nн/о/н\n\nо/н/о\nо/о/о"
+      "expected": "/н/н/н\n/н/о/н\n\n/о/н/о\n/о/о/о"
     },
     {
       "id": "simple-glyphs-unicode",
@@ -115,7 +125,7 @@
       "right": "но",
       "mode": "simple",
       "format": "fontlab",
-      "expected": "Н/н\nН/о\n\nГ/н\nГ/о"
+      "expected": "/Н/н\n/Н/о\n\n/Г/н\n/Г/о"
     },
     {
       "id": "uc-lc-mirror-fontlab",
@@ -123,7 +133,7 @@
       "right": "но",
       "mode": "mirror",
       "format": "fontlab",
-      "expected": "Н/н/Н\nН/о/Н"
+      "expected": "/Н/н/Н\n/Н/о/Н"
     },
     {
       "id": "named-fontlab-simple",
@@ -131,7 +141,7 @@
       "right": "н",
       "mode": "simple",
       "format": "fontlab",
-      "expected": "н/н\n\nelcyr.alt/н"
+      "expected": "/н/н\n\n/elcyr.alt/н"
     },
     {
       "id": "named-fontlab-mirror",
@@ -139,7 +149,7 @@
       "right": "/elcyr.alt",
       "mode": "mirror",
       "format": "fontlab",
-      "expected": "н/elcyr.alt/н"
+      "expected": "/н/elcyr.alt/н"
     },
     {
       "id": "glyphs-char-then-name",
@@ -195,7 +205,7 @@
       "right": "н",
       "mode": "simple",
       "format": "fontlab",
-      "expected": "g/н\n\nelcyr.alt/н"
+      "expected": "/g/н\n\n/elcyr.alt/н"
     },
     {
       "id": "empty-left",
@@ -295,6 +305,54 @@
       "input": "A /missing.alt",
       "groups": ["A"],
       "unknown": ["missing.alt"]
+    },
+    {
+      "id": "alt-suffix-letters",
+      "input": "/elcyr.alt /zhecyr.alt /Zhecyr.alt",
+      "groups": ["A", "a"],
+      "unknown": []
+    },
+    {
+      "id": "stylistic-set-suffix",
+      "input": "/e.ss01",
+      "groups": ["a"],
+      "unknown": []
+    },
+    {
+      "id": "small-caps-with-extra-suffix",
+      "input": "/A.sc.ss01",
+      "groups": ["A.sc"],
+      "unknown": []
+    },
+    {
+      "id": "char-and-named-alt-lowercase",
+      "input": "g/elcyr.alt",
+      "groups": ["a"],
+      "unknown": []
+    },
+    {
+      "id": "glyphs-lf",
+      "input": "/zero.lf /one.lf",
+      "groups": ["1p"],
+      "unknown": []
+    },
+    {
+      "id": "glyphs-osf",
+      "input": "/zero.osf /one.osf",
+      "groups": ["1o"],
+      "unknown": []
+    },
+    {
+      "id": "lf-drops-tf",
+      "input": "/zero.tf /zero.lf",
+      "groups": ["1p"],
+      "unknown": []
+    },
+    {
+      "id": "digit-alt-is-lining",
+      "input": "/zero.alt",
+      "groups": ["1p"],
+      "unknown": []
     }
   ],
   "generateAll": [
@@ -302,19 +360,43 @@
       "id": "capitals-and-period",
       "input": "A.",
       "format": "fontlab",
-      "expected": "A/A/A\n\n\nA/./A"
+      "expected": "/A/A/A\n\n\n/A/./A"
     },
     {
       "id": "capitals-lowercase",
       "input": "Aa",
       "format": "fontlab",
-      "expected": "A/A/A\n\n\nA/a\n\n\na/a/a"
+      "expected": "/A/A/A\n\n\n/A/a\n\n\n/a/a/a"
     },
     {
       "id": "pnum-only-pairs",
       "input": "/zero /zero.pnum",
       "format": "fontlab",
-      "expected": "zero.pnum/zero.pnum/zero.pnum"
+      "expected": "/zero.pnum/zero.pnum/zero.pnum"
+    },
+    {
+      "id": "named-alt-lowercase",
+      "input": "/elcyr.alt /a",
+      "format": "fontlab",
+      "expected": "/elcyr.alt/elcyr.alt/elcyr.alt\n\n/a/a/a"
+    },
+    {
+      "id": "cross-script-capitals-skipped",
+      "input": "VЛ",
+      "format": "fontlab",
+      "expected": "/V/V/V\n\n/Л/Л/Л"
+    },
+    {
+      "id": "same-script-capitals-kept",
+      "input": "AV",
+      "format": "fontlab",
+      "expected": "/A/A/A\n/A/V/A\n\n/V/A/V\n/V/V/V"
+    },
+    {
+      "id": "cross-script-capital-lowercase-skipped",
+      "input": "Aа",
+      "format": "fontlab",
+      "expected": "/A/A/A\n\n\n/а/а/а"
     },
     {
       "id": "empty",

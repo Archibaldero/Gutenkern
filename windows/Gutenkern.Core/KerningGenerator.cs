@@ -41,6 +41,13 @@ public static class KerningGenerator
 
             if (character == '/')
             {
+                if (index + 1 < input.Length && input[index + 1] == '/')
+                {
+                    tokens.Add(new ParsedToken(new CharacterGlyph("/"), index, 2));
+                    index += 2;
+                    continue;
+                }
+
                 var slash = index;
                 index++;
                 var start = index;
@@ -75,9 +82,15 @@ public static class KerningGenerator
     public static string Generate(string input, OutputFormat format) =>
         Generate(GlyphClassifier.Classify(input), format);
 
-    public static string Generate(ClassificationResult classified, OutputFormat format)
+    public static string Generate(ClassificationResult classified, OutputFormat format) =>
+        string.Join("\n\n\n", GenerateSections(classified, format).Select(section => string.Join("\n\n", section)));
+
+    public static List<List<string>> GenerateSections(ClassificationResult classified, OutputFormat format) =>
+        GenerateRecipeSections(classified, format).Select(section => section.Groups.ToList()).ToList();
+
+    public static List<RecipeSection> GenerateRecipeSections(ClassificationResult classified, OutputFormat format)
     {
-        var sections = new List<string>();
+        var sections = new List<RecipeSection>();
         foreach (var recipe in KerningPlan.Recipes)
         {
             if (!classified.TryGet(recipe.Left, out var left) ||
@@ -86,43 +99,76 @@ public static class KerningGenerator
                 continue;
             }
 
-            var section = Generate(left, right, recipe.Mode, format);
-            if (section.Length > 0)
+            var pairGroups = GeneratePairGroups(
+                left,
+                right,
+                recipe.Mode,
+                format,
+                KerningScriptFilter.IsLetterGroup(recipe.Left) && KerningScriptFilter.IsLetterGroup(recipe.Right));
+            if (pairGroups.Count > 0)
             {
-                sections.Add(section);
+                sections.Add(new RecipeSection(recipe.Line, pairGroups));
             }
         }
 
-        return string.Join("\n\n\n", sections);
+        return sections;
     }
 
     public static string Generate(
         IReadOnlyList<Glyph> leftGlyphs,
         IReadOnlyList<Glyph> rightGlyphs,
         PairMode mode,
-        OutputFormat format)
+        OutputFormat format) =>
+        string.Join("\n\n", GenerateGroups(leftGlyphs, rightGlyphs, mode, format));
+
+    public static List<string> GenerateGroups(
+        IReadOnlyList<Glyph> leftGlyphs,
+        IReadOnlyList<Glyph> rightGlyphs,
+        PairMode mode,
+        OutputFormat format,
+        bool letterLetterRecipe = false) =>
+        GeneratePairGroups(leftGlyphs, rightGlyphs, mode, format, letterLetterRecipe)
+            .Select(group => string.Join("\n", group.Select(pair => pair.Display)))
+            .ToList();
+
+    public static List<IReadOnlyList<PairLine>> GeneratePairGroups(
+        IReadOnlyList<Glyph> leftGlyphs,
+        IReadOnlyList<Glyph> rightGlyphs,
+        PairMode mode,
+        OutputFormat format,
+        bool letterLetterRecipe = false)
     {
         if (leftGlyphs.Count == 0 || rightGlyphs.Count == 0)
         {
-            return string.Empty;
+            return [];
         }
 
-        var groups = new List<string>(leftGlyphs.Count);
+        var groups = new List<IReadOnlyList<PairLine>>(leftGlyphs.Count);
         foreach (var leftGlyph in leftGlyphs)
         {
-            var groupLines = new List<string>(rightGlyphs.Count);
+            var groupLines = new List<PairLine>(rightGlyphs.Count);
             foreach (var rightGlyph in rightGlyphs)
             {
+                if (!KerningScriptFilter.ShouldKern(leftGlyph, rightGlyph, letterLetterRecipe))
+                {
+                    continue;
+                }
+
                 var sequence = mode == PairMode.Simple
                     ? new[] { leftGlyph, rightGlyph }
                     : new[] { leftGlyph, rightGlyph, leftGlyph };
-                groupLines.Add(FormatGlyphs(sequence, format));
+                groupLines.Add(new PairLine(
+                    FormatGlyphs(sequence, OutputFormat.FontLab),
+                    FormatGlyphs(sequence, format)));
             }
 
-            groups.Add(string.Join("\n", groupLines));
+            if (groupLines.Count > 0)
+            {
+                groups.Add(groupLines);
+            }
         }
 
-        return string.Join("\n\n", groups);
+        return groups;
     }
 
     public static int PairCount(string left, string right)
@@ -150,7 +196,10 @@ public static class KerningGenerator
                 continue;
             }
 
-            total += left.Count * right.Count;
+            total += KerningScriptFilter.PairCount(
+                left,
+                right,
+                KerningScriptFilter.IsLetterGroup(recipe.Left) && KerningScriptFilter.IsLetterGroup(recipe.Right));
         }
 
         return total;
@@ -161,7 +210,12 @@ public static class KerningGenerator
         switch (format)
         {
             case OutputFormat.FontLab:
-                return string.Join("/", glyphs.Select(PlainValue));
+                if (glyphs.Count == 0)
+                {
+                    return "";
+                }
+
+                return "/" + string.Join("/", glyphs.Select(PlainValue));
             case OutputFormat.Glyphs:
                 var result = new System.Text.StringBuilder();
                 var previousWasName = false;

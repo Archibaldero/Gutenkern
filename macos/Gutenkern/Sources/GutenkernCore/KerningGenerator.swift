@@ -34,9 +34,21 @@ public enum KerningGenerator {
             }
 
             if character == "/" {
+                let nextIndex = input.index(after: index)
+                if nextIndex < input.endIndex, input[nextIndex] == "/" {
+                    tokens.append(ParsedToken(
+                        glyph: .character("/"),
+                        start: utf16Offset,
+                        length: 2
+                    ))
+                    utf16Offset += 2
+                    index = input.index(after: nextIndex)
+                    continue
+                }
+
                 let slashOffset = utf16Offset
                 utf16Offset += character.utf16.count
-                index = input.index(after: index)
+                index = nextIndex
                 let nameStart = index
                 while index < input.endIndex {
                     let next = input[index]
@@ -85,7 +97,23 @@ public enum KerningGenerator {
     }
 
     public static func generate(_ classified: ClassificationResult, format: OutputFormat) -> String {
-        var sections: [String] = []
+        generateSections(classified, format: format)
+            .map { $0.joined(separator: "\n\n") }
+            .joined(separator: "\n\n\n")
+    }
+
+    public static func generateSections(
+        _ classified: ClassificationResult,
+        format: OutputFormat
+    ) -> [[String]] {
+        generateRecipeSections(classified, format: format).map(\.groups)
+    }
+
+    public static func generateRecipeSections(
+        _ classified: ClassificationResult,
+        format: OutputFormat
+    ) -> [RecipeSection] {
+        var sections: [RecipeSection] = []
         for recipe in KerningPlan.recipes {
             guard
                 let left = classified.glyphs(for: recipe.left),
@@ -93,12 +121,19 @@ public enum KerningGenerator {
             else {
                 continue
             }
-            let section = generate(leftGlyphs: left, rightGlyphs: right, mode: recipe.mode, format: format)
-            if !section.isEmpty {
-                sections.append(section)
+            let pairGroups = generatePairGroups(
+                leftGlyphs: left,
+                rightGlyphs: right,
+                mode: recipe.mode,
+                format: format,
+                letterLetterRecipe: KerningScriptFilter.isLetterGroup(recipe.left)
+                    && KerningScriptFilter.isLetterGroup(recipe.right)
+            )
+            if !pairGroups.isEmpty {
+                sections.append(RecipeSection(recipe: recipe.line, pairGroups: pairGroups))
             }
         }
-        return sections.joined(separator: "\n\n\n")
+        return sections
     }
 
     public static func generate(
@@ -107,17 +142,55 @@ public enum KerningGenerator {
         mode: PairMode,
         format: OutputFormat
     ) -> String {
+        generateGroups(
+            leftGlyphs: leftGlyphs,
+            rightGlyphs: rightGlyphs,
+            mode: mode,
+            format: format
+        ).joined(separator: "\n\n")
+    }
+
+    public static func generateGroups(
+        leftGlyphs: [Glyph],
+        rightGlyphs: [Glyph],
+        mode: PairMode,
+        format: OutputFormat,
+        letterLetterRecipe: Bool = false
+    ) -> [String] {
+        generatePairGroups(
+            leftGlyphs: leftGlyphs,
+            rightGlyphs: rightGlyphs,
+            mode: mode,
+            format: format,
+            letterLetterRecipe: letterLetterRecipe
+        ).map { $0.map(\.display).joined(separator: "\n") }
+    }
+
+    public static func generatePairGroups(
+        leftGlyphs: [Glyph],
+        rightGlyphs: [Glyph],
+        mode: PairMode,
+        format: OutputFormat,
+        letterLetterRecipe: Bool = false
+    ) -> [[PairLine]] {
         guard !leftGlyphs.isEmpty, !rightGlyphs.isEmpty else {
-            return ""
+            return []
         }
 
-        var groups: [String] = []
+        var groups: [[PairLine]] = []
         groups.reserveCapacity(leftGlyphs.count)
 
         for leftGlyph in leftGlyphs {
-            var groupLines: [String] = []
+            var groupLines: [PairLine] = []
             groupLines.reserveCapacity(rightGlyphs.count)
             for rightGlyph in rightGlyphs {
+                guard KerningScriptFilter.shouldKern(
+                    leftGlyph,
+                    rightGlyph,
+                    letterLetterRecipe: letterLetterRecipe
+                ) else {
+                    continue
+                }
                 let sequence: [Glyph]
                 switch mode {
                 case .simple:
@@ -125,12 +198,19 @@ public enum KerningGenerator {
                 case .mirror:
                     sequence = [leftGlyph, rightGlyph, leftGlyph]
                 }
-                groupLines.append(formatGlyphs(sequence, as: format))
+                groupLines.append(
+                    PairLine(
+                        key: formatGlyphs(sequence, as: .fontlab),
+                        display: formatGlyphs(sequence, as: format)
+                    )
+                )
             }
-            groups.append(groupLines.joined(separator: "\n"))
+            if !groupLines.isEmpty {
+                groups.append(groupLines)
+            }
         }
 
-        return groups.joined(separator: "\n\n")
+        return groups
     }
 
     public static func pairCount(left: String, right: String) -> Int {
@@ -155,7 +235,12 @@ public enum KerningGenerator {
             else {
                 continue
             }
-            total += left.count * right.count
+            total += KerningScriptFilter.pairCount(
+                left: left,
+                right: right,
+                letterLetterRecipe: KerningScriptFilter.isLetterGroup(recipe.left)
+                    && KerningScriptFilter.isLetterGroup(recipe.right)
+            )
         }
         return total
     }
@@ -163,7 +248,10 @@ public enum KerningGenerator {
     public static func formatGlyphs(_ glyphs: [Glyph], as format: OutputFormat) -> String {
         switch format {
         case .fontlab:
-            return glyphs.map(plainValue).joined(separator: "/")
+            guard !glyphs.isEmpty else {
+                return ""
+            }
+            return "/" + glyphs.map(plainValue).joined(separator: "/")
         case .glyphs:
             var result = ""
             var previousWasName = false

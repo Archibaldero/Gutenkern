@@ -1,0 +1,27 @@
+<Window x:Class="Gutenkern.FormatChoiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Format"
+        Width="320"
+        Height="140"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        UseLayoutRounding="True">
+    <StackPanel Margin="16" VerticalAlignment="Center">
+        <TextBlock x:Name="PromptLabel"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,16"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="FontLabButton"
+                    Content="FontLab"
+                    Padding="16,6"
+                    Margin="0,0,8,0"
+                    Click="FontLab_Click"/>
+            <Button x:Name="GlyphsButton"
+                    Content="Glyphs"
+                    Padding="16,6"
+                    Click="Glyphs_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

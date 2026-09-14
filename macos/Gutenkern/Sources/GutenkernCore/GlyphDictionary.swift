@@ -4,7 +4,7 @@ enum GlyphDictionary {
     private static let payload: Payload = load()
 
     static func `class`(byName name: String) -> String? {
-        payload.names[name]
+        payload.names[name]?.classification
     }
 
     static func `class`(byChar value: String) -> String? {
@@ -12,15 +12,45 @@ enum GlyphDictionary {
     }
 
     static func isDigitName(_ name: String) -> Bool {
-        payload.names[name] == "digit" || isAsciiDigit(name)
+        payload.names[name]?.classification == "digit" || isAsciiDigit(name)
     }
 
     static func isAsciiDigit(_ value: String) -> Bool {
         value.utf8.count == 1 && value.unicodeScalars.first.map { ("0"..."9").contains($0) } == true
     }
 
+    static func script(byName name: String) -> GlyphScript {
+        if let entry = payload.names[name] {
+            return GlyphScript.fromUnicodeName(entry.unicodeName)
+        }
+        if let dot = name.firstIndex(of: "."), dot > name.startIndex {
+            let base = String(name[..<dot])
+            if let entry = payload.names[base] {
+                return GlyphScript.fromUnicodeName(entry.unicodeName)
+            }
+        }
+        return .unknown
+    }
+
+    static func script(byChar value: String) -> GlyphScript {
+        guard let scalar = value.unicodeScalars.first else {
+            return .unknown
+        }
+        return GlyphScript.fromCodePoint(scalar.value)
+    }
+
+    private struct NameEntry: Decodable {
+        var classification: String
+        var unicodeName: String
+
+        enum CodingKeys: String, CodingKey {
+            case classification = "class"
+            case unicodeName
+        }
+    }
+
     private struct Payload: Decodable {
-        var names: [String: String]
+        var names: [String: NameEntry]
         var chars: [String: String]
     }
 
@@ -37,7 +67,8 @@ enum GlyphDictionary {
     }
 
     private static func resourceURL() -> URL? {
-        if let url = Bundle.module.url(forResource: "glyph-dictionary", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "glyph-dictionary", withExtension: "json"),
+           FileManager.default.fileExists(atPath: url.path) {
             return url
         }
 
@@ -51,6 +82,7 @@ enum GlyphDictionary {
         if FileManager.default.fileExists(atPath: fromSource.path) {
             return fromSource
         }
+
         return nil
     }
 }

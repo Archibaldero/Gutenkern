@@ -11,17 +11,28 @@ final class SessionState: ObservableObject {
 
     @Published var field1: String
     @Published var completedRecipes: Set<String>
+    @Published var completedBlocks: Set<String>
     @Published var format: OutputFormat
+
+    var hasProgress: Bool {
+        !completedBlocks.isEmpty || !completedRecipes.isEmpty
+    }
 
     private var cancellables = Set<AnyCancellable>()
     private var persistWorkItem: DispatchWorkItem?
     private var terminateObserver: NSObjectProtocol?
 
     private init() {
-        let snapshot = Self.load()
-        field1 = snapshot.field1
-        completedRecipes = snapshot.completedRecipeSet
-        format = snapshot.outputFormat
+        let loaded = Self.load()
+        if loaded.existed {
+            FormatChoice.hasChosen = true
+            field1 = loaded.snapshot.field1
+        } else {
+            field1 = SessionSnapshot.defaultGlyphs
+        }
+        completedRecipes = loaded.snapshot.completedRecipeSet
+        completedBlocks = loaded.snapshot.completedBlockSet
+        format = loaded.snapshot.outputFormat
         observeChanges()
         terminateObserver = NotificationCenter.default.addObserver(
             forName: NSApplication.willTerminateNotification,
@@ -41,6 +52,7 @@ final class SessionState: ObservableObject {
     private func observeChanges() {
         bind($field1)
         bind($completedRecipes)
+        bind($completedBlocks)
         bind($format)
     }
 
@@ -66,6 +78,7 @@ final class SessionState: ObservableObject {
         SessionSnapshot.make(
             field1: field1,
             completedRecipes: completedRecipes,
+            completedBlocks: completedBlocks,
             format: format
         )
     }
@@ -81,14 +94,19 @@ final class SessionState: ObservableObject {
         try? data.write(to: Self.fileURL, options: .atomic)
     }
 
-    private static func load() -> SessionSnapshot {
+    func resetProgress() {
+        completedRecipes = []
+        completedBlocks = []
+    }
+
+    private static func load() -> (snapshot: SessionSnapshot, existed: Bool) {
         if let data = try? Data(contentsOf: fileURL) {
-            return SessionSnapshot.decoded(from: data)
+            return (SessionSnapshot.decoded(from: data), true)
         }
         if let data = UserDefaults.standard.data(forKey: defaultsKey) {
-            return SessionSnapshot.decoded(from: data)
+            return (SessionSnapshot.decoded(from: data), true)
         }
-        return .empty
+        return (.empty, false)
     }
 
     private static var directoryURL: URL {

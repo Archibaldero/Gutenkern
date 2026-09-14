@@ -5,16 +5,19 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
     public var field2: String
     public var groups: [String]
     public var completedRecipes: [String]
+    public var completedBlocks: [String]
     public var mode: String
     public var format: String
 
     public static let empty = SessionSnapshot()
+    public static let defaultGlyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
     public init(
         field1: String = "",
         field2: String = "",
         groups: [String] = [],
         completedRecipes: [String] = [],
+        completedBlocks: [String] = [],
         mode: String = PairMode.simple.rawValue,
         format: String = OutputFormat.fontlab.rawValue
     ) {
@@ -22,6 +25,7 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
         self.field2 = field2
         self.groups = groups
         self.completedRecipes = completedRecipes
+        self.completedBlocks = completedBlocks
         self.mode = mode
         self.format = format
     }
@@ -32,12 +36,17 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
         field2 = try container.decodeIfPresent(String.self, forKey: .field2) ?? ""
         groups = try container.decodeIfPresent([String].self, forKey: .groups) ?? []
         completedRecipes = try container.decodeIfPresent([String].self, forKey: .completedRecipes) ?? []
+        completedBlocks = try container.decodeIfPresent([String].self, forKey: .completedBlocks) ?? []
         mode = try container.decodeIfPresent(String.self, forKey: .mode) ?? PairMode.simple.rawValue
         format = try container.decodeIfPresent(String.self, forKey: .format) ?? OutputFormat.fontlab.rawValue
     }
 
     public var completedRecipeSet: Set<String> {
         Set(completedRecipes)
+    }
+
+    public var completedBlockSet: Set<String> {
+        Set(completedBlocks)
     }
 
     public var outputFormat: OutputFormat {
@@ -52,6 +61,7 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
         Self.make(
             field1: field1,
             completedRecipes: completedRecipeSet,
+            completedBlocks: completedBlockSet,
             format: outputFormat
         )
     }
@@ -59,6 +69,7 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
     public static func make(
         field1: String,
         completedRecipes: Set<String>,
+        completedBlocks: Set<String>,
         format: OutputFormat
     ) -> SessionSnapshot {
         SessionSnapshot(
@@ -66,6 +77,7 @@ public struct SessionSnapshot: Equatable, Sendable, Codable {
             field2: "",
             groups: [],
             completedRecipes: completedRecipes.filter { !$0.isEmpty }.sorted(),
+            completedBlocks: KerningCompletion.expandPairKeys(completedBlocks).sorted(),
             mode: PairMode.simple.rawValue,
             format: format.rawValue
         )

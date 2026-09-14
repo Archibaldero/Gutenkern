@@ -125,33 +125,19 @@ public static class GlyphClassifier
         }
 
         var suffixes = parts.Skip(1).ToHashSet(StringComparer.Ordinal);
-        if (suffixes.Contains("sc"))
+        if (suffixes.Overlaps(["sc", "smcp", "c2sc"]))
         {
             return Kind.SmallCaps;
         }
 
-        var hasPnum = suffixes.Contains("pnum");
-        var hasOnum = suffixes.Contains("onum");
-        var other = suffixes
-            .Where(suffix => suffix is not "pnum" and not "onum")
-            .ToList();
-        if (other.Count > 0)
-        {
-            return GlyphDictionary.TryClassByName(name, out var exact)
-                ? FromDictionary(exact)
-                : Kind.Unknown;
-        }
-
         var baseName = parts[0];
-        var isDigit = GlyphDictionary.IsDigitName(baseName);
-        if (hasPnum || hasOnum)
+        var hasPnum = suffixes.Overlaps(["pnum", "lf"]);
+        var hasOnum = suffixes.Overlaps(["onum", "tosf"]);
+        var hasOsf = suffixes.Contains("osf");
+        var hasTf = suffixes.Contains("tf");
+        if (GlyphDictionary.IsDigitName(baseName) && (hasPnum || hasOnum || hasOsf || hasTf))
         {
-            if (!isDigit)
-            {
-                return Kind.Unknown;
-            }
-
-            if (hasPnum && hasOnum)
+            if (hasOsf || (hasPnum && hasOnum))
             {
                 return Kind.OldstyleProportional;
             }
@@ -161,12 +147,22 @@ public static class GlyphClassifier
                 return Kind.OldstyleOnum;
             }
 
-            return Kind.LiningPnum;
+            if (hasPnum)
+            {
+                return Kind.LiningPnum;
+            }
+
+            return Kind.LiningPlain;
         }
 
-        if (GlyphDictionary.TryClassByName(name, out var classified))
+        if (GlyphDictionary.TryClassByName(name, out var exact))
         {
-            return FromDictionary(classified);
+            return FromDictionary(exact);
+        }
+
+        if (GlyphDictionary.TryClassByName(baseName, out var byBase))
+        {
+            return FromDictionary(byBase);
         }
 
         return Kind.Unknown;

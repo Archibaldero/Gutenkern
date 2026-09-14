@@ -1,1288 +1,5137 @@
 {
   "names": {
-    "A": "capital",
-    "AE": "capital",
-    "AEacute": "capital",
-    "AEmacron": "capital",
-    "Aacute": "capital",
-    "Abreve": "capital",
-    "Abrevecyr": "capital",
-    "Acaron": "capital",
-    "Acircumflex": "capital",
-    "Acyr": "capital",
-    "Adblgrave": "capital",
-    "Adieresis": "capital",
-    "Adieresiscyr": "capital",
-    "Adieresismacron": "capital",
-    "Adotaccent": "capital",
-    "Adotmacron": "capital",
-    "Agrave": "capital",
-    "Aiecyr": "capital",
-    "Ainvertedbreve": "capital",
-    "Alpha": "capital",
-    "Alphaacute": "capital",
-    "Alphaasper": "capital",
-    "Alphaasperacute": "capital",
-    "Alphaasperacuteiotasub": "lowercase",
-    "Alphaaspergrave": "capital",
-    "Alphaaspergraveiotasub": "lowercase",
-    "Alphaasperiotasub": "lowercase",
-    "Alphaaspertilde": "capital",
-    "Alphaaspertildeiotasub": "lowercase",
-    "Alphabreve": "capital",
-    "Alphagrave": "capital",
-    "Alphaiotasub": "lowercase",
-    "Alphalenis": "capital",
-    "Alphalenisacute": "capital",
-    "Alphalenisacuteiotasub": "lowercase",
-    "Alphalenisgrave": "capital",
-    "Alphalenisgraveiotasub": "lowercase",
-    "Alphalenisiotasub": "lowercase",
-    "Alphalenistilde": "capital",
-    "Alphalenistildeiotasub": "lowercase",
-    "Alphatonos": "capital",
-    "Alphawithmacron": "capital",
-    "Amacron": "capital",
-    "Aogonek": "capital",
-    "Aring": "capital",
-    "Aringacute": "capital",
-    "Astroke": "capital",
-    "Atilde": "capital",
-    "B": "capital",
-    "Becyr": "capital",
-    "Beta": "capital",
-    "Bhook": "capital",
-    "Bsmall": "lowercase",
-    "Bstroke": "capital",
-    "Btopbar": "capital",
-    "C": "capital",
-    "Cacute": "capital",
-    "Ccaron": "capital",
-    "Ccedilla": "capital",
-    "Ccircumflex": "capital",
-    "Cdotaccent": "capital",
-    "Cheabkhcyr": "capital",
-    "Cheabkhtailcyr": "capital",
-    "Checyr": "capital",
-    "Chedieresiscyr": "capital",
-    "Chekhakascyr": "capital",
-    "Chetailcyr": "capital",
-    "Chevertcyr": "capital",
-    "Chi": "capital",
-    "Chook": "capital",
-    "Cstretched": "lowercase",
-    "Cstroke": "capital",
-    "D": "capital",
-    "DZ": "capital",
-    "DZcaron": "capital",
-    "Dafrican": "capital",
-    "Dcaron": "capital",
-    "Dchecyr": "capital",
-    "Dcroat": "capital",
-    "Decyr": "capital",
-    "Dekomicyr": "capital",
-    "Delta": "capital",
-    "Dhook": "capital",
-    "Digamma": "capital",
-    "Djecyr": "capital",
-    "Djekomicyr": "capital",
-    "Dtopbar": "capital",
-    "Dz": "lowercase",
-    "Dzcaron": "lowercase",
-    "Dzeabkhcyr": "capital",
-    "Dzecyr": "capital",
-    "Dzhecyr": "capital",
-    "Dzjekomicyr": "capital",
-    "Dzzhecyr": "capital",
-    "E": "capital",
-    "Eacute": "capital",
-    "Ebreve": "capital",
-    "Ecaron": "capital",
-    "Ecedilla": "capital",
-    "Ecircumflex": "capital",
-    "Edblgrave": "capital",
-    "Edieresis": "capital",
-    "Edotaccent": "capital",
-    "Efcyr": "capital",
-    "Egrave": "capital",
-    "Einvertedbreve": "capital",
-    "Eiotifiedcyr": "capital",
-    "Elcyr": "capital",
-    "Elhookcyr": "capital",
-    "Elmiddlehookcyr": "capital",
-    "Elsharptailcyr": "capital",
-    "Eltailcyr": "capital",
-    "Emacron": "capital",
-    "Emcyr": "capital",
-    "Emsharptailcyr": "capital",
-    "Encyr": "capital",
-    "Eng": "capital",
-    "Engecyr": "capital",
-    "Enhookcyr": "capital",
-    "Enhookleftcyr": "capital",
-    "Enmiddlehookcyr": "capital",
-    "Ensharptailcyr": "capital",
-    "Entailcyr": "capital",
-    "Eogonek": "capital",
-    "Eopen": "capital",
-    "Epsilon": "capital",
-    "Epsilonacute": "capital",
-    "Epsilonasper": "capital",
-    "Epsilonasperacute": "capital",
-    "Epsilonaspergrave": "capital",
-    "Epsilongrave": "capital",
-    "Epsilonlenis": "capital",
-    "Epsilonlenisacute": "capital",
-    "Epsilonlenisgrave": "capital",
-    "Epsilontonos": "capital",
-    "Ercyr": "capital",
-    "Ereversed": "capital",
-    "Ereversedcyr": "capital",
-    "Ereverseddieresiscyr": "capital",
-    "Ertickcyr": "capital",
-    "Escyr": "capital",
-    "Esh": "capital",
-    "Estailcyr": "capital",
-    "Estroke": "capital",
-    "Eta": "capital",
-    "Etaacute": "capital",
-    "Etaasper": "capital",
-    "Etaasperacute": "capital",
-    "Etaasperacuteiotasub": "lowercase",
-    "Etaaspergrave": "capital",
-    "Etaaspergraveiotasub": "lowercase",
-    "Etaasperiotasub": "lowercase",
-    "Etaaspertilde": "capital",
-    "Etaaspertildeiotasub": "lowercase",
-    "Etagrave": "capital",
-    "Etaiotasub": "lowercase",
-    "Etalenis": "capital",
-    "Etalenisacute": "capital",
-    "Etalenisacuteiotasub": "lowercase",
-    "Etalenisgrave": "capital",
-    "Etalenisgraveiotasub": "lowercase",
-    "Etalenisiotasub": "lowercase",
-    "Etalenistilde": "capital",
-    "Etalenistildeiotasub": "lowercase",
-    "Etatonos": "capital",
-    "Eth": "capital",
-    "Eukrcyr": "capital",
-    "Euro": "nonalphabetic",
-    "Ezh": "capital",
-    "Ezhcaron": "capital",
-    "Ezhreversed": "capital",
-    "F": "capital",
-    "Fhook": "capital",
-    "Fitacyr": "capital",
-    "G": "capital",
-    "Gacute": "capital",
-    "Gamma": "capital",
-    "Gamma-lt": "capital",
-    "Gbreve": "capital",
-    "Gcaron": "capital",
-    "Gcircumflex": "capital",
-    "Gcommaaccent": "capital",
-    "Gdotaccent": "capital",
-    "Gecyr": "capital",
-    "Gehookcyr": "capital",
-    "Gestrokecyr": "capital",
-    "Getailcyr": "capital",
-    "Geupcyr": "capital",
-    "Ghook": "capital",
-    "Ghooksmall": "lowercase",
-    "Gjecyr": "capital",
-    "Glottalstop": "capital",
-    "Gsmall": "lowercase",
-    "Gstroke": "capital",
-    "H": "capital",
-    "Haabkhcyr": "capital",
-    "Hacyr": "capital",
-    "Hardcyr": "capital",
-    "Hbar": "capital",
-    "Hcaron": "capital",
-    "Hcircumflex": "capital",
-    "Hsmall": "lowercase",
-    "Hwair": "capital",
-    "I": "capital",
-    "IJ": "capital",
-    "Iacute": "capital",
-    "Ibreve": "capital",
-    "Icaron": "capital",
-    "Icircumflex": "capital",
-    "Icyr": "capital",
-    "Idblgrave": "capital",
-    "Idieresis": "capital",
-    "Idieresiscyr": "capital",
-    "Idotaccent": "capital",
-    "Iebrevecyr": "capital",
-    "Iecyr": "capital",
-    "Iegravecyr": "capital",
-    "Igrave": "capital",
-    "Igravecyr": "capital",
-    "Iinvertedbreve": "capital",
-    "Imacron": "capital",
-    "Imacroncyr": "capital",
-    "Iocyr": "capital",
-    "Iogonek": "capital",
-    "Iota": "capital",
-    "Iotaacute": "capital",
-    "Iotaafrican": "capital",
-    "Iotaasper": "capital",
-    "Iotaasperacute": "capital",
-    "Iotaaspergrave": "capital",
-    "Iotaaspertilde": "capital",
-    "Iotabreve": "capital",
-    "Iotadieresis": "capital",
-    "Iotagrave": "capital",
-    "Iotalenis": "capital",
-    "Iotalenisacute": "capital",
-    "Iotalenisgrave": "capital",
-    "Iotalenistilde": "capital",
-    "Iotatonos": "capital",
-    "Iotawithmacron": "capital",
-    "Ishortcyr": "capital",
-    "Ishortsharptailcyr": "capital",
-    "Ismall": "lowercase",
-    "Istroke": "capital",
-    "Itilde": "capital",
-    "Iukrcyr": "capital",
-    "Izhitsacyr": "capital",
-    "Izhitsagravedblcyr": "capital",
-    "J": "capital",
-    "Jcircumflex": "capital",
-    "Jecyr": "capital",
-    "Jstroke": "capital",
-    "K": "capital",
-    "Kaaleutcyr": "capital",
-    "Kabashkcyr": "capital",
-    "Kacyr": "capital",
-    "Kahookcyr": "capital",
-    "Kappa": "capital",
-    "Kastrokecyr": "capital",
-    "Katailcyr": "capital",
-    "Kaverticalstrokecyr": "capital",
-    "Kcaron": "capital",
-    "Kcommaaccent": "capital",
-    "Khook": "capital",
-    "Kjecyr": "capital",
-    "Koppa": "capital",
-    "Koppaarchaic": "capital",
-    "Koppacyr": "capital",
-    "Ksicyr": "capital",
-    "L": "capital",
-    "LJ": "capital",
-    "Lacute": "capital",
-    "Lambda": "capital",
-    "Lbar": "capital",
-    "Lcaron": "capital",
-    "Lcommaaccent": "capital",
-    "Ldot": "capital",
-    "Lhacyr": "capital",
-    "Lj": "lowercase",
-    "Ljecyr": "capital",
-    "Ljekomicyr": "capital",
-    "Lslash": "capital",
-    "Lsmall": "lowercase",
-    "M": "capital",
-    "Mturned": "capital",
-    "Mu": "capital",
-    "N": "capital",
-    "NJ": "capital",
-    "Nacute": "capital",
-    "Ncaron": "capital",
-    "Ncommaaccent": "capital",
-    "Ngrave": "capital",
-    "Nhookleft": "capital",
-    "Nj": "lowercase",
-    "Njecyr": "capital",
-    "Njekomicyr": "capital",
-    "Nlongrightleg": "capital",
-    "Nsmall": "lowercase",
-    "Ntilde": "capital",
-    "Nu": "capital",
-    "O": "capital",
-    "OE": "capital",
-    "OEsmall": "lowercase",
-    "Oacute": "capital",
-    "Obar": "capital",
-    "Obarcyr": "capital",
-    "Obardieresiscyr": "capital",
-    "Obreve": "capital",
-    "Ocaron": "capital",
-    "Ocircumflex": "capital",
-    "Ocyr": "capital",
-    "Odblgrave": "capital",
-    "Odieresis": "capital",
-    "Odieresiscyr": "capital",
-    "Odieresismacron": "capital",
-    "Odotaccent": "capital",
-    "Odotaccentmacron": "capital",
-    "Ograve": "capital",
-    "Ohorn": "capital",
-    "Ohungarumlaut": "capital",
-    "Oi": "capital",
-    "Oinvertedbreve": "capital",
-    "Omacron": "capital",
-    "Omega": "capital",
-    "Omegaacute": "capital",
-    "Omegaasper": "capital",
-    "Omegaasperacute": "capital",
-    "Omegaasperacuteiotasub": "lowercase",
-    "Omegaaspergrave": "capital",
-    "Omegaaspergraveiotasub": "lowercase",
-    "Omegaasperiotasub": "lowercase",
-    "Omegaaspertilde": "capital",
-    "Omegaaspertildeiotasub": "lowercase",
-    "Omegacyr": "capital",
-    "Omegagrave": "capital",
-    "Omegaiotasub": "lowercase",
-    "Omegalenis": "capital",
-    "Omegalenisacute": "capital",
-    "Omegalenisacuteiotasub": "lowercase",
-    "Omegalenisgrave": "capital",
-    "Omegalenisgraveiotasub": "lowercase",
-    "Omegalenisiotasub": "lowercase",
-    "Omegalenistilde": "capital",
-    "Omegalenistildeiotasub": "lowercase",
-    "Omegaroundcyr": "capital",
-    "Omegatitlocyr": "capital",
-    "Omegatonos": "capital",
-    "Omicron": "capital",
-    "Omicronacute": "capital",
-    "Omicronasper": "capital",
-    "Omicronasperacute": "capital",
-    "Omicronaspergrave": "capital",
-    "Omicrongrave": "capital",
-    "Omicronlenis": "capital",
-    "Omicronlenisacute": "capital",
-    "Omicronlenisgrave": "capital",
-    "Omicrontonos": "capital",
-    "Oogonek": "capital",
-    "Oogonekmacron": "capital",
-    "Oopen": "capital",
-    "Oslash": "capital",
-    "Oslashacute": "capital",
-    "Otcyr": "capital",
-    "Otilde": "capital",
-    "Otildemacron": "capital",
-    "Ou": "capital",
-    "P": "capital",
-    "Palochkacyr": "capital",
-    "Pecyr": "capital",
-    "Pehookcyr": "capital",
-    "Petailcyr": "capital",
-    "Phi": "capital",
-    "Phook": "capital",
-    "Pi": "capital",
-    "Psi": "capital",
-    "Psicyr": "capital",
-    "Q": "capital",
-    "Qacyr": "capital",
-    "Qsmallhooktail": "capital",
-    "R": "capital",
-    "Racute": "capital",
-    "Rcaron": "capital",
-    "Rcommaaccent": "capital",
-    "Rdblgrave": "capital",
-    "Reversedzecyr": "capital",
-    "Rhacyr": "capital",
-    "Rho": "capital",
-    "Rhoasper": "capital",
-    "Rinvertedbreve": "capital",
-    "Rinvertedsmall": "lowercase",
-    "Rsmall": "lowercase",
-    "Rstroke": "capital",
-    "S": "capital",
-    "Sacute": "capital",
-    "Sampi": "capital",
-    "Scaron": "capital",
-    "Scedilla": "capital",
-    "Schwa": "capital",
-    "Schwacyr": "capital",
-    "Schwadieresiscyr": "capital",
-    "Scircumflex": "capital",
-    "Scommaaccent": "capital",
-    "Semisoftcyr": "capital",
-    "Shacyr": "capital",
-    "Shchacyr": "capital",
-    "Shhacyr": "capital",
-    "Shhatailcyr": "capital",
-    "Sigma": "capital",
-    "Sjekomicyr": "capital",
-    "Softcyr": "capital",
-    "Stigma": "capital",
-    "T": "capital",
-    "Tau": "capital",
-    "Tbar": "capital",
-    "Tcaron": "capital",
-    "Tcedilla": "capital",
-    "Tcommaaccent": "capital",
-    "Tdiagonalstroke": "capital",
-    "Tecyr": "capital",
-    "Tetailcyr": "capital",
-    "Tetsecyr": "capital",
-    "Theta": "capital",
-    "Thook": "capital",
-    "Thorn": "capital",
-    "Tjekomicyr": "capital",
-    "Tonefive": "capital",
-    "Tonesix": "capital",
-    "Tonetwo": "capital",
-    "Tretroflexhook": "capital",
-    "Tsecyr": "capital",
-    "Tshecyr": "capital",
-    "U": "capital",
-    "Uacute": "capital",
-    "Uacutedblcyr": "capital",
-    "Ubar": "capital",
-    "Ubreve": "capital",
-    "Ucaron": "capital",
-    "Ucircumflex": "capital",
-    "Ucyr": "capital",
-    "Udblgrave": "capital",
-    "Udieresis": "capital",
-    "Udieresisacute": "capital",
-    "Udieresiscaron": "capital",
-    "Udieresiscyr": "capital",
-    "Udieresisgrave": "capital",
-    "Udieresismacron": "capital",
-    "Ugrave": "capital",
-    "Uhorn": "capital",
-    "Uhungarumlaut": "capital",
-    "Uinvertedbreve": "capital",
-    "Ukcyr": "capital",
-    "Umacron": "capital",
-    "Umacroncyr": "capital",
-    "Uogonek": "capital",
-    "Upsilon": "capital",
-    "Upsilonacute": "capital",
-    "Upsilonafrican": "capital",
-    "Upsilonasper": "capital",
-    "Upsilonasperacute": "capital",
-    "Upsilonaspergrave": "capital",
-    "Upsilonaspertilde": "capital",
-    "Upsilonbreve": "capital",
-    "Upsilondieresis": "capital",
-    "Upsilongrave": "capital",
-    "Upsilontonos": "capital",
-    "Upsilonwithmacron": "capital",
-    "Uring": "capital",
-    "Ushortcyr": "capital",
-    "Ustraightcyr": "capital",
-    "Ustraightstrokecyr": "capital",
-    "Utilde": "capital",
-    "V": "capital",
-    "Vecyr": "capital",
-    "Vhook": "capital",
-    "Vturned": "capital",
-    "W": "capital",
-    "Wcircumflex": "capital",
-    "Wecyr": "capital",
-    "Wynn": "capital",
-    "X": "capital",
-    "Xatailcyr": "capital",
-    "Xi": "capital",
-    "Y": "capital",
-    "Yacute": "capital",
-    "Yacyr": "capital",
-    "Yaecyr": "capital",
-    "Yatcyr": "capital",
-    "Ycircumflex": "capital",
-    "Ydieresis": "capital",
-    "Yhook": "capital",
-    "Ylongcyr": "capital",
-    "Ylongdieresiscyr": "capital",
-    "Ymacron": "capital",
-    "Yogh": "capital",
-    "Ysmall": "lowercase",
-    "Ystroke": "capital",
-    "Yucyr": "capital",
-    "Yukrcyr": "capital",
-    "Yusbigcyr": "capital",
-    "Yusbigiotifiedcyr": "capital",
-    "Yuslittlecyr": "capital",
-    "Yuslittleiotifiedcyr": "capital",
-    "Z": "capital",
-    "Zacute": "capital",
-    "Zcaron": "capital",
-    "Zdotaccent": "capital",
-    "Zecyr": "capital",
-    "Zedieresiscyr": "capital",
-    "Zeta": "capital",
-    "Zetailcyr": "capital",
-    "Zhebrevecyr": "capital",
-    "Zhecyr": "capital",
-    "Zhedieresiscyr": "capital",
-    "Zhetailcyr": "capital",
-    "Zhook": "capital",
-    "Zjekomicyr": "capital",
-    "Zstroke": "capital",
-    "a": "lowercase",
-    "aacute": "lowercase",
-    "abreve": "lowercase",
-    "abrevecyr": "lowercase",
-    "acaron": "lowercase",
-    "acircumflex": "lowercase",
-    "acute": "nonalphabetic",
-    "acute-gr": "nonalphabetic",
-    "acute.case": "nonalphabetic",
-    "acyr": "lowercase",
-    "adblgrave": "lowercase",
-    "adieresis": "lowercase",
-    "adieresiscyr": "lowercase",
-    "adieresismacron": "lowercase",
-    "adotaccent": "lowercase",
-    "adotmacron": "lowercase",
-    "ae": "lowercase",
-    "aeacute": "lowercase",
-    "aemacron": "lowercase",
-    "agrave": "lowercase",
-    "aiecyr": "lowercase",
-    "ainvertedbreve": "lowercase",
-    "alpha": "lowercase",
-    "alpha-ipa": "lowercase",
-    "alphaacute": "lowercase",
-    "alphaacuteiotasub": "lowercase",
-    "alphaasper": "lowercase",
-    "alphaasperacute": "lowercase",
-    "alphaasperacuteiotasub": "lowercase",
-    "alphaaspergrave": "lowercase",
-    "alphaaspergraveiotasub": "lowercase",
-    "alphaasperiotasub": "lowercase",
-    "alphaaspertilde": "lowercase",
-    "alphaaspertildeiotasub": "lowercase",
-    "alphabreve": "lowercase",
-    "alphagrave": "lowercase",
-    "alphagraveiotasub": "lowercase",
-    "alphaiotasub": "lowercase",
-    "alphalenis": "lowercase",
-    "alphalenisacute": "lowercase",
-    "alphalenisacuteiotasub": "lowercase",
-    "alphalenisgrave": "lowercase",
-    "alphalenisgraveiotasub": "lowercase",
-    "alphalenisiotasub": "lowercase",
-    "alphalenistilde": "lowercase",
-    "alphalenistildeiotasub": "lowercase",
-    "alphatilde": "lowercase",
-    "alphatildeiotasub": "lowercase",
-    "alphatonos": "lowercase",
-    "alphaturned": "lowercase",
-    "alphawithmacron": "lowercase",
-    "amacron": "lowercase",
-    "ampersand": "nonalphabetic",
-    "aogonek": "lowercase",
-    "approxequal": "nonalphabetic",
-    "aring": "lowercase",
-    "aringacute": "lowercase",
-    "asciicircum": "nonalphabetic",
-    "asciitilde": "nonalphabetic",
-    "asper": "nonalphabetic",
-    "asperacute": "nonalphabetic",
-    "aspergrave": "nonalphabetic",
-    "aspertilde": "nonalphabetic",
-    "asterisk": "nonalphabetic",
-    "at": "nonalphabetic",
-    "atilde": "lowercase",
-    "aturned": "lowercase",
-    "b": "lowercase",
-    "backslash": "nonalphabetic",
-    "bar": "nonalphabetic",
-    "becyr": "lowercase",
-    "beta": "lowercase",
-    "bhook": "lowercase",
-    "braceleft": "nonalphabetic",
-    "braceright": "nonalphabetic",
-    "bracketleft": "nonalphabetic",
-    "bracketright": "nonalphabetic",
-    "breve": "nonalphabetic",
-    "breve.case": "nonalphabetic",
-    "brokenbar": "nonalphabetic",
-    "bstroke": "lowercase",
-    "btopbar": "lowercase",
-    "bullet": "nonalphabetic",
-    "c": "lowercase",
-    "cacute": "lowercase",
-    "caron": "nonalphabetic",
-    "caron.case": "nonalphabetic",
-    "caron.salt": "nonalphabetic",
-    "ccaron": "lowercase",
-    "ccedilla": "lowercase",
-    "ccircumflex": "lowercase",
-    "ccurl": "lowercase",
-    "cdotaccent": "lowercase",
-    "cedilla": "nonalphabetic",
-    "cent": "nonalphabetic",
-    "cheabkhcyr": "lowercase",
-    "cheabkhtailcyr": "lowercase",
-    "checyr": "lowercase",
-    "chedieresiscyr": "lowercase",
-    "chekhakascyr": "lowercase",
-    "chetailcyr": "lowercase",
-    "chevertcyr": "lowercase",
-    "chi": "lowercase",
-    "chook": "lowercase",
-    "circumflex": "nonalphabetic",
-    "circumflex.case": "nonalphabetic",
-    "clickalveolar": "lowercase",
-    "clickbilabial": "lowercase",
-    "clickdental": "lowercase",
-    "clicklateral": "lowercase",
-    "clickretroflex": "lowercase",
-    "colon": "punctuation",
-    "comma": "punctuation",
-    "copyright": "nonalphabetic",
-    "cstroke": "lowercase",
-    "currency": "nonalphabetic",
-    "d": "lowercase",
-    "dagger": "nonalphabetic",
-    "daggerdbl": "nonalphabetic",
-    "dbdigraph": "lowercase",
-    "dcaron": "lowercase",
-    "dchecyr": "lowercase",
-    "dcroat": "lowercase",
-    "dcurl": "lowercase",
-    "decyr": "lowercase",
-    "degree": "nonalphabetic",
-    "dekomicyr": "lowercase",
-    "delta": "lowercase",
-    "deltaturned": "lowercase",
-    "dezh": "lowercase",
-    "dhook": "lowercase",
-    "dieresis": "nonalphabetic",
-    "dieresis.case": "nonalphabetic",
-    "dieresisacute": "nonalphabetic",
-    "dieresisgrave": "nonalphabetic",
-    "dieresistilde": "nonalphabetic",
-    "digamma": "lowercase",
-    "divide": "nonalphabetic",
-    "djecyr": "lowercase",
-    "djekomicyr": "lowercase",
-    "dollar": "nonalphabetic",
-    "dotaccent": "nonalphabetic",
-    "dotaccent.case": "nonalphabetic",
-    "dotlessi": "lowercase",
-    "dotlessj": "lowercase",
-    "dotlessjstroke": "lowercase",
-    "dotlessjstrokehook": "lowercase",
-    "dtail": "lowercase",
-    "dtopbar": "lowercase",
-    "dz": "lowercase",
-    "dzcaron": "lowercase",
-    "dzeabkhcyr": "lowercase",
-    "dzecyr": "lowercase",
-    "dzed": "lowercase",
-    "dzedcurl": "lowercase",
-    "dzhecyr": "lowercase",
-    "dzjekomicyr": "lowercase",
-    "dzzhecyr": "lowercase",
-    "e": "lowercase",
-    "eacute": "lowercase",
-    "ebreve": "lowercase",
-    "ecaron": "lowercase",
-    "ecedilla": "lowercase",
-    "ecircumflex": "lowercase",
-    "edblgrave": "lowercase",
-    "edieresis": "lowercase",
-    "edotaccent": "lowercase",
-    "efcyr": "lowercase",
-    "egrave": "lowercase",
-    "eight": "digit",
-    "einvertedbreve": "lowercase",
-    "eiotifiedcyr": "lowercase",
-    "elcyr": "lowercase",
-    "elhookcyr": "lowercase",
-    "ellipsis": "punctuation",
-    "elmiddlehookcyr": "lowercase",
-    "elsharptailcyr": "lowercase",
-    "eltailcyr": "lowercase",
-    "emacron": "lowercase",
-    "emcyr": "lowercase",
-    "emdash": "punctuation",
-    "emsharptailcyr": "lowercase",
-    "encyr": "lowercase",
-    "endash": "punctuation",
-    "eng": "lowercase",
-    "engecyr": "lowercase",
-    "enhookcyr": "lowercase",
-    "enhookleftcyr": "lowercase",
-    "enmiddlehookcyr": "lowercase",
-    "ensharptailcyr": "lowercase",
-    "entailcyr": "lowercase",
-    "eogonek": "lowercase",
-    "eopen": "lowercase",
-    "eopenclosed": "lowercase",
-    "eopenreversed": "lowercase",
-    "eopenreversedclosed": "lowercase",
-    "eopenreversedhook": "lowercase",
-    "epsilon": "lowercase",
-    "epsilonacute": "lowercase",
-    "epsilonasper": "lowercase",
-    "epsilonasperacute": "lowercase",
-    "epsilonaspergrave": "lowercase",
-    "epsilongrave": "lowercase",
-    "epsilonlenis": "lowercase",
-    "epsilonlenisacute": "lowercase",
-    "epsilonlenisgrave": "lowercase",
-    "epsilontonos": "lowercase",
-    "equal": "nonalphabetic",
-    "ercyr": "lowercase",
-    "ereversed-ipa": "lowercase",
-    "ereversedcyr": "lowercase",
-    "ereverseddieresiscyr": "lowercase",
-    "ertickcyr": "lowercase",
-    "escyr": "lowercase",
-    "esh": "lowercase",
-    "eshcurl": "lowercase",
-    "eshreversedloop": "lowercase",
-    "eshsquatreversed": "lowercase",
-    "estailcyr": "lowercase",
-    "estimated": "nonalphabetic",
-    "estroke": "lowercase",
-    "eta": "lowercase",
-    "etaacute": "lowercase",
-    "etaacuteiotasub": "lowercase",
-    "etaasper": "lowercase",
-    "etaasperacute": "lowercase",
-    "etaasperacuteiotasub": "lowercase",
-    "etaaspergrave": "lowercase",
-    "etaaspergraveiotasub": "lowercase",
-    "etaasperiotasub": "lowercase",
-    "etaaspertilde": "lowercase",
-    "etaaspertildeiotasub": "lowercase",
-    "etagrave": "lowercase",
-    "etagraveiotasub": "lowercase",
-    "etaiotasub": "lowercase",
-    "etalenis": "lowercase",
-    "etalenisacute": "lowercase",
-    "etalenisacuteiotasub": "lowercase",
-    "etalenisgrave": "lowercase",
-    "etalenisgraveiotasub": "lowercase",
-    "etalenisiotasub": "lowercase",
-    "etalenistilde": "lowercase",
-    "etalenistildeiotasub": "lowercase",
-    "etatilde": "lowercase",
-    "etatildeiotasub": "lowercase",
-    "etatonos": "lowercase",
-    "eth": "lowercase",
-    "eturned": "lowercase",
-    "eukrcyr": "lowercase",
-    "exclam": "punctuation",
-    "exclamdown": "punctuation",
-    "ezh": "lowercase",
-    "ezhcaron": "lowercase",
-    "ezhcurl": "lowercase",
-    "ezhreversed": "lowercase",
-    "ezhtail": "lowercase",
-    "f": "lowercase",
-    "feng": "lowercase",
-    "fitacyr": "lowercase",
-    "five": "digit",
-    "florin": "lowercase",
-    "four": "digit",
-    "fraction": "nonalphabetic",
-    "franc": "nonalphabetic",
-    "g": "lowercase",
-    "gacute": "lowercase",
-    "gamma": "lowercase",
-    "gamma-ipa": "lowercase",
-    "gbreve": "lowercase",
-    "gcaron": "lowercase",
-    "gcircumflex": "lowercase",
-    "gcommaaccent": "lowercase",
-    "gdotaccent": "lowercase",
-    "gecyr": "lowercase",
-    "gehookcyr": "lowercase",
-    "germandbls": "lowercase",
-    "gestrokecyr": "lowercase",
-    "getailcyr": "lowercase",
-    "geupcyr": "lowercase",
-    "ghook": "lowercase",
-    "gjecyr": "lowercase",
-    "glottalinvertedstroke": "lowercase",
-    "glottalstop": "lowercase",
-    "glottalstopinverted": "lowercase",
-    "glottalstopsmall": "lowercase",
-    "glottalstopstroke": "lowercase",
-    "glottalstopstrokereversed": "lowercase",
-    "grave": "nonalphabetic",
-    "grave-gr": "nonalphabetic",
-    "grave.case": "nonalphabetic",
-    "greater": "nonalphabetic",
-    "greaterequal": "nonalphabetic",
-    "gscript-ipa": "lowercase",
-    "gstroke": "lowercase",
-    "guillemotleft": "nonalphabetic",
-    "guillemotright": "nonalphabetic",
-    "guilsinglleft": "nonalphabetic",
-    "guilsinglright": "nonalphabetic",
-    "h": "lowercase",
-    "haabkhcyr": "lowercase",
-    "hacyr": "lowercase",
-    "handtailfishhookturned": "lowercase",
-    "hardcyr": "lowercase",
-    "hbar": "lowercase",
-    "hcaron": "lowercase",
-    "hcircumflex": "lowercase",
-    "henghook": "lowercase",
-    "hfishhookturned": "lowercase",
-    "hhook": "lowercase",
-    "hturned": "lowercase",
-    "hungarumlaut": "nonalphabetic",
-    "hungarumlaut.case": "nonalphabetic",
-    "hv": "lowercase",
-    "hyphen": "punctuation",
-    "i": "lowercase",
-    "iacute": "lowercase",
-    "ibreve": "lowercase",
-    "icaron": "lowercase",
-    "icircumflex": "lowercase",
-    "icyr": "lowercase",
-    "idblgrave": "lowercase",
-    "idieresis": "lowercase",
-    "idieresiscyr": "lowercase",
-    "iebrevecyr": "lowercase",
-    "iecyr": "lowercase",
-    "iegravecyr": "lowercase",
-    "igrave": "lowercase",
-    "igravecyr": "lowercase",
-    "iinvertedbreve": "lowercase",
-    "ij": "lowercase",
-    "imacron": "lowercase",
-    "imacroncyr": "lowercase",
-    "infinity": "nonalphabetic",
-    "integral": "nonalphabetic",
-    "iocyr": "lowercase",
-    "iogonek": "lowercase",
-    "iota": "lowercase",
-    "iota-ipa": "lowercase",
-    "iotaacute": "lowercase",
-    "iotaadscript": "lowercase",
-    "iotaasper": "lowercase",
-    "iotaasperacute": "lowercase",
-    "iotaaspergrave": "lowercase",
-    "iotaaspertilde": "lowercase",
-    "iotabreve": "lowercase",
-    "iotadieresis": "lowercase",
-    "iotadieresisacute": "lowercase",
-    "iotadieresisgrave": "lowercase",
-    "iotadieresistilde": "lowercase",
-    "iotadieresistonos": "lowercase",
-    "iotagrave": "lowercase",
-    "iotalenis": "lowercase",
-    "iotalenisacute": "lowercase",
-    "iotalenisgrave": "lowercase",
-    "iotalenistilde": "lowercase",
-    "iotatilde": "lowercase",
-    "iotatonos": "lowercase",
-    "iotawithmacron": "lowercase",
-    "ishortcyr": "lowercase",
-    "ishortsharptailcyr": "lowercase",
-    "istroke": "lowercase",
-    "itilde": "lowercase",
-    "iukrcyr": "lowercase",
-    "izhitsacyr": "lowercase",
-    "izhitsagravedblcyr": "lowercase",
-    "j": "lowercase",
-    "jcaron": "lowercase",
-    "jcircumflex": "lowercase",
-    "jcrossedtail": "lowercase",
-    "jecyr": "lowercase",
-    "jstroke": "lowercase",
-    "k": "lowercase",
-    "kaaleutcyr": "lowercase",
-    "kabashkcyr": "lowercase",
-    "kacyr": "lowercase",
-    "kahookcyr": "lowercase",
-    "kappa": "lowercase",
-    "kastrokecyr": "lowercase",
-    "katailcyr": "lowercase",
-    "kaverticalstrokecyr": "lowercase",
-    "kcaron": "lowercase",
-    "kcommaaccent": "lowercase",
-    "kgreenlandic": "lowercase",
-    "khook": "lowercase",
-    "kjecyr": "lowercase",
-    "koppa": "lowercase",
-    "koppaarchaic": "lowercase",
-    "koppacyr": "lowercase",
-    "koronis": "nonalphabetic",
-    "ksicyr": "lowercase",
-    "kturned": "lowercase",
-    "l": "lowercase",
-    "lacute": "lowercase",
-    "lambda": "lowercase",
-    "lambdastroke": "lowercase",
-    "lbar": "lowercase",
-    "lbelt": "lowercase",
-    "lcaron": "lowercase",
-    "lcommaaccent": "lowercase",
-    "lcurl": "lowercase",
-    "ldot": "lowercase",
-    "lenis": "nonalphabetic",
-    "lenisacute": "nonalphabetic",
-    "lenisgrave": "nonalphabetic",
-    "lenistilde": "nonalphabetic",
-    "less": "nonalphabetic",
-    "lessequal": "nonalphabetic",
-    "lezh": "lowercase",
-    "lhacyr": "lowercase",
-    "lhookretroflex": "lowercase",
-    "lira": "nonalphabetic",
-    "lj": "lowercase",
-    "ljecyr": "lowercase",
-    "ljekomicyr": "lowercase",
-    "lmiddletilde": "lowercase",
-    "logicalnot": "nonalphabetic",
-    "longs": "lowercase",
-    "lozenge": "nonalphabetic",
-    "ls": "lowercase",
-    "lslash": "lowercase",
-    "lzed": "lowercase",
-    "m": "lowercase",
-    "macron": "nonalphabetic",
-    "macron.case": "nonalphabetic",
-    "mhook": "lowercase",
-    "minus": "nonalphabetic",
-    "mlonglegturned": "lowercase",
-    "mturned": "lowercase",
-    "mu": "lowercase",
-    "multiply": "nonalphabetic",
-    "n": "lowercase",
-    "nacute": "lowercase",
-    "napostrophe": "lowercase",
-    "ncaron": "lowercase",
-    "ncommaaccent": "lowercase",
-    "ncurl": "lowercase",
-    "ngrave": "lowercase",
-    "nhookleft": "lowercase",
-    "nhookretroflex": "lowercase",
-    "nine": "digit",
-    "nj": "lowercase",
-    "njecyr": "lowercase",
-    "njekomicyr": "lowercase",
-    "nlongrightleg": "lowercase",
-    "notequal": "nonalphabetic",
-    "ntilde": "lowercase",
-    "nu": "lowercase",
-    "numbersign": "nonalphabetic",
-    "o": "lowercase",
-    "oacute": "lowercase",
-    "obarcyr": "lowercase",
-    "obardieresiscyr": "lowercase",
-    "obarred": "lowercase",
-    "obreve": "lowercase",
-    "ocaron": "lowercase",
-    "ocircumflex": "lowercase",
-    "ocyr": "lowercase",
-    "odblgrave": "lowercase",
-    "odieresis": "lowercase",
-    "odieresiscyr": "lowercase",
-    "odieresismacron": "lowercase",
-    "odotaccent": "lowercase",
-    "odotaccentmacron": "lowercase",
-    "oe": "lowercase",
-    "ogonek": "nonalphabetic",
-    "ograve": "lowercase",
-    "ohorn": "lowercase",
-    "ohungarumlaut": "lowercase",
-    "oi": "lowercase",
-    "oinvertedbreve": "lowercase",
-    "omacron": "lowercase",
-    "omega": "lowercase",
-    "omegaacute": "lowercase",
-    "omegaacuteiotasub": "lowercase",
-    "omegaasper": "lowercase",
-    "omegaasperacute": "lowercase",
-    "omegaasperacuteiotasub": "lowercase",
-    "omegaaspergrave": "lowercase",
-    "omegaaspergraveiotasub": "lowercase",
-    "omegaasperiotasub": "lowercase",
-    "omegaaspertilde": "lowercase",
-    "omegaaspertildeiotasub": "lowercase",
-    "omegaclosed": "lowercase",
-    "omegacyr": "lowercase",
-    "omegagrave": "lowercase",
-    "omegagraveiotasub": "lowercase",
-    "omegaiotasub": "lowercase",
-    "omegalenis": "lowercase",
-    "omegalenisacute": "lowercase",
-    "omegalenisacuteiotasub": "lowercase",
-    "omegalenisgrave": "lowercase",
-    "omegalenisgraveiotasub": "lowercase",
-    "omegalenisiotasub": "lowercase",
-    "omegalenistilde": "lowercase",
-    "omegalenistildeiotasub": "lowercase",
-    "omegaroundcyr": "lowercase",
-    "omegatilde": "lowercase",
-    "omegatildeiotasub": "lowercase",
-    "omegatitlocyr": "lowercase",
-    "omegatonos": "lowercase",
-    "omicron": "lowercase",
-    "omicronacute": "lowercase",
-    "omicronasper": "lowercase",
-    "omicronasperacute": "lowercase",
-    "omicronaspergrave": "lowercase",
-    "omicrongrave": "lowercase",
-    "omicronlenis": "lowercase",
-    "omicronlenisacute": "lowercase",
-    "omicronlenisgrave": "lowercase",
-    "omicrontonos": "lowercase",
-    "one": "digit",
-    "onehalf": "nonalphabetic",
-    "onequarter": "nonalphabetic",
-    "onesuperior": "nonalphabetic",
-    "oogonek": "lowercase",
-    "oogonekmacron": "lowercase",
-    "oopen": "lowercase",
-    "ordfeminine": "lowercase",
-    "ordmasculine": "lowercase",
-    "oslash": "lowercase",
-    "oslashacute": "lowercase",
-    "otcyr": "lowercase",
-    "otilde": "lowercase",
-    "otildemacron": "lowercase",
-    "ou": "lowercase",
-    "p": "lowercase",
-    "palochkacyr": "lowercase",
-    "paragraph": "nonalphabetic",
-    "parenleft": "nonalphabetic",
-    "parenright": "nonalphabetic",
-    "partialdiff": "nonalphabetic",
-    "pecyr": "lowercase",
-    "pehookcyr": "lowercase",
-    "percent": "nonalphabetic",
-    "percussivebidental": "lowercase",
-    "percussivebilabial": "lowercase",
-    "period": "punctuation",
-    "periodcentered": "nonalphabetic",
-    "perthousand": "nonalphabetic",
-    "peseta": "nonalphabetic",
-    "petailcyr": "lowercase",
-    "pharyngealvoicedfricative": "lowercase",
-    "phi": "lowercase",
-    "phi-ipa": "lowercase",
-    "phook": "lowercase",
-    "pi": "lowercase",
-    "plus": "nonalphabetic",
-    "plusminus": "nonalphabetic",
-    "product": "nonalphabetic",
-    "psi": "lowercase",
-    "psicyr": "lowercase",
-    "q": "lowercase",
-    "qacyr": "lowercase",
-    "qhook": "lowercase",
-    "qhooktail": "lowercase",
-    "qpdigraph": "lowercase",
-    "question": "punctuation",
-    "questiondown": "punctuation",
-    "quotedbl": "punctuation",
-    "quotedblbase": "punctuation",
-    "quotedblleft": "punctuation",
-    "quotedblright": "punctuation",
-    "quoteleft": "punctuation",
-    "quoteright": "punctuation",
-    "quotesinglbase": "punctuation",
-    "quotesingle": "punctuation",
-    "r": "lowercase",
-    "racute": "lowercase",
-    "radical": "nonalphabetic",
-    "ramshorn": "lowercase",
-    "rcaron": "lowercase",
-    "rcommaaccent": "lowercase",
-    "rdblgrave": "lowercase",
-    "registered": "nonalphabetic",
-    "reversedzecyr": "lowercase",
-    "rfishhook": "lowercase",
-    "rfishhookreversed": "lowercase",
-    "rhacyr": "lowercase",
-    "rho": "lowercase",
-    "rhoasper": "lowercase",
-    "rholenis": "lowercase",
-    "rhookturned": "lowercase",
-    "ring": "nonalphabetic",
-    "ring.case": "nonalphabetic",
-    "rinvertedbreve": "lowercase",
-    "rlongleg": "lowercase",
-    "rlonglegturned": "lowercase",
-    "rstroke": "lowercase",
-    "rtail-ipa": "lowercase",
-    "rturned": "lowercase",
-    "s": "lowercase",
-    "sacute": "lowercase",
-    "sampi": "lowercase",
-    "scaron": "lowercase",
-    "scedilla": "lowercase",
-    "schwa": "lowercase",
-    "schwacyr": "lowercase",
-    "schwadieresiscyr": "lowercase",
-    "schwahook": "lowercase",
-    "scircumflex": "lowercase",
-    "scommaaccent": "lowercase",
-    "section": "nonalphabetic",
-    "semicolon": "punctuation",
-    "semisoftcyr": "lowercase",
-    "seven": "digit",
-    "shacyr": "lowercase",
-    "shchacyr": "lowercase",
-    "shhacyr": "lowercase",
-    "shhatailcyr": "lowercase",
-    "shook": "lowercase",
-    "sigma": "lowercase",
-    "sigmafinal": "lowercase",
-    "six": "digit",
-    "sjekomicyr": "lowercase",
-    "slash": "nonalphabetic",
-    "softcyr": "lowercase",
-    "space": "nonalphabetic",
-    "sswashtail": "lowercase",
-    "sterling": "nonalphabetic",
-    "stigma": "lowercase",
-    "summation": "nonalphabetic",
-    "t": "lowercase",
-    "tau": "lowercase",
-    "tbar": "lowercase",
-    "tcaron": "lowercase",
-    "tccurl": "lowercase",
-    "tcedilla": "lowercase",
-    "tcommaaccent": "lowercase",
-    "tcurl": "lowercase",
-    "tecyr": "lowercase",
-    "tesh": "lowercase",
-    "tetailcyr": "lowercase",
-    "tetsecyr": "lowercase",
-    "theta": "lowercase",
-    "thook": "lowercase",
-    "thorn": "lowercase",
-    "three": "digit",
-    "threequarters": "nonalphabetic",
-    "threesuperior": "nonalphabetic",
-    "tilde": "nonalphabetic",
-    "tilde-gr": "nonalphabetic",
-    "tilde.case": "nonalphabetic",
-    "tjekomicyr": "lowercase",
-    "tonefive": "lowercase",
-    "tonesix": "lowercase",
-    "tonetwo": "lowercase",
-    "tonos": "nonalphabetic",
-    "tpalatalhook": "lowercase",
-    "trademark": "nonalphabetic",
-    "tretroflexhook": "lowercase",
-    "ts": "lowercase",
-    "tsecyr": "lowercase",
-    "tshecyr": "lowercase",
-    "tturned": "lowercase",
-    "two": "digit",
-    "twostroke": "lowercase",
-    "twosuperior": "nonalphabetic",
-    "u": "lowercase",
-    "uacute": "lowercase",
-    "uacutedblcyr": "lowercase",
-    "ubar": "lowercase",
-    "ubreve": "lowercase",
-    "ucaron": "lowercase",
-    "ucircumflex": "lowercase",
-    "ucyr": "lowercase",
-    "udblgrave": "lowercase",
-    "udieresis": "lowercase",
-    "udieresisacute": "lowercase",
-    "udieresiscaron": "lowercase",
-    "udieresiscyr": "lowercase",
-    "udieresisgrave": "lowercase",
-    "udieresismacron": "lowercase",
-    "ugrave": "lowercase",
-    "uhorn": "lowercase",
-    "uhungarumlaut": "lowercase",
-    "uinvertedbreve": "lowercase",
-    "ukcyr": "lowercase",
-    "umacron": "lowercase",
-    "umacroncyr": "lowercase",
-    "underscore": "nonalphabetic",
-    "uni00A0": "nonalphabetic",
-    "uni00AD": "nonalphabetic",
-    "uni02C9": "nonalphabetic",
-    "uni2215": "nonalphabetic",
-    "uni2219": "nonalphabetic",
-    "uniF8FF": "nonalphabetic",
-    "uogonek": "lowercase",
-    "upsilon": "lowercase",
-    "upsilon-ipa": "lowercase",
-    "upsilonacute": "lowercase",
-    "upsilonasper": "lowercase",
-    "upsilonasperacute": "lowercase",
-    "upsilonaspergrave": "lowercase",
-    "upsilonaspertilde": "lowercase",
-    "upsilonbreve": "lowercase",
-    "upsilondieresis": "lowercase",
-    "upsilondieresisacute": "lowercase",
-    "upsilondieresisgrave": "lowercase",
-    "upsilondieresistilde": "lowercase",
-    "upsilondieresistonos": "lowercase",
-    "upsilongrave": "lowercase",
-    "upsilonlenis": "lowercase",
-    "upsilonlenisacute": "lowercase",
-    "upsilonlenisgrave": "lowercase",
-    "upsilonlenistilde": "lowercase",
-    "upsilontilde": "lowercase",
-    "upsilontonos": "lowercase",
-    "upsilonwithmacron": "lowercase",
-    "uring": "lowercase",
-    "ushortcyr": "lowercase",
-    "ustraightcyr": "lowercase",
-    "ustraightstrokecyr": "lowercase",
-    "utilde": "lowercase",
-    "v": "lowercase",
-    "vecyr": "lowercase",
-    "vhook": "lowercase",
-    "vturned": "lowercase",
-    "w": "lowercase",
-    "wcircumflex": "lowercase",
-    "wecyr": "lowercase",
-    "wturned": "lowercase",
-    "wynn": "lowercase",
-    "x": "lowercase",
-    "xatailcyr": "lowercase",
-    "xi": "lowercase",
-    "y": "lowercase",
-    "yacute": "lowercase",
-    "yacyr": "lowercase",
-    "yaecyr": "lowercase",
-    "yatcyr": "lowercase",
-    "ycircumflex": "lowercase",
-    "ydieresis": "lowercase",
-    "yen": "nonalphabetic",
-    "yhook": "lowercase",
-    "ylongcyr": "lowercase",
-    "ylongdieresiscyr": "lowercase",
-    "ymacron": "lowercase",
-    "yogh": "lowercase",
-    "yr": "capital",
-    "ystroke": "lowercase",
-    "yturned": "lowercase",
-    "yucyr": "lowercase",
-    "yukrcyr": "lowercase",
-    "yusbigcyr": "lowercase",
-    "yusbigiotifiedcyr": "lowercase",
-    "yuslittlecyr": "lowercase",
-    "yuslittleiotifiedcyr": "lowercase",
-    "z": "lowercase",
-    "zacute": "lowercase",
-    "zcaron": "lowercase",
-    "zcurl": "lowercase",
-    "zdotaccent": "lowercase",
-    "zecyr": "lowercase",
-    "zedieresiscyr": "lowercase",
-    "zero": "digit",
-    "zeta": "lowercase",
-    "zetailcyr": "lowercase",
-    "zhebrevecyr": "lowercase",
-    "zhecyr": "lowercase",
-    "zhedieresiscyr": "lowercase",
-    "zhetailcyr": "lowercase",
-    "zhook": "lowercase",
-    "zjekomicyr": "lowercase",
-    "zretroflexhook": "lowercase",
-    "zstroke": "lowercase",
-    "zswashtail": "lowercase"
+    "A": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A"
+    },
+    "AE": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER AE"
+    },
+    "AEacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER AE WITH ACUTE"
+    },
+    "AEmacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER AE WITH MACRON"
+    },
+    "Aacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH ACUTE"
+    },
+    "Abreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH BREVE"
+    },
+    "Abrevecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER A WITH BREVE"
+    },
+    "Acaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH CARON"
+    },
+    "Acircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH CIRCUMFLEX"
+    },
+    "Acyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER A"
+    },
+    "Adblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH DOUBLE GRAVE"
+    },
+    "Adieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH DIAERESIS"
+    },
+    "Adieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER A WITH DIAERESIS"
+    },
+    "Adieresismacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH DIAERESIS AND MACRON"
+    },
+    "Adotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH DOT ABOVE"
+    },
+    "Adotmacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON"
+    },
+    "Agrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH GRAVE"
+    },
+    "Aiecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LIGATURE A IE"
+    },
+    "Ainvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH INVERTED BREVE"
+    },
+    "Alpha": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA"
+    },
+    "Alphaacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH OXIA"
+    },
+    "Alphaasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA"
+    },
+    "Alphaasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA"
+    },
+    "Alphaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Alphaaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA"
+    },
+    "Alphaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Alphaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND PROSGEGRAMMENI"
+    },
+    "Alphaaspertilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI"
+    },
+    "Alphaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Alphabreve": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH VRACHY"
+    },
+    "Alphagrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH VARIA"
+    },
+    "Alphaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PROSGEGRAMMENI"
+    },
+    "Alphalenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI"
+    },
+    "Alphalenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA"
+    },
+    "Alphalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Alphalenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA"
+    },
+    "Alphalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Alphalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND PROSGEGRAMMENI"
+    },
+    "Alphalenistilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI"
+    },
+    "Alphalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Alphatonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH TONOS"
+    },
+    "Alphawithmacron": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ALPHA WITH MACRON"
+    },
+    "Amacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH MACRON"
+    },
+    "Aogonek": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH OGONEK"
+    },
+    "Aring": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH RING ABOVE"
+    },
+    "Aringacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE"
+    },
+    "Astroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH STROKE"
+    },
+    "Atilde": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER A WITH TILDE"
+    },
+    "B": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER B"
+    },
+    "Becyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BE"
+    },
+    "Beta": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER BETA"
+    },
+    "Bhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER B WITH HOOK"
+    },
+    "Bsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL B"
+    },
+    "Bstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER B WITH STROKE"
+    },
+    "Btopbar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER B WITH TOPBAR"
+    },
+    "C": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C"
+    },
+    "Cacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH ACUTE"
+    },
+    "Ccaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH CARON"
+    },
+    "Ccedilla": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH CEDILLA"
+    },
+    "Ccircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH CIRCUMFLEX"
+    },
+    "Cdotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH DOT ABOVE"
+    },
+    "Cheabkhcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ABKHASIAN CHE"
+    },
+    "Cheabkhtailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ABKHASIAN CHE WITH DESCENDER"
+    },
+    "Checyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER CHE"
+    },
+    "Chedieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER CHE WITH DIAERESIS"
+    },
+    "Chekhakascyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KHAKASSIAN CHE"
+    },
+    "Chetailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER CHE WITH DESCENDER"
+    },
+    "Chevertcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER CHE WITH VERTICAL STROKE"
+    },
+    "Chi": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER CHI"
+    },
+    "Chook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH HOOK"
+    },
+    "Cstretched": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER STRETCHED C"
+    },
+    "Cstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER C WITH STROKE"
+    },
+    "D": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER D"
+    },
+    "DZ": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER DZ"
+    },
+    "DZcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER DZ WITH CARON"
+    },
+    "Dafrican": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER AFRICAN D"
+    },
+    "Dcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH CARON"
+    },
+    "Dchecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DCHE"
+    },
+    "Dcroat": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH STROKE"
+    },
+    "Decyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DE"
+    },
+    "Dekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI DE"
+    },
+    "Delta": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER DELTA"
+    },
+    "Dhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH HOOK"
+    },
+    "Digamma": {
+      "class": "capital",
+      "unicodeName": "GREEK LETTER DIGAMMA"
+    },
+    "Djecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DJE"
+    },
+    "Djekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI DJE"
+    },
+    "Dtopbar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH TOPBAR"
+    },
+    "Dz": {
+      "class": "lowercase",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH SMALL LETTER Z"
+    },
+    "Dzcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON"
+    },
+    "Dzeabkhcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ABKHASIAN DZE"
+    },
+    "Dzecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DZE"
+    },
+    "Dzhecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DZHE"
+    },
+    "Dzjekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI DZJE"
+    },
+    "Dzzhecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER DZZHE"
+    },
+    "E": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E"
+    },
+    "Eacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH ACUTE"
+    },
+    "Ebreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH BREVE"
+    },
+    "Ecaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH CARON"
+    },
+    "Ecedilla": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH CEDILLA"
+    },
+    "Ecircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH CIRCUMFLEX"
+    },
+    "Edblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH DOUBLE GRAVE"
+    },
+    "Edieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH DIAERESIS"
+    },
+    "Edotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH DOT ABOVE"
+    },
+    "Efcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EF"
+    },
+    "Egrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH GRAVE"
+    },
+    "Einvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH INVERTED BREVE"
+    },
+    "Eiotifiedcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IOTIFIED E"
+    },
+    "Elcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EL"
+    },
+    "Elhookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EL WITH HOOK"
+    },
+    "Elmiddlehookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EL WITH MIDDLE HOOK"
+    },
+    "Elsharptailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EL WITH TAIL"
+    },
+    "Eltailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EL WITH DESCENDER"
+    },
+    "Emacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH MACRON"
+    },
+    "Emcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EM"
+    },
+    "Emsharptailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EM WITH TAIL"
+    },
+    "Encyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN"
+    },
+    "Eng": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER ENG"
+    },
+    "Engecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LIGATURE EN GHE"
+    },
+    "Enhookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN WITH HOOK"
+    },
+    "Enhookleftcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN WITH LEFT HOOK"
+    },
+    "Enmiddlehookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN WITH MIDDLE HOOK"
+    },
+    "Ensharptailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN WITH TAIL"
+    },
+    "Entailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER EN WITH DESCENDER"
+    },
+    "Eogonek": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH OGONEK"
+    },
+    "Eopen": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER OPEN E"
+    },
+    "Epsilon": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON"
+    },
+    "Epsilonacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH OXIA"
+    },
+    "Epsilonasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH DASIA"
+    },
+    "Epsilonasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH DASIA AND OXIA"
+    },
+    "Epsilonaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH DASIA AND VARIA"
+    },
+    "Epsilongrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH VARIA"
+    },
+    "Epsilonlenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH PSILI"
+    },
+    "Epsilonlenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH PSILI AND OXIA"
+    },
+    "Epsilonlenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH PSILI AND VARIA"
+    },
+    "Epsilontonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER EPSILON WITH TONOS"
+    },
+    "Ercyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ER"
+    },
+    "Ereversed": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER REVERSED E"
+    },
+    "Ereversedcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER E"
+    },
+    "Ereverseddieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER E WITH DIAERESIS"
+    },
+    "Ertickcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ER WITH TICK"
+    },
+    "Escyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ES"
+    },
+    "Esh": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER ESH"
+    },
+    "Estailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ES WITH DESCENDER"
+    },
+    "Estroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER E WITH STROKE"
+    },
+    "Eta": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA"
+    },
+    "Etaacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH OXIA"
+    },
+    "Etaasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA"
+    },
+    "Etaasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA"
+    },
+    "Etaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Etaaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA"
+    },
+    "Etaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Etaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND PROSGEGRAMMENI"
+    },
+    "Etaaspertilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI"
+    },
+    "Etaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Etagrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH VARIA"
+    },
+    "Etaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PROSGEGRAMMENI"
+    },
+    "Etalenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI"
+    },
+    "Etalenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA"
+    },
+    "Etalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Etalenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA"
+    },
+    "Etalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Etalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND PROSGEGRAMMENI"
+    },
+    "Etalenistilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI"
+    },
+    "Etalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Etatonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ETA WITH TONOS"
+    },
+    "Eth": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER ETH"
+    },
+    "Eukrcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER UKRAINIAN IE"
+    },
+    "Euro": {
+      "class": "nonalphabetic",
+      "unicodeName": "EURO SIGN"
+    },
+    "Ezh": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER EZH"
+    },
+    "Ezhcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER EZH WITH CARON"
+    },
+    "Ezhreversed": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER EZH REVERSED"
+    },
+    "F": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER F"
+    },
+    "Fhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER F WITH HOOK"
+    },
+    "Fitacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER FITA"
+    },
+    "G": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G"
+    },
+    "Gacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH ACUTE"
+    },
+    "Gamma": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER GAMMA"
+    },
+    "Gamma-lt": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER GAMMA"
+    },
+    "Gbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH BREVE"
+    },
+    "Gcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH CARON"
+    },
+    "Gcircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH CIRCUMFLEX"
+    },
+    "Gcommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH CEDILLA"
+    },
+    "Gdotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH DOT ABOVE"
+    },
+    "Gecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GHE"
+    },
+    "Gehookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GHE WITH MIDDLE HOOK"
+    },
+    "Gestrokecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GHE WITH STROKE"
+    },
+    "Getailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GHE WITH DESCENDER"
+    },
+    "Geupcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GHE WITH UPTURN"
+    },
+    "Ghook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH HOOK"
+    },
+    "Ghooksmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL G WITH HOOK"
+    },
+    "Gjecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER GJE"
+    },
+    "Glottalstop": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER GLOTTAL STOP"
+    },
+    "Gsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL G"
+    },
+    "Gstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER G WITH STROKE"
+    },
+    "H": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER H"
+    },
+    "Haabkhcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ABKHASIAN HA"
+    },
+    "Hacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER HA"
+    },
+    "Hardcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER HARD SIGN"
+    },
+    "Hbar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER H WITH STROKE"
+    },
+    "Hcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER H WITH CARON"
+    },
+    "Hcircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER H WITH CIRCUMFLEX"
+    },
+    "Hsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL H"
+    },
+    "Hwair": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER HWAIR"
+    },
+    "I": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I"
+    },
+    "IJ": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LIGATURE IJ"
+    },
+    "Iacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH ACUTE"
+    },
+    "Ibreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH BREVE"
+    },
+    "Icaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH CARON"
+    },
+    "Icircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH CIRCUMFLEX"
+    },
+    "Icyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER I"
+    },
+    "Idblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH DOUBLE GRAVE"
+    },
+    "Idieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH DIAERESIS"
+    },
+    "Idieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER I WITH DIAERESIS"
+    },
+    "Idotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH DOT ABOVE"
+    },
+    "Iebrevecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IE WITH BREVE"
+    },
+    "Iecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IE"
+    },
+    "Iegravecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IE WITH GRAVE"
+    },
+    "Igrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH GRAVE"
+    },
+    "Igravecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER I WITH GRAVE"
+    },
+    "Iinvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH INVERTED BREVE"
+    },
+    "Imacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH MACRON"
+    },
+    "Imacroncyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER I WITH MACRON"
+    },
+    "Iocyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IO"
+    },
+    "Iogonek": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH OGONEK"
+    },
+    "Iota": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA"
+    },
+    "Iotaacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH OXIA"
+    },
+    "Iotaafrican": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER IOTA"
+    },
+    "Iotaasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH DASIA"
+    },
+    "Iotaasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH DASIA AND OXIA"
+    },
+    "Iotaaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH DASIA AND VARIA"
+    },
+    "Iotaaspertilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH DASIA AND PERISPOMENI"
+    },
+    "Iotabreve": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH VRACHY"
+    },
+    "Iotadieresis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH DIALYTIKA"
+    },
+    "Iotagrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH VARIA"
+    },
+    "Iotalenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH PSILI"
+    },
+    "Iotalenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH PSILI AND OXIA"
+    },
+    "Iotalenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH PSILI AND VARIA"
+    },
+    "Iotalenistilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH PSILI AND PERISPOMENI"
+    },
+    "Iotatonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH TONOS"
+    },
+    "Iotawithmacron": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER IOTA WITH MACRON"
+    },
+    "Ishortcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHORT I"
+    },
+    "Ishortsharptailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHORT I WITH TAIL"
+    },
+    "Ismall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL I"
+    },
+    "Istroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH STROKE"
+    },
+    "Itilde": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER I WITH TILDE"
+    },
+    "Iukrcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I"
+    },
+    "Izhitsacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IZHITSA"
+    },
+    "Izhitsagravedblcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT"
+    },
+    "J": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER J"
+    },
+    "Jcircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER J WITH CIRCUMFLEX"
+    },
+    "Jecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER JE"
+    },
+    "Jstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER J WITH STROKE"
+    },
+    "K": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER K"
+    },
+    "Kaaleutcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ALEUT KA"
+    },
+    "Kabashkcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BASHKIR KA"
+    },
+    "Kacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KA"
+    },
+    "Kahookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KA WITH HOOK"
+    },
+    "Kappa": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER KAPPA"
+    },
+    "Kastrokecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KA WITH STROKE"
+    },
+    "Katailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KA WITH DESCENDER"
+    },
+    "Kaverticalstrokecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KA WITH VERTICAL STROKE"
+    },
+    "Kcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER K WITH CARON"
+    },
+    "Kcommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER K WITH CEDILLA"
+    },
+    "Khook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER K WITH HOOK"
+    },
+    "Kjecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KJE"
+    },
+    "Koppa": {
+      "class": "capital",
+      "unicodeName": "GREEK LETTER KOPPA"
+    },
+    "Koppaarchaic": {
+      "class": "capital",
+      "unicodeName": "GREEK LETTER ARCHAIC KOPPA"
+    },
+    "Koppacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOPPA"
+    },
+    "Ksicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KSI"
+    },
+    "L": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L"
+    },
+    "LJ": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER LJ"
+    },
+    "Lacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH ACUTE"
+    },
+    "Lambda": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER LAMDA"
+    },
+    "Lbar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH BAR"
+    },
+    "Lcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH CARON"
+    },
+    "Lcommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH CEDILLA"
+    },
+    "Ldot": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH MIDDLE DOT"
+    },
+    "Lhacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER LHA"
+    },
+    "Lj": {
+      "class": "lowercase",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH SMALL LETTER J"
+    },
+    "Ljecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER LJE"
+    },
+    "Ljekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI LJE"
+    },
+    "Lslash": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER L WITH STROKE"
+    },
+    "Lsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL L"
+    },
+    "M": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER M"
+    },
+    "Mturned": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER TURNED M"
+    },
+    "Mu": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER MU"
+    },
+    "N": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N"
+    },
+    "NJ": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER NJ"
+    },
+    "Nacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH ACUTE"
+    },
+    "Ncaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH CARON"
+    },
+    "Ncommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH CEDILLA"
+    },
+    "Ngrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH GRAVE"
+    },
+    "Nhookleft": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH LEFT HOOK"
+    },
+    "Nj": {
+      "class": "lowercase",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH SMALL LETTER J"
+    },
+    "Njecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER NJE"
+    },
+    "Njekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI NJE"
+    },
+    "Nlongrightleg": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH LONG RIGHT LEG"
+    },
+    "Nsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL N"
+    },
+    "Ntilde": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER N WITH TILDE"
+    },
+    "Nu": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER NU"
+    },
+    "O": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O"
+    },
+    "OE": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LIGATURE OE"
+    },
+    "OEsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL OE"
+    },
+    "Oacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH ACUTE"
+    },
+    "Obar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH MIDDLE TILDE"
+    },
+    "Obarcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BARRED O"
+    },
+    "Obardieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BARRED O WITH DIAERESIS"
+    },
+    "Obreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH BREVE"
+    },
+    "Ocaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH CARON"
+    },
+    "Ocircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH CIRCUMFLEX"
+    },
+    "Ocyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER O"
+    },
+    "Odblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DOUBLE GRAVE"
+    },
+    "Odieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DIAERESIS"
+    },
+    "Odieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER O WITH DIAERESIS"
+    },
+    "Odieresismacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DIAERESIS AND MACRON"
+    },
+    "Odotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DOT ABOVE"
+    },
+    "Odotaccentmacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DOT ABOVE AND MACRON"
+    },
+    "Ograve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH GRAVE"
+    },
+    "Ohorn": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH HORN"
+    },
+    "Ohungarumlaut": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH DOUBLE ACUTE"
+    },
+    "Oi": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER OI"
+    },
+    "Oinvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH INVERTED BREVE"
+    },
+    "Omacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH MACRON"
+    },
+    "Omega": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA"
+    },
+    "Omegaacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH OXIA"
+    },
+    "Omegaasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA"
+    },
+    "Omegaasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA"
+    },
+    "Omegaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Omegaaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA"
+    },
+    "Omegaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Omegaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND PROSGEGRAMMENI"
+    },
+    "Omegaaspertilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI"
+    },
+    "Omegaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Omegacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER OMEGA"
+    },
+    "Omegagrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH VARIA"
+    },
+    "Omegaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PROSGEGRAMMENI"
+    },
+    "Omegalenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI"
+    },
+    "Omegalenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA"
+    },
+    "Omegalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA AND PROSGEGRAMMENI"
+    },
+    "Omegalenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA"
+    },
+    "Omegalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA AND PROSGEGRAMMENI"
+    },
+    "Omegalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND PROSGEGRAMMENI"
+    },
+    "Omegalenistilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI"
+    },
+    "Omegalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI"
+    },
+    "Omegaroundcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ROUND OMEGA"
+    },
+    "Omegatitlocyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER OMEGA WITH TITLO"
+    },
+    "Omegatonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMEGA WITH TONOS"
+    },
+    "Omicron": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON"
+    },
+    "Omicronacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH OXIA"
+    },
+    "Omicronasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH DASIA"
+    },
+    "Omicronasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH DASIA AND OXIA"
+    },
+    "Omicronaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH DASIA AND VARIA"
+    },
+    "Omicrongrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH VARIA"
+    },
+    "Omicronlenis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH PSILI"
+    },
+    "Omicronlenisacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH PSILI AND OXIA"
+    },
+    "Omicronlenisgrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH PSILI AND VARIA"
+    },
+    "Omicrontonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER OMICRON WITH TONOS"
+    },
+    "Oogonek": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH OGONEK"
+    },
+    "Oogonekmacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH OGONEK AND MACRON"
+    },
+    "Oopen": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER OPEN O"
+    },
+    "Oslash": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH STROKE"
+    },
+    "Oslashacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH STROKE AND ACUTE"
+    },
+    "Otcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER OT"
+    },
+    "Otilde": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH TILDE"
+    },
+    "Otildemacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER O WITH TILDE AND MACRON"
+    },
+    "Ou": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER OU"
+    },
+    "P": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER P"
+    },
+    "Palochkacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC LETTER PALOCHKA"
+    },
+    "Pecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER PE"
+    },
+    "Pehookcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER PE WITH MIDDLE HOOK"
+    },
+    "Petailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER PE WITH DESCENDER"
+    },
+    "Phi": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER PHI"
+    },
+    "Phook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER P WITH HOOK"
+    },
+    "Pi": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER PI"
+    },
+    "Psi": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER PSI"
+    },
+    "Psicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER PSI"
+    },
+    "Q": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Q"
+    },
+    "Qacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER QA"
+    },
+    "Qsmallhooktail": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER SMALL Q WITH HOOK TAIL"
+    },
+    "R": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R"
+    },
+    "Racute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH ACUTE"
+    },
+    "Rcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH CARON"
+    },
+    "Rcommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH CEDILLA"
+    },
+    "Rdblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH DOUBLE GRAVE"
+    },
+    "Reversedzecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER REVERSED ZE"
+    },
+    "Rhacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER RHA"
+    },
+    "Rho": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER RHO"
+    },
+    "Rhoasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER RHO WITH DASIA"
+    },
+    "Rinvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH INVERTED BREVE"
+    },
+    "Rinvertedsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL INVERTED R"
+    },
+    "Rsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL R"
+    },
+    "Rstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER R WITH STROKE"
+    },
+    "S": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S"
+    },
+    "Sacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S WITH ACUTE"
+    },
+    "Sampi": {
+      "class": "capital",
+      "unicodeName": "GREEK LETTER SAMPI"
+    },
+    "Scaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S WITH CARON"
+    },
+    "Scedilla": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S WITH CEDILLA"
+    },
+    "Schwa": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER SCHWA"
+    },
+    "Schwacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SCHWA"
+    },
+    "Schwadieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SCHWA WITH DIAERESIS"
+    },
+    "Scircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S WITH CIRCUMFLEX"
+    },
+    "Scommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER S WITH COMMA BELOW"
+    },
+    "Semisoftcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SEMISOFT SIGN"
+    },
+    "Shacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHA"
+    },
+    "Shchacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHCHA"
+    },
+    "Shhacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHHA"
+    },
+    "Shhatailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHHA WITH DESCENDER"
+    },
+    "Sigma": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER SIGMA"
+    },
+    "Sjekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI SJE"
+    },
+    "Softcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SOFT SIGN"
+    },
+    "Stigma": {
+      "class": "capital",
+      "unicodeName": "GREEK LETTER STIGMA"
+    },
+    "T": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T"
+    },
+    "Tau": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER TAU"
+    },
+    "Tbar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH STROKE"
+    },
+    "Tcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH CARON"
+    },
+    "Tcedilla": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH CEDILLA"
+    },
+    "Tcommaaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH COMMA BELOW"
+    },
+    "Tdiagonalstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH DIAGONAL STROKE"
+    },
+    "Tecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER TE"
+    },
+    "Tetailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER TE WITH DESCENDER"
+    },
+    "Tetsecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LIGATURE TE TSE"
+    },
+    "Theta": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER THETA"
+    },
+    "Thook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH HOOK"
+    },
+    "Thorn": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER THORN"
+    },
+    "Tjekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI TJE"
+    },
+    "Tonefive": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER TONE FIVE"
+    },
+    "Tonesix": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER TONE SIX"
+    },
+    "Tonetwo": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER TONE TWO"
+    },
+    "Tretroflexhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER T WITH RETROFLEX HOOK"
+    },
+    "Tsecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER TSE"
+    },
+    "Tshecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER TSHE"
+    },
+    "U": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U"
+    },
+    "Uacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH ACUTE"
+    },
+    "Uacutedblcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE"
+    },
+    "Ubar": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U BAR"
+    },
+    "Ubreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH BREVE"
+    },
+    "Ucaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH CARON"
+    },
+    "Ucircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH CIRCUMFLEX"
+    },
+    "Ucyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER U"
+    },
+    "Udblgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DOUBLE GRAVE"
+    },
+    "Udieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DIAERESIS"
+    },
+    "Udieresisacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DIAERESIS AND ACUTE"
+    },
+    "Udieresiscaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DIAERESIS AND CARON"
+    },
+    "Udieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER U WITH DIAERESIS"
+    },
+    "Udieresisgrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DIAERESIS AND GRAVE"
+    },
+    "Udieresismacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DIAERESIS AND MACRON"
+    },
+    "Ugrave": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH GRAVE"
+    },
+    "Uhorn": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH HORN"
+    },
+    "Uhungarumlaut": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH DOUBLE ACUTE"
+    },
+    "Uinvertedbreve": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH INVERTED BREVE"
+    },
+    "Ukcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER UK"
+    },
+    "Umacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH MACRON"
+    },
+    "Umacroncyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER U WITH MACRON"
+    },
+    "Uogonek": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH OGONEK"
+    },
+    "Upsilon": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON"
+    },
+    "Upsilonacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH OXIA"
+    },
+    "Upsilonafrican": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER UPSILON"
+    },
+    "Upsilonasper": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH DASIA"
+    },
+    "Upsilonasperacute": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH DASIA AND OXIA"
+    },
+    "Upsilonaspergrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH DASIA AND VARIA"
+    },
+    "Upsilonaspertilde": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH DASIA AND PERISPOMENI"
+    },
+    "Upsilonbreve": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH VRACHY"
+    },
+    "Upsilondieresis": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA"
+    },
+    "Upsilongrave": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH VARIA"
+    },
+    "Upsilontonos": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH TONOS"
+    },
+    "Upsilonwithmacron": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER UPSILON WITH MACRON"
+    },
+    "Uring": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH RING ABOVE"
+    },
+    "Ushortcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER SHORT U"
+    },
+    "Ustraightcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER STRAIGHT U"
+    },
+    "Ustraightstrokecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER STRAIGHT U WITH STROKE"
+    },
+    "Utilde": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER U WITH TILDE"
+    },
+    "V": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER V"
+    },
+    "Vecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER VE"
+    },
+    "Vhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER V WITH HOOK"
+    },
+    "Vturned": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER TURNED V"
+    },
+    "W": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER W"
+    },
+    "Wcircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER W WITH CIRCUMFLEX"
+    },
+    "Wecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER WE"
+    },
+    "Wynn": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER WYNN"
+    },
+    "X": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER X"
+    },
+    "Xatailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER HA WITH DESCENDER"
+    },
+    "Xi": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER XI"
+    },
+    "Y": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y"
+    },
+    "Yacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH ACUTE"
+    },
+    "Yacyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YA"
+    },
+    "Yaecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YAE"
+    },
+    "Yatcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YAT"
+    },
+    "Ycircumflex": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH CIRCUMFLEX"
+    },
+    "Ydieresis": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH DIAERESIS"
+    },
+    "Yhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH HOOK"
+    },
+    "Ylongcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YERU"
+    },
+    "Ylongdieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS"
+    },
+    "Ymacron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH MACRON"
+    },
+    "Yogh": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER YOGH"
+    },
+    "Ysmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER SMALL CAPITAL Y"
+    },
+    "Ystroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Y WITH STROKE"
+    },
+    "Yucyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YU"
+    },
+    "Yukrcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER YI"
+    },
+    "Yusbigcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER BIG YUS"
+    },
+    "Yusbigiotifiedcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IOTIFIED BIG YUS"
+    },
+    "Yuslittlecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER LITTLE YUS"
+    },
+    "Yuslittleiotifiedcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER IOTIFIED LITTLE YUS"
+    },
+    "Z": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z"
+    },
+    "Zacute": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z WITH ACUTE"
+    },
+    "Zcaron": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z WITH CARON"
+    },
+    "Zdotaccent": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z WITH DOT ABOVE"
+    },
+    "Zecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZE"
+    },
+    "Zedieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZE WITH DIAERESIS"
+    },
+    "Zeta": {
+      "class": "capital",
+      "unicodeName": "GREEK CAPITAL LETTER ZETA"
+    },
+    "Zetailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZE WITH DESCENDER"
+    },
+    "Zhebrevecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZHE WITH BREVE"
+    },
+    "Zhecyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZHE"
+    },
+    "Zhedieresiscyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZHE WITH DIAERESIS"
+    },
+    "Zhetailcyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER ZHE WITH DESCENDER"
+    },
+    "Zhook": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z WITH HOOK"
+    },
+    "Zjekomicyr": {
+      "class": "capital",
+      "unicodeName": "CYRILLIC CAPITAL LETTER KOMI ZJE"
+    },
+    "Zstroke": {
+      "class": "capital",
+      "unicodeName": "LATIN CAPITAL LETTER Z WITH STROKE"
+    },
+    "a": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A"
+    },
+    "aacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH ACUTE"
+    },
+    "abreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH BREVE"
+    },
+    "abrevecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER A WITH BREVE"
+    },
+    "acaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH CARON"
+    },
+    "acircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH CIRCUMFLEX"
+    },
+    "acute": {
+      "class": "nonalphabetic",
+      "unicodeName": "ACUTE ACCENT"
+    },
+    "acute-gr": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK OXIA"
+    },
+    "acute.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "ACUTE ACCENT  [case]"
+    },
+    "acyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER A"
+    },
+    "adblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH DOUBLE GRAVE"
+    },
+    "adieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH DIAERESIS"
+    },
+    "adieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER A WITH DIAERESIS"
+    },
+    "adieresismacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH DIAERESIS AND MACRON"
+    },
+    "adotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH DOT ABOVE"
+    },
+    "adotmacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON"
+    },
+    "ae": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER AE"
+    },
+    "aeacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER AE WITH ACUTE"
+    },
+    "aemacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER AE WITH MACRON"
+    },
+    "agrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH GRAVE"
+    },
+    "aiecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LIGATURE A IE"
+    },
+    "ainvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH INVERTED BREVE"
+    },
+    "alpha": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA"
+    },
+    "alpha-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER ALPHA"
+    },
+    "alphaacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH OXIA"
+    },
+    "alphaacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH OXIA AND YPOGEGRAMMENI"
+    },
+    "alphaasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA"
+    },
+    "alphaasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA"
+    },
+    "alphaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA AND YPOGEGRAMMENI"
+    },
+    "alphaaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA"
+    },
+    "alphaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA AND YPOGEGRAMMENI"
+    },
+    "alphaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND YPOGEGRAMMENI"
+    },
+    "alphaaspertilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI"
+    },
+    "alphaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "alphabreve": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH VRACHY"
+    },
+    "alphagrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH VARIA"
+    },
+    "alphagraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH VARIA AND YPOGEGRAMMENI"
+    },
+    "alphaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH YPOGEGRAMMENI"
+    },
+    "alphalenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI"
+    },
+    "alphalenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA"
+    },
+    "alphalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA AND YPOGEGRAMMENI"
+    },
+    "alphalenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA"
+    },
+    "alphalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND VARIA AND YPOGEGRAMMENI"
+    },
+    "alphalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
+    },
+    "alphalenistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI"
+    },
+    "alphalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "alphatilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PERISPOMENI"
+    },
+    "alphatildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "alphatonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH TONOS"
+    },
+    "alphaturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED ALPHA"
+    },
+    "alphawithmacron": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ALPHA WITH MACRON"
+    },
+    "amacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH MACRON"
+    },
+    "ampersand": {
+      "class": "nonalphabetic",
+      "unicodeName": "AMPERSAND"
+    },
+    "aogonek": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH OGONEK"
+    },
+    "approxequal": {
+      "class": "nonalphabetic",
+      "unicodeName": "ALMOST EQUAL TO"
+    },
+    "aring": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH RING ABOVE"
+    },
+    "aringacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE"
+    },
+    "asciicircum": {
+      "class": "nonalphabetic",
+      "unicodeName": "CIRCUMFLEX ACCENT"
+    },
+    "asciitilde": {
+      "class": "nonalphabetic",
+      "unicodeName": "TILDE"
+    },
+    "asper": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DASIA"
+    },
+    "asperacute": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DASIA AND OXIA"
+    },
+    "aspergrave": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DASIA AND VARIA"
+    },
+    "aspertilde": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DASIA AND PERISPOMENI"
+    },
+    "asterisk": {
+      "class": "nonalphabetic",
+      "unicodeName": "ASTERISK"
+    },
+    "at": {
+      "class": "nonalphabetic",
+      "unicodeName": "COMMERCIAL AT"
+    },
+    "atilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER A WITH TILDE"
+    },
+    "aturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED A"
+    },
+    "b": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER B"
+    },
+    "backslash": {
+      "class": "nonalphabetic",
+      "unicodeName": "REVERSE SOLIDUS"
+    },
+    "bar": {
+      "class": "nonalphabetic",
+      "unicodeName": "VERTICAL LINE"
+    },
+    "becyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BE"
+    },
+    "beta": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER BETA"
+    },
+    "bhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER B WITH HOOK"
+    },
+    "braceleft": {
+      "class": "nonalphabetic",
+      "unicodeName": "LEFT CURLY BRACKET"
+    },
+    "braceright": {
+      "class": "nonalphabetic",
+      "unicodeName": "RIGHT CURLY BRACKET"
+    },
+    "bracketleft": {
+      "class": "nonalphabetic",
+      "unicodeName": "LEFT SQUARE BRACKET"
+    },
+    "bracketright": {
+      "class": "nonalphabetic",
+      "unicodeName": "RIGHT SQUARE BRACKET"
+    },
+    "breve": {
+      "class": "nonalphabetic",
+      "unicodeName": "BREVE"
+    },
+    "breve.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "BREVE  [case]"
+    },
+    "brokenbar": {
+      "class": "nonalphabetic",
+      "unicodeName": "BROKEN BAR"
+    },
+    "bstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER B WITH STROKE"
+    },
+    "btopbar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER B WITH TOPBAR"
+    },
+    "bullet": {
+      "class": "nonalphabetic",
+      "unicodeName": "BULLET"
+    },
+    "c": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C"
+    },
+    "cacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH ACUTE"
+    },
+    "caron": {
+      "class": "nonalphabetic",
+      "unicodeName": "CARON"
+    },
+    "caron.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "CARON  [case]"
+    },
+    "caron.salt": {
+      "class": "nonalphabetic",
+      "unicodeName": "CARON  [salt]"
+    },
+    "ccaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH CARON"
+    },
+    "ccedilla": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH CEDILLA"
+    },
+    "ccircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH CIRCUMFLEX"
+    },
+    "ccurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH CURL"
+    },
+    "cdotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH DOT ABOVE"
+    },
+    "cedilla": {
+      "class": "nonalphabetic",
+      "unicodeName": "CEDILLA"
+    },
+    "cent": {
+      "class": "nonalphabetic",
+      "unicodeName": "CENT SIGN"
+    },
+    "cheabkhcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ABKHASIAN CHE"
+    },
+    "cheabkhtailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ABKHASIAN CHE WITH DESCENDER"
+    },
+    "checyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER CHE"
+    },
+    "chedieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER CHE WITH DIAERESIS"
+    },
+    "chekhakascyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KHAKASSIAN CHE"
+    },
+    "chetailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER CHE WITH DESCENDER"
+    },
+    "chevertcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER CHE WITH VERTICAL STROKE"
+    },
+    "chi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER CHI"
+    },
+    "chook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH HOOK"
+    },
+    "circumflex": {
+      "class": "nonalphabetic",
+      "unicodeName": "MODIFIER LETTER CIRCUMFLEX ACCENT"
+    },
+    "circumflex.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "MODIFIER LETTER CIRCUMFLEX ACCENT  [case]"
+    },
+    "clickalveolar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER ALVEOLAR CLICK"
+    },
+    "clickbilabial": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER BILABIAL CLICK"
+    },
+    "clickdental": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER DENTAL CLICK"
+    },
+    "clicklateral": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER LATERAL CLICK"
+    },
+    "clickretroflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER RETROFLEX CLICK"
+    },
+    "colon": {
+      "class": "punctuation",
+      "unicodeName": "COLON"
+    },
+    "comma": {
+      "class": "punctuation",
+      "unicodeName": "COMMA"
+    },
+    "copyright": {
+      "class": "nonalphabetic",
+      "unicodeName": "COPYRIGHT SIGN"
+    },
+    "cstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER C WITH STROKE"
+    },
+    "currency": {
+      "class": "nonalphabetic",
+      "unicodeName": "CURRENCY SIGN"
+    },
+    "d": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D"
+    },
+    "dagger": {
+      "class": "nonalphabetic",
+      "unicodeName": "DAGGER"
+    },
+    "daggerdbl": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOUBLE DAGGER"
+    },
+    "dbdigraph": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DB DIGRAPH"
+    },
+    "dcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH CARON"
+    },
+    "dchecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DCHE"
+    },
+    "dcroat": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH STROKE"
+    },
+    "dcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH CURL"
+    },
+    "decyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DE"
+    },
+    "degree": {
+      "class": "nonalphabetic",
+      "unicodeName": "DEGREE SIGN"
+    },
+    "dekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI DE"
+    },
+    "delta": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER DELTA"
+    },
+    "deltaturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED DELTA"
+    },
+    "dezh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DEZH DIGRAPH"
+    },
+    "dhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH HOOK"
+    },
+    "dieresis": {
+      "class": "nonalphabetic",
+      "unicodeName": "DIAERESIS"
+    },
+    "dieresis.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "DIAERESIS  [case]"
+    },
+    "dieresisacute": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DIALYTIKA AND OXIA"
+    },
+    "dieresisgrave": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DIALYTIKA AND VARIA"
+    },
+    "dieresistilde": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK DIALYTIKA AND PERISPOMENI"
+    },
+    "digamma": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER DIGAMMA"
+    },
+    "divide": {
+      "class": "nonalphabetic",
+      "unicodeName": "DIVISION SIGN"
+    },
+    "djecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DJE"
+    },
+    "djekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI DJE"
+    },
+    "dollar": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOLLAR SIGN"
+    },
+    "dotaccent": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOT ABOVE"
+    },
+    "dotaccent.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOT ABOVE  [case]"
+    },
+    "dotlessi": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DOTLESS I"
+    },
+    "dotlessj": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DOTLESS J"
+    },
+    "dotlessjstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DOTLESS J WITH STROKE"
+    },
+    "dotlessjstrokehook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK"
+    },
+    "dtail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH TAIL"
+    },
+    "dtopbar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER D WITH TOPBAR"
+    },
+    "dz": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DZ"
+    },
+    "dzcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DZ WITH CARON"
+    },
+    "dzeabkhcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ABKHASIAN DZE"
+    },
+    "dzecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DZE"
+    },
+    "dzed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DZ DIGRAPH"
+    },
+    "dzedcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER DZ DIGRAPH WITH CURL"
+    },
+    "dzhecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DZHE"
+    },
+    "dzjekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI DZJE"
+    },
+    "dzzhecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER DZZHE"
+    },
+    "e": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E"
+    },
+    "eacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH ACUTE"
+    },
+    "ebreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH BREVE"
+    },
+    "ecaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH CARON"
+    },
+    "ecedilla": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH CEDILLA"
+    },
+    "ecircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH CIRCUMFLEX"
+    },
+    "edblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH DOUBLE GRAVE"
+    },
+    "edieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH DIAERESIS"
+    },
+    "edotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH DOT ABOVE"
+    },
+    "efcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EF"
+    },
+    "egrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH GRAVE"
+    },
+    "eight": {
+      "class": "digit",
+      "unicodeName": "DIGIT EIGHT"
+    },
+    "einvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH INVERTED BREVE"
+    },
+    "eiotifiedcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IOTIFIED E"
+    },
+    "elcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EL"
+    },
+    "elhookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EL WITH HOOK"
+    },
+    "ellipsis": {
+      "class": "punctuation",
+      "unicodeName": "HORIZONTAL ELLIPSIS"
+    },
+    "elmiddlehookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EL WITH MIDDLE HOOK"
+    },
+    "elsharptailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EL WITH TAIL"
+    },
+    "eltailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EL WITH DESCENDER"
+    },
+    "emacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH MACRON"
+    },
+    "emcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EM"
+    },
+    "emdash": {
+      "class": "punctuation",
+      "unicodeName": "EM DASH"
+    },
+    "emsharptailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EM WITH TAIL"
+    },
+    "encyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN"
+    },
+    "endash": {
+      "class": "punctuation",
+      "unicodeName": "EN DASH"
+    },
+    "eng": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER ENG"
+    },
+    "engecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LIGATURE EN GHE"
+    },
+    "enhookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN WITH HOOK"
+    },
+    "enhookleftcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN WITH LEFT HOOK"
+    },
+    "enmiddlehookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN WITH MIDDLE HOOK"
+    },
+    "ensharptailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN WITH TAIL"
+    },
+    "entailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER EN WITH DESCENDER"
+    },
+    "eogonek": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH OGONEK"
+    },
+    "eopen": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER OPEN E"
+    },
+    "eopenclosed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER CLOSED OPEN E"
+    },
+    "eopenreversed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER REVERSED OPEN E"
+    },
+    "eopenreversedclosed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER CLOSED REVERSED OPEN E"
+    },
+    "eopenreversedhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER REVERSED OPEN E WITH HOOK"
+    },
+    "epsilon": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON"
+    },
+    "epsilonacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH OXIA"
+    },
+    "epsilonasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH DASIA"
+    },
+    "epsilonasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH DASIA AND OXIA"
+    },
+    "epsilonaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH DASIA AND VARIA"
+    },
+    "epsilongrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH VARIA"
+    },
+    "epsilonlenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH PSILI"
+    },
+    "epsilonlenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH PSILI AND OXIA"
+    },
+    "epsilonlenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH PSILI AND VARIA"
+    },
+    "epsilontonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER EPSILON WITH TONOS"
+    },
+    "equal": {
+      "class": "nonalphabetic",
+      "unicodeName": "EQUALS SIGN"
+    },
+    "ercyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ER"
+    },
+    "ereversed-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER REVERSED E"
+    },
+    "ereversedcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER E"
+    },
+    "ereverseddieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER E WITH DIAERESIS"
+    },
+    "ertickcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ER WITH TICK"
+    },
+    "escyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ES"
+    },
+    "esh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER ESH"
+    },
+    "eshcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER ESH WITH CURL"
+    },
+    "eshreversedloop": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER REVERSED ESH LOOP"
+    },
+    "eshsquatreversed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER SQUAT REVERSED ESH"
+    },
+    "estailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ES WITH DESCENDER"
+    },
+    "estimated": {
+      "class": "nonalphabetic",
+      "unicodeName": "ESTIMATED SYMBOL"
+    },
+    "estroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER E WITH STROKE"
+    },
+    "eta": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA"
+    },
+    "etaacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH OXIA"
+    },
+    "etaacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH OXIA AND YPOGEGRAMMENI"
+    },
+    "etaasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA"
+    },
+    "etaasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND OXIA"
+    },
+    "etaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND OXIA AND YPOGEGRAMMENI"
+    },
+    "etaaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND VARIA"
+    },
+    "etaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND VARIA AND YPOGEGRAMMENI"
+    },
+    "etaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND YPOGEGRAMMENI"
+    },
+    "etaaspertilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI"
+    },
+    "etaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "etagrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH VARIA"
+    },
+    "etagraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI"
+    },
+    "etaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH YPOGEGRAMMENI"
+    },
+    "etalenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI"
+    },
+    "etalenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND OXIA"
+    },
+    "etalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND OXIA AND YPOGEGRAMMENI"
+    },
+    "etalenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND VARIA"
+    },
+    "etalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND VARIA AND YPOGEGRAMMENI"
+    },
+    "etalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND YPOGEGRAMMENI"
+    },
+    "etalenistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI"
+    },
+    "etalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "etatilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PERISPOMENI"
+    },
+    "etatildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "etatonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ETA WITH TONOS"
+    },
+    "eth": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER ETH"
+    },
+    "eturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED E"
+    },
+    "eukrcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER UKRAINIAN IE"
+    },
+    "exclam": {
+      "class": "punctuation",
+      "unicodeName": "EXCLAMATION MARK"
+    },
+    "exclamdown": {
+      "class": "punctuation",
+      "unicodeName": "INVERTED EXCLAMATION MARK"
+    },
+    "ezh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER EZH"
+    },
+    "ezhcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER EZH WITH CARON"
+    },
+    "ezhcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER EZH WITH CURL"
+    },
+    "ezhreversed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER EZH REVERSED"
+    },
+    "ezhtail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER EZH WITH TAIL"
+    },
+    "f": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER F"
+    },
+    "feng": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER FENG DIGRAPH"
+    },
+    "fitacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER FITA"
+    },
+    "five": {
+      "class": "digit",
+      "unicodeName": "DIGIT FIVE"
+    },
+    "florin": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER F WITH HOOK"
+    },
+    "four": {
+      "class": "digit",
+      "unicodeName": "DIGIT FOUR"
+    },
+    "fraction": {
+      "class": "nonalphabetic",
+      "unicodeName": "FRACTION SLASH"
+    },
+    "franc": {
+      "class": "nonalphabetic",
+      "unicodeName": "FRENCH FRANC SIGN"
+    },
+    "g": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G"
+    },
+    "gacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH ACUTE"
+    },
+    "gamma": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER GAMMA"
+    },
+    "gamma-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER GAMMA"
+    },
+    "gbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH BREVE"
+    },
+    "gcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH CARON"
+    },
+    "gcircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH CIRCUMFLEX"
+    },
+    "gcommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH CEDILLA"
+    },
+    "gdotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH DOT ABOVE"
+    },
+    "gecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GHE"
+    },
+    "gehookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GHE WITH MIDDLE HOOK"
+    },
+    "germandbls": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER SHARP S"
+    },
+    "gestrokecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GHE WITH STROKE"
+    },
+    "getailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GHE WITH DESCENDER"
+    },
+    "geupcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GHE WITH UPTURN"
+    },
+    "ghook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH HOOK"
+    },
+    "gjecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER GJE"
+    },
+    "glottalinvertedstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE"
+    },
+    "glottalstop": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER GLOTTAL STOP"
+    },
+    "glottalstopinverted": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER INVERTED GLOTTAL STOP"
+    },
+    "glottalstopsmall": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER GLOTTAL STOP"
+    },
+    "glottalstopstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER GLOTTAL STOP WITH STROKE"
+    },
+    "glottalstopstrokereversed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE"
+    },
+    "grave": {
+      "class": "nonalphabetic",
+      "unicodeName": "GRAVE ACCENT"
+    },
+    "grave-gr": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK VARIA"
+    },
+    "grave.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "GRAVE ACCENT  [case]"
+    },
+    "greater": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREATER-THAN SIGN"
+    },
+    "greaterequal": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREATER-THAN OR EQUAL TO"
+    },
+    "gscript-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER SCRIPT G"
+    },
+    "gstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER G WITH STROKE"
+    },
+    "guillemotleft": {
+      "class": "nonalphabetic",
+      "unicodeName": "LEFT-POINTING DOUBLE ANGLE QUOTATION MARK"
+    },
+    "guillemotright": {
+      "class": "nonalphabetic",
+      "unicodeName": "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK"
+    },
+    "guilsinglleft": {
+      "class": "nonalphabetic",
+      "unicodeName": "SINGLE LEFT-POINTING ANGLE QUOTATION MARK"
+    },
+    "guilsinglright": {
+      "class": "nonalphabetic",
+      "unicodeName": "SINGLE RIGHT-POINTING ANGLE QUOTATION MARK"
+    },
+    "h": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER H"
+    },
+    "haabkhcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ABKHASIAN HA"
+    },
+    "hacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER HA"
+    },
+    "handtailfishhookturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL"
+    },
+    "hardcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER HARD SIGN"
+    },
+    "hbar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER H WITH STROKE"
+    },
+    "hcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER H WITH CARON"
+    },
+    "hcircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER H WITH CIRCUMFLEX"
+    },
+    "henghook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER HENG WITH HOOK"
+    },
+    "hfishhookturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED H WITH FISHHOOK"
+    },
+    "hhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER H WITH HOOK"
+    },
+    "hturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED H"
+    },
+    "hungarumlaut": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOUBLE ACUTE ACCENT"
+    },
+    "hungarumlaut.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "DOUBLE ACUTE ACCENT  [case]"
+    },
+    "hv": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER HV"
+    },
+    "hyphen": {
+      "class": "punctuation",
+      "unicodeName": "HYPHEN-MINUS"
+    },
+    "i": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I"
+    },
+    "iacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH ACUTE"
+    },
+    "ibreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH BREVE"
+    },
+    "icaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH CARON"
+    },
+    "icircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH CIRCUMFLEX"
+    },
+    "icyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER I"
+    },
+    "idblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH DOUBLE GRAVE"
+    },
+    "idieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH DIAERESIS"
+    },
+    "idieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER I WITH DIAERESIS"
+    },
+    "iebrevecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IE WITH BREVE"
+    },
+    "iecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IE"
+    },
+    "iegravecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IE WITH GRAVE"
+    },
+    "igrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH GRAVE"
+    },
+    "igravecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER I WITH GRAVE"
+    },
+    "iinvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH INVERTED BREVE"
+    },
+    "ij": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LIGATURE IJ"
+    },
+    "imacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH MACRON"
+    },
+    "imacroncyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER I WITH MACRON"
+    },
+    "infinity": {
+      "class": "nonalphabetic",
+      "unicodeName": "INFINITY"
+    },
+    "integral": {
+      "class": "nonalphabetic",
+      "unicodeName": "INTEGRAL"
+    },
+    "iocyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IO"
+    },
+    "iogonek": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH OGONEK"
+    },
+    "iota": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA"
+    },
+    "iota-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER IOTA"
+    },
+    "iotaacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH OXIA"
+    },
+    "iotaadscript": {
+      "class": "lowercase",
+      "unicodeName": "GREEK PROSGEGRAMMENI"
+    },
+    "iotaasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DASIA"
+    },
+    "iotaasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DASIA AND OXIA"
+    },
+    "iotaaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DASIA AND VARIA"
+    },
+    "iotaaspertilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DASIA AND PERISPOMENI"
+    },
+    "iotabreve": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH VRACHY"
+    },
+    "iotadieresis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA"
+    },
+    "iotadieresisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA"
+    },
+    "iotadieresisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND VARIA"
+    },
+    "iotadieresistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI"
+    },
+    "iotadieresistonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH DIALYTIKA AND TONOS"
+    },
+    "iotagrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH VARIA"
+    },
+    "iotalenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH PSILI"
+    },
+    "iotalenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH PSILI AND OXIA"
+    },
+    "iotalenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH PSILI AND VARIA"
+    },
+    "iotalenistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH PSILI AND PERISPOMENI"
+    },
+    "iotatilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH PERISPOMENI"
+    },
+    "iotatonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH TONOS"
+    },
+    "iotawithmacron": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER IOTA WITH MACRON"
+    },
+    "ishortcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHORT I"
+    },
+    "ishortsharptailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHORT I WITH TAIL"
+    },
+    "istroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH STROKE"
+    },
+    "itilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER I WITH TILDE"
+    },
+    "iukrcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I"
+    },
+    "izhitsacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IZHITSA"
+    },
+    "izhitsagravedblcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IZHITSA WITH DOUBLE GRAVE ACCENT"
+    },
+    "j": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER J"
+    },
+    "jcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER J WITH CARON"
+    },
+    "jcircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER J WITH CIRCUMFLEX"
+    },
+    "jcrossedtail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER J WITH CROSSED-TAIL"
+    },
+    "jecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER JE"
+    },
+    "jstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER J WITH STROKE"
+    },
+    "k": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER K"
+    },
+    "kaaleutcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ALEUT KA"
+    },
+    "kabashkcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BASHKIR KA"
+    },
+    "kacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KA"
+    },
+    "kahookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KA WITH HOOK"
+    },
+    "kappa": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER KAPPA"
+    },
+    "kastrokecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KA WITH STROKE"
+    },
+    "katailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KA WITH DESCENDER"
+    },
+    "kaverticalstrokecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KA WITH VERTICAL STROKE"
+    },
+    "kcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER K WITH CARON"
+    },
+    "kcommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER K WITH CEDILLA"
+    },
+    "kgreenlandic": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER KRA"
+    },
+    "khook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER K WITH HOOK"
+    },
+    "kjecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KJE"
+    },
+    "koppa": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER KOPPA"
+    },
+    "koppaarchaic": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ARCHAIC KOPPA"
+    },
+    "koppacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOPPA"
+    },
+    "koronis": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK KORONIS"
+    },
+    "ksicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KSI"
+    },
+    "kturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED K"
+    },
+    "l": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L"
+    },
+    "lacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH ACUTE"
+    },
+    "lambda": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER LAMDA"
+    },
+    "lambdastroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LAMBDA WITH STROKE"
+    },
+    "lbar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH BAR"
+    },
+    "lbelt": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH BELT"
+    },
+    "lcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH CARON"
+    },
+    "lcommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH CEDILLA"
+    },
+    "lcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH CURL"
+    },
+    "ldot": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH MIDDLE DOT"
+    },
+    "lenis": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK PSILI"
+    },
+    "lenisacute": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK PSILI AND OXIA"
+    },
+    "lenisgrave": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK PSILI AND VARIA"
+    },
+    "lenistilde": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK PSILI AND PERISPOMENI"
+    },
+    "less": {
+      "class": "nonalphabetic",
+      "unicodeName": "LESS-THAN SIGN"
+    },
+    "lessequal": {
+      "class": "nonalphabetic",
+      "unicodeName": "LESS-THAN OR EQUAL TO"
+    },
+    "lezh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LEZH"
+    },
+    "lhacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER LHA"
+    },
+    "lhookretroflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH RETROFLEX HOOK"
+    },
+    "lira": {
+      "class": "nonalphabetic",
+      "unicodeName": "LIRA SIGN"
+    },
+    "lj": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LJ"
+    },
+    "ljecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER LJE"
+    },
+    "ljekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI LJE"
+    },
+    "lmiddletilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH MIDDLE TILDE"
+    },
+    "logicalnot": {
+      "class": "nonalphabetic",
+      "unicodeName": "NOT SIGN"
+    },
+    "longs": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LONG S"
+    },
+    "lozenge": {
+      "class": "nonalphabetic",
+      "unicodeName": "LOZENGE"
+    },
+    "ls": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LS DIGRAPH"
+    },
+    "lslash": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER L WITH STROKE"
+    },
+    "lzed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER LZ DIGRAPH"
+    },
+    "m": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER M"
+    },
+    "macron": {
+      "class": "nonalphabetic",
+      "unicodeName": "MACRON"
+    },
+    "macron.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "MACRON  [case]"
+    },
+    "mhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER M WITH HOOK"
+    },
+    "minus": {
+      "class": "nonalphabetic",
+      "unicodeName": "MINUS SIGN"
+    },
+    "mlonglegturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED M WITH LONG LEG"
+    },
+    "mturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED M"
+    },
+    "mu": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER MU"
+    },
+    "multiply": {
+      "class": "nonalphabetic",
+      "unicodeName": "MULTIPLICATION SIGN"
+    },
+    "n": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N"
+    },
+    "nacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH ACUTE"
+    },
+    "napostrophe": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N PRECEDED BY APOSTROPHE"
+    },
+    "ncaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH CARON"
+    },
+    "ncommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH CEDILLA"
+    },
+    "ncurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH CURL"
+    },
+    "ngrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH GRAVE"
+    },
+    "nhookleft": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH LEFT HOOK"
+    },
+    "nhookretroflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH RETROFLEX HOOK"
+    },
+    "nine": {
+      "class": "digit",
+      "unicodeName": "DIGIT NINE"
+    },
+    "nj": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER NJ"
+    },
+    "njecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER NJE"
+    },
+    "njekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI NJE"
+    },
+    "nlongrightleg": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH LONG RIGHT LEG"
+    },
+    "notequal": {
+      "class": "nonalphabetic",
+      "unicodeName": "NOT EQUAL TO"
+    },
+    "ntilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER N WITH TILDE"
+    },
+    "nu": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER NU"
+    },
+    "numbersign": {
+      "class": "nonalphabetic",
+      "unicodeName": "NUMBER SIGN"
+    },
+    "o": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O"
+    },
+    "oacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH ACUTE"
+    },
+    "obarcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BARRED O"
+    },
+    "obardieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BARRED O WITH DIAERESIS"
+    },
+    "obarred": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER BARRED O"
+    },
+    "obreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH BREVE"
+    },
+    "ocaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH CARON"
+    },
+    "ocircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH CIRCUMFLEX"
+    },
+    "ocyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER O"
+    },
+    "odblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DOUBLE GRAVE"
+    },
+    "odieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DIAERESIS"
+    },
+    "odieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER O WITH DIAERESIS"
+    },
+    "odieresismacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DIAERESIS AND MACRON"
+    },
+    "odotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DOT ABOVE"
+    },
+    "odotaccentmacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DOT ABOVE AND MACRON"
+    },
+    "oe": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LIGATURE OE"
+    },
+    "ogonek": {
+      "class": "nonalphabetic",
+      "unicodeName": "OGONEK"
+    },
+    "ograve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH GRAVE"
+    },
+    "ohorn": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH HORN"
+    },
+    "ohungarumlaut": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH DOUBLE ACUTE"
+    },
+    "oi": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER OI"
+    },
+    "oinvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH INVERTED BREVE"
+    },
+    "omacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH MACRON"
+    },
+    "omega": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA"
+    },
+    "omegaacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH OXIA"
+    },
+    "omegaacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH OXIA AND YPOGEGRAMMENI"
+    },
+    "omegaasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA"
+    },
+    "omegaasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA"
+    },
+    "omegaasperacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA AND YPOGEGRAMMENI"
+    },
+    "omegaaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA"
+    },
+    "omegaaspergraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA AND YPOGEGRAMMENI"
+    },
+    "omegaasperiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND YPOGEGRAMMENI"
+    },
+    "omegaaspertilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI"
+    },
+    "omegaaspertildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "omegaclosed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER CLOSED OMEGA"
+    },
+    "omegacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER OMEGA"
+    },
+    "omegagrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH VARIA"
+    },
+    "omegagraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH VARIA AND YPOGEGRAMMENI"
+    },
+    "omegaiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH YPOGEGRAMMENI"
+    },
+    "omegalenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI"
+    },
+    "omegalenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA"
+    },
+    "omegalenisacuteiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA AND YPOGEGRAMMENI"
+    },
+    "omegalenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA"
+    },
+    "omegalenisgraveiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA AND YPOGEGRAMMENI"
+    },
+    "omegalenisiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND YPOGEGRAMMENI"
+    },
+    "omegalenistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI"
+    },
+    "omegalenistildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "omegaroundcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ROUND OMEGA"
+    },
+    "omegatilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PERISPOMENI"
+    },
+    "omegatildeiotasub": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH PERISPOMENI AND YPOGEGRAMMENI"
+    },
+    "omegatitlocyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER OMEGA WITH TITLO"
+    },
+    "omegatonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMEGA WITH TONOS"
+    },
+    "omicron": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON"
+    },
+    "omicronacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH OXIA"
+    },
+    "omicronasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH DASIA"
+    },
+    "omicronasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH DASIA AND OXIA"
+    },
+    "omicronaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH DASIA AND VARIA"
+    },
+    "omicrongrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH VARIA"
+    },
+    "omicronlenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH PSILI"
+    },
+    "omicronlenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH PSILI AND OXIA"
+    },
+    "omicronlenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH PSILI AND VARIA"
+    },
+    "omicrontonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER OMICRON WITH TONOS"
+    },
+    "one": {
+      "class": "digit",
+      "unicodeName": "DIGIT ONE"
+    },
+    "onehalf": {
+      "class": "nonalphabetic",
+      "unicodeName": "VULGAR FRACTION ONE HALF"
+    },
+    "onequarter": {
+      "class": "nonalphabetic",
+      "unicodeName": "VULGAR FRACTION ONE QUARTER"
+    },
+    "onesuperior": {
+      "class": "nonalphabetic",
+      "unicodeName": "SUPERSCRIPT ONE"
+    },
+    "oogonek": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH OGONEK"
+    },
+    "oogonekmacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH OGONEK AND MACRON"
+    },
+    "oopen": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER OPEN O"
+    },
+    "ordfeminine": {
+      "class": "lowercase",
+      "unicodeName": "FEMININE ORDINAL INDICATOR"
+    },
+    "ordmasculine": {
+      "class": "lowercase",
+      "unicodeName": "MASCULINE ORDINAL INDICATOR"
+    },
+    "oslash": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH STROKE"
+    },
+    "oslashacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH STROKE AND ACUTE"
+    },
+    "otcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER OT"
+    },
+    "otilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH TILDE"
+    },
+    "otildemacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER O WITH TILDE AND MACRON"
+    },
+    "ou": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER OU"
+    },
+    "p": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER P"
+    },
+    "palochkacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER PALOCHKA"
+    },
+    "paragraph": {
+      "class": "nonalphabetic",
+      "unicodeName": "PILCROW SIGN"
+    },
+    "parenleft": {
+      "class": "nonalphabetic",
+      "unicodeName": "LEFT PARENTHESIS"
+    },
+    "parenright": {
+      "class": "nonalphabetic",
+      "unicodeName": "RIGHT PARENTHESIS"
+    },
+    "partialdiff": {
+      "class": "nonalphabetic",
+      "unicodeName": "PARTIAL DIFFERENTIAL"
+    },
+    "pecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER PE"
+    },
+    "pehookcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER PE WITH MIDDLE HOOK"
+    },
+    "percent": {
+      "class": "nonalphabetic",
+      "unicodeName": "PERCENT SIGN"
+    },
+    "percussivebidental": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER BIDENTAL PERCUSSIVE"
+    },
+    "percussivebilabial": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER BILABIAL PERCUSSIVE"
+    },
+    "period": {
+      "class": "punctuation",
+      "unicodeName": "FULL STOP"
+    },
+    "periodcentered": {
+      "class": "nonalphabetic",
+      "unicodeName": "MIDDLE DOT"
+    },
+    "perthousand": {
+      "class": "nonalphabetic",
+      "unicodeName": "PER MILLE SIGN"
+    },
+    "peseta": {
+      "class": "nonalphabetic",
+      "unicodeName": "PESETA SIGN"
+    },
+    "petailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER PE WITH DESCENDER"
+    },
+    "pharyngealvoicedfricative": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER PHARYNGEAL VOICED FRICATIVE"
+    },
+    "phi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER PHI"
+    },
+    "phi-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER PHI"
+    },
+    "phook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER P WITH HOOK"
+    },
+    "pi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER PI"
+    },
+    "plus": {
+      "class": "nonalphabetic",
+      "unicodeName": "PLUS SIGN"
+    },
+    "plusminus": {
+      "class": "nonalphabetic",
+      "unicodeName": "PLUS-MINUS SIGN"
+    },
+    "product": {
+      "class": "nonalphabetic",
+      "unicodeName": "N-ARY PRODUCT"
+    },
+    "psi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER PSI"
+    },
+    "psicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER PSI"
+    },
+    "q": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Q"
+    },
+    "qacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER QA"
+    },
+    "qhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Q WITH HOOK"
+    },
+    "qhooktail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Q WITH HOOK TAIL"
+    },
+    "qpdigraph": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER QP DIGRAPH"
+    },
+    "question": {
+      "class": "punctuation",
+      "unicodeName": "QUESTION MARK"
+    },
+    "questiondown": {
+      "class": "punctuation",
+      "unicodeName": "INVERTED QUESTION MARK"
+    },
+    "quotedbl": {
+      "class": "punctuation",
+      "unicodeName": "QUOTATION MARK"
+    },
+    "quotedblbase": {
+      "class": "punctuation",
+      "unicodeName": "DOUBLE LOW-9 QUOTATION MARK"
+    },
+    "quotedblleft": {
+      "class": "punctuation",
+      "unicodeName": "LEFT DOUBLE QUOTATION MARK"
+    },
+    "quotedblright": {
+      "class": "punctuation",
+      "unicodeName": "RIGHT DOUBLE QUOTATION MARK"
+    },
+    "quoteleft": {
+      "class": "punctuation",
+      "unicodeName": "LEFT SINGLE QUOTATION MARK"
+    },
+    "quoteright": {
+      "class": "punctuation",
+      "unicodeName": "RIGHT SINGLE QUOTATION MARK"
+    },
+    "quotesinglbase": {
+      "class": "punctuation",
+      "unicodeName": "SINGLE LOW-9 QUOTATION MARK"
+    },
+    "quotesingle": {
+      "class": "punctuation",
+      "unicodeName": "APOSTROPHE"
+    },
+    "r": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R"
+    },
+    "racute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH ACUTE"
+    },
+    "radical": {
+      "class": "nonalphabetic",
+      "unicodeName": "SQUARE ROOT"
+    },
+    "ramshorn": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER RAMS HORN"
+    },
+    "rcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH CARON"
+    },
+    "rcommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH CEDILLA"
+    },
+    "rdblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH DOUBLE GRAVE"
+    },
+    "registered": {
+      "class": "nonalphabetic",
+      "unicodeName": "REGISTERED SIGN"
+    },
+    "reversedzecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER REVERSED ZE"
+    },
+    "rfishhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH FISHHOOK"
+    },
+    "rfishhookreversed": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER REVERSED R WITH FISHHOOK"
+    },
+    "rhacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER RHA"
+    },
+    "rho": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER RHO"
+    },
+    "rhoasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER RHO WITH DASIA"
+    },
+    "rholenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER RHO WITH PSILI"
+    },
+    "rhookturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED R WITH HOOK"
+    },
+    "ring": {
+      "class": "nonalphabetic",
+      "unicodeName": "RING ABOVE"
+    },
+    "ring.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "RING ABOVE  [case]"
+    },
+    "rinvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH INVERTED BREVE"
+    },
+    "rlongleg": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH LONG LEG"
+    },
+    "rlonglegturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED R WITH LONG LEG"
+    },
+    "rstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH STROKE"
+    },
+    "rtail-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER R WITH TAIL"
+    },
+    "rturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED R"
+    },
+    "s": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S"
+    },
+    "sacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH ACUTE"
+    },
+    "sampi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER SAMPI"
+    },
+    "scaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH CARON"
+    },
+    "scedilla": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH CEDILLA"
+    },
+    "schwa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER SCHWA"
+    },
+    "schwacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SCHWA"
+    },
+    "schwadieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SCHWA WITH DIAERESIS"
+    },
+    "schwahook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER SCHWA WITH HOOK"
+    },
+    "scircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH CIRCUMFLEX"
+    },
+    "scommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH COMMA BELOW"
+    },
+    "section": {
+      "class": "nonalphabetic",
+      "unicodeName": "SECTION SIGN"
+    },
+    "semicolon": {
+      "class": "punctuation",
+      "unicodeName": "SEMICOLON"
+    },
+    "semisoftcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SEMISOFT SIGN"
+    },
+    "seven": {
+      "class": "digit",
+      "unicodeName": "DIGIT SEVEN"
+    },
+    "shacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHA"
+    },
+    "shchacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHCHA"
+    },
+    "shhacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHHA"
+    },
+    "shhatailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHHA WITH DESCENDER"
+    },
+    "shook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH HOOK"
+    },
+    "sigma": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER SIGMA"
+    },
+    "sigmafinal": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER FINAL SIGMA"
+    },
+    "six": {
+      "class": "digit",
+      "unicodeName": "DIGIT SIX"
+    },
+    "sjekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI SJE"
+    },
+    "slash": {
+      "class": "nonalphabetic",
+      "unicodeName": "SOLIDUS"
+    },
+    "softcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SOFT SIGN"
+    },
+    "space": {
+      "class": "nonalphabetic",
+      "unicodeName": "SPACE"
+    },
+    "sswashtail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER S WITH SWASH TAIL"
+    },
+    "sterling": {
+      "class": "nonalphabetic",
+      "unicodeName": "POUND SIGN"
+    },
+    "stigma": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER STIGMA"
+    },
+    "summation": {
+      "class": "nonalphabetic",
+      "unicodeName": "N-ARY SUMMATION"
+    },
+    "t": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T"
+    },
+    "tau": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER TAU"
+    },
+    "tbar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH STROKE"
+    },
+    "tcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH CARON"
+    },
+    "tccurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TC DIGRAPH WITH CURL"
+    },
+    "tcedilla": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH CEDILLA"
+    },
+    "tcommaaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH COMMA BELOW"
+    },
+    "tcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH CURL"
+    },
+    "tecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER TE"
+    },
+    "tesh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TESH DIGRAPH"
+    },
+    "tetailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER TE WITH DESCENDER"
+    },
+    "tetsecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LIGATURE TE TSE"
+    },
+    "theta": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER THETA"
+    },
+    "thook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH HOOK"
+    },
+    "thorn": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER THORN"
+    },
+    "three": {
+      "class": "digit",
+      "unicodeName": "DIGIT THREE"
+    },
+    "threequarters": {
+      "class": "nonalphabetic",
+      "unicodeName": "VULGAR FRACTION THREE QUARTERS"
+    },
+    "threesuperior": {
+      "class": "nonalphabetic",
+      "unicodeName": "SUPERSCRIPT THREE"
+    },
+    "tilde": {
+      "class": "nonalphabetic",
+      "unicodeName": "SMALL TILDE"
+    },
+    "tilde-gr": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK PERISPOMENI"
+    },
+    "tilde.case": {
+      "class": "nonalphabetic",
+      "unicodeName": "SMALL TILDE  [case]"
+    },
+    "tjekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI TJE"
+    },
+    "tonefive": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TONE FIVE"
+    },
+    "tonesix": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TONE SIX"
+    },
+    "tonetwo": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TONE TWO"
+    },
+    "tonos": {
+      "class": "nonalphabetic",
+      "unicodeName": "GREEK TONOS"
+    },
+    "tpalatalhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH PALATAL HOOK"
+    },
+    "trademark": {
+      "class": "nonalphabetic",
+      "unicodeName": "TRADE MARK SIGN"
+    },
+    "tretroflexhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER T WITH RETROFLEX HOOK"
+    },
+    "ts": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TS DIGRAPH"
+    },
+    "tsecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER TSE"
+    },
+    "tshecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER TSHE"
+    },
+    "tturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED T"
+    },
+    "two": {
+      "class": "digit",
+      "unicodeName": "DIGIT TWO"
+    },
+    "twostroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER TWO WITH STROKE"
+    },
+    "twosuperior": {
+      "class": "nonalphabetic",
+      "unicodeName": "SUPERSCRIPT TWO"
+    },
+    "u": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U"
+    },
+    "uacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH ACUTE"
+    },
+    "uacutedblcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE"
+    },
+    "ubar": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U BAR"
+    },
+    "ubreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH BREVE"
+    },
+    "ucaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH CARON"
+    },
+    "ucircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH CIRCUMFLEX"
+    },
+    "ucyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER U"
+    },
+    "udblgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DOUBLE GRAVE"
+    },
+    "udieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DIAERESIS"
+    },
+    "udieresisacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE"
+    },
+    "udieresiscaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DIAERESIS AND CARON"
+    },
+    "udieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER U WITH DIAERESIS"
+    },
+    "udieresisgrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE"
+    },
+    "udieresismacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DIAERESIS AND MACRON"
+    },
+    "ugrave": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH GRAVE"
+    },
+    "uhorn": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH HORN"
+    },
+    "uhungarumlaut": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH DOUBLE ACUTE"
+    },
+    "uinvertedbreve": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH INVERTED BREVE"
+    },
+    "ukcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER UK"
+    },
+    "umacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH MACRON"
+    },
+    "umacroncyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER U WITH MACRON"
+    },
+    "underscore": {
+      "class": "nonalphabetic",
+      "unicodeName": "LOW LINE"
+    },
+    "uni00A0": {
+      "class": "nonalphabetic",
+      "unicodeName": "NO-BREAK SPACE"
+    },
+    "uni00AD": {
+      "class": "nonalphabetic",
+      "unicodeName": "SOFT HYPHEN"
+    },
+    "uni02C9": {
+      "class": "nonalphabetic",
+      "unicodeName": "MODIFIER LETTER MACRON"
+    },
+    "uni2215": {
+      "class": "nonalphabetic",
+      "unicodeName": "DIVISION SLASH"
+    },
+    "uni2219": {
+      "class": "nonalphabetic",
+      "unicodeName": "BULLET OPERATOR"
+    },
+    "uniF8FF": {
+      "class": "nonalphabetic",
+      "unicodeName": ""
+    },
+    "uogonek": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH OGONEK"
+    },
+    "upsilon": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON"
+    },
+    "upsilon-ipa": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER UPSILON"
+    },
+    "upsilonacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH OXIA"
+    },
+    "upsilonasper": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DASIA"
+    },
+    "upsilonasperacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DASIA AND OXIA"
+    },
+    "upsilonaspergrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DASIA AND VARIA"
+    },
+    "upsilonaspertilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DASIA AND PERISPOMENI"
+    },
+    "upsilonbreve": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH VRACHY"
+    },
+    "upsilondieresis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA"
+    },
+    "upsilondieresisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND OXIA"
+    },
+    "upsilondieresisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND VARIA"
+    },
+    "upsilondieresistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI"
+    },
+    "upsilondieresistonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS"
+    },
+    "upsilongrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH VARIA"
+    },
+    "upsilonlenis": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH PSILI"
+    },
+    "upsilonlenisacute": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH PSILI AND OXIA"
+    },
+    "upsilonlenisgrave": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH PSILI AND VARIA"
+    },
+    "upsilonlenistilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH PSILI AND PERISPOMENI"
+    },
+    "upsilontilde": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH PERISPOMENI"
+    },
+    "upsilontonos": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH TONOS"
+    },
+    "upsilonwithmacron": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER UPSILON WITH MACRON"
+    },
+    "uring": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH RING ABOVE"
+    },
+    "ushortcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER SHORT U"
+    },
+    "ustraightcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER STRAIGHT U"
+    },
+    "ustraightstrokecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER STRAIGHT U WITH STROKE"
+    },
+    "utilde": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER U WITH TILDE"
+    },
+    "v": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER V"
+    },
+    "vecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER VE"
+    },
+    "vhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER V WITH HOOK"
+    },
+    "vturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED V"
+    },
+    "w": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER W"
+    },
+    "wcircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER W WITH CIRCUMFLEX"
+    },
+    "wecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER WE"
+    },
+    "wturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED W"
+    },
+    "wynn": {
+      "class": "lowercase",
+      "unicodeName": "LATIN LETTER WYNN"
+    },
+    "x": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER X"
+    },
+    "xatailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER HA WITH DESCENDER"
+    },
+    "xi": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER XI"
+    },
+    "y": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y"
+    },
+    "yacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH ACUTE"
+    },
+    "yacyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YA"
+    },
+    "yaecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YAE"
+    },
+    "yatcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YAT"
+    },
+    "ycircumflex": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH CIRCUMFLEX"
+    },
+    "ydieresis": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH DIAERESIS"
+    },
+    "yen": {
+      "class": "nonalphabetic",
+      "unicodeName": "YEN SIGN"
+    },
+    "yhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH HOOK"
+    },
+    "ylongcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YERU"
+    },
+    "ylongdieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YERU WITH DIAERESIS"
+    },
+    "ymacron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH MACRON"
+    },
+    "yogh": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER YOGH"
+    },
+    "yr": {
+      "class": "capital",
+      "unicodeName": "LATIN LETTER YR"
+    },
+    "ystroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Y WITH STROKE"
+    },
+    "yturned": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER TURNED Y"
+    },
+    "yucyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YU"
+    },
+    "yukrcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER YI"
+    },
+    "yusbigcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER BIG YUS"
+    },
+    "yusbigiotifiedcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IOTIFIED BIG YUS"
+    },
+    "yuslittlecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER LITTLE YUS"
+    },
+    "yuslittleiotifiedcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER IOTIFIED LITTLE YUS"
+    },
+    "z": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z"
+    },
+    "zacute": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH ACUTE"
+    },
+    "zcaron": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH CARON"
+    },
+    "zcurl": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH CURL"
+    },
+    "zdotaccent": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH DOT ABOVE"
+    },
+    "zecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZE"
+    },
+    "zedieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZE WITH DIAERESIS"
+    },
+    "zero": {
+      "class": "digit",
+      "unicodeName": "DIGIT ZERO"
+    },
+    "zeta": {
+      "class": "lowercase",
+      "unicodeName": "GREEK SMALL LETTER ZETA"
+    },
+    "zetailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZE WITH DESCENDER"
+    },
+    "zhebrevecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZHE WITH BREVE"
+    },
+    "zhecyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZHE"
+    },
+    "zhedieresiscyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZHE WITH DIAERESIS"
+    },
+    "zhetailcyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER ZHE WITH DESCENDER"
+    },
+    "zhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH HOOK"
+    },
+    "zjekomicyr": {
+      "class": "lowercase",
+      "unicodeName": "CYRILLIC SMALL LETTER KOMI ZJE"
+    },
+    "zretroflexhook": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH RETROFLEX HOOK"
+    },
+    "zstroke": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH STROKE"
+    },
+    "zswashtail": {
+      "class": "lowercase",
+      "unicodeName": "LATIN SMALL LETTER Z WITH SWASH TAIL"
+    }
   },
   "chars": {
     " ": "nonalphabetic",

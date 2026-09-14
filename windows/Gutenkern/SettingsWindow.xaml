@@ -3,27 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Settings"
         Width="380"
-        Height="140"
+        Height="220"
         MinWidth="320"
-        MinHeight="120"
+        MinHeight="200"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
         UseLayoutRounding="True">
-    <Grid Margin="16">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="LanguageLabel"
-               Content="Language"
-               Padding="0,0,12,0"
-               FontWeight="SemiBold"
-               VerticalAlignment="Center"/>
-        <ComboBox x:Name="LanguageCombo"
-                  Grid.Column="1"
-                  VerticalAlignment="Center"
-                  MinHeight="26"
-                  SelectionChanged="LanguageCombo_SelectionChanged"/>
-    </Grid>
+    <StackPanel Margin="16">
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="LanguageLabel"
+                   Content="Language"
+                   Padding="0,0,12,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Center"/>
+            <ComboBox x:Name="LanguageCombo"
+                      Grid.Column="1"
+                      VerticalAlignment="Center"
+                      MinHeight="26"
+                      SelectionChanged="LanguageCombo_SelectionChanged"/>
+        </Grid>
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="FormatLabel"
+                   Content="Format"
+                   Padding="0,0,12,0"
+                   FontWeight="SemiBold"
+                   VerticalAlignment="Center"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton x:Name="FormatFontLab"
+                             Content="FontLab"
+                             Margin="0,0,16,0"
+                             Checked="FormatChanged"/>
+                <RadioButton x:Name="FormatGlyphs"
+                             Content="Glyphs"
+                             Checked="FormatChanged"/>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="ResetProgressButton"
+                Content="Reset progress"
+                HorizontalAlignment="Left"
+                Padding="16,6"
+                Click="ResetProgress_Click"/>
+    </StackPanel>
 </Window>

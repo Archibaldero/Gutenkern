@@ -51,15 +51,34 @@ enum L10n {
     ]
 
     static var fieldWhat: String { t("fieldWhat") }
+    static var fieldWhatHint: String { t("fieldWhatHint") }
+    static var groupCopied: String { t("groupCopied") }
+    static var clickHint: String {
+        t("clickHint").replacingOccurrences(of: "{modifier}", with: "Command")
+    }
+    static var newUnkernedPairs: String { t("newUnkernedPairs") }
     static var format: String { t("format") }
     static var formatFontLab: String { t("formatFontLab") }
     static var formatGlyphs: String { t("formatGlyphs") }
     static var result: String { t("result") }
+    static var resultAs: String { t("resultAs") }
+    static var resultLayoutRow: String { t("resultLayoutRow") }
+    static var resultLayoutColumn: String { t("resultLayoutColumn") }
     static var copy: String { t("copy") }
     static var copied: String { t("copied") }
     static var save: String { t("save") }
     static var saveEllipsis: String { t("saveEllipsis") }
+    static var saveAndOpenEllipsis: String { t("saveAndOpenEllipsis") }
+    static var saveAsFile: String { t("saveAsFile") }
     static var saveFailed: String { t("saveFailed") }
+    static var copyAll: String { t("copyAll") }
+    static var strikeThrough: String { t("strikeThrough") }
+    static var clearStrike: String { t("clearStrike") }
+    static var resultPlaceholder: String { t("resultPlaceholder") }
+    static var chooseFormat: String { t("chooseFormat") }
+    static var resetProgress: String { t("resetProgress") }
+    static var undo: String { t("undo") }
+    static var redo: String { t("redo") }
     static var settings: String { t("settings") }
     static var language: String { t("language") }
     static var languageSystem: String { t("languageSystem") }
@@ -80,7 +99,19 @@ enum L10n {
     }
 
     static func groupLabel(_ group: KerningGroup) -> String {
-        "\(groupName(group)) (\(group.rawValue))"
+        "\(groupName(group)) \(group.rawValue)"
+    }
+
+    static func groupSidebarLabel(_ group: KerningGroup, done: Int, total: Int) -> String {
+        var label = groupLabel(group)
+        guard total > 0 else {
+            return label
+        }
+        label += " ⋅ \(groupedCount(done))/\(groupedCount(total))"
+        if done == total {
+            label += " ✓"
+        }
+        return label
     }
 
     private static func groupName(_ group: KerningGroup) -> String {
@@ -105,7 +136,38 @@ enum L10n {
         case .many: key = "pairMany"
         case .other: key = "pairOther"
         }
-        return t(key).replacingOccurrences(of: "{count}", with: String(count))
+        return t(key).replacingOccurrences(of: "{count}", with: groupedCount(count))
+    }
+
+    static func pairPercent(_ percent: Int) -> String {
+        t("pairPercent").replacingOccurrences(of: "{percent}", with: String(percent))
+    }
+
+    static func copiedPairs(_ pairs: String) -> String {
+        t("copiedPairs").replacingOccurrences(of: "{pairs}", with: pairs)
+    }
+
+    static func pairProgress(done: Int, total: Int) -> String {
+        let progress = "\(groupedCount(done))/\(groupedCount(total))"
+        return pairCount(total).replacingOccurrences(of: groupedCount(total), with: progress)
+    }
+
+    static func pairProgressPercent(done: Int, total: Int) -> Int {
+        guard total > 0 else { return 0 }
+        return Int((Double(done) / Double(total) * 100).rounded())
+    }
+
+    static func groupedCount(_ count: Int) -> String {
+        let sign = count < 0 ? "-" : ""
+        let digits = Array(String(abs(count)))
+        var grouped: [Character] = []
+        for (index, digit) in digits.reversed().enumerated() {
+            if index > 0, index % 3 == 0 {
+                grouped.append("\u{202F}")
+            }
+            grouped.append(digit)
+        }
+        return sign + String(grouped.reversed())
     }
 
     private static let catalog: [String: [String: String]] = loadCatalog()

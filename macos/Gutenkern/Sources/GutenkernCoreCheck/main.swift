@@ -114,11 +114,20 @@ struct GutenkernCoreCheck {
                 continue
             }
             let actual = KerningGenerator.generate(testCase.input, format: format)
+            let joined = KerningGenerator.generateSections(
+                GlyphClassifier.classify(testCase.input),
+                format: format
+            )
+            .map { $0.joined(separator: "\n\n") }
+            .joined(separator: "\n\n\n")
             if actual != testCase.expected {
                 fputs(
                     "GENERATEALL FAIL \(testCase.id)\n  expected:\n\(testCase.expected)\n  actual:\n\(actual)\n",
                     stderr
                 )
+                failures += 1
+            } else if joined != actual {
+                fputs("GENERATEALL FAIL \(testCase.id): sections join mismatch\n", stderr)
                 failures += 1
             }
         }
@@ -131,6 +140,12 @@ struct GutenkernCoreCheck {
         failures += runSessionSnapshotChecks()
         if failures > 0 {
             fputs("\(failures) session snapshot check(s) failed\n", stderr)
+            exit(1)
+        }
+
+        failures += runCompletionChecks()
+        if failures > 0 {
+            fputs("\(failures) completion check(s) failed\n", stderr)
             exit(1)
         }
 
@@ -176,6 +191,7 @@ private func runSessionSnapshotChecks() -> Int {
         field2: "ignored",
         groups: ["A", "unknown", "a"],
         completedRecipes: ["A/A/A", "", "a/a/a"],
+        completedBlocks: ["H/H/H", "", "A/A"],
         mode: "mirror",
         format: "glyphs"
     ).sanitized()
@@ -185,6 +201,16 @@ private func runSessionSnapshotChecks() -> Int {
     }
     if dirty.completedRecipes != ["A/A/A", "a/a/a"] {
         fputs("SESSION FAIL recipes: \(dirty.completedRecipes)\n", stderr)
+        failures += 1
+    }
+    if dirty.completedBlocks != ["/A/A", "/H/H/H"] {
+        fputs("SESSION FAIL blocks: \(dirty.completedBlocks)\n", stderr)
+        failures += 1
+    }
+
+    let expanded = SessionSnapshot(completedBlocks: ["H/H/H\nH/O/H"]).sanitized()
+    if expanded.completedBlocks != ["/H/H/H", "/H/O/H"] {
+        fputs("SESSION FAIL expand pair keys: \(expanded.completedBlocks)\n", stderr)
         failures += 1
     }
     if dirty.pairMode != .simple || dirty.outputFormat != .glyphs {
@@ -219,6 +245,456 @@ private func runSessionSnapshotChecks() -> Int {
         }
     } else {
         fputs("SESSION FAIL encode\n", stderr)
+        failures += 1
+    }
+
+    return failures
+}
+
+private func runCompletionChecks() -> Int {
+    var failures = 0
+    let capitals = RecipeSection(
+        recipe: "A/A/A",
+        groups: ["A/H/A\nA/A/A", "H/A/H\nH/H/H"]
+    )
+    let lowercase = RecipeSection(
+        recipe: "a/a/a",
+        groups: ["n/o/n\nn/n/n", "o/n/o\no/o/o"]
+    )
+    let sections = [capitals, lowercase]
+
+    var completion = KerningCompletion()
+    completion.toggleRecipe("A/A/A", sections: sections)
+    if !completion.recipes.contains("A/A/A")
+        || !completion.isRecipeDone("A/A/A", sections: sections)
+        || !capitals.groups.allSatisfy(completion.isBlockDone)
+        || completion.recipes.contains("a/a/a")
+        || lowercase.groups.contains(where: completion.isBlockDone)
+    {
+        fputs("COMPLETION FAIL toggle recipe on\n", stderr)
+        failures += 1
+    }
+
+    completion.toggleRecipe("A/A/A", sections: sections)
+    if completion.recipes.contains("A/A/A")
+        || completion.isRecipeDone("A/A/A", sections: sections)
+        || capitals.groups.contains(where: completion.isBlockDone)
+    {
+        fputs("COMPLETION FAIL toggle recipe off\n", stderr)
+        failures += 1
+    }
+
+    completion = KerningCompletion()
+    completion.toggleBlock(capitals.groups[0], sections: sections)
+    if !completion.isBlockDone(capitals.groups[0]) || completion.isRecipeDone("A/A/A", sections: sections) {
+        fputs("COMPLETION FAIL partial groups\n", stderr)
+        failures += 1
+    }
+    completion.toggleBlock(capitals.groups[1], sections: sections)
+    if !completion.isRecipeDone("A/A/A", sections: sections) || !completion.recipes.contains("A/A/A") {
+        fputs("COMPLETION FAIL all groups mark recipe\n", stderr)
+        failures += 1
+    }
+    completion.toggleBlock(capitals.groups[1], sections: sections)
+    if completion.isRecipeDone("A/A/A", sections: sections)
+        || !completion.isBlockDone(capitals.groups[0])
+        || completion.recipes.contains("A/A/A")
+    {
+        fputs("COMPLETION FAIL unmark group unmarks recipe\n", stderr)
+        failures += 1
+    }
+
+    completion = KerningCompletion(recipes: ["A/A/A"])
+    completion.sync(sections: sections)
+    if !completion.recipes.contains("A/A/A")
+        || !capitals.groups.allSatisfy(completion.isBlockDone)
+        || lowercase.groups.contains(where: completion.isBlockDone)
+    {
+        fputs("COMPLETION FAIL sync legacy recipe\n", stderr)
+        failures += 1
+    }
+
+    completion = KerningCompletion(blocks: Set(capitals.groups))
+    completion.sync(sections: sections)
+    if !completion.recipes.contains("A/A/A") || completion.recipes.contains("a/a/a") {
+        fputs("COMPLETION FAIL sync marks recipe from groups\n", stderr)
+        failures += 1
+    }
+
+    let generated = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("AH"),
+        format: .fontlab
+    )
+    if generated.map(\.recipe) != ["A/A/A"]
+        || generated.first?.groups.count != 2
+        || generated.map(\.groups) != KerningGenerator.generateSections(
+            GlyphClassifier.classify("AH"),
+            format: .fontlab
+        )
+    {
+        fputs("COMPLETION FAIL recipe sections identity\n", stderr)
+        failures += 1
+    }
+
+    let before = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("HO"),
+        format: .fontlab
+    )
+    let after = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("HOA"),
+        format: .fontlab
+    )
+    let oldKeys = before[0].pairGroups[0].map(\.key)
+    let newGroup = after[0].pairGroups.first { $0.first?.key.hasPrefix("/H/") == true } ?? []
+    var added = KerningCompletion(blocks: Set(oldKeys))
+    added.sync(sections: after)
+    if oldKeys.contains(where: { !added.blocks.contains($0) })
+        || newGroup.allSatisfy({ added.blocks.contains($0.key) })
+    {
+        fputs("COMPLETION FAIL add glyph keeps old pairs done\n", stderr)
+        failures += 1
+    }
+
+    let glyphsSections = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("HO"),
+        format: .glyphs
+    )
+    if glyphsSections[0].pairGroups[0].map(\.key) != before[0].pairGroups[0].map(\.key) {
+        fputs("COMPLETION FAIL fontlab keys across formats\n", stderr)
+        failures += 1
+    }
+
+    failures += runMarkChecks()
+    failures += runHitTestingChecks()
+    failures += runResultLayoutChecks()
+    return failures
+}
+
+private func runHitTestingChecks() -> Int {
+    var failures = 0
+    let left = PairHitFrame(key: "/a/a/a", x: 10, y: 5, width: 40, height: 16)
+    let right = PairHitFrame(key: "/a/b/a", x: 70, y: 5, width: 40, height: 16)
+    let row = [left, right]
+
+    if PairHitTesting.nearestKey(x: 0, y: 0, frames: []) != nil {
+        fputs("HIT FAIL empty frames\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 20, y: 10, frames: row) != "/a/a/a" {
+        fputs("HIT FAIL inside left\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 90, y: 12, frames: row) != "/a/b/a" {
+        fputs("HIT FAIL inside right\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 54, y: 12, frames: row) != "/a/a/a" {
+        fputs("HIT FAIL gap left\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 61, y: 12, frames: row) != "/a/b/a" {
+        fputs("HIT FAIL gap right\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 400, y: 12, frames: row) != "/a/b/a" {
+        fputs("HIT FAIL trailing space\n", stderr)
+        failures += 1
+    }
+    if PairHitTesting.nearestKey(x: 2, y: 2, frames: row) != "/a/a/a" {
+        fputs("HIT FAIL leading padding\n", stderr)
+        failures += 1
+    }
+
+    return failures
+}
+
+private func runResultLayoutChecks() -> Int {
+    var failures = 0
+    let sections = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("AH"),
+        format: .fontlab
+    )
+    let layout = ResultLayout.build(sections: sections, mode: .column)
+    let generated = KerningGenerator.generate(GlyphClassifier.classify("AH"), format: .fontlab)
+    if layout.text != generated {
+        fputs("LAYOUT FAIL text matches generate\n", stderr)
+        failures += 1
+    }
+    if layout.tokens.isEmpty {
+        fputs("LAYOUT FAIL tokens\n", stderr)
+        failures += 1
+    }
+    if layout.categories.isEmpty || layout.categories[0].blocks.isEmpty {
+        fputs("LAYOUT FAIL categories\n", stderr)
+        failures += 1
+    }
+    if layout.categoryStarts[.capitals] != 0 {
+        fputs("LAYOUT FAIL capitals start\n", stderr)
+        failures += 1
+    }
+    if layout.hasCategory(.lowercase) {
+        fputs("LAYOUT FAIL lowercase absent\n", stderr)
+        failures += 1
+    }
+    if layout.token(atUtf16: 0)?.key != layout.tokens.first?.key {
+        fputs("LAYOUT FAIL token at 0\n", stderr)
+        failures += 1
+    }
+    let firstGroup = layout.groupKeys(forGroupId: layout.tokens[0].groupId)
+    if firstGroup.count < 2 {
+        fputs("LAYOUT FAIL group keys\n", stderr)
+        failures += 1
+    }
+    let overlapping = layout.tokens(utf16Start: 0, length: 8)
+    if overlapping.isEmpty {
+        fputs("LAYOUT FAIL range tokens\n", stderr)
+        failures += 1
+    }
+    let mixed = KerningMarkState(done: [layout.tokens[0].key])
+    if !ResultSelectionMarks.canStrike(keys: firstGroup, state: mixed)
+        || !ResultSelectionMarks.canUnstrike(keys: firstGroup, state: mixed)
+    {
+        fputs("LAYOUT FAIL mixed selection marks\n", stderr)
+        failures += 1
+    }
+    let allDone = KerningMarks.markDone(keys: firstGroup, state: KerningMarkState())
+    if ResultSelectionMarks.canStrike(keys: firstGroup, state: allDone) {
+        fputs("LAYOUT FAIL strike disabled when done\n", stderr)
+        failures += 1
+    }
+    let row = ResultLayout.build(sections: sections, mode: .row)
+    if row.tokens.count != layout.tokens.count {
+        fputs("LAYOUT FAIL row token count\n", stderr)
+        failures += 1
+    }
+    if row.tokens[0].groupId != row.tokens[1].groupId {
+        fputs("LAYOUT FAIL row same group\n", stderr)
+        failures += 1
+    }
+    if row.tokens[1].utf16Start != row.tokens[0].utf16End + 2 {
+        fputs("LAYOUT FAIL row two-space join\n", stderr)
+        failures += 1
+    }
+    if let span = row.utf16Range(forGroupId: row.tokens[0].groupId) {
+        if span.start != row.tokens[0].utf16Start || span.length < row.tokens[1].utf16End - row.tokens[0].utf16Start {
+            fputs("LAYOUT FAIL group utf16 range\n", stderr)
+            failures += 1
+        }
+    } else {
+        fputs("LAYOUT FAIL missing group utf16 range\n", stderr)
+        failures += 1
+    }
+    let empty = layout.progress(for: .capitals, done: [])
+    if empty.done != 0 {
+        fputs("LAYOUT FAIL empty progress\n", stderr)
+        failures += 1
+    }
+    let capitalKeys = Set(layout.tokens.filter { $0.category == .capitals }.map(\.key))
+    if empty.total != capitalKeys.count {
+        fputs("LAYOUT FAIL capital total\n", stderr)
+        failures += 1
+    }
+    let finished = layout.progress(for: .capitals, done: capitalKeys)
+    if finished.done != finished.total {
+        fputs("LAYOUT FAIL finished progress\n", stderr)
+        failures += 1
+    }
+    let missing = layout.progress(for: .lowercase, done: capitalKeys)
+    if missing.total != 0 || missing.done != 0 {
+        fputs("LAYOUT FAIL missing category progress\n", stderr)
+        failures += 1
+    }
+    failures += runNewUnkernedChecks()
+    return failures
+}
+
+private func runNewUnkernedChecks() -> Int {
+    var failures = 0
+    let group = "capitals-0"
+    let keys: Set<String> = ["/a/a/a", "/a/b/a", "/a/c/a"]
+    let current = [group: keys]
+    let click = NewUnkernedNotice.update(
+        previous: current,
+        current: current,
+        done: ["/a/a/a"],
+        warningGroupIds: [],
+        newKeys: []
+    )
+    if !click.warningGroupIds.isEmpty || !click.newKeys.isEmpty {
+        fputs("NOTICE FAIL command click\n", stderr)
+        failures += 1
+    }
+
+    let grown = NewUnkernedNotice.update(
+        previous: [group: ["/a/a/a", "/a/b/a"]],
+        current: [group: ["/a/a/a", "/a/b/a", "/a/c/a"]],
+        done: ["/a/a/a", "/a/b/a"],
+        warningGroupIds: [],
+        newKeys: []
+    )
+    if grown.warningGroupIds != [group] || grown.newKeys != ["/a/c/a"] {
+        fputs("NOTICE FAIL new key in done group\n", stderr)
+        failures += 1
+    }
+
+    let cleared = NewUnkernedNotice.update(
+        previous: current,
+        current: current,
+        done: keys,
+        warningGroupIds: [group],
+        newKeys: ["/a/c/a"]
+    )
+    if !cleared.warningGroupIds.isEmpty || !cleared.newKeys.isEmpty {
+        fputs("NOTICE FAIL clears when done\n", stderr)
+        failures += 1
+    }
+
+    let first = NewUnkernedNotice.update(
+        previous: [:],
+        current: [group: ["/a/a/a", "/a/b/a"]],
+        done: ["/a/a/a"],
+        warningGroupIds: [],
+        newKeys: []
+    )
+    if !first.warningGroupIds.isEmpty || !first.newKeys.isEmpty {
+        fputs("NOTICE FAIL first pass\n", stderr)
+        failures += 1
+    }
+    return failures
+}
+
+private func runMarkChecks() -> Int {
+    var failures = 0
+    let keys = ["H/H/H", "H/O/H", "H/A/H"]
+
+    let emptyDone = KerningMarks.toggleGroup(keys: keys, state: KerningMarkState())
+    if emptyDone.groupMark(keys: keys) != .done {
+        fputs("MARK FAIL empty group toggle\n", stderr)
+        failures += 1
+    }
+
+    let cleared = KerningMarks.toggleGroup(keys: keys, state: emptyDone)
+    if cleared.groupMark(keys: keys) != .empty || !cleared.done.isEmpty {
+        fputs("MARK FAIL done group toggle\n", stderr)
+        failures += 1
+    }
+
+    let mixed = KerningMarkState(done: ["H/H/H", "H/O/H"])
+    if mixed.groupMark(keys: keys) != .mixedDone {
+        fputs("MARK FAIL mixed done\n", stderr)
+        failures += 1
+    }
+    let mixedDone = KerningMarks.toggleGroup(keys: keys, state: mixed)
+    if mixedDone.groupMark(keys: keys) != .done {
+        fputs("MARK FAIL mixed group toggle\n", stderr)
+        failures += 1
+    }
+
+    var pair = KerningMarks.togglePair(key: "H/A/H", state: KerningMarkState())
+    if pair.pairMark("H/A/H") != .done {
+        fputs("MARK FAIL pair done\n", stderr)
+        failures += 1
+    }
+    pair = KerningMarks.togglePair(key: "H/A/H", state: pair)
+    if pair.pairMark("H/A/H") != .empty {
+        fputs("MARK FAIL pair empty\n", stderr)
+        failures += 1
+    }
+
+    let painted = KerningMarks.markDone(
+        keys: ["H/A/H", "H/O/H"],
+        state: KerningMarkState(done: ["H/A/H"])
+    )
+    if painted.done != ["H/A/H", "H/O/H"] {
+        fputs("MARK FAIL mark done keeps existing\n", stderr)
+        failures += 1
+    }
+
+    failures += runHistoryChecks()
+    failures += runCopyBurstChecks()
+
+    return failures
+}
+
+private func runHistoryChecks() -> Int {
+    var failures = 0
+    let history = MarkHistory()
+    let empty = KerningMarkState()
+    let selected = KerningMarkState(done: ["H/A/H"])
+    let done = KerningMarkState(done: ["H/A/H", "H/O/H"])
+
+    history.record(from: empty, to: empty)
+    if history.canUndo {
+        fputs("HISTORY FAIL noop recorded\n", stderr)
+        failures += 1
+    }
+
+    history.record(from: empty, to: selected)
+    history.record(from: selected, to: done)
+    guard let firstUndo = history.undo(current: done), firstUndo == selected else {
+        fputs("HISTORY FAIL first undo\n", stderr)
+        return failures + 1
+    }
+    guard let secondUndo = history.undo(current: firstUndo), secondUndo == empty else {
+        fputs("HISTORY FAIL second undo\n", stderr)
+        return failures + 1
+    }
+    if history.canUndo {
+        fputs("HISTORY FAIL extra undo\n", stderr)
+        failures += 1
+    }
+    guard let firstRedo = history.redo(current: secondUndo), firstRedo == selected else {
+        fputs("HISTORY FAIL first redo\n", stderr)
+        return failures + 1
+    }
+    history.record(from: firstRedo, to: empty)
+    if history.canRedo {
+        fputs("HISTORY FAIL redo not cleared\n", stderr)
+        failures += 1
+    }
+
+    let coalesced = MarkHistory()
+    coalesced.beginCoalescing()
+    coalesced.record(from: empty, to: selected)
+    coalesced.record(from: selected, to: done)
+    coalesced.endCoalescing()
+    guard let coalescedUndo = coalesced.undo(current: done), coalescedUndo == empty else {
+        fputs("HISTORY FAIL coalesced undo\n", stderr)
+        return failures + 1
+    }
+    if coalesced.undo(current: coalescedUndo) != nil {
+        fputs("HISTORY FAIL coalesced extra step\n", stderr)
+        failures += 1
+    }
+
+    return failures
+}
+
+private func runCopyBurstChecks() -> Int {
+    var failures = 0
+    var burst = CopyBurst()
+    let start = Date(timeIntervalSince1970: 1_700_000_000)
+
+    if burst.add(key: "H/A/H", at: start) != ["H/A/H"] {
+        fputs("BURST FAIL first key\n", stderr)
+        failures += 1
+    }
+    if burst.add(key: "H/O/H", at: start.addingTimeInterval(0.4)) != ["H/A/H", "H/O/H"] {
+        fputs("BURST FAIL second key\n", stderr)
+        failures += 1
+    }
+    if burst.add(key: "H/A/H", at: start.addingTimeInterval(0.8)) != ["H/A/H", "H/O/H"] {
+        fputs("BURST FAIL duplicate key\n", stderr)
+        failures += 1
+    }
+    if burst.add(key: "H/H/H", at: start.addingTimeInterval(1.8)) != ["H/H/H"] {
+        fputs("BURST FAIL window reset\n", stderr)
+        failures += 1
+    }
+
+    burst.reset()
+    if burst.add(key: "H/O/H", at: start.addingTimeInterval(2.0)) != ["H/O/H"] {
+        fputs("BURST FAIL explicit reset\n", stderr)
         failures += 1
     }
 

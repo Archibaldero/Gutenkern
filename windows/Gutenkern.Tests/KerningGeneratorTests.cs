@@ -83,6 +83,13 @@ public sealed class KerningGeneratorTests
         {
             var actual = KerningGenerator.Generate(testCase.Input, ParseFormat(testCase.Format));
             Assert.Equal(testCase.Expected, actual);
+            var joined = string.Join(
+                "\n\n\n",
+                KerningGenerator.GenerateSections(
+                    GlyphClassifier.Classify(testCase.Input),
+                    ParseFormat(testCase.Format)
+                ).Select(section => string.Join("\n\n", section)));
+            Assert.Equal(actual, joined);
         }
     }
 

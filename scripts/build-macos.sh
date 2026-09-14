@@ -21,6 +21,7 @@ cp "$BIN" "$APP/Contents/MacOS/Gutenkern"
 cp "$PACKAGE/Info.plist" "$APP/Contents/Info.plist"
 cp "$PACKAGE/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 cp "$ROOT/core/l10n.json" "$APP/Contents/Resources/l10n.json"
+cp "$ROOT/core/glyph-dictionary.json" "$APP/Contents/Resources/glyph-dictionary.json"
 chmod +x "$APP/Contents/MacOS/Gutenkern"
 codesign --force --sign - "$APP" >/dev/null
 

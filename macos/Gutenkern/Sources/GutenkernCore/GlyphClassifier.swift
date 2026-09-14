@@ -99,37 +99,33 @@ public enum GlyphClassifier {
         }
 
         let suffixes = Set(parts.dropFirst())
-        if suffixes.contains("sc") {
+        if !suffixes.isDisjoint(with: ["sc", "smcp", "c2sc"]) {
             return .smallCaps
         }
 
-        let hasPnum = suffixes.contains("pnum")
-        let hasOnum = suffixes.contains("onum")
-        let other = suffixes.filter { $0 != "pnum" && $0 != "onum" }
-        if !other.isEmpty {
-            if let exact = GlyphDictionary.class(byName: name) {
-                return fromDictionary(exact)
-            }
-            return .unknown
-        }
-
         let baseName = parts[0]
-        let isDigit = GlyphDictionary.isDigitName(baseName)
-        if hasPnum || hasOnum {
-            guard isDigit else {
-                return .unknown
-            }
-            if hasPnum && hasOnum {
+        let hasPnum = !suffixes.isDisjoint(with: ["pnum", "lf"])
+        let hasOnum = !suffixes.isDisjoint(with: ["onum", "tosf"])
+        let hasOsf = suffixes.contains("osf")
+        let hasTf = suffixes.contains("tf")
+        if GlyphDictionary.isDigitName(baseName) && (hasPnum || hasOnum || hasOsf || hasTf) {
+            if hasOsf || (hasPnum && hasOnum) {
                 return .oldstyleProportional
             }
             if hasOnum {
                 return .oldstyleOnum
             }
-            return .liningPnum
+            if hasPnum {
+                return .liningPnum
+            }
+            return .liningPlain
         }
 
-        if let classified = GlyphDictionary.class(byName: name) {
-            return fromDictionary(classified)
+        if let exact = GlyphDictionary.class(byName: name) {
+            return fromDictionary(exact)
+        }
+        if let byBase = GlyphDictionary.class(byName: baseName) {
+            return fromDictionary(byBase)
         }
         return .unknown
     }

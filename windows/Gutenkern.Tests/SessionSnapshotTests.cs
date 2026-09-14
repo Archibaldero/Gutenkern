@@ -13,6 +13,7 @@ public sealed class SessionSnapshotTests
             Field2 = "ignored",
             Groups = ["A", "unknown", "a"],
             CompletedRecipes = ["A/A/A", "", "a/a/a"],
+            CompletedBlocks = ["H/H/H", "", "A/A"],
             Mode = "mirror",
             Format = "glyphs"
         });
@@ -21,7 +22,19 @@ public sealed class SessionSnapshotTests
         Assert.Equal("", snapshot.Field2);
         Assert.Empty(snapshot.Groups);
         Assert.Equal(["A/A/A", "a/a/a"], snapshot.CompletedRecipes);
+        Assert.Equal(["/A/A", "/H/H/H"], snapshot.CompletedBlocks);
         Assert.Equal(OutputFormat.Glyphs, snapshot.OutputFormatValue);
+    }
+
+    [Fact]
+    public void Sanitize_splits_legacy_block_strings_into_pair_keys()
+    {
+        var snapshot = SessionSnapshot.Sanitize(new SessionSnapshot
+        {
+            CompletedBlocks = ["H/H/H\nH/O/H"]
+        });
+
+        Assert.Equal(["/H/H/H", "/H/O/H"], snapshot.CompletedBlocks);
     }
 
     [Fact]
@@ -54,6 +67,7 @@ public sealed class SessionSnapshotTests
         var snapshot = SessionSnapshot.Sanitize(null);
         Assert.Equal("", snapshot.Field1);
         Assert.Empty(snapshot.CompletedRecipes);
+        Assert.Empty(snapshot.CompletedBlocks);
         Assert.Equal(OutputFormat.FontLab, snapshot.OutputFormatValue);
     }
 }

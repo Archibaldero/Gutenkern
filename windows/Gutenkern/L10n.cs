@@ -33,16 +33,33 @@ internal static class L10n
     }
 
     public static string FieldWhat => T("fieldWhat");
+    public static string FieldWhatHint => T("fieldWhatHint");
+    public static string GroupCopied => T("groupCopied");
+    public static string ClickHint => T("clickHint").Replace("{modifier}", "Ctrl");
+    public static string NewUnkernedPairs => T("newUnkernedPairs");
     public static string Format => T("format");
     public static string FormatFontLab => T("formatFontLab");
     public static string FormatGlyphs => T("formatGlyphs");
     public static string Result => T("result");
+    public static string ResultAs => T("resultAs");
+    public static string ResultLayoutRow => T("resultLayoutRow");
+    public static string ResultLayoutColumn => T("resultLayoutColumn");
     public static string Copy => T("copy");
     public static string Copied => T("copied");
+    public static string CopyAll => T("copyAll");
     public static string File => T("file");
     public static string Save => T("save");
     public static string SaveEllipsis => T("saveEllipsis");
+    public static string SaveAndOpenEllipsis => T("saveAndOpenEllipsis");
+    public static string SaveAsFile => T("saveAsFile");
     public static string SaveFailed => T("saveFailed");
+    public static string StrikeThrough => T("strikeThrough");
+    public static string ClearStrike => T("clearStrike");
+    public static string ResultPlaceholder => T("resultPlaceholder");
+    public static string ChooseFormat => T("chooseFormat");
+    public static string ResetProgress => T("resetProgress");
+    public static string Undo => T("undo");
+    public static string Redo => T("redo");
     public static string TextDocument => T("textDocument");
     public static string AllFiles => T("allFiles");
     public static string Settings => T("settings");
@@ -73,7 +90,24 @@ internal static class L10n
             KerningGroup.OldstyleFigures => T("groupOldstyleFigures"),
             _ => throw new ArgumentOutOfRangeException(nameof(group), group, null)
         };
-        return $"{name} ({KerningPlan.Code(group)})";
+        return $"{name} {KerningPlan.Code(group)}";
+    }
+
+    public static string GroupSidebarLabel(KerningGroup group, int done, int total)
+    {
+        var label = GroupLabel(group);
+        if (total <= 0)
+        {
+            return label;
+        }
+
+        label += $" ⋅ {GroupedCount(done)}/{GroupedCount(total)}";
+        if (done == total)
+        {
+            label += " ✓";
+        }
+
+        return label;
     }
 
     public static void ApplyPreference(string preference)
@@ -176,7 +210,41 @@ internal static class L10n
             PluralCategory.Many => "pairMany",
             _ => "pairOther"
         };
-        return T(key).Replace("{count}", count.ToString(CultureInfo.CurrentCulture));
+        return T(key).Replace("{count}", GroupedCount(count));
+    }
+
+    public static string PairPercent(int percent) =>
+        T("pairPercent").Replace("{percent}", percent.ToString(CultureInfo.InvariantCulture));
+
+    public static string CopiedPairs(string pairs) =>
+        T("copiedPairs").Replace("{pairs}", pairs);
+
+    public static string PairProgress(int done, int total)
+    {
+        var progress = $"{GroupedCount(done)}/{GroupedCount(total)}";
+        return PairCount(total).Replace(GroupedCount(total), progress);
+    }
+
+    public static int PairProgressPercent(int done, int total) =>
+        total <= 0 ? 0 : (int)Math.Round(100.0 * done / total);
+
+    public static string GroupedCount(int count)
+    {
+        var sign = count < 0 ? "-" : "";
+        var digits = Math.Abs(count).ToString(CultureInfo.InvariantCulture);
+        var grouped = new System.Text.StringBuilder();
+        for (var index = 0; index < digits.Length; index++)
+        {
+            var fromEnd = digits.Length - index;
+            if (index > 0 && fromEnd % 3 == 0)
+            {
+                grouped.Append('\u202F');
+            }
+
+            grouped.Append(digits[index]);
+        }
+
+        return sign + grouped.ToString();
     }
 
     private static PluralCategory Plural(int count)

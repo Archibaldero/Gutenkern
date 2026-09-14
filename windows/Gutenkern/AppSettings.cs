@@ -14,6 +14,7 @@ internal static class AppSettings
         "settings.json");
 
     public static string Language { get; set; } = SystemLanguage;
+    public static bool HasChosenFormat { get; set; }
     public static SessionSnapshot Session { get; set; } = SessionSnapshot.Empty;
 
     public static void Load()
@@ -22,6 +23,11 @@ internal static class AppSettings
         {
             if (!File.Exists(FilePath))
             {
+                Session = SessionSnapshot.From(
+                    SessionSnapshot.DefaultGlyphs,
+                    [],
+                    [],
+                    OutputFormat.FontLab);
                 return;
             }
 
@@ -36,10 +42,12 @@ internal static class AppSettings
                 Language = language;
             }
 
+            HasChosenFormat = true;
             Session = SessionSnapshot.Sanitize(new SessionSnapshot
             {
                 Field1 = model.Field1 ?? "",
                 CompletedRecipes = model.CompletedRecipes ?? [],
+                CompletedBlocks = model.CompletedBlocks ?? [],
                 Format = model.Format ?? "fontlab"
             });
         }
@@ -65,7 +73,9 @@ internal static class AppSettings
                 Language = Language,
                 Field1 = Session.Field1,
                 CompletedRecipes = Session.CompletedRecipes.ToList(),
-                Format = Session.Format
+                CompletedBlocks = Session.CompletedBlocks.ToList(),
+                Format = Session.Format,
+                HasChosenFormat = HasChosenFormat
             }, JsonOptions));
         }
         catch
@@ -77,11 +87,14 @@ internal static class AppSettings
     private sealed class Model
     {
         public string Language { get; set; } = SystemLanguage;
+        public string? ResultLayoutMode { get; set; }
         public string Field1 { get; set; } = "";
         public string Field2 { get; set; } = "";
         public List<string>? Groups { get; set; }
         public List<string>? CompletedRecipes { get; set; }
+        public List<string>? CompletedBlocks { get; set; }
         public string? Mode { get; set; }
         public string? Format { get; set; }
+        public bool HasChosenFormat { get; set; }
     }
 }
