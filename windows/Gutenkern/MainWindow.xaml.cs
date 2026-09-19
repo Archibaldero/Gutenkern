@@ -302,7 +302,7 @@ public partial class MainWindow : Window
     private void UpdateFooter()
     {
         var total = _layout.Tokens.Count;
-        var done = _completedBlocks.Intersect(_layout.Tokens.Select(token => token.Key)).Count();
+        var done = _layout.Tokens.Count(token => _completedBlocks.Contains(token.Key));
         if (TotalPairCount is not null)
         {
             TotalPairCount.Text = L10n.PairProgress(done, total);

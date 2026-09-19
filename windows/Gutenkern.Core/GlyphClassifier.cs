@@ -18,8 +18,6 @@ public sealed class ClassificationResult
         Unknown = unknown;
     }
 
-    public string GroupsText => string.Join(" ", Groups.Select(KerningPlan.Code));
-
     public bool TryGet(KerningGroup group, out IReadOnlyList<Glyph> glyphs) =>
         Glyphs.TryGetValue(group, out glyphs!);
 }

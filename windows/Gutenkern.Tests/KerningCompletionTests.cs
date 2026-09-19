@@ -126,47 +126,6 @@ public sealed class KerningCompletionTests
 
 public sealed class KerningMarksTests
 {
-    private static readonly string[] Keys = ["H/H/H", "H/O/H", "H/A/H"];
-
-    [Fact]
-    public void ToggleGroup_marks_empty_group_done()
-    {
-        var next = KerningMarks.ToggleGroup(Keys, new KerningMarkState([]));
-
-        Assert.Equal(GroupMark.Done, next.GroupMark(Keys));
-    }
-
-    [Fact]
-    public void ToggleGroup_clears_fully_done_group()
-    {
-        var state = new KerningMarkState(Keys);
-        var next = KerningMarks.ToggleGroup(Keys, state);
-
-        Assert.Equal(GroupMark.Empty, next.GroupMark(Keys));
-        Assert.Empty(next.Done);
-    }
-
-    [Fact]
-    public void ToggleGroup_marks_mixed_group_done()
-    {
-        var state = new KerningMarkState(["H/H/H", "H/O/H"]);
-        Assert.Equal(GroupMark.MixedDone, state.GroupMark(Keys));
-
-        var next = KerningMarks.ToggleGroup(Keys, state);
-
-        Assert.Equal(GroupMark.Done, next.GroupMark(Keys));
-    }
-
-    [Fact]
-    public void TogglePair_cycles_empty_and_done()
-    {
-        var done = KerningMarks.TogglePair("H/A/H", new KerningMarkState([]));
-        Assert.Equal(PairMark.Done, done.PairMark("H/A/H"));
-
-        var empty = KerningMarks.TogglePair("H/A/H", done);
-        Assert.Equal(PairMark.Empty, empty.PairMark("H/A/H"));
-    }
-
     [Fact]
     public void MarkDone_does_not_clear_existing_done_pairs()
     {

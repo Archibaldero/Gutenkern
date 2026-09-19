@@ -13,10 +13,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "GutenkernCore",
-            resources: [
-                .process("Resources")
-            ]
+            name: "GutenkernCore"
         ),
         .executableTarget(
             name: "Gutenkern",

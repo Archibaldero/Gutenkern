@@ -18,13 +18,8 @@ public partial class AboutWindow : Window
     internal void ApplyLocalization()
     {
         Title = L10n.About;
-        VersionText.Text = L10n.AboutVersion(AppVersion());
-        FillLinkedText(BodyText, L10n.AboutBodyParts());
-
-        ContactBlock.Inlines.Clear();
-        ContactBlock.Inlines.Add(new Run(L10n.AboutContact + " "));
-        ContactBlock.Inlines.Add(CreateLink(L10n.AuthorEmail, new Uri("mailto:" + L10n.AuthorEmail)));
-
+        BodyText.Text = L10n.AboutBody;
+        FillLinkedText(VersionText, L10n.AboutVersionParts(AppVersion()));
         FillLinkedText(CreditBlock, L10n.AboutCreditsParts());
     }
 

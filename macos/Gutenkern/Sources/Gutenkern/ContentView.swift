@@ -38,12 +38,12 @@ struct ContentView: View {
         resultLayout.tokens.count
     }
 
-    private var currentPairKeys: Set<String> {
-        Set(resultLayout.tokens.map(\.key))
-    }
-
     private var donePairCount: Int {
-        session.completedBlocks.intersection(currentPairKeys).count
+        resultLayout.tokens.reduce(into: 0) { count, token in
+            if session.completedBlocks.contains(token.key) {
+                count += 1
+            }
+        }
     }
 
     private var unknownRanges: [NSRange] {

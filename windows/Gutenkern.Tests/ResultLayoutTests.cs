@@ -67,6 +67,27 @@ public sealed class ResultLayoutTests
     }
 
     [Fact]
+    public void Duplicate_tokens_count_as_done_when_their_key_is_marked()
+    {
+        var layout = ResultLayout.Build(
+            KerningGenerator.GenerateRecipeSections(
+                GlyphClassifier.Classify("aaaa"),
+                OutputFormat.FontLab),
+            ResultLayoutMode.Row);
+
+        Assert.Equal(16, layout.Tokens.Count);
+        Assert.All(layout.Tokens, token => Assert.Equal("/a/a/a", token.Key));
+
+        var uniqueDone = layout.Tokens.Select(token => token.Key).ToHashSet();
+        Assert.Single(uniqueDone);
+
+        var progress = layout.ProgressByCategory(uniqueDone)[KerningGroup.Lowercase];
+        Assert.Equal(16, progress.Done);
+        Assert.Equal(16, progress.Total);
+        Assert.Equal(layout.Tokens.Count(token => uniqueDone.Contains(token.Key)), progress.Done);
+    }
+
+    [Fact]
     public void NewUnkernedNotice_command_click_does_not_warn()
     {
         var group = "capitals-0";

@@ -51,21 +51,12 @@ enum L10n {
     ]
 
     static var fieldWhat: String { t("fieldWhat") }
-    static var fieldWhatHint: String { t("fieldWhatHint") }
     static var groupCopied: String { t("groupCopied") }
-    static var clickHint: String {
-        t("clickHint").replacingOccurrences(of: "{modifier}", with: "Command")
-    }
-    static var newUnkernedPairs: String { t("newUnkernedPairs") }
     static var format: String { t("format") }
     static var formatFontLab: String { t("formatFontLab") }
     static var formatGlyphs: String { t("formatGlyphs") }
     static var result: String { t("result") }
-    static var resultAs: String { t("resultAs") }
-    static var resultLayoutRow: String { t("resultLayoutRow") }
-    static var resultLayoutColumn: String { t("resultLayoutColumn") }
     static var copy: String { t("copy") }
-    static var copied: String { t("copied") }
     static var save: String { t("save") }
     static var saveEllipsis: String { t("saveEllipsis") }
     static var saveAndOpenEllipsis: String { t("saveAndOpenEllipsis") }
@@ -77,46 +68,50 @@ enum L10n {
     static var resultPlaceholder: String { t("resultPlaceholder") }
     static var chooseFormat: String { t("chooseFormat") }
     static var resetProgress: String { t("resetProgress") }
-    static var undo: String { t("undo") }
-    static var redo: String { t("redo") }
     static var settings: String { t("settings") }
     static var language: String { t("language") }
     static var languageSystem: String { t("languageSystem") }
-    static var groups: String { t("groups") }
-    static var plan: String { t("plan") }
-    static var help: String { t("help") }
     static var about: String { t("about") }
     static var aboutBody: String { t("aboutBody") }
-    static var aboutContact: String { t("aboutContact") }
-    static var aboutCopyright: String { t("aboutCopyright") }
+    static var aboutCredits: String { t("aboutCredits") }
+    static var appName: String { t("appName") }
+    static var arsenName: String { t("arsenName") }
+    static var vladName: String { t("vladName") }
+    static var oleksiiName: String { t("oleksiiName") }
     static let authorEmail = "armos1999@gmail.com"
     static let authorWebsite = "arsenmosiichuk.in.ua"
     static let vladWebsite = "zahrevsky.com"
     static let oleksiiWebsite = "oleksii.shmalko.com"
-    static let sourceWebsite = "http://www.junikstudio.com/kernings/"
+    static let updatesPath = "arsenmosiichuk.in.ua/gutenkern"
     static var authorEmailURL: URL { URL(string: "mailto:\(authorEmail)")! }
     static var authorWebsiteURL: URL { URL(string: "https://\(authorWebsite)")! }
     static var vladWebsiteURL: URL { URL(string: "https://\(vladWebsite)")! }
     static var oleksiiWebsiteURL: URL { URL(string: "https://\(oleksiiWebsite)")! }
-    static var sourceWebsiteURL: URL { URL(string: sourceWebsite)! }
+    static var updatesURL: URL { URL(string: "https://\(updatesPath)")! }
 
     static func aboutBodyText() -> AttributedString {
-        attributedTemplate(aboutBody, replacements: [
-            sourceWebsite: (sourceWebsite, sourceWebsiteURL)
+        AttributedString(aboutBody.replacingOccurrences(of: "{appName}", with: appName))
+    }
+
+    static func aboutVersionText(_ version: String) -> AttributedString {
+        let template = t("aboutVersion").replacingOccurrences(of: "{version}", with: version)
+        return attributedTemplate(template, replacements: [
+            "{updatesUrl}": (updatesPath, updatesURL)
         ])
     }
 
-    static func aboutCredits() -> AttributedString {
-        let sites: [String: (String, URL)] = [
-            "{arsenSite}": (authorWebsite, authorWebsiteURL),
-            "{vladSite}": (vladWebsite, vladWebsiteURL),
-            "{oleksiiSite}": (oleksiiWebsite, oleksiiWebsiteURL)
-        ]
-        return attributedTemplate(aboutCopyright, replacements: sites)
-    }
-
-    static func aboutVersion(_ version: String) -> String {
-        t("aboutVersion").replacingOccurrences(of: "{version}", with: version)
+    static func aboutCreditsText() -> AttributedString {
+        var text = attributedTemplate(aboutCredits, replacements: [
+            "{arsenName}": (arsenName, authorWebsiteURL),
+            "{vladName}": (vladName, vladWebsiteURL),
+            "{oleksiiName}": (oleksiiName, oleksiiWebsiteURL)
+        ])
+        text.append(AttributedString(" "))
+        var email = AttributedString(authorEmail)
+        email.link = authorEmailURL
+        text.append(email)
+        text.append(AttributedString("."))
+        return text
     }
 
     static func groupLabel(_ group: KerningGroup) -> String {
@@ -160,22 +155,13 @@ enum L10n {
         return t(key).replacingOccurrences(of: "{count}", with: groupedCount(count))
     }
 
-    static func pairPercent(_ percent: Int) -> String {
-        t("pairPercent").replacingOccurrences(of: "{percent}", with: String(percent))
-    }
-
-    static func copiedPairs(_ pairs: String) -> String {
-        t("copiedPairs").replacingOccurrences(of: "{pairs}", with: pairs)
-    }
-
     static func pairProgress(done: Int, total: Int) -> String {
         let progress = "\(groupedCount(done))/\(groupedCount(total))"
-        return pairCount(total).replacingOccurrences(of: groupedCount(total), with: progress)
-    }
-
-    static func pairProgressPercent(done: Int, total: Int) -> Int {
-        guard total > 0 else { return 0 }
-        return Int((Double(done) / Double(total) * 100).rounded())
+        var label = pairCount(total).replacingOccurrences(of: groupedCount(total), with: progress)
+        if total > 0, done == total {
+            label += " ✓"
+        }
+        return label
     }
 
     static func groupedCount(_ count: Int) -> String {

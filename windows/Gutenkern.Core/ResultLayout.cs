@@ -13,8 +13,6 @@ public sealed class ResultGroup
     public IReadOnlyList<PairLine> Pairs { get; }
     public IReadOnlyList<string> Keys { get; }
 
-    public string CopyText => string.Join("  ", Pairs.Select(pair => pair.Display));
-
     public ResultGroup(string groupId, KerningGroup category, IReadOnlyList<PairLine> pairs)
     {
         GroupId = groupId;
@@ -314,9 +312,6 @@ public sealed class ResultLayout
 
         return keys;
     }
-
-    public bool HasMixedGroups(KerningMarkState state) =>
-        KeysByGroup().Values.Any(keys => state.GroupMark(keys.ToList()) == GroupMark.MixedDone);
 }
 
 public static class NewUnkernedNotice

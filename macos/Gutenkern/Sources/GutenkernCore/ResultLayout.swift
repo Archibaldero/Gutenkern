@@ -35,10 +35,6 @@ public struct ResultGroup: Equatable, Identifiable, Sendable {
 
     public var keys: [String] { pairs.map(\.key) }
 
-    public var copyText: String {
-        pairs.map(\.display).joined(separator: "  ")
-    }
-
     public init(groupId: String, category: KerningGroup, pairs: [PairLine]) {
         self.groupId = groupId
         self.category = category
@@ -258,10 +254,6 @@ public struct ResultLayout: Equatable, Sendable {
             keys[token.groupId, default: []].insert(token.key)
         }
         return keys
-    }
-
-    public func hasMixedGroups(in state: KerningMarkState) -> Bool {
-        keysByGroup().values.contains { state.groupMark(keys: Array($0)) == .mixedDone }
     }
 }
 

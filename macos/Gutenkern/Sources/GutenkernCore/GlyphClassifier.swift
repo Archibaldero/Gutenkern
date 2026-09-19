@@ -11,10 +11,6 @@ public struct ClassificationResult: Equatable, Sendable {
     public var glyphs: [KerningGroup: [Glyph]]
     public var unknown: [ParsedToken]
 
-    public var groupsText: String {
-        groups.map(\.rawValue).joined(separator: " ")
-    }
-
     public func glyphs(for group: KerningGroup) -> [Glyph]? {
         glyphs[group]
     }

@@ -42,35 +42,9 @@ public struct KerningMarkState: Equatable, Sendable {
 }
 
 public enum KerningMarks {
-    public static func toggleGroup(keys: [String], state: KerningMarkState) -> KerningMarkState {
-        var next = state
-        if state.groupMark(keys: keys) == .done {
-            for key in keys {
-                next.done.remove(key)
-            }
-        } else {
-            next.done.formUnion(keys)
-        }
-        return next
-    }
-
-    public static func togglePair(key: String, state: KerningMarkState) -> KerningMarkState {
-        var next = state
-        if state.pairMark(key) == .done {
-            next.done.remove(key)
-        } else {
-            next.done.insert(key)
-        }
-        return next
-    }
-
     public static func markDone(keys: [String], state: KerningMarkState) -> KerningMarkState {
         var next = state
         next.done.formUnion(keys)
         return next
-    }
-
-    public static func prune(state: KerningMarkState, known: Set<String>) -> KerningMarkState {
-        KerningMarkState(done: state.done.intersection(known))
     }
 }

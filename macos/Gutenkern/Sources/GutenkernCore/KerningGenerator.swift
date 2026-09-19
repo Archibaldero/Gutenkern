@@ -213,38 +213,6 @@ public enum KerningGenerator {
         return groups
     }
 
-    public static func pairCount(left: String, right: String) -> Int {
-        let leftCount = parse(left).count
-        let rightCount = parse(right).count
-        if leftCount == 0 || rightCount == 0 {
-            return 0
-        }
-        return leftCount * rightCount
-    }
-
-    public static func pairCount(_ input: String) -> Int {
-        pairCount(GlyphClassifier.classify(input))
-    }
-
-    public static func pairCount(_ classified: ClassificationResult) -> Int {
-        var total = 0
-        for recipe in KerningPlan.recipes {
-            guard
-                let left = classified.glyphs(for: recipe.left),
-                let right = classified.glyphs(for: recipe.right)
-            else {
-                continue
-            }
-            total += KerningScriptFilter.pairCount(
-                left: left,
-                right: right,
-                letterLetterRecipe: KerningScriptFilter.isLetterGroup(recipe.left)
-                    && KerningScriptFilter.isLetterGroup(recipe.right)
-            )
-        }
-        return total
-    }
-
     public static func formatGlyphs(_ glyphs: [Glyph], as format: OutputFormat) -> String {
         switch format {
         case .fontlab:

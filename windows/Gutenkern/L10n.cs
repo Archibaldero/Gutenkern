@@ -35,19 +35,12 @@ internal static class L10n
     }
 
     public static string FieldWhat => T("fieldWhat");
-    public static string FieldWhatHint => T("fieldWhatHint");
     public static string GroupCopied => T("groupCopied");
-    public static string ClickHint => T("clickHint").Replace("{modifier}", "Ctrl");
-    public static string NewUnkernedPairs => T("newUnkernedPairs");
     public static string Format => T("format");
     public static string FormatFontLab => T("formatFontLab");
     public static string FormatGlyphs => T("formatGlyphs");
     public static string Result => T("result");
-    public static string ResultAs => T("resultAs");
-    public static string ResultLayoutRow => T("resultLayoutRow");
-    public static string ResultLayoutColumn => T("resultLayoutColumn");
     public static string Copy => T("copy");
-    public static string Copied => T("copied");
     public static string CopyAll => T("copyAll");
     public static string File => T("file");
     public static string Save => T("save");
@@ -67,35 +60,42 @@ internal static class L10n
     public static string Settings => T("settings");
     public static string LanguageLabel => T("language");
     public static string LanguageSystem => T("languageSystem");
-    public static string Groups => T("groups");
-    public static string Plan => T("plan");
     public static string Help => T("help");
     public static string About => T("about");
-    public static string AboutBody => T("aboutBody");
-    public static string AboutContact => T("aboutContact");
-    public static string AboutCopyright => T("aboutCopyright");
+    public static string AboutBody => T("aboutBody").Replace("{appName}", T("appName"));
+    public static string AboutCredits => T("aboutCredits");
     public const string AuthorEmail = "armos1999@gmail.com";
     public const string AuthorWebsite = "arsenmosiichuk.in.ua";
     public const string VladWebsite = "zahrevsky.com";
     public const string OleksiiWebsite = "oleksii.shmalko.com";
-    public const string SourceWebsite = "http://www.junikstudio.com/kernings/";
-    public static Uri SourceWebsiteUrl { get; } = new(SourceWebsite);
+    public const string UpdatesPath = "arsenmosiichuk.in.ua/gutenkern";
+    public static Uri AuthorWebsiteUrl { get; } = new("https://" + AuthorWebsite);
+    public static Uri VladWebsiteUrl { get; } = new("https://" + VladWebsite);
+    public static Uri OleksiiWebsiteUrl { get; } = new("https://" + OleksiiWebsite);
+    public static Uri UpdatesUrl { get; } = new("https://" + UpdatesPath);
+    public static Uri AuthorEmailUrl { get; } = new("mailto:" + AuthorEmail);
 
-    public static string AboutVersion(string version) => T("aboutVersion").Replace("{version}", version);
+    public static List<CreditPart> AboutVersionParts(string version) =>
+        TemplateParts(
+            T("aboutVersion").Replace("{version}", version),
+            new Dictionary<string, (string Label, Uri Url)>
+            {
+                ["{updatesUrl}"] = (UpdatesPath, UpdatesUrl)
+            });
 
-    public static List<CreditPart> AboutBodyParts() =>
-        TemplateParts(AboutBody, new Dictionary<string, (string Label, Uri Url)>
+    public static List<CreditPart> AboutCreditsParts()
+    {
+        var parts = TemplateParts(AboutCredits, new Dictionary<string, (string Label, Uri Url)>
         {
-            [SourceWebsite] = (SourceWebsite, SourceWebsiteUrl)
+            ["{arsenName}"] = (T("arsenName"), AuthorWebsiteUrl),
+            ["{vladName}"] = (T("vladName"), VladWebsiteUrl),
+            ["{oleksiiName}"] = (T("oleksiiName"), OleksiiWebsiteUrl)
         });
-
-    public static List<CreditPart> AboutCreditsParts() =>
-        TemplateParts(AboutCopyright, new Dictionary<string, (string Label, Uri Url)>
-        {
-            ["{arsenSite}"] = (AuthorWebsite, new Uri("https://" + AuthorWebsite)),
-            ["{vladSite}"] = (VladWebsite, new Uri("https://" + VladWebsite)),
-            ["{oleksiiSite}"] = (OleksiiWebsite, new Uri("https://" + OleksiiWebsite))
-        });
+        parts.Add(new CreditPart(" ", null));
+        parts.Add(new CreditPart(AuthorEmail, AuthorEmailUrl));
+        parts.Add(new CreditPart(".", null));
+        return parts;
+    }
 
     private static List<CreditPart> TemplateParts(
         string template,
@@ -276,20 +276,17 @@ internal static class L10n
         return T(key).Replace("{count}", GroupedCount(count));
     }
 
-    public static string PairPercent(int percent) =>
-        T("pairPercent").Replace("{percent}", percent.ToString(CultureInfo.InvariantCulture));
-
-    public static string CopiedPairs(string pairs) =>
-        T("copiedPairs").Replace("{pairs}", pairs);
-
     public static string PairProgress(int done, int total)
     {
         var progress = $"{GroupedCount(done)}/{GroupedCount(total)}";
-        return PairCount(total).Replace(GroupedCount(total), progress);
-    }
+        var label = PairCount(total).Replace(GroupedCount(total), progress);
+        if (total > 0 && done == total)
+        {
+            label += " ✓";
+        }
 
-    public static int PairProgressPercent(int done, int total) =>
-        total <= 0 ? 0 : (int)Math.Round(100.0 * done / total);
+        return label;
+    }
 
     public static string GroupedCount(int count)
     {

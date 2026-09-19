@@ -366,48 +366,9 @@ private func runCompletionChecks() -> Int {
     }
 
     failures += runMarkChecks()
-    failures += runHitTestingChecks()
     failures += runResultLayoutChecks()
     failures += runTokenGlueChecks()
     failures += runSpaceWrapChecks()
-    return failures
-}
-
-private func runHitTestingChecks() -> Int {
-    var failures = 0
-    let left = PairHitFrame(key: "/a/a/a", x: 10, y: 5, width: 40, height: 16)
-    let right = PairHitFrame(key: "/a/b/a", x: 70, y: 5, width: 40, height: 16)
-    let row = [left, right]
-
-    if PairHitTesting.nearestKey(x: 0, y: 0, frames: []) != nil {
-        fputs("HIT FAIL empty frames\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 20, y: 10, frames: row) != "/a/a/a" {
-        fputs("HIT FAIL inside left\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 90, y: 12, frames: row) != "/a/b/a" {
-        fputs("HIT FAIL inside right\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 54, y: 12, frames: row) != "/a/a/a" {
-        fputs("HIT FAIL gap left\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 61, y: 12, frames: row) != "/a/b/a" {
-        fputs("HIT FAIL gap right\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 400, y: 12, frames: row) != "/a/b/a" {
-        fputs("HIT FAIL trailing space\n", stderr)
-        failures += 1
-    }
-    if PairHitTesting.nearestKey(x: 2, y: 2, frames: row) != "/a/a/a" {
-        fputs("HIT FAIL leading padding\n", stderr)
-        failures += 1
-    }
-
     return failures
 }
 
@@ -505,6 +466,25 @@ private func runResultLayoutChecks() -> Int {
     let missing = layout.progress(for: .lowercase, done: capitalKeys)
     if missing.total != 0 || missing.done != 0 {
         fputs("LAYOUT FAIL missing category progress\n", stderr)
+        failures += 1
+    }
+    let duplicates = ResultLayout.build(
+        sections: KerningGenerator.generateRecipeSections(
+            GlyphClassifier.classify("aaaa"),
+            format: .fontlab
+        ),
+        mode: .row
+    )
+    let duplicateKey = "/a/a/a"
+    if duplicates.tokens.count != 16
+        || duplicates.tokens.contains(where: { $0.key != duplicateKey })
+    {
+        fputs("LAYOUT FAIL duplicate token count\n", stderr)
+        failures += 1
+    }
+    let duplicateProgress = duplicates.progressByCategory(done: [duplicateKey])[.lowercase]
+    if duplicateProgress?.done != 16 || duplicateProgress?.total != 16 {
+        fputs("LAYOUT FAIL duplicate progress counts tokens\n", stderr)
         failures += 1
     }
     failures += runNewUnkernedChecks()
@@ -695,37 +675,9 @@ private func runMarkChecks() -> Int {
     var failures = 0
     let keys = ["H/H/H", "H/O/H", "H/A/H"]
 
-    let emptyDone = KerningMarks.toggleGroup(keys: keys, state: KerningMarkState())
-    if emptyDone.groupMark(keys: keys) != .done {
-        fputs("MARK FAIL empty group toggle\n", stderr)
-        failures += 1
-    }
-
-    let cleared = KerningMarks.toggleGroup(keys: keys, state: emptyDone)
-    if cleared.groupMark(keys: keys) != .empty || !cleared.done.isEmpty {
-        fputs("MARK FAIL done group toggle\n", stderr)
-        failures += 1
-    }
-
     let mixed = KerningMarkState(done: ["H/H/H", "H/O/H"])
     if mixed.groupMark(keys: keys) != .mixedDone {
         fputs("MARK FAIL mixed done\n", stderr)
-        failures += 1
-    }
-    let mixedDone = KerningMarks.toggleGroup(keys: keys, state: mixed)
-    if mixedDone.groupMark(keys: keys) != .done {
-        fputs("MARK FAIL mixed group toggle\n", stderr)
-        failures += 1
-    }
-
-    var pair = KerningMarks.togglePair(key: "H/A/H", state: KerningMarkState())
-    if pair.pairMark("H/A/H") != .done {
-        fputs("MARK FAIL pair done\n", stderr)
-        failures += 1
-    }
-    pair = KerningMarks.togglePair(key: "H/A/H", state: pair)
-    if pair.pairMark("H/A/H") != .empty {
-        fputs("MARK FAIL pair empty\n", stderr)
         failures += 1
     }
 
@@ -739,7 +691,6 @@ private func runMarkChecks() -> Int {
     }
 
     failures += runHistoryChecks()
-    failures += runCopyBurstChecks()
 
     return failures
 }
@@ -792,37 +743,6 @@ private func runHistoryChecks() -> Int {
     }
     if coalesced.undo(current: coalescedUndo) != nil {
         fputs("HISTORY FAIL coalesced extra step\n", stderr)
-        failures += 1
-    }
-
-    return failures
-}
-
-private func runCopyBurstChecks() -> Int {
-    var failures = 0
-    var burst = CopyBurst()
-    let start = Date(timeIntervalSince1970: 1_700_000_000)
-
-    if burst.add(key: "H/A/H", at: start) != ["H/A/H"] {
-        fputs("BURST FAIL first key\n", stderr)
-        failures += 1
-    }
-    if burst.add(key: "H/O/H", at: start.addingTimeInterval(0.4)) != ["H/A/H", "H/O/H"] {
-        fputs("BURST FAIL second key\n", stderr)
-        failures += 1
-    }
-    if burst.add(key: "H/A/H", at: start.addingTimeInterval(0.8)) != ["H/A/H", "H/O/H"] {
-        fputs("BURST FAIL duplicate key\n", stderr)
-        failures += 1
-    }
-    if burst.add(key: "H/H/H", at: start.addingTimeInterval(1.8)) != ["H/H/H"] {
-        fputs("BURST FAIL window reset\n", stderr)
-        failures += 1
-    }
-
-    burst.reset()
-    if burst.add(key: "H/O/H", at: start.addingTimeInterval(2.0)) != ["H/O/H"] {
-        fputs("BURST FAIL explicit reset\n", stderr)
         failures += 1
     }
 

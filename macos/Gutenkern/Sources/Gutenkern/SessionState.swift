@@ -94,11 +94,6 @@ final class SessionState: ObservableObject {
         try? data.write(to: Self.fileURL, options: .atomic)
     }
 
-    func resetProgress() {
-        completedRecipes = []
-        completedBlocks = []
-    }
-
     private static func load() -> (snapshot: SessionSnapshot, existed: Bool) {
         if let data = try? Data(contentsOf: fileURL) {
             return (SessionSnapshot.decoded(from: data), true)

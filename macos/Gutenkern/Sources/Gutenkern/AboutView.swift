@@ -18,31 +18,22 @@ struct AboutView: View {
                     .frame(width: 64, height: 64)
                 Text("Gutenkern")
                     .font(.title2.weight(.semibold))
-                Text(L10n.aboutVersion(version))
-                    .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity)
 
             Text(L10n.aboutBodyText())
                 .fixedSize(horizontal: false, vertical: true)
 
-            Text(contactLine)
+            Text(L10n.aboutVersionText(version))
+                .fixedSize(horizontal: false, vertical: true)
 
-            Text(L10n.aboutCredits())
+            Text(L10n.aboutCreditsText())
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(24)
         .frame(width: 440)
         .fixedSize(horizontal: true, vertical: true)
         .background(AboutWindowChrome(title: L10n.about))
-    }
-
-    private var contactLine: AttributedString {
-        var text = AttributedString(L10n.aboutContact + " ")
-        var email = AttributedString(L10n.authorEmail)
-        email.link = L10n.authorEmailURL
-        text.append(email)
-        return text
     }
 }
 

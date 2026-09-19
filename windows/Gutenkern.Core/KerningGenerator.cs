@@ -171,40 +171,6 @@ public static class KerningGenerator
         return groups;
     }
 
-    public static int PairCount(string left, string right)
-    {
-        var leftCount = Parse(left).Count;
-        var rightCount = Parse(right).Count;
-        if (leftCount == 0 || rightCount == 0)
-        {
-            return 0;
-        }
-
-        return leftCount * rightCount;
-    }
-
-    public static int PairCount(string input) => PairCount(GlyphClassifier.Classify(input));
-
-    public static int PairCount(ClassificationResult classified)
-    {
-        var total = 0;
-        foreach (var recipe in KerningPlan.Recipes)
-        {
-            if (!classified.TryGet(recipe.Left, out var left) ||
-                !classified.TryGet(recipe.Right, out var right))
-            {
-                continue;
-            }
-
-            total += KerningScriptFilter.PairCount(
-                left,
-                right,
-                KerningScriptFilter.IsLetterGroup(recipe.Left) && KerningScriptFilter.IsLetterGroup(recipe.Right));
-        }
-
-        return total;
-    }
-
     public static string FormatGlyphs(IReadOnlyList<Glyph> glyphs, OutputFormat format)
     {
         switch (format)
