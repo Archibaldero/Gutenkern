@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Navigation;
 
@@ -18,16 +19,29 @@ public partial class AboutWindow : Window
     {
         Title = L10n.About;
         VersionText.Text = L10n.AboutVersion(AppVersion());
-        BodyText.Text = L10n.AboutBody;
+        FillLinkedText(BodyText, L10n.AboutBodyParts());
 
         ContactBlock.Inlines.Clear();
         ContactBlock.Inlines.Add(new Run(L10n.AboutContact + " "));
         ContactBlock.Inlines.Add(CreateLink(L10n.AuthorEmail, new Uri("mailto:" + L10n.AuthorEmail)));
 
-        CreditBlock.Inlines.Clear();
-        CreditBlock.Inlines.Add(new Run(L10n.AboutCopyright));
-        CreditBlock.Inlines.Add(new LineBreak());
-        CreditBlock.Inlines.Add(CreateLink(L10n.AuthorWebsite, new Uri("https://" + L10n.AuthorWebsite)));
+        FillLinkedText(CreditBlock, L10n.AboutCreditsParts());
+    }
+
+    private void FillLinkedText(TextBlock block, List<CreditPart> parts)
+    {
+        block.Inlines.Clear();
+        foreach (var part in parts)
+        {
+            if (part.Link is Uri uri)
+            {
+                block.Inlines.Add(CreateLink(part.Text, uri));
+            }
+            else
+            {
+                block.Inlines.Add(new Run(part.Text));
+            }
+        }
     }
 
     private Hyperlink CreateLink(string label, Uri uri)

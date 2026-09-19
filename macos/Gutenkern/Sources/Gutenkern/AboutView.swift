@@ -23,15 +23,13 @@ struct AboutView: View {
             }
             .frame(maxWidth: .infinity)
 
-            Text(L10n.aboutBody)
+            Text(L10n.aboutBodyText())
                 .fixedSize(horizontal: false, vertical: true)
 
             Text(contactLine)
 
-            VStack(alignment: .leading, spacing: 0) {
-                Text(L10n.aboutCopyright)
-                Link(L10n.authorWebsite, destination: L10n.authorWebsiteURL)
-            }
+            Text(L10n.aboutCredits())
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(24)
         .frame(width: 440)

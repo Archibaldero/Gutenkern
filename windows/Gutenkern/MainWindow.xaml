@@ -7,10 +7,11 @@
         Height="760"
         MinWidth="720"
         MinHeight="640"
+        Background="White"
         UseLayoutRounding="True"
         TextOptions.TextFormattingMode="Display">
     <Window.Resources>
-        <SolidColorBrush x:Key="FieldBackgroundBrush" Color="#FAFAFA"/>
+        <SolidColorBrush x:Key="FieldBackgroundBrush" Color="#FCFCFC"/>
         <SolidColorBrush x:Key="FieldBorderBrush" Color="#F2F2F2"/>
         <Style x:Key="FieldBorder" TargetType="Border">
             <Setter Property="Background" Value="{DynamicResource FieldBackgroundBrush}"/>
@@ -83,36 +84,28 @@
                           Click="AboutButton_Click"/>
             </MenuItem>
         </Menu>
-        <ListBox x:Name="CategoryList"
-                 DockPanel.Dock="Left"
-                 Width="240"
-                 BorderThickness="0"
-                 SelectionChanged="CategoryList_SelectionChanged"/>
-        <Grid Margin="40,20">
+        <Grid Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock x:Name="WhatLabel"
                        Grid.Row="0"
                        Grid.Column="0"
-                       Grid.ColumnSpan="2"
                        Text="Glyphs"
                        FontWeight="SemiBold"
-                       Margin="0,0,0,6"/>
-            <Border Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                       VerticalAlignment="Top"
+                       Margin="0,0,20,0"/>
+            <Border Grid.Row="0"
+                    Grid.Column="1"
                     Height="100"
                     Style="{StaticResource FieldBorder}">
                 <RichTextBox x:Name="Field1"
@@ -128,17 +121,23 @@
                              TextChanged="FieldsChanged"/>
             </Border>
 
-            <StackPanel Grid.Row="3"
+            <StackPanel Grid.Row="2"
                         Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Margin="0,0,0,6">
+                        VerticalAlignment="Top"
+                        Margin="0,0,20,0">
                 <TextBlock x:Name="ResultLabel"
                            Text="Result"
                            FontWeight="SemiBold"/>
+                <TextBlock x:Name="TotalPairCount"
+                           FontSize="13"
+                           Margin="0,4,0,0"
+                           Visibility="Collapsed"
+                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                <StackPanel x:Name="CategoryNav"
+                            Margin="0,20,0,0"/>
             </StackPanel>
-            <Border Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+            <Border Grid.Row="2"
+                    Grid.Column="1"
                     Style="{StaticResource FieldBorder}"
                     ClipToBounds="True">
                 <Grid>
@@ -164,28 +163,15 @@
                 </Grid>
             </Border>
 
-            <StackPanel Grid.Row="6"
+            <StackPanel Grid.Row="4"
                         Grid.Column="0"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Left">
-                <TextBlock x:Name="TotalPairCount"
-                           FontSize="12"
-                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="6"
-                         Grid.Column="1"
-                         Orientation="Horizontal"
-                         HorizontalAlignment="Right"
-                         VerticalAlignment="Center">
-                <Button x:Name="CopyAllButton"
-                        Content="Copy all"
-                        Padding="16,6"
-                        Click="CopyAll_Click"
-                        IsEnabled="False"/>
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
                 <Button x:Name="SaveButton"
                         Content="Save all pairs..."
                         Padding="16,6"
-                        Margin="10,0,0,0"
                         Click="SaveButton_Click"
                         IsEnabled="False"/>
                 <Button x:Name="SaveAndOpenButton"
@@ -194,11 +180,40 @@
                         Margin="10,0,0,0"
                         Click="SaveAndOpen_Click"
                         IsEnabled="False"/>
+                <Button x:Name="CopyAllButton"
+                        Content="Copy all"
+                        Padding="16,6"
+                        Margin="10,0,0,0"
+                        Click="CopyAll_Click"
+                        IsEnabled="False"
+                        Background="#00AAFF"
+                        Foreground="White"
+                        BorderBrush="#00AAFF">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    Padding="{TemplateBinding Padding}"
+                                    CornerRadius="3"
+                                    Opacity="{TemplateBinding Opacity}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.45"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </StackPanel>
 
             <Border x:Name="CopiedToast"
                     Grid.Row="0"
-                    Grid.RowSpan="7"
+                    Grid.RowSpan="5"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     HorizontalAlignment="Center"

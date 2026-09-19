@@ -64,6 +64,7 @@ public enum ResultLayoutMode: String, CaseIterable, Sendable {
 
 public struct ResultLayout: Equatable, Sendable {
     public let text: String
+    public let viewText: String
     public let tokens: [ResultToken]
     public let categoryStarts: [KerningGroup: Int]
     public let categories: [ResultCategory]
@@ -80,6 +81,7 @@ public struct ResultLayout: Equatable, Sendable {
         self.tokens = tokens
         self.categoryStarts = categoryStarts
         self.categories = categories
+        viewText = TokenGlue.viewText(layoutText: text, tokens: tokens)
     }
 
     public var isEmpty: Bool { text.isEmpty }

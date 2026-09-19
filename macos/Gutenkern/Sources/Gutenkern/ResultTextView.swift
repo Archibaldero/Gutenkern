@@ -1,4 +1,5 @@
 import AppKit
+import CoreText
 import GutenkernCore
 import SwiftUI
 
@@ -82,8 +83,7 @@ private struct Representable: NSViewRepresentable {
         scrollView.drawsBackground = true
         configureScrollView(scrollView)
         configure(textView)
-        textView.string = layout.text
-        applyAttributes(textView, coordinator: context.coordinator, force: true)
+        syncText(textView, coordinator: context.coordinator, forceAttributes: true)
         scrollView.contentView.postsBoundsChangedNotifications = true
         context.coordinator.boundsObserver = NotificationCenter.default.addObserver(
             forName: NSView.boundsDidChangeNotification,
@@ -104,21 +104,13 @@ private struct Representable: NSViewRepresentable {
         context.coordinator.textView = textView
         configureScrollView(scrollView)
         configure(textView)
-        var rebuilt = false
-        if textView.string != layout.text {
-            let selected = textView.selectedRange
-            textView.string = layout.text
-            let maxLocation = (layout.text as NSString).length
-            let location = min(selected.location, maxLocation)
-            let length = min(selected.length, max(0, maxLocation - location))
-            textView.setSelectedRange(NSRange(location: location, length: length))
-            rebuilt = true
-        }
-        applyAttributes(textView, coordinator: context.coordinator, force: rebuilt)
+        let viewText = displayedViewText()
+        syncText(textView, coordinator: context.coordinator, forceAttributes: false)
         if let group = scrollToCategory, let start = layout.categoryStarts[group] {
+            let viewStart = TokenGlue.viewIndex(fromLayout: start, in: viewText)
             DispatchQueue.main.async {
                 textView.layoutSubtreeIfNeeded()
-                textView.scrollCategoryToTop(utf16Start: start)
+                textView.scrollCategoryToTop(utf16Start: viewStart)
                 onScrolledToCategory()
             }
         }
@@ -142,7 +134,7 @@ private struct Representable: NSViewRepresentable {
     }
 
     private func configure(_ textView: NSTextView) {
-        let font = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
+        let font = Self.resultFont
         textView.isEditable = false
         textView.isSelectable = true
         textView.font = font
@@ -168,9 +160,40 @@ private struct Representable: NSViewRepresentable {
         ]
     }
 
+    fileprivate static let resultFont = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
+
+    fileprivate func displayedViewText() -> String {
+        layout.viewText
+    }
+
+    fileprivate func syncText(
+        _ textView: ResultNSTextView,
+        coordinator: Coordinator,
+        forceAttributes: Bool
+    ) {
+        let viewText = displayedViewText()
+        var rebuilt = false
+        if textView.string != viewText {
+            let selected = textView.selectedRange
+            let oldView = textView.string
+            let layoutStart = TokenGlue.layoutIndex(fromView: selected.location, in: oldView)
+            let layoutEnd = TokenGlue.layoutIndex(fromView: selected.location + selected.length, in: oldView)
+            textView.string = viewText
+            let start = TokenGlue.viewIndex(fromLayout: layoutStart, in: viewText)
+            let end = TokenGlue.viewIndex(fromLayout: layoutEnd, in: viewText)
+            let maxLocation = (viewText as NSString).length
+            let location = min(start, maxLocation)
+            let length = min(max(0, end - start), max(0, maxLocation - location))
+            textView.setSelectedRange(NSRange(location: location, length: length))
+            rebuilt = true
+        }
+        applyAttributes(textView, coordinator: coordinator, viewText: viewText, force: forceAttributes || rebuilt)
+    }
+
     private func applyAttributes(
         _ textView: NSTextView,
         coordinator: Coordinator,
+        viewText: String,
         force: Bool
     ) {
         guard let storage = textView.textStorage else {
@@ -179,13 +202,13 @@ private struct Representable: NSViewRepresentable {
         let done = markState.done
         let newKeys = newKeys
         if !force,
-           coordinator.appliedText == layout.text,
+           coordinator.appliedText == viewText,
            coordinator.appliedDone == done,
            coordinator.appliedNewKeys == newKeys
         {
             return
         }
-        let font = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
+        let font = Self.resultFont
         let bold = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .bold)
         let full = NSRange(location: 0, length: storage.length)
         storage.beginEditing()
@@ -208,7 +231,11 @@ private struct Representable: NSViewRepresentable {
             .strikethroughStyle: 0
         ]
         for token in layout.tokens {
-            let range = NSRange(location: token.utf16Start, length: token.utf16Length)
+            let range = TokenGlue.viewRange(
+                layoutStart: token.utf16Start,
+                layoutLength: token.utf16Length,
+                in: viewText
+            )
             let clamped = NSIntersectionRange(range, full)
             guard clamped.length > 0 else {
                 continue
@@ -219,10 +246,39 @@ private struct Representable: NSViewRepresentable {
                 storage.addAttributes(newStyle, range: clamped)
             }
         }
+        applySlashGlyphs(storage, range: full)
         storage.endEditing()
-        coordinator.appliedText = layout.text
+        coordinator.appliedText = viewText
         coordinator.appliedDone = done
         coordinator.appliedNewKeys = newKeys
+    }
+
+    private func applySlashGlyphs(_ storage: NSTextStorage, range: NSRange) {
+        storage.enumerateAttribute(.font, in: range, options: []) { value, fontRange, _ in
+            guard let font = value as? NSFont,
+                  let info = Self.slashGlyphInfo(for: font)
+            else {
+                return
+            }
+            let ns = storage.string as NSString
+            var index = fontRange.location
+            let end = NSMaxRange(fontRange)
+            while index < end {
+                if ns.character(at: index) == TokenGlue.viewSlashUTF16 {
+                    storage.addAttribute(.glyphInfo, value: info, range: NSRange(location: index, length: 1))
+                }
+                index += 1
+            }
+        }
+    }
+
+    private static func slashGlyphInfo(for font: NSFont) -> NSGlyphInfo? {
+        var character: UniChar = 0x002F
+        var glyph: CGGlyph = 0
+        guard CTFontGetGlyphsForCharacters(font as CTFont, &character, &glyph, 1), glyph != 0 else {
+            return nil
+        }
+        return NSGlyphInfo(cgGlyph: glyph, for: font, baseString: String(TokenGlue.viewSlash))
     }
 
     final class Coordinator {
@@ -246,23 +302,9 @@ private struct Representable: NSViewRepresentable {
 
         func menu(for textView: NSTextView) -> NSMenu {
             let menu = NSMenu()
-            let selection = textView.selectedRange
-            let tokens: [ResultToken]
-            if selection.length > 0 {
-                tokens = parent.layout.tokens(utf16Start: selection.location, length: selection.length)
-            } else {
-                tokens = parent.layout.tokens(utf16Start: selection.location, length: 0)
-            }
-            let keys = tokens.map(\.key)
-            let copyText: String
-            if selection.length > 0 {
-                copyText = (textView.string as NSString).substring(with: selection)
-            } else {
-                copyText = tokens.first?.display ?? ""
-            }
-            let saveText = selection.length > 0
-                ? (textView.string as NSString).substring(with: selection)
-                : parent.layout.text
+            let keys = selectedKeys(in: textView)
+            let copyText = cleanCopyText(from: textView)
+            let saveText = cleanSaveText(from: textView)
 
             let copyItem = NSMenuItem(
                 title: L10n.copy,
@@ -302,16 +344,7 @@ private struct Representable: NSViewRepresentable {
         }
 
         func copySelection(from textView: NSTextView) {
-            let selection = textView.selectedRange
-            let text: String
-            if selection.length > 0 {
-                text = (textView.string as NSString).substring(with: selection)
-            } else if let token = parent.layout.token(atUtf16: selection.location) {
-                text = token.display
-            } else {
-                text = ""
-            }
-            parent.onCopy(text)
+            parent.onCopy(cleanCopyText(from: textView))
         }
 
         func strikeSelection(from textView: NSTextView) {
@@ -331,11 +364,7 @@ private struct Representable: NSViewRepresentable {
         }
 
         func saveSelection(from textView: NSTextView) {
-            let selection = textView.selectedRange
-            let text = selection.length > 0
-                ? (textView.string as NSString).substring(with: selection)
-                : parent.layout.text
-            parent.onSave(text)
+            parent.onSave(cleanSaveText(from: textView))
         }
 
         func reportVisibleCategory() {
@@ -360,12 +389,53 @@ private struct Representable: NSViewRepresentable {
             let visible = textView.visibleRect.offsetBy(dx: -origin.x, dy: -origin.y)
             let glyphIndex = layoutManager.glyphIndex(for: visible.origin, in: textContainer)
             let index = layoutManager.characterIndexForGlyph(at: glyphIndex)
-            parent.onVisibleCategory(parent.layout.category(atUtf16: index))
+            let layoutIndex = TokenGlue.layoutIndex(fromView: index, in: textView.string)
+            parent.onVisibleCategory(parent.layout.category(atUtf16: layoutIndex))
+        }
+
+        func writeCleanSelection(from textView: NSTextView, to pboard: NSPasteboard) -> Bool {
+            let selection = textView.selectedRange
+            guard selection.length > 0 else {
+                return false
+            }
+            let text = TokenGlue.clean((textView.string as NSString).substring(with: selection))
+            guard !text.isEmpty else {
+                return false
+            }
+            pboard.declareTypes([.string], owner: nil)
+            return pboard.setString(text, forType: .string)
         }
 
         private func selectedKeys(in textView: NSTextView) -> [String] {
+            let mapped = layoutSelection(in: textView)
+            return parent.layout.tokens(utf16Start: mapped.location, length: mapped.length).map(\.key)
+        }
+
+        private func cleanCopyText(from textView: NSTextView) -> String {
             let selection = textView.selectedRange
-            return parent.layout.tokens(utf16Start: selection.location, length: selection.length).map(\.key)
+            if selection.length > 0 {
+                return TokenGlue.clean((textView.string as NSString).substring(with: selection))
+            }
+            let layoutIndex = TokenGlue.layoutIndex(fromView: selection.location, in: textView.string)
+            return parent.layout.token(atUtf16: layoutIndex)?.display ?? ""
+        }
+
+        private func cleanSaveText(from textView: NSTextView) -> String {
+            let selection = textView.selectedRange
+            if selection.length > 0 {
+                return TokenGlue.clean((textView.string as NSString).substring(with: selection))
+            }
+            return parent.layout.text
+        }
+
+        private func layoutSelection(in textView: NSTextView) -> NSRange {
+            let selection = textView.selectedRange
+            let start = TokenGlue.layoutIndex(fromView: selection.location, in: textView.string)
+            if selection.length <= 0 {
+                return NSRange(location: start, length: 0)
+            }
+            let end = TokenGlue.layoutIndex(fromView: selection.location + selection.length, in: textView.string)
+            return NSRange(location: start, length: max(0, end - start))
         }
     }
 }
@@ -379,6 +449,25 @@ private final class ResultNSTextView: NSTextView {
         blue: 0x00 / 255.0,
         alpha: 1
     )
+
+    override init(frame frameRect: NSRect, textContainer container: NSTextContainer?) {
+        super.init(frame: frameRect, textContainer: container)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    convenience init() {
+        let storage = NSTextStorage()
+        let layoutManager = NSLayoutManager()
+        let container = NSTextContainer(size: .zero)
+        container.widthTracksTextView = true
+        container.heightTracksTextView = false
+        storage.addLayoutManager(layoutManager)
+        layoutManager.addTextContainer(container)
+        self.init(frame: .zero, textContainer: container)
+    }
 
     override func setFrameSize(_ newSize: NSSize) {
         var size = newSize
@@ -417,7 +506,33 @@ private final class ResultNSTextView: NSTextView {
     }
 
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        menuItem.isEnabled
+        if menuItem.action == #selector(copy(_:)) {
+            return selectedRange.length > 0
+        }
+        return menuItem.isEnabled
+    }
+
+    override func copy(_ sender: Any?) {
+        let pasteboard = NSPasteboard.general
+        _ = writeSelection(to: pasteboard, types: [.string])
+    }
+
+    override var writablePasteboardTypes: [NSPasteboard.PasteboardType] {
+        [.string]
+    }
+
+    override func writeSelection(to pboard: NSPasteboard, types: [NSPasteboard.PasteboardType]) -> Bool {
+        guard types.contains(.string) else {
+            return false
+        }
+        return writeSelection(to: pboard, type: .string)
+    }
+
+    override func writeSelection(to pboard: NSPasteboard, type: NSPasteboard.PasteboardType) -> Bool {
+        guard type == .string else {
+            return false
+        }
+        return coordinator?.writeCleanSelection(from: self, to: pboard) ?? false
     }
 
     @objc func copySelection(_ sender: Any?) {

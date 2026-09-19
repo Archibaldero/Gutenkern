@@ -22,6 +22,7 @@ public partial class MainWindow : Window
     private bool _highlighting;
     private bool _lastActionWasMark;
     private bool _ignoringCategorySync;
+    private KerningGroup? _selectedCategory;
     private string _highlightedText = "\0";
     private string _output = "";
     private string _resultText = "\0";
@@ -67,6 +68,7 @@ public partial class MainWindow : Window
             _restoring = false;
         };
         ResultBox.AddHandler(ScrollViewer.ScrollChangedEvent, new ScrollChangedEventHandler(Result_ScrollChanged), true);
+        DataObject.AddCopyingHandler(ResultBox, Result_Copying);
     }
 
     public OutputFormat CurrentFormat() => _format;
@@ -121,9 +123,10 @@ public partial class MainWindow : Window
     {
         var dark = AppsUseDarkTheme();
         Resources["FieldBackgroundBrush"] = new SolidColorBrush(
-            dark ? Color.FromRgb(0x19, 0x19, 0x19) : Color.FromRgb(0xFA, 0xFA, 0xFA));
+            dark ? Color.FromRgb(0x1A, 0x1A, 0x1A) : Color.FromRgb(0xFC, 0xFC, 0xFC));
         Resources["FieldBorderBrush"] = new SolidColorBrush(
-            dark ? Color.FromRgb(0x33, 0x33, 0x33) : Color.FromRgb(0xF2, 0xF2, 0xF2));
+            dark ? Color.FromRgb(0x26, 0x26, 0x26) : Color.FromRgb(0xF2, 0xF2, 0xF2));
+        Background = new SolidColorBrush(dark ? Color.FromRgb(0x1A, 0x1A, 0x1A) : Colors.White);
     }
 
     private static bool AppsUseDarkTheme()
@@ -163,7 +166,7 @@ public partial class MainWindow : Window
         {
             CopiedToastText.Text = L10n.GroupCopied;
         }
-        RebuildCategoryList();
+        RebuildCategoryNav();
     }
 
     internal void ReloadLocalization()
@@ -253,7 +256,7 @@ public partial class MainWindow : Window
 
         try
         {
-            File.WriteAllText(dialog.FileName, text);
+            File.WriteAllText(dialog.FileName, TokenGlue.Clean(text));
             if (open)
             {
                 Process.Start(new ProcessStartInfo(dialog.FileName) { UseShellExecute = true });
@@ -286,7 +289,7 @@ public partial class MainWindow : Window
         SyncCompletion();
         RefreshNewUnkerned();
         UpdateResultDocument();
-        RebuildCategoryList();
+        RebuildCategoryNav();
         UpdateFooter();
         SyncFormatMenus();
         ResultPlaceholder.Visibility = string.IsNullOrEmpty(_output) ? Visibility.Visible : Visibility.Collapsed;
@@ -303,58 +306,75 @@ public partial class MainWindow : Window
         if (TotalPairCount is not null)
         {
             TotalPairCount.Text = L10n.PairProgress(done, total);
-            TotalPairCount.Visibility = total == 0 ? Visibility.Hidden : Visibility.Visible;
+            TotalPairCount.Visibility = total == 0 ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 
-    private void RebuildCategoryList()
+    private void RebuildCategoryNav()
     {
-        if (CategoryList is null)
+        if (CategoryNav is null)
         {
             return;
         }
 
-        var selected = CategoryList.SelectedItem is ListBoxItem selectedItem
-            ? selectedItem.Tag as KerningGroup?
-            : null;
-        _ignoringCategorySync = true;
-        CategoryList.Items.Clear();
+        CategoryNav.Children.Clear();
         var progressByCategory = _layout.ProgressByCategory(_completedBlocks);
-        foreach (var group in Enum.GetValues<KerningGroup>())
+        foreach (var category in _layout.Categories)
         {
-            var available = _layout.HasCategory(group);
+            var group = category.Group;
             progressByCategory.TryGetValue(group, out var progress);
-            var item = new ListBoxItem
+            var current = _selectedCategory == group;
+            var item = new TextBlock
             {
-                Content = L10n.GroupSidebarLabel(group, progress.Done, progress.Total),
+                Text = L10n.GroupSidebarLabel(group, progress.Done, progress.Total),
                 Tag = group,
-                IsEnabled = available,
-                Foreground = available
-                    ? SystemColors.ControlTextBrush
-                    : SystemColors.GrayTextBrush
+                Margin = new Thickness(0, 0, 0, 10),
+                TextWrapping = TextWrapping.NoWrap
             };
-            CategoryList.Items.Add(item);
-            if (selected == group && item.IsEnabled)
-            {
-                item.IsSelected = true;
-            }
+            StyleCategoryLink(item, current);
+            item.MouseLeftButtonUp += (_, _) => ScrollToCategory(group);
+            CategoryNav.Children.Add(item);
         }
-        _ignoringCategorySync = false;
     }
 
-    private void CategoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void StyleCategoryLink(TextBlock item, bool current)
     {
-        if (_ignoringCategorySync
-            || CategoryList.SelectedItem is not ListBoxItem item
-            || item.Tag is not KerningGroup group
-            || !_layout.CategoryStarts.TryGetValue(group, out var start))
+        var linkBrush = new SolidColorBrush(Color.FromRgb(0, 170, 255));
+        item.Foreground = current ? SystemColors.ControlTextBrush : linkBrush;
+        item.Cursor = Cursors.Hand;
+        item.TextDecorations = null;
+    }
+
+    private void ScrollToCategory(KerningGroup group)
+    {
+        if (!_layout.CategoryStarts.TryGetValue(group, out var start))
         {
             return;
         }
 
         _ignoringCategorySync = true;
+        _selectedCategory = group;
         ScrollResultTo(start);
+        ApplyCategoryNavStyles();
         Dispatcher.BeginInvoke(() => _ignoringCategorySync = false, DispatcherPriority.Background);
+    }
+
+    private void ApplyCategoryNavStyles()
+    {
+        if (CategoryNav is null)
+        {
+            return;
+        }
+
+        foreach (var child in CategoryNav.Children)
+        {
+            if (child is not TextBlock item || item.Tag is not KerningGroup group)
+            {
+                continue;
+            }
+
+            StyleCategoryLink(item, _selectedCategory == group);
+        }
     }
 
     private void Result_ScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -372,16 +392,14 @@ public partial class MainWindow : Window
 
         var index = OffsetFromStart(pointer);
         var category = _layout.CategoryAtUtf16(index);
-        if (category is null)
+        if (category is null || category == _selectedCategory)
         {
             return;
         }
 
         _ignoringCategorySync = true;
-        foreach (ListBoxItem item in CategoryList.Items)
-        {
-            item.IsSelected = item.Tag is KerningGroup group && group == category;
-        }
+        _selectedCategory = category;
+        ApplyCategoryNavStyles();
         _ignoringCategorySync = false;
     }
 
@@ -393,7 +411,8 @@ public partial class MainWindow : Window
         }
 
         var state = CurrentMarkState();
-        if (_resultText == _layout.Text)
+        var viewText = ResultViewText();
+        if (_resultText == viewText)
         {
             ApplyResultMarks(state);
             return;
@@ -404,20 +423,22 @@ public partial class MainWindow : Window
         var cursor = 0;
         foreach (var token in _layout.Tokens)
         {
-            if (token.Utf16Start > cursor)
+            var viewStart = TokenGlue.ViewIndex(viewText, token.Utf16Start);
+            if (viewStart > cursor)
             {
-                paragraph.Inlines.Add(new Run(_layout.Text[cursor..token.Utf16Start]));
+                AddViewInlines(paragraph, viewText[cursor..viewStart]);
             }
 
-            var run = new Run(token.Display) { Tag = token };
+            var viewEnd = TokenGlue.ViewIndex(viewText, token.Utf16End);
+            var run = new Run(viewText[viewStart..viewEnd]) { Tag = token };
             ApplyTokenStyle(run, token, state);
             paragraph.Inlines.Add(run);
-            cursor = token.Utf16End;
+            cursor = viewEnd;
         }
 
-        if (cursor < _layout.Text.Length)
+        if (cursor < viewText.Length)
         {
-            paragraph.Inlines.Add(new Run(_layout.Text[cursor..]));
+            AddViewInlines(paragraph, viewText[cursor..]);
         }
 
         if (paragraph.Inlines.Count == 0)
@@ -427,7 +448,7 @@ public partial class MainWindow : Window
 
         ResultBox.Document.Blocks.Clear();
         ResultBox.Document.Blocks.Add(paragraph);
-        _resultText = _layout.Text;
+        _resultText = viewText;
     }
 
     private void ApplyResultMarks(KerningMarkState state)
@@ -489,7 +510,7 @@ public partial class MainWindow : Window
     private void Result_ContextMenuOpening(object sender, ContextMenuEventArgs e)
     {
         var selection = ResultBox.Selection;
-        var selectedText = selection.Text.Replace("\r", "");
+        var selectedText = TokenGlue.Clean(selection.Text.Replace("\r", ""));
         var start = OffsetFromStart(selection.Start);
         var tokens = selectedText.Length > 0
             ? _layout.TokensInUtf16(start, selectedText.Length)
@@ -513,8 +534,26 @@ public partial class MainWindow : Window
         ResultBox.ContextMenu = menu;
     }
 
+    private void Result_Copying(object sender, DataObjectCopyingEventArgs e)
+    {
+        var clean = TokenGlue.Clean(ResultBox.Selection.Text.Replace("\r", ""));
+        if (e.IsDragDrop)
+        {
+            e.DataObject.SetData(DataFormats.UnicodeText, clean);
+            return;
+        }
+
+        e.CancelCommand();
+        if (!string.IsNullOrEmpty(clean))
+        {
+            Clipboard.SetText(clean);
+        }
+    }
+
     private int OffsetFromStart(TextPointer pointer) =>
-        new TextRange(ResultBox.Document.ContentStart, pointer).Text.Replace("\r", "").Length;
+        TokenGlue.LayoutIndex(
+            ResultViewText(),
+            new TextRange(ResultBox.Document.ContentStart, pointer).Text.Replace("\r", "").Length);
 
     private void ScrollResultTo(int utf16Start)
     {
@@ -523,16 +562,29 @@ public partial class MainWindow : Window
             return;
         }
 
+        var viewStart = TokenGlue.ViewIndex(ResultViewText(), utf16Start);
         var seen = 0;
         foreach (var inline in paragraph.Inlines)
         {
+            if (inline is LineBreak)
+            {
+                seen += 1;
+                if (seen >= viewStart)
+                {
+                    inline.BringIntoView();
+                    return;
+                }
+
+                continue;
+            }
+
             if (inline is not Run run)
             {
                 continue;
             }
 
             var length = run.Text.Length;
-            if (seen + length >= utf16Start)
+            if (seen + length >= viewStart)
             {
                 run.BringIntoView();
                 return;
@@ -541,6 +593,38 @@ public partial class MainWindow : Window
             seen += length;
         }
     }
+
+    private static void AddViewInlines(Paragraph paragraph, string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
+
+        var start = 0;
+        for (var index = 0; index < text.Length; index++)
+        {
+            if (text[index] != '\n')
+            {
+                continue;
+            }
+
+            if (index > start)
+            {
+                paragraph.Inlines.Add(new Run(text[start..index]));
+            }
+
+            paragraph.Inlines.Add(new LineBreak());
+            start = index + 1;
+        }
+
+        if (start < text.Length)
+        {
+            paragraph.Inlines.Add(new Run(text[start..]));
+        }
+    }
+
+    private string ResultViewText() => _layout.ViewText;
 
     private static MenuItem MenuItem(string header, Action action, bool enabled)
     {
@@ -556,7 +640,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        Clipboard.SetText(text);
+        Clipboard.SetText(TokenGlue.Clean(text));
         ShowCopiedToast(L10n.GroupCopied);
     }
 
@@ -572,7 +656,7 @@ public partial class MainWindow : Window
         completion.ApplyDone(state.Done, _recipeSections);
         ApplyCompletion(completion);
         RefreshNewUnkerned();
-        RebuildCategoryList();
+        RebuildCategoryNav();
         UpdateFooter();
         ApplyResultMarks(CurrentMarkState());
         SchedulePersist();

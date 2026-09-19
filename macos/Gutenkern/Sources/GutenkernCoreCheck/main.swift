@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import GutenkernCore
 
@@ -367,6 +368,8 @@ private func runCompletionChecks() -> Int {
     failures += runMarkChecks()
     failures += runHitTestingChecks()
     failures += runResultLayoutChecks()
+    failures += runTokenGlueChecks()
+    failures += runSpaceWrapChecks()
     return failures
 }
 
@@ -506,6 +509,131 @@ private func runResultLayoutChecks() -> Int {
     }
     failures += runNewUnkernedChecks()
     return failures
+}
+
+private func runTokenGlueChecks() -> Int {
+    var failures = 0
+    let token = "/A/B"
+    let glued = TokenGlue.apply(token)
+    if TokenGlue.strip(glued) != token {
+        fputs("GLUE FAIL strip(apply) round-trip\n", stderr)
+        failures += 1
+    }
+    if TokenGlue.clean(glued) != token
+        || TokenGlue.clean(glued).contains(TokenGlue.joiner)
+        || TokenGlue.clean(glued).contains(TokenGlue.viewSlash)
+    {
+        fputs("GLUE FAIL clean hides joiner and view slash\n", stderr)
+        failures += 1
+    }
+    if glued == token || !glued.contains(TokenGlue.joiner) || !glued.contains(TokenGlue.viewSlash) {
+        fputs("GLUE FAIL apply inserts joiner and view slash\n", stderr)
+        failures += 1
+    }
+    if glued.contains("/") {
+        fputs("GLUE FAIL apply removes ascii slash from view\n", stderr)
+        failures += 1
+    }
+    if TokenGlue.apply("") != "" || TokenGlue.apply("A") != "A" {
+        fputs("GLUE FAIL empty and single stay plain\n", stderr)
+        failures += 1
+    }
+    let layoutStart = TokenGlue.layoutIndex(fromView: TokenGlue.viewIndex(fromLayout: 2, in: glued), in: glued)
+    if layoutStart != 2 {
+        fputs("GLUE FAIL view/layout index round-trip\n", stderr)
+        failures += 1
+    }
+    let sections = KerningGenerator.generateRecipeSections(
+        GlyphClassifier.classify("AH"),
+        format: .fontlab
+    )
+    let layout = ResultLayout.build(sections: sections, mode: .row)
+    if TokenGlue.strip(layout.viewText) != layout.text {
+        fputs("GLUE FAIL viewText strips to layout text\n", stderr)
+        failures += 1
+    }
+    if layout.viewText == layout.text {
+        fputs("GLUE FAIL viewText differs from layout text\n", stderr)
+        failures += 1
+    }
+    let skipped = TokenGlue.viewText(layoutText: layout.text, tokens: layout.tokens) { _ in false }
+    if skipped != layout.text {
+        fputs("GLUE FAIL shouldGlue false keeps layout text\n", stderr)
+        failures += 1
+    }
+    if TokenGlue.clean(layout.viewText) != layout.text {
+        fputs("GLUE FAIL clean viewText\n", stderr)
+        failures += 1
+    }
+    return failures
+}
+
+private func runSpaceWrapChecks() -> Int {
+    var failures = 0
+    _ = NSApplication.shared
+    let font = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
+    func measure(_ string: String) -> CGFloat {
+        (string as NSString).size(withAttributes: [.font: font]).width
+    }
+    let layout = ResultLayout.build(
+        sections: KerningGenerator.generateRecipeSections(
+            GlyphClassifier.classify("HЛЧ"),
+            format: .fontlab
+        ),
+        mode: .row
+    )
+    let view = layout.viewText
+    let widths: [CGFloat] = [120, 180, 240, 280]
+    for width in widths {
+        let fragments = lineFragments(for: view, width: width, font: font)
+        for token in layout.tokens {
+            if measure(token.display) > width {
+                continue
+            }
+            let glued = TokenGlue.apply(token.display)
+            let intact = fragments.contains { fragment in
+                fragment.contains(glued)
+            }
+            if intact {
+                continue
+            }
+            fputs(
+                "WRAP FAIL token split \(token.display) width=\(width) fragments=\(fragments.prefix(8))\n",
+                stderr
+            )
+            failures += 1
+            return failures
+        }
+    }
+    return failures
+}
+
+private func lineFragments(for text: String, width: CGFloat, font: NSFont) -> [String] {
+    let storage = NSTextStorage(string: text, attributes: [.font: font])
+    let layoutManager = NSLayoutManager()
+    let container = NSTextContainer(size: NSSize(width: width, height: 100_000))
+    container.lineFragmentPadding = 0
+    container.widthTracksTextView = false
+    storage.addLayoutManager(layoutManager)
+    layoutManager.addTextContainer(container)
+    layoutManager.ensureLayout(for: container)
+    let glyphCount = layoutManager.numberOfGlyphs
+    guard glyphCount > 0 else {
+        return []
+    }
+    var fragments: [String] = []
+    var glyphIndex = 0
+    while glyphIndex < glyphCount {
+        var fragmentRange = NSRange(location: 0, length: 0)
+        _ = layoutManager.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: &fragmentRange)
+        let charRange = layoutManager.characterRange(
+            forGlyphRange: fragmentRange,
+            actualGlyphRange: nil
+        )
+        fragments.append((text as NSString).substring(with: charRange))
+        glyphIndex = NSMaxRange(fragmentRange)
+    }
+    return fragments
 }
 
 private func runNewUnkernedChecks() -> Int {

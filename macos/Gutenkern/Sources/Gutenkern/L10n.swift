@@ -91,15 +91,36 @@ enum L10n {
     static var aboutCopyright: String { t("aboutCopyright") }
     static let authorEmail = "armos1999@gmail.com"
     static let authorWebsite = "arsenmosiichuk.in.ua"
+    static let vladWebsite = "zahrevsky.com"
+    static let oleksiiWebsite = "oleksii.shmalko.com"
+    static let sourceWebsite = "http://www.junikstudio.com/kernings/"
     static var authorEmailURL: URL { URL(string: "mailto:\(authorEmail)")! }
     static var authorWebsiteURL: URL { URL(string: "https://\(authorWebsite)")! }
+    static var vladWebsiteURL: URL { URL(string: "https://\(vladWebsite)")! }
+    static var oleksiiWebsiteURL: URL { URL(string: "https://\(oleksiiWebsite)")! }
+    static var sourceWebsiteURL: URL { URL(string: sourceWebsite)! }
+
+    static func aboutBodyText() -> AttributedString {
+        attributedTemplate(aboutBody, replacements: [
+            sourceWebsite: (sourceWebsite, sourceWebsiteURL)
+        ])
+    }
+
+    static func aboutCredits() -> AttributedString {
+        let sites: [String: (String, URL)] = [
+            "{arsenSite}": (authorWebsite, authorWebsiteURL),
+            "{vladSite}": (vladWebsite, vladWebsiteURL),
+            "{oleksiiSite}": (oleksiiWebsite, oleksiiWebsiteURL)
+        ]
+        return attributedTemplate(aboutCopyright, replacements: sites)
+    }
 
     static func aboutVersion(_ version: String) -> String {
         t("aboutVersion").replacingOccurrences(of: "{version}", with: version)
     }
 
     static func groupLabel(_ group: KerningGroup) -> String {
-        "\(groupName(group)) \(group.rawValue)"
+        groupName(group)
     }
 
     static func groupSidebarLabel(_ group: KerningGroup, done: Int, total: Int) -> String {
@@ -168,6 +189,34 @@ enum L10n {
             grouped.append(digit)
         }
         return sign + String(grouped.reversed())
+    }
+
+    private static func attributedTemplate(
+        _ template: String,
+        replacements: [String: (String, URL)]
+    ) -> AttributedString {
+        var result = AttributedString()
+        var remaining = template[...]
+        while let match = replacements.keys.compactMap({ key -> (key: String, index: String.Index)? in
+            guard let index = remaining.range(of: key)?.lowerBound else {
+                return nil
+            }
+            return (key, index)
+        }).min(by: { $0.index < $1.index }) {
+            let prefix = remaining[remaining.startIndex..<match.index]
+            if !prefix.isEmpty {
+                result.append(AttributedString(String(prefix)))
+            }
+            let (label, url) = replacements[match.key]!
+            var link = AttributedString(label)
+            link.link = url
+            result.append(link)
+            remaining = remaining[remaining.index(match.index, offsetBy: match.key.count)...]
+        }
+        if !remaining.isEmpty {
+            result.append(AttributedString(String(remaining)))
+        }
+        return result
     }
 
     private static let catalog: [String: [String: String]] = loadCatalog()

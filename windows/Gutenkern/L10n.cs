@@ -6,6 +6,8 @@ namespace Gutenkern;
 
 internal readonly record struct AppLanguage(string Code, string NativeName);
 
+internal readonly record struct CreditPart(string Text, Uri? Link);
+
 internal static class L10n
 {
     public static readonly AppLanguage[] Languages =
@@ -74,8 +76,69 @@ internal static class L10n
     public static string AboutCopyright => T("aboutCopyright");
     public const string AuthorEmail = "armos1999@gmail.com";
     public const string AuthorWebsite = "arsenmosiichuk.in.ua";
+    public const string VladWebsite = "zahrevsky.com";
+    public const string OleksiiWebsite = "oleksii.shmalko.com";
+    public const string SourceWebsite = "http://www.junikstudio.com/kernings/";
+    public static Uri SourceWebsiteUrl { get; } = new(SourceWebsite);
 
     public static string AboutVersion(string version) => T("aboutVersion").Replace("{version}", version);
+
+    public static List<CreditPart> AboutBodyParts() =>
+        TemplateParts(AboutBody, new Dictionary<string, (string Label, Uri Url)>
+        {
+            [SourceWebsite] = (SourceWebsite, SourceWebsiteUrl)
+        });
+
+    public static List<CreditPart> AboutCreditsParts() =>
+        TemplateParts(AboutCopyright, new Dictionary<string, (string Label, Uri Url)>
+        {
+            ["{arsenSite}"] = (AuthorWebsite, new Uri("https://" + AuthorWebsite)),
+            ["{vladSite}"] = (VladWebsite, new Uri("https://" + VladWebsite)),
+            ["{oleksiiSite}"] = (OleksiiWebsite, new Uri("https://" + OleksiiWebsite))
+        });
+
+    private static List<CreditPart> TemplateParts(
+        string template,
+        Dictionary<string, (string Label, Uri Url)> replacements)
+    {
+        var parts = new List<CreditPart>();
+        var remaining = template;
+        while (true)
+        {
+            string? nextKey = null;
+            var nextIndex = -1;
+            foreach (var key in replacements.Keys)
+            {
+                var index = remaining.IndexOf(key, StringComparison.Ordinal);
+                if (index >= 0 && (nextIndex < 0 || index < nextIndex))
+                {
+                    nextKey = key;
+                    nextIndex = index;
+                }
+            }
+
+            if (nextKey is null)
+            {
+                break;
+            }
+
+            if (nextIndex > 0)
+            {
+                parts.Add(new CreditPart(remaining[..nextIndex], null));
+            }
+
+            var (label, url) = replacements[nextKey];
+            parts.Add(new CreditPart(label, url));
+            remaining = remaining[(nextIndex + nextKey.Length)..];
+        }
+
+        if (remaining.Length > 0)
+        {
+            parts.Add(new CreditPart(remaining, null));
+        }
+
+        return parts;
+    }
 
     public static string GroupLabel(KerningGroup group)
     {
@@ -90,7 +153,7 @@ internal static class L10n
             KerningGroup.OldstyleFigures => T("groupOldstyleFigures"),
             _ => throw new ArgumentOutOfRangeException(nameof(group), group, null)
         };
-        return $"{name} {KerningPlan.Code(group)}";
+        return name;
     }
 
     public static string GroupSidebarLabel(KerningGroup group, int done, int total)

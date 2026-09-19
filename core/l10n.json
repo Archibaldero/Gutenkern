@@ -51,9 +51,9 @@
     "help": "Help",
     "about": "About Gutenkern",
     "aboutVersion": "Version {version}",
-    "aboutBody": "Gutenkern is meant to simplify kerning for type designers. The author previously kerned using the generator at http://www.junikstudio.com/kernings/. That link no longer works, so an expanded version of that generator was built — one that does not depend on any website or an internet connection. That is how Gutenkern came to be. The app was made with the help of artificial intelligence in the Cursor environment.",
-    "aboutContact": "Contact the author with questions:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern is meant to simplify kerning for type designers. The author previously kerned using the generator at http://www.junikstudio.com/kernings/. That link no longer works, so our own version of such a generator was built — one that does not depend on any website or an internet connection. That is how Gutenkern came to be. The app was made with the help of artificial intelligence in the Cursor environment.",
+    "aboutContact": "Contact one of the authors with questions:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), with help from Oleksii Shmalko ({oleksiiSite})"
   },
   "uk": {
     "fieldWhat": "Гліфи",
@@ -107,9 +107,9 @@
     "help": "Довідка",
     "about": "Про програму",
     "aboutVersion": "Версія {version}",
-    "aboutBody": "Програма Гутенкерн призначена спростити процес кернінгу для шрифтових дизайнерів. Раніше автор програми кернив, використовуючи генератор за посиланням http://www.junikstudio.com/kernings/. Проте зараз це посилання не працює, і було вирішено зробити розширену версію такого генератора — незалежну від будь-якого сайту чи наявності інтернету. Так і постав Гутенкерн. Додаток був зроблений за допомогою штучного інтелекту в середовищі Курсора.",
-    "aboutContact": "Контакт автора, у разі питань:",
-    "aboutCopyright": "© Арсен Мосійчук"
+    "aboutBody": "Програма Гутенкерн призначена спростити процес кернінгу для шрифтових дизайнерів. Раніше автор програми кернив, використовуючи генератор за посиланням http://www.junikstudio.com/kernings/. Проте зараз це посилання не працює, і було вирішено зробити власну версію такого генератора — незалежну від будь-якого сайту чи наявності інтернету. Так і постав Гутенкерн. Додаток був зроблений за допомогою штучного інтелекту в середовищі Курсора.",
+    "aboutContact": "Контакт одного з авторів, у разі питань:",
+    "aboutCopyright": "© Арсен Мосійчук ({arsenSite}), Влад Загревський ({vladSite}), допомагав Олексій Шмалько ({oleksiiSite})"
   },
   "de": {
     "fieldWhat": "Glyphen",
@@ -163,9 +163,9 @@
     "help": "Hilfe",
     "about": "Über Gutenkern",
     "aboutVersion": "Version {version}",
-    "aboutBody": "Gutenkern soll den Kerning-Prozess für Schriftdesigner vereinfachen. Zuvor kernte der Autor mit dem Generator unter http://www.junikstudio.com/kernings/. Dieser Link funktioniert inzwischen nicht mehr, daher entstand eine erweiterte Version dieses Generators — unabhängig von einer Website oder einer Internetverbindung. So entstand Gutenkern. Die Anwendung entstand mithilfe künstlicher Intelligenz in der Cursor-Umgebung.",
-    "aboutContact": "Kontakt zum Autor bei Fragen:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern soll den Kerning-Prozess für Schriftdesigner vereinfachen. Zuvor kernte der Autor mit dem Generator unter http://www.junikstudio.com/kernings/. Dieser Link funktioniert inzwischen nicht mehr, daher entstand eine eigene Version eines solchen Generators — unabhängig von einer Website oder einer Internetverbindung. So entstand Gutenkern. Die Anwendung entstand mithilfe künstlicher Intelligenz in der Cursor-Umgebung.",
+    "aboutContact": "Kontakt zu einem der Autoren bei Fragen:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), mit Hilfe von Oleksii Shmalko ({oleksiiSite})"
   },
   "fr": {
     "fieldWhat": "Glyphes",
@@ -219,9 +219,9 @@
     "help": "Aide",
     "about": "À propos de Gutenkern",
     "aboutVersion": "Version {version}",
-    "aboutBody": "Gutenkern est conçu pour simplifier le crénage pour les créateurs de caractères. Auparavant, l’auteur crénait à l’aide du générateur disponible à l’adresse http://www.junikstudio.com/kernings/. Ce lien ne fonctionne plus, il a donc été décidé de créer une version enrichie de ce générateur, indépendante de tout site et d’une connexion internet. C’est ainsi qu’est né Gutenkern. L’application a été réalisée à l’aide de l’intelligence artificielle dans l’environnement Cursor.",
-    "aboutContact": "Contacter l’auteur en cas de questions :",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern est conçu pour simplifier le crénage pour les créateurs de caractères. Auparavant, l’auteur crénait à l’aide du générateur disponible à l’adresse http://www.junikstudio.com/kernings/. Ce lien ne fonctionne plus, il a donc été décidé de créer notre propre version d’un tel générateur, indépendante de tout site et d’une connexion internet. C’est ainsi qu’est né Gutenkern. L’application a été réalisée à l’aide de l’intelligence artificielle dans l’environnement Cursor.",
+    "aboutContact": "Contacter l’un des auteurs en cas de questions :",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), avec l’aide d’Oleksii Shmalko ({oleksiiSite})"
   },
   "pl": {
     "fieldWhat": "Glify",
@@ -275,9 +275,9 @@
     "help": "Pomoc",
     "about": "O programie",
     "aboutVersion": "Wersja {version}",
-    "aboutBody": "Program Gutenkern ma uprościć proces kerningu dla projektantów krojów pisma. Wcześniej autor kernował za pomocą generatora pod adresem http://www.junikstudio.com/kernings/. Link ten już nie działa, więc powstała rozszerzona wersja takiego generatora, niezależna od jakiejkolwiek strony i połączenia z internetem. Tak powstał Gutenkern. Aplikacja powstała przy pomocy sztucznej inteligencji w środowisku Cursor.",
-    "aboutContact": "Kontakt do autora w razie pytań:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Program Gutenkern ma uprościć proces kerningu dla projektantów krojów pisma. Wcześniej autor kernował za pomocą generatora pod adresem http://www.junikstudio.com/kernings/. Link ten już nie działa, więc powstała własna wersja takiego generatora, niezależna od jakiejkolwiek strony i połączenia z internetem. Tak powstał Gutenkern. Aplikacja powstała przy pomocy sztucznej inteligencji w środowisku Cursor.",
+    "aboutContact": "Kontakt do jednego z autorów w razie pytań:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), pomagał Oleksii Shmalko ({oleksiiSite})"
   },
   "cs": {
     "fieldWhat": "Glyfy",
@@ -331,9 +331,9 @@
     "help": "Nápověda",
     "about": "O aplikaci",
     "aboutVersion": "Verze {version}",
-    "aboutBody": "Program Gutenkern má zjednodušit kerning pro návrháře písma. Dříve autor kernoval pomocí generátoru na adrese http://www.junikstudio.com/kernings/. Tento odkaz již nefunguje, proto vznikla rozšířená verze takového generátoru, která nezávisí na žádném webu ani na připojení k internetu. Tak vznikl Gutenkern. Aplikace byla vytvořena pomocí umělé inteligence v prostředí Cursor.",
-    "aboutContact": "Kontakt na autora v případě dotazů:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Program Gutenkern má zjednodušit kerning pro návrháře písma. Dříve autor kernoval pomocí generátoru na adrese http://www.junikstudio.com/kernings/. Tento odkaz již nefunguje, proto vznikla vlastní verze takového generátoru, která nezávisí na žádném webu ani na připojení k internetu. Tak vznikl Gutenkern. Aplikace byla vytvořena pomocí umělé inteligence v prostředí Cursor.",
+    "aboutContact": "Kontakt na jednoho z autorů v případě dotazů:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), pomáhal Oleksii Shmalko ({oleksiiSite})"
   },
   "es": {
     "fieldWhat": "Glifos",
@@ -387,9 +387,9 @@
     "help": "Ayuda",
     "about": "Acerca de Gutenkern",
     "aboutVersion": "Versión {version}",
-    "aboutBody": "Gutenkern está pensado para simplificar el kerning para los diseñadores de tipos. Antes, el autor kernaba con el generador de http://www.junikstudio.com/kernings/. Ese enlace ya no funciona, así que se creó una versión ampliada de ese generador, independiente de cualquier sitio web o conexión a internet. Así nació Gutenkern. La aplicación se realizó con ayuda de inteligencia artificial en el entorno Cursor.",
-    "aboutContact": "Contacto del autor para consultas:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern está pensado para simplificar el kerning para los diseñadores de tipos. Antes, el autor kernaba con el generador de http://www.junikstudio.com/kernings/. Ese enlace ya no funciona, así que se creó una versión propia de tal generador, independiente de cualquier sitio web o conexión a internet. Así nació Gutenkern. La aplicación se realizó con ayuda de inteligencia artificial en el entorno Cursor.",
+    "aboutContact": "Contacto de uno de los autores para consultas:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), con la ayuda de Oleksii Shmalko ({oleksiiSite})"
   },
   "sv": {
     "fieldWhat": "Glyfer",
@@ -443,9 +443,9 @@
     "help": "Hjälp",
     "about": "Om Gutenkern",
     "aboutVersion": "Version {version}",
-    "aboutBody": "Gutenkern är tänkt att förenkla kerning för typsnittsformgivare. Tidigare kernade upphovsmannen med generatorn på http://www.junikstudio.com/kernings/. Den länken fungerar inte längre, så en utökad version av generatorn skapades — oberoende av webbplats och internetuppkoppling. Så uppstod Gutenkern. Appen skapades med hjälp av artificiell intelligens i Cursor-miljön.",
-    "aboutContact": "Kontakta upphovsmannen vid frågor:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern är tänkt att förenkla kerning för typsnittsformgivare. Tidigare kernade upphovsmannen med generatorn på http://www.junikstudio.com/kernings/. Den länken fungerar inte längre, så en egen version av en sådan generator skapades — oberoende av webbplats och internetuppkoppling. Så uppstod Gutenkern. Appen skapades med hjälp av artificiell intelligens i Cursor-miljön.",
+    "aboutContact": "Kontakta en av upphovsmännen vid frågor:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), med hjälp av Oleksii Shmalko ({oleksiiSite})"
   },
   "it": {
     "fieldWhat": "Glifi",
@@ -499,8 +499,8 @@
     "help": "Aiuto",
     "about": "Informazioni su Gutenkern",
     "aboutVersion": "Versione {version}",
-    "aboutBody": "Gutenkern è pensato per semplificare il kerning per i type designer. In precedenza l’autore kernava usando il generatore all’indirizzo http://www.junikstudio.com/kernings/. Quel collegamento non funziona più, così è nata una versione ampliata di quel generatore, indipendente da qualsiasi sito o connessione a internet. Così è nato Gutenkern. L’applicazione è stata realizzata con l’aiuto dell’intelligenza artificiale nell’ambiente Cursor.",
-    "aboutContact": "Contatto dell’autore per domande:",
-    "aboutCopyright": "© Arsen Mosiichuk"
+    "aboutBody": "Gutenkern è pensato per semplificare il kerning per i type designer. In precedenza l’autore kernava usando il generatore all’indirizzo http://www.junikstudio.com/kernings/. Quel collegamento non funziona più, così è nata una versione propria di un tale generatore, indipendente da qualsiasi sito o connessione a internet. Così è nato Gutenkern. L’applicazione è stata realizzata con l’aiuto dell’intelligenza artificiale nell’ambiente Cursor.",
+    "aboutContact": "Contatto di uno degli autori per domande:",
+    "aboutCopyright": "© Arsen Mosiichuk ({arsenSite}), Vlad Zahrevsky ({vladSite}), con l’aiuto di Oleksii Shmalko ({oleksiiSite})"
   }
 }

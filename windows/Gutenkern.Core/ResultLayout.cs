@@ -72,6 +72,7 @@ public sealed class ResultLayout
         []);
 
     public string Text { get; }
+    public string ViewText { get; }
     public IReadOnlyList<ResultToken> Tokens { get; }
     public IReadOnlyDictionary<KerningGroup, int> CategoryStarts { get; }
     public IReadOnlyList<ResultCategory> Categories { get; }
@@ -86,6 +87,7 @@ public sealed class ResultLayout
         Tokens = tokens;
         CategoryStarts = categoryStarts;
         Categories = categories;
+        ViewText = TokenGlue.ViewText(text, tokens);
     }
 
     public bool IsEmpty => Text.Length == 0;

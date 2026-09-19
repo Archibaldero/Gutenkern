@@ -157,10 +157,10 @@ enum FieldChrome {
         scheme == .dark ? darkBorder : lightBorder
     }
 
-    private static let lightBackground = nsColor(hex: 0xFAFAFA)
+    private static let lightBackground = nsColor(hex: 0xFCFCFC)
     private static let lightBorder = nsColor(hex: 0xF2F2F2)
-    private static let darkBackground = nsColor(hex: 0x191919)
-    private static let darkBorder = nsColor(hex: 0x333333)
+    private static let darkBackground = nsColor(hex: 0x1A1A1A)
+    private static let darkBorder = nsColor(hex: 0x262626)
 
     private static func nsColor(hex: Int) -> NSColor {
         NSColor(

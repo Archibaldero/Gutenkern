@@ -54,40 +54,26 @@ struct ContentView: View {
         resultLayout.progressByCategory(done: session.completedBlocks)
     }
 
-    private static let groupSpacing: CGFloat = 20
+    private static let contentPadding: CGFloat = 20
+    private static let fieldGap: CGFloat = 40
+    private static let resultTitleToNav: CGFloat = 20
+    private static let columnGap: CGFloat = 20
+    private static let footerGap: CGFloat = 20
+    private static let linkColor = Color(red: 0, green: 170 / 255, blue: 1)
 
-    private var sidebarSelection: Binding<KerningGroup?> {
-        Binding(
-            get: { selectedCategory },
-            set: { newValue in
-                guard let newValue else {
-                    selectedCategory = nil
-                    return
-                }
-                scrollTo(newValue)
-            }
-        )
-    }
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         let _ = generated.refresh(field1: session.field1, format: session.format)
-        NavigationSplitView {
-            categorySidebar
-                .navigationSplitViewColumnWidth(min: 196, ideal: 228, max: 300)
-        } detail: {
-            mainColumn
-                .padding(.horizontal, 40)
-                .padding(.vertical, 20)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(.container, edges: .top)
-        }
-        .navigationSplitViewStyle(.balanced)
-        .sidebarWindowChrome()
-        .background(HideTitleBar())
+        mainColumn
+            .padding(Self.contentPadding)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(windowFill)
+            .background(HideTitleBar())
         .overlay(alignment: .bottom) {
             if toastVisible {
                 Text(toastText)
-                    .font(.callout)
+                    .font(.system(size: 13))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
@@ -141,65 +127,92 @@ struct ContentView: View {
         }
     }
 
-    private var categorySidebar: some View {
-        List(selection: sidebarSelection) {
-            ForEach(KerningGroup.allCases, id: \.self) { group in
-                let progress = categoryProgress[group] ?? (0, 0)
-                let available = progress.total > 0
-                Text(L10n.groupSidebarLabel(group, done: progress.done, total: progress.total))
-                    .foregroundStyle(available ? Color.primary : Color.secondary)
-                    .tag(Optional(group))
-                    .disabled(!available)
-                    .onTapGesture {
-                        if available {
-                            scrollTo(group)
-                        }
-                    }
-            }
-        }
-        .listStyle(.sidebar)
-    }
-
     private var mainColumn: some View {
-        VStack(alignment: .leading, spacing: Self.groupSpacing) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(L10n.fieldWhat)
-                    .font(.headline)
-                NativeTextView(text: $session.field1, unknownRanges: unknownRanges)
-                    .frame(minHeight: 88, maxHeight: 100)
-            }
-
-            VStack(alignment: .leading, spacing: 6) {
-                Text(L10n.result)
-                    .font(.headline)
-                resultField
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        VStack(alignment: .leading, spacing: Self.footerGap) {
+            Grid(alignment: .topLeading, horizontalSpacing: Self.columnGap, verticalSpacing: Self.fieldGap) {
+                GridRow(alignment: .top) {
+                    Text(L10n.fieldWhat)
+                        .font(.headline)
+                        .fixedSize(horizontal: true, vertical: false)
+                    NativeTextView(text: $session.field1, unknownRanges: unknownRanges)
+                        .frame(minHeight: 88, maxHeight: 100)
+                        .frame(maxWidth: .infinity)
+                }
+                GridRow(alignment: .top) {
+                    VStack(alignment: .leading, spacing: Self.resultTitleToNav) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(L10n.result)
+                                .font(.headline)
+                            if totalPairCount > 0 {
+                                Text(verbatim: L10n.pairProgress(done: donePairCount, total: totalPairCount))
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        categoryNav
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    resultField
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
             HStack(alignment: .center, spacing: 0) {
-                Text(verbatim: L10n.pairProgress(done: donePairCount, total: totalPairCount))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .opacity(totalPairCount == 0 ? 0 : 1)
-                Spacer(minLength: 16)
-                Button(L10n.copyAll) {
-                    copyAll()
-                }
-                .disabled(output.isEmpty)
+                Spacer(minLength: 0)
                 Button(L10n.saveEllipsis) {
                     saveResult(open: false)
                 }
+                .buttonStyle(.bordered)
+                .controlSize(.regular)
                 .disabled(output.isEmpty)
                 .keyboardShortcut("s")
-                .padding(.leading, 10)
                 Button(L10n.saveAndOpenEllipsis) {
                     saveResult(open: true)
                 }
+                .buttonStyle(.bordered)
+                .controlSize(.regular)
+                .disabled(output.isEmpty)
+                .padding(.leading, 10)
+                Button(L10n.copyAll) {
+                    copyAll()
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Self.linkColor)
+                .foregroundStyle(.white)
+                .controlSize(.regular)
                 .disabled(output.isEmpty)
                 .padding(.leading, 10)
             }
         }
+    }
+
+    private var windowFill: Color {
+        colorScheme == .dark ? Color(nsColor: .textBackgroundColor) : Color.white
+    }
+
+    private var categoryNav: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(resultLayout.categories.map(\.group), id: \.self) { group in
+                categoryLink(group)
+            }
+        }
+    }
+
+    private func categoryLink(_ group: KerningGroup) -> some View {
+        let progress = categoryProgress[group] ?? (0, 0)
+        let current = selectedCategory == group
+        return Button {
+            scrollTo(group)
+        } label: {
+            Text(L10n.groupSidebarLabel(group, done: progress.done, total: progress.total))
+                .foregroundStyle(current ? Color.primary : Self.linkColor)
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: true)
+        }
+        .buttonStyle(.plain)
+        .background(PointingHandCursor())
     }
 
     private var resultField: some View {
@@ -304,7 +317,7 @@ struct ContentView: View {
     }
 
     private func copyAll() {
-        copyText(output)
+        copyText(TokenGlue.clean(output))
     }
 
     private func copyText(_ text: String) {
@@ -378,7 +391,7 @@ struct ContentView: View {
         panel.prompt = L10n.save
         guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
-            try text.write(to: url, atomically: true, encoding: .utf8)
+            try TokenGlue.clean(text).write(to: url, atomically: true, encoding: .utf8)
             if open {
                 NSWorkspace.shared.open(url)
             }
@@ -430,27 +443,25 @@ private struct HideTitleBar: NSViewRepresentable {
         window.standardWindowButton(.closeButton)?.isHidden = false
         window.standardWindowButton(.miniaturizeButton)?.isHidden = false
         window.standardWindowButton(.zoomButton)?.isHidden = false
-        hideSidebarToggleButton(in: window)
-    }
-
-    private func hideSidebarToggleButton(in window: NSWindow) {
-        guard let toolbar = window.toolbar else {
-            return
-        }
-        for item in toolbar.items where item.itemIdentifier == .toggleSidebar {
-            item.view?.isHidden = true
-        }
+        let dark = window.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        window.backgroundColor = dark ? .textBackgroundColor : .white
     }
 }
 
-private extension View {
-    @ViewBuilder
-    func sidebarWindowChrome() -> some View {
-        if #available(macOS 15.0, *) {
-            toolbar(removing: .title)
-                .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
-        } else {
-            self
+private struct PointingHandCursor: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView {
+        CursorView()
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    private final class CursorView: NSView {
+        override func resetCursorRects() {
+            addCursorRect(bounds, cursor: .pointingHand)
+        }
+
+        override func hitTest(_ point: NSPoint) -> NSView? {
+            nil
         }
     }
 }
