@@ -132,7 +132,11 @@
                                  BorderThickness="0"
                                  Background="Transparent"
                                  Padding="6,4"
-                                 ContextMenuOpening="Result_ContextMenuOpening"/>
+                                 ContextMenuOpening="Result_ContextMenuOpening">
+                        <RichTextBox.ContextMenu>
+                            <ContextMenu/>
+                        </RichTextBox.ContextMenu>
+                    </RichTextBox>
                     <TextBlock x:Name="ResultPlaceholder"
                                IsHitTestVisible="False"
                                Margin="6,4"

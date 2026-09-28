@@ -520,7 +520,12 @@ public partial class MainWindow : Window
         var saveText = selectedText.Length > 0 ? selectedText : _layout.Text;
         var state = CurrentMarkState();
 
-        var menu = new ContextMenu();
+        if (ResultBox.ContextMenu is not ContextMenu menu)
+        {
+            return;
+        }
+
+        menu.Items.Clear();
         menu.Items.Add(MenuItem(L10n.Copy, () => CopyText(copyText), copyText.Length > 0));
         menu.Items.Add(MenuItem(
             L10n.StrikeThrough,
@@ -531,7 +536,6 @@ public partial class MainWindow : Window
             () => ApplyState(ResultSelectionMarks.Unstrike(keys, state)),
             ResultSelectionMarks.CanUnstrike(keys, state)));
         menu.Items.Add(MenuItem(L10n.SaveAsFile, () => SaveText(saveText, false), saveText.Length > 0));
-        ResultBox.ContextMenu = menu;
     }
 
     private void Result_Copying(object sender, DataObjectCopyingEventArgs e)
