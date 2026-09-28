@@ -60,6 +60,6 @@ public partial class AboutWindow : Window
             return "1.0";
         }
 
-        return $"{version.Major}.{version.Minor}";
+        return $"{version.Major}.{version.Minor}.{Math.Max(version.Build, 0)}";
     }
 }
