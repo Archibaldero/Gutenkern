@@ -1,5 +1,5 @@
 #define MyAppName "Gutenkern"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "Arsen Mosiichuk"
 #define MyAppURL "https://arsenmosiichuk.in.ua"
 #define MyAppExeName "Gutenkern.exe"

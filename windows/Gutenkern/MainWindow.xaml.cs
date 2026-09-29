@@ -12,7 +12,6 @@ namespace Gutenkern;
 
 public partial class MainWindow : Window
 {
-    private static readonly RoutedCommand OpenSettingsCommand = new();
     private readonly DispatcherTimer _persistTimer;
     private readonly DispatcherTimer _toastTimer;
     private readonly HashSet<string> _completedRecipes = [];
@@ -56,8 +55,6 @@ public partial class MainWindow : Window
             ApplicationCommands.Save,
             SaveButton_Click,
             (_, e) => e.CanExecute = !string.IsNullOrEmpty(_output)));
-        CommandBindings.Add(new CommandBinding(OpenSettingsCommand, (_, _) => OpenSettings()));
-        InputBindings.Add(new KeyBinding(OpenSettingsCommand, Key.OemComma, ModifierKeys.Control));
         ApplyFieldChrome();
         SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
         RestoreSession();
@@ -156,7 +153,7 @@ public partial class MainWindow : Window
         FileMenuItem.Header = L10n.File;
         SaveMenuItem.Header = L10n.Save;
         SettingsMenuItem.Header = L10n.Settings;
-        SettingsWindowMenuItem.Header = L10n.Settings;
+        RebuildLanguageMenu();
         FormatFontLabMenu.Header = L10n.FormatFontLab;
         FormatGlyphsMenu.Header = L10n.FormatGlyphs;
         ResetProgressMenu.Header = L10n.ResetProgress;
@@ -182,15 +179,49 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SettingsButton_Click(object sender, RoutedEventArgs e) => OpenSettings();
-
     private void AboutButton_Click(object sender, RoutedEventArgs e) => OpenAbout();
 
-    private void OpenSettings()
+    private void RebuildLanguageMenu()
     {
-        PersistSession();
-        var window = new SettingsWindow { Owner = this };
-        window.ShowDialog();
+        LanguageMenuItem.Header = L10n.LanguageLabel;
+        LanguageMenuItem.Items.Clear();
+        AddLanguageItem(L10n.LanguageSystem, AppSettings.SystemLanguage);
+        foreach (var language in L10n.Languages)
+        {
+            AddLanguageItem(language.NativeName, language.Code);
+        }
+    }
+
+    private void AddLanguageItem(string label, string code)
+    {
+        var item = new MenuItem
+        {
+            Header = label,
+            IsCheckable = true,
+            IsChecked = AppSettings.Language == code,
+            Tag = code
+        };
+        item.Click += LanguageMenu_Click;
+        LanguageMenuItem.Items.Add(item);
+    }
+
+    private void LanguageMenu_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not MenuItem item || item.Tag is not string code)
+        {
+            return;
+        }
+
+        if (code == AppSettings.Language)
+        {
+            item.IsChecked = true;
+            return;
+        }
+
+        AppSettings.Language = code;
+        AppSettings.Save();
+        L10n.ApplyPreference(code);
+        Dispatcher.BeginInvoke(ReloadLocalization);
     }
 
     private void OpenAbout()

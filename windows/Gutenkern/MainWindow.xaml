@@ -39,10 +39,7 @@
                           InputGestureText="Ctrl+S"/>
             </MenuItem>
             <MenuItem x:Name="SettingsMenuItem" Header="Settings">
-                <MenuItem x:Name="SettingsWindowMenuItem"
-                          Header="Settings"
-                          Click="SettingsButton_Click"
-                          InputGestureText="Ctrl+,"/>
+                <MenuItem x:Name="LanguageMenuItem" Header="Language"/>
                 <Separator/>
                 <MenuItem x:Name="FormatFontLabMenu"
                           Header="FontLab"
@@ -188,6 +185,22 @@
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="Opacity" Value="0.45"/>
                                 </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="True"/>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="#0096E0"/>
+                                    <Setter Property="BorderBrush" Value="#0096E0"/>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsEnabled" Value="True"/>
+                                        <Condition Property="IsPressed" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="#0088CC"/>
+                                    <Setter Property="BorderBrush" Value="#0088CC"/>
+                                </MultiTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
