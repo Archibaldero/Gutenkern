@@ -21,12 +21,6 @@ struct GutenkernApp: App {
         }
         .windowResizability(.contentSize)
         .defaultPosition(.center)
-
-        Window(L10n.settings, id: "settings") {
-            SettingsView()
-        }
-        .windowResizability(.contentSize)
-        .defaultPosition(.center)
     }
 }
 
@@ -43,10 +37,12 @@ private struct AboutCommands: Commands {
             }
         }
         CommandGroup(replacing: .appSettings) {
-            Button(settingsTitle) {
-                openWindow(id: "settings")
+            Picker(languageTitle, selection: $languageSettings.preference) {
+                Text(L10n.languageSystem).tag(LanguageSettings.systemCode)
+                ForEach(L10n.languages, id: \.code) { language in
+                    Text(language.nativeName).tag(language.code)
+                }
             }
-            .keyboardShortcut(",", modifiers: .command)
             Divider()
             Picker(formatTitle, selection: $session.format) {
                 Text(L10n.formatFontLab).tag(OutputFormat.fontlab)
@@ -64,9 +60,9 @@ private struct AboutCommands: Commands {
         return L10n.about
     }
 
-    private var settingsTitle: String {
+    private var languageTitle: String {
         let _ = languageSettings.preference
-        return L10n.settings
+        return L10n.language
     }
 
     private var formatTitle: String {
@@ -120,7 +116,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func terminateIfNoUserWindows() {
         let remaining = NSApp.windows.filter { window in
             let id = window.identifier?.rawValue ?? ""
-            let isUserWindow = window.canBecomeMain || id == "main" || id == "about" || id == "settings"
+            let isUserWindow = window.canBecomeMain || id == "main" || id == "about"
             return isUserWindow && (window.isVisible || window.isMiniaturized)
         }
         if remaining.isEmpty {

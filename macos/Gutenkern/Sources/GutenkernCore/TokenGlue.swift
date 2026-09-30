@@ -3,9 +3,6 @@ import Foundation
 public enum TokenGlue {
     public static let joiner = "\u{2060}"
     public static let joinerUTF16: unichar = 0x2060
-    public static let viewSlash: Character = "\u{29F8}"
-    public static let viewSlashUTF16: unichar = 0x29F8
-    public static let asciiSlash: Character = "/"
 
     public static func apply(_ text: String) -> String {
         guard !text.isEmpty else {
@@ -17,7 +14,7 @@ public enum TokenGlue {
             if !first {
                 result += joiner
             }
-            result.append(cluster == asciiSlash ? viewSlash : cluster)
+            result.append(cluster)
             first = false
         }
         return result
@@ -25,7 +22,6 @@ public enum TokenGlue {
 
     public static func strip(_ text: String) -> String {
         text.replacingOccurrences(of: joiner, with: "")
-            .replacingOccurrences(of: String(viewSlash), with: String(asciiSlash))
     }
 
     public static func clean(_ text: String) -> String {

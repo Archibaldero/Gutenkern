@@ -223,7 +223,8 @@ private struct Representable: NSViewRepresentable {
         let doneStyle: [NSAttributedString.Key: Any] = [
             .font: font,
             .foregroundColor: NSColor.textColor,
-            .strikethroughStyle: NSUnderlineStyle.single.rawValue
+            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            .strikethroughColor: NSColor.textColor
         ]
         let newStyle: [NSAttributedString.Key: Any] = [
             .font: bold,
@@ -246,39 +247,10 @@ private struct Representable: NSViewRepresentable {
                 storage.addAttributes(newStyle, range: clamped)
             }
         }
-        applySlashGlyphs(storage, range: full)
         storage.endEditing()
         coordinator.appliedText = viewText
         coordinator.appliedDone = done
         coordinator.appliedNewKeys = newKeys
-    }
-
-    private func applySlashGlyphs(_ storage: NSTextStorage, range: NSRange) {
-        storage.enumerateAttribute(.font, in: range, options: []) { value, fontRange, _ in
-            guard let font = value as? NSFont,
-                  let info = Self.slashGlyphInfo(for: font)
-            else {
-                return
-            }
-            let ns = storage.string as NSString
-            var index = fontRange.location
-            let end = NSMaxRange(fontRange)
-            while index < end {
-                if ns.character(at: index) == TokenGlue.viewSlashUTF16 {
-                    storage.addAttribute(.glyphInfo, value: info, range: NSRange(location: index, length: 1))
-                }
-                index += 1
-            }
-        }
-    }
-
-    private static func slashGlyphInfo(for font: NSFont) -> NSGlyphInfo? {
-        var character: UniChar = 0x002F
-        var glyph: CGGlyph = 0
-        guard CTFontGetGlyphsForCharacters(font as CTFont, &character, &glyph, 1), glyph != 0 else {
-            return nil
-        }
-        return NSGlyphInfo(cgGlyph: glyph, for: font, baseString: String(TokenGlue.viewSlash))
     }
 
     final class Coordinator {

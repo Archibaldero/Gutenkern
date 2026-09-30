@@ -501,17 +501,12 @@ private func runTokenGlueChecks() -> Int {
     }
     if TokenGlue.clean(glued) != token
         || TokenGlue.clean(glued).contains(TokenGlue.joiner)
-        || TokenGlue.clean(glued).contains(TokenGlue.viewSlash)
     {
-        fputs("GLUE FAIL clean hides joiner and view slash\n", stderr)
+        fputs("GLUE FAIL clean hides joiner\n", stderr)
         failures += 1
     }
-    if glued == token || !glued.contains(TokenGlue.joiner) || !glued.contains(TokenGlue.viewSlash) {
-        fputs("GLUE FAIL apply inserts joiner and view slash\n", stderr)
-        failures += 1
-    }
-    if glued.contains("/") {
-        fputs("GLUE FAIL apply removes ascii slash from view\n", stderr)
+    if glued == token || !glued.contains(TokenGlue.joiner) || !glued.contains("/") {
+        fputs("GLUE FAIL apply inserts joiner and keeps slash\n", stderr)
         failures += 1
     }
     if TokenGlue.apply("") != "" || TokenGlue.apply("A") != "A" {
