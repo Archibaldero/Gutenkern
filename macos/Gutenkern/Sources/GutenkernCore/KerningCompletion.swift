@@ -85,9 +85,8 @@ public struct KerningCompletion: Equatable, Sendable {
         syncRecipes(sections: sections)
     }
 
-    public mutating func applyDone(_ done: Set<String>, sections: [RecipeSection]) {
+    public mutating func applyDone(_ done: Set<String>) {
         blocks = Self.expandPairKeys(done)
-        syncRecipes(sections: sections)
     }
 
     public mutating func sync(sections: [RecipeSection]) {

@@ -1,27 +1,134 @@
 import Foundation
 
 public enum TokenGlue {
-    public static let joiner = "\u{2060}"
-    public static let joinerUTF16: unichar = 0x2060
+    public static let softBreak = "\u{2028}"
+    public static let softBreakUTF16: unichar = 0x2028
+
+    public static func viewSpans(tokens: [ResultToken]) -> [(key: String, range: NSRange)] {
+        var spans: [(key: String, range: NSRange)] = []
+        spans.reserveCapacity(tokens.count)
+        var viewCursor = 0
+        var layoutCursor = 0
+        for token in tokens {
+            let gap = token.utf16Start - layoutCursor
+            if gap > 0 {
+                viewCursor += gap
+            }
+            let length = (apply(token.display) as NSString).length
+            spans.append((key: token.key, range: NSRange(location: viewCursor, length: length)))
+            viewCursor += length
+            layoutCursor = token.utf16End
+        }
+        return spans
+    }
+
+    public static func spans(in wrapped: String, tokens: [ResultToken]) -> [(key: String, range: NSRange)] {
+        let ns = wrapped as NSString
+        var cursor = 0
+        var found: [(key: String, range: NSRange)] = []
+        found.reserveCapacity(tokens.count)
+        for token in tokens {
+            let glued = apply(token.display)
+            let length = (glued as NSString).length
+            while cursor < ns.length {
+                if length > 0,
+                   cursor + length <= ns.length,
+                   ns.substring(with: NSRange(location: cursor, length: length)) == glued {
+                    found.append((key: token.key, range: NSRange(location: cursor, length: length)))
+                    cursor += length
+                    break
+                }
+                cursor += 1
+            }
+        }
+        return found
+    }
 
     public static func apply(_ text: String) -> String {
-        guard !text.isEmpty else {
-            return text
-        }
-        var result = ""
-        var first = true
-        for cluster in text {
-            if !first {
-                result += joiner
-            }
-            result.append(cluster)
-            first = false
-        }
-        return result
+        text
     }
 
     public static func strip(_ text: String) -> String {
-        text.replacingOccurrences(of: joiner, with: "")
+        text.replacingOccurrences(of: softBreak, with: "")
+    }
+
+    public static func wrapLines(
+        _ viewText: String,
+        width: CGFloat,
+        measure: (String) -> CGFloat
+    ) -> String {
+        guard width > 1, !viewText.isEmpty else {
+            return viewText
+        }
+        let ns = viewText as NSString
+        var output = ""
+        var index = 0
+        var lineWidth: CGFloat = 0
+        var atLineStart = true
+        while index < ns.length {
+            if isBreakChar(ns.character(at: index)) {
+                let separator = readRun(ns, from: &index, while: isBreakChar)
+                if separator.contains("\n") || separator.contains("\r") {
+                    output += separator
+                    lineWidth = 0
+                    atLineStart = true
+                    continue
+                }
+                guard index < ns.length else {
+                    output += separator
+                    break
+                }
+                let tokenStart = index
+                _ = readRun(ns, from: &index, while: { !isBreakChar($0) })
+                let token = ns.substring(with: NSRange(location: tokenStart, length: index - tokenStart))
+                let separatorWidth = measure(separator)
+                let tokenWidth = measure(token)
+                if !atLineStart, lineWidth + separatorWidth + tokenWidth > width {
+                    output += separator
+                    output += softBreak
+                    output += token
+                    lineWidth = tokenWidth
+                } else {
+                    output += separator
+                    output += token
+                    lineWidth += separatorWidth + tokenWidth
+                }
+                atLineStart = false
+                continue
+            }
+            let tokenStart = index
+            _ = readRun(ns, from: &index, while: { !isBreakChar($0) })
+            let token = ns.substring(with: NSRange(location: tokenStart, length: index - tokenStart))
+            let tokenWidth = measure(token)
+            if !atLineStart, lineWidth + tokenWidth > width {
+                output += softBreak
+                lineWidth = 0
+            }
+            output += token
+            lineWidth += tokenWidth
+            atLineStart = false
+        }
+        return output
+    }
+
+    private static func isSkipped(_ utf16: unichar) -> Bool {
+        utf16 == softBreakUTF16
+    }
+
+    private static func isBreakChar(_ utf16: unichar) -> Bool {
+        utf16 == 0x20 || utf16 == 0x0A || utf16 == 0x0D
+    }
+
+    private static func readRun(
+        _ ns: NSString,
+        from index: inout Int,
+        while include: (unichar) -> Bool
+    ) -> String {
+        let start = index
+        while index < ns.length, include(ns.character(at: index)) {
+            index += 1
+        }
+        return ns.substring(with: NSRange(location: start, length: index - start))
     }
 
     public static func clean(_ text: String) -> String {
@@ -57,7 +164,7 @@ public enum TokenGlue {
         var layout = 0
         var index = 0
         while index < end {
-            if ns.character(at: index) != joinerUTF16 {
+            if !isSkipped(ns.character(at: index)) {
                 layout += 1
             }
             index += 1
@@ -70,7 +177,7 @@ public enum TokenGlue {
         var layout = 0
         var index = 0
         while index < ns.length {
-            if ns.character(at: index) == joinerUTF16 {
+            if isSkipped(ns.character(at: index)) {
                 index += 1
                 continue
             }
@@ -81,11 +188,5 @@ public enum TokenGlue {
             index += 1
         }
         return ns.length
-    }
-
-    public static func viewRange(layoutStart: Int, layoutLength: Int, in view: String) -> NSRange {
-        let start = viewIndex(fromLayout: layoutStart, in: view)
-        let end = viewIndex(fromLayout: layoutStart + layoutLength, in: view)
-        return NSRange(location: start, length: max(0, end - start))
     }
 }

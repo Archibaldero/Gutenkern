@@ -499,14 +499,12 @@ private func runTokenGlueChecks() -> Int {
         fputs("GLUE FAIL strip(apply) round-trip\n", stderr)
         failures += 1
     }
-    if TokenGlue.clean(glued) != token
-        || TokenGlue.clean(glued).contains(TokenGlue.joiner)
-    {
-        fputs("GLUE FAIL clean hides joiner\n", stderr)
+    if TokenGlue.clean(glued) != token || glued.contains(TokenGlue.softBreak) || glued.contains("\u{2060}") {
+        fputs("GLUE FAIL apply keeps a plain slash\n", stderr)
         failures += 1
     }
-    if glued == token || !glued.contains(TokenGlue.joiner) || !glued.contains("/") {
-        fputs("GLUE FAIL apply inserts joiner and keeps slash\n", stderr)
+    if glued != token || !glued.contains("/") {
+        fputs("GLUE FAIL apply keeps the slash\n", stderr)
         failures += 1
     }
     if TokenGlue.apply("") != "" || TokenGlue.apply("A") != "A" {
@@ -527,14 +525,37 @@ private func runTokenGlueChecks() -> Int {
         fputs("GLUE FAIL viewText strips to layout text\n", stderr)
         failures += 1
     }
-    if layout.viewText == layout.text {
-        fputs("GLUE FAIL viewText differs from layout text\n", stderr)
+    if layout.viewText != layout.text
+        || layout.viewText.contains("\u{2060}")
+        || layout.viewText.contains("\u{29F8}")
+    {
+        fputs("GLUE FAIL viewText should keep a plain slash\n", stderr)
         failures += 1
     }
     let skipped = TokenGlue.viewText(layoutText: layout.text, tokens: layout.tokens) { _ in false }
     if skipped != layout.text {
         fputs("GLUE FAIL shouldGlue false keeps layout text\n", stderr)
         failures += 1
+    }
+    let spans = TokenGlue.viewSpans(tokens: layout.tokens)
+    if spans.count != layout.tokens.count {
+        fputs("GLUE FAIL view span count\n", stderr)
+        failures += 1
+    } else {
+        let viewNS = layout.viewText as NSString
+        for (token, span) in zip(layout.tokens, spans) {
+            if span.key != token.key || NSMaxRange(span.range) > viewNS.length {
+                fputs("GLUE FAIL view span bounds \(token.display)\n", stderr)
+                failures += 1
+                break
+            }
+            let slice = TokenGlue.strip(viewNS.substring(with: span.range))
+            if slice != token.display {
+                fputs("GLUE FAIL view span text \(token.display) slice=\(slice)\n", stderr)
+                failures += 1
+                break
+            }
+        }
     }
     if TokenGlue.clean(layout.viewText) != layout.text {
         fputs("GLUE FAIL clean viewText\n", stderr)
@@ -560,16 +581,19 @@ private func runSpaceWrapChecks() -> Int {
     let view = layout.viewText
     let widths: [CGFloat] = [120, 180, 240, 280]
     for width in widths {
-        let fragments = lineFragments(for: view, width: width, font: font)
+        let wrapped = TokenGlue.wrapLines(view, width: width, measure: measure)
+        if wrapped.contains("\u{29F8}") || TokenGlue.clean(wrapped) != TokenGlue.clean(view) {
+            fputs("WRAP FAIL slash changed width=\(width)\n", stderr)
+            failures += 1
+            return failures
+        }
+        let fragments = lineFragments(for: wrapped, width: width, font: font)
         for token in layout.tokens {
             if measure(token.display) > width {
                 continue
             }
             let glued = TokenGlue.apply(token.display)
-            let intact = fragments.contains { fragment in
-                fragment.contains(glued)
-            }
-            if intact {
+            if fragments.contains(where: { $0.contains(glued) }) {
                 continue
             }
             fputs(
@@ -580,11 +604,66 @@ private func runSpaceWrapChecks() -> Int {
             return failures
         }
     }
+    let narrowPair = TokenGlue.apply("/A/H/A")
+    let narrowOther = TokenGlue.apply("/A/O/A")
+    let narrowLine = [narrowPair, narrowOther, narrowPair, narrowOther].joined(separator: "  ")
+    let pairWidth = measure(narrowPair)
+    var sawWrap = false
+    for width in stride(from: pairWidth, through: pairWidth * 8, by: 8) {
+        let wrapped = TokenGlue.wrapLines(narrowLine, width: width, measure: measure)
+        if !wrapped.contains("/") || wrapped.contains("\u{29F8}") {
+            fputs("WRAP FAIL slash substituted width=\(width)\n", stderr)
+            failures += 1
+            return failures
+        }
+        if wrapped.contains(TokenGlue.softBreak) {
+            sawWrap = true
+            for line in wrapped.split(separator: Character(TokenGlue.softBreak), omittingEmptySubsequences: false).dropFirst() {
+                if line.first == " " {
+                    fputs("WRAP FAIL line starts with space width=\(width) line=\(line)\n", stderr)
+                    failures += 1
+                    return failures
+                }
+            }
+        }
+        if TokenGlue.clean(wrapped) != TokenGlue.clean(narrowLine) {
+            fputs("WRAP FAIL clean changed width=\(width)\n", stderr)
+            failures += 1
+            return failures
+        }
+        let fragments = lineFragments(for: wrapped, width: width, font: font)
+        if wrapped.contains(TokenGlue.softBreak), fragments.count < 2 {
+            fputs("WRAP FAIL soft break ignored width=\(width) fragments=\(fragments)\n", stderr)
+            failures += 1
+            return failures
+        }
+        for fragment in fragments {
+            let stripped = TokenGlue.strip(fragment).trimmingCharacters(in: .whitespacesAndNewlines)
+            if stripped.isEmpty {
+                continue
+            }
+            let parts = stripped.split(whereSeparator: \.isWhitespace).map(String.init)
+            for part in parts where part != "/A/H/A" && part != "/A/O/A" {
+                fputs("WRAP FAIL triple split \(part) width=\(width) fragments=\(fragments)\n", stderr)
+                failures += 1
+                return failures
+            }
+        }
+    }
+    if !sawWrap {
+        fputs("WRAP FAIL expected a wrap between triples\n", stderr)
+        failures += 1
+    }
     return failures
 }
 
 private func lineFragments(for text: String, width: CGFloat, font: NSFont) -> [String] {
-    let storage = NSTextStorage(string: text, attributes: [.font: font])
+    let paragraph = NSMutableParagraphStyle()
+    paragraph.lineBreakMode = .byClipping
+    let storage = NSTextStorage(string: text, attributes: [
+        .font: font,
+        .paragraphStyle: paragraph
+    ])
     let layoutManager = NSLayoutManager()
     let container = NSTextContainer(size: NSSize(width: width, height: 100_000))
     container.lineFragmentPadding = 0

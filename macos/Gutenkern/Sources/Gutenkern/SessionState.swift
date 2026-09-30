@@ -18,9 +18,12 @@ final class SessionState: ObservableObject {
         !completedBlocks.isEmpty || !completedRecipes.isEmpty
     }
 
+    var recipeSectionsForSave: [RecipeSection] = []
+
     private var cancellables = Set<AnyCancellable>()
     private var persistWorkItem: DispatchWorkItem?
     private var terminateObserver: NSObjectProtocol?
+    private var saving = false
 
     private init() {
         let loaded = Self.load()
@@ -66,6 +69,9 @@ final class SessionState: ObservableObject {
     }
 
     private func schedulePersist() {
+        if saving {
+            return
+        }
         persistWorkItem?.cancel()
         let work = DispatchWorkItem { [weak self] in
             self?.save()
@@ -84,6 +90,12 @@ final class SessionState: ObservableObject {
     }
 
     private func save() {
+        if saving {
+            return
+        }
+        saving = true
+        syncRecipesForPersist()
+        defer { saving = false }
         guard let data = snapshot().encoded() else {
             return
         }
@@ -92,6 +104,17 @@ final class SessionState: ObservableObject {
             withIntermediateDirectories: true
         )
         try? data.write(to: Self.fileURL, options: .atomic)
+    }
+
+    private func syncRecipesForPersist() {
+        guard !recipeSectionsForSave.isEmpty else {
+            return
+        }
+        var next = KerningCompletion(recipes: completedRecipes, blocks: completedBlocks)
+        next.syncRecipes(sections: recipeSectionsForSave)
+        if next.recipes != completedRecipes {
+            completedRecipes = next.recipes
+        }
     }
 
     private static func load() -> (snapshot: SessionSnapshot, existed: Bool) {

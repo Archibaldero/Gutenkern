@@ -1,5 +1,4 @@
 import AppKit
-import CoreText
 import GutenkernCore
 import SwiftUI
 
@@ -83,7 +82,7 @@ private struct Representable: NSViewRepresentable {
         scrollView.drawsBackground = true
         configureScrollView(scrollView)
         configure(textView)
-        syncText(textView, coordinator: context.coordinator, forceAttributes: true)
+        syncText(textView, coordinator: context.coordinator, forceAttributes: true, availableWidth: 0)
         scrollView.contentView.postsBoundsChangedNotifications = true
         context.coordinator.boundsObserver = NotificationCenter.default.addObserver(
             forName: NSView.boundsDidChangeNotification,
@@ -104,8 +103,9 @@ private struct Representable: NSViewRepresentable {
         context.coordinator.textView = textView
         configureScrollView(scrollView)
         configure(textView)
-        let viewText = displayedViewText()
-        syncText(textView, coordinator: context.coordinator, forceAttributes: false)
+        let width = availableWidth(of: scrollView, textView: textView)
+        let viewText = displayedViewText(width: width, coordinator: context.coordinator)
+        syncText(textView, coordinator: context.coordinator, forceAttributes: false, availableWidth: width)
         if let group = scrollToCategory, let start = layout.categoryStarts[group] {
             let viewStart = TokenGlue.viewIndex(fromLayout: start, in: viewText)
             DispatchQueue.main.async {
@@ -154,6 +154,7 @@ private struct Representable: NSViewRepresentable {
         textView.drawsBackground = true
         textView.backgroundColor = FieldChrome.background(colorScheme)
         textView.focusRingType = .none
+        textView.layoutManager?.usesDefaultHyphenation = false
         textView.typingAttributes = [
             .font: font,
             .foregroundColor: NSColor.textColor
@@ -162,16 +163,35 @@ private struct Representable: NSViewRepresentable {
 
     fileprivate static let resultFont = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
 
-    fileprivate func displayedViewText() -> String {
-        layout.viewText
+    fileprivate func displayedViewText(width: CGFloat, coordinator: Coordinator) -> String {
+        if coordinator.cachedWrapSource == layout.viewText,
+           abs(coordinator.cachedWrapWidth - width) < 0.5,
+           let cached = coordinator.cachedWrapText {
+            return cached
+        }
+        let wrapped = TokenGlue.wrapLines(layout.viewText, width: width, measure: Self.measure)
+        coordinator.cachedWrapSource = layout.viewText
+        coordinator.cachedWrapWidth = width
+        coordinator.cachedWrapText = wrapped
+        return wrapped
+    }
+
+    private func availableWidth(of scrollView: NSScrollView, textView: NSTextView) -> CGFloat {
+        let inset = textView.textContainerInset.width * 2
+        return max(0, scrollView.contentSize.width - inset)
+    }
+
+    fileprivate static func measure(_ string: String) -> CGFloat {
+        (string as NSString).size(withAttributes: [.font: resultFont]).width
     }
 
     fileprivate func syncText(
         _ textView: ResultNSTextView,
         coordinator: Coordinator,
-        forceAttributes: Bool
+        forceAttributes: Bool,
+        availableWidth: CGFloat
     ) {
-        let viewText = displayedViewText()
+        let viewText = displayedViewText(width: availableWidth, coordinator: coordinator)
         var rebuilt = false
         if textView.string != viewText {
             let selected = textView.selectedRange
@@ -208,49 +228,118 @@ private struct Representable: NSViewRepresentable {
         {
             return
         }
-        let font = Self.resultFont
-        let bold = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .bold)
-        let full = NSRange(location: 0, length: storage.length)
-        storage.beginEditing()
-        storage.setAttributes(
-            [
-                .font: font,
-                .foregroundColor: NSColor.textColor,
-                .strikethroughStyle: 0
-            ],
-            range: full
-        )
-        let doneStyle: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: NSColor.textColor,
-            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-            .strikethroughColor: NSColor.textColor
-        ]
-        let newStyle: [NSAttributedString.Key: Any] = [
-            .font: bold,
-            .foregroundColor: ResultNSTextView.newUnkernedColor,
-            .strikethroughStyle: 0
-        ]
-        for token in layout.tokens {
-            let range = TokenGlue.viewRange(
-                layoutStart: token.utf16Start,
-                layoutLength: token.utf16Length,
-                in: viewText
+        let plainStyle = Self.plainStyle
+        let doneStyle = Self.doneStyle
+        let newStyle = Self.newStyle
+        if !force,
+           coordinator.appliedText == viewText,
+           !coordinator.spansByKey.isEmpty
+        {
+            let changed = changedStyleKeys(
+                fromDone: coordinator.appliedDone,
+                fromNew: coordinator.appliedNewKeys,
+                toDone: done,
+                toNew: newKeys
             )
-            let clamped = NSIntersectionRange(range, full)
-            guard clamped.length > 0 else {
-                continue
+            if !changed.isEmpty {
+                storage.beginEditing()
+                for key in changed {
+                    guard let ranges = coordinator.spansByKey[key] else {
+                        continue
+                    }
+                    let style = attributes(for: key, done: done, newKeys: newKeys, plain: plainStyle, doneStyle: doneStyle, newStyle: newStyle)
+                    for range in ranges where range.location + range.length <= storage.length {
+                        storage.setAttributes(style, range: range)
+                    }
+                }
+                storage.endEditing()
             }
-            if done.contains(token.key) {
-                storage.addAttributes(doneStyle, range: clamped)
-            } else if newKeys.contains(token.key) {
-                storage.addAttributes(newStyle, range: clamped)
+            coordinator.appliedDone = done
+            coordinator.appliedNewKeys = newKeys
+            return
+        }
+
+        let spans = TokenGlue.spans(in: viewText, tokens: layout.tokens)
+        var spansByKey: [String: [NSRange]] = [:]
+        spansByKey.reserveCapacity(spans.count)
+        storage.beginEditing()
+        if storage.length > 0 {
+            storage.setAttributes(plainStyle, range: NSRange(location: 0, length: storage.length))
+        }
+        for span in spans where span.range.length > 0 && NSMaxRange(span.range) <= storage.length {
+            spansByKey[span.key, default: []].append(span.range)
+            let style = attributes(for: span.key, done: done, newKeys: newKeys, plain: plainStyle, doneStyle: doneStyle, newStyle: newStyle)
+            if style as NSDictionary != plainStyle as NSDictionary {
+                storage.setAttributes(style, range: span.range)
             }
         }
         storage.endEditing()
+        coordinator.spansByKey = spansByKey
         coordinator.appliedText = viewText
         coordinator.appliedDone = done
         coordinator.appliedNewKeys = newKeys
+    }
+
+    private static let clippingStyle: NSParagraphStyle = {
+        let style = NSMutableParagraphStyle()
+        style.lineBreakMode = .byClipping
+        return style
+    }()
+
+    private static var plainStyle: [NSAttributedString.Key: Any] {
+        [
+            .font: resultFont,
+            .foregroundColor: NSColor.textColor,
+            .paragraphStyle: clippingStyle,
+            .strikethroughStyle: 0
+        ]
+    }
+
+    private static var doneStyle: [NSAttributedString.Key: Any] {
+        [
+            .font: resultFont,
+            .foregroundColor: NSColor.textColor,
+            .paragraphStyle: clippingStyle,
+            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            .strikethroughColor: NSColor.textColor
+        ]
+    }
+
+    private static var newStyle: [NSAttributedString.Key: Any] {
+        [
+            .font: NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .bold),
+            .foregroundColor: ResultNSTextView.newUnkernedColor,
+            .paragraphStyle: clippingStyle,
+            .strikethroughStyle: 0
+        ]
+    }
+
+    private func attributes(
+        for key: String,
+        done: Set<String>,
+        newKeys: Set<String>,
+        plain: [NSAttributedString.Key: Any],
+        doneStyle: [NSAttributedString.Key: Any],
+        newStyle: [NSAttributedString.Key: Any]
+    ) -> [NSAttributedString.Key: Any] {
+        if done.contains(key) {
+            return doneStyle
+        }
+        if newKeys.contains(key) {
+            return newStyle
+        }
+        return plain
+    }
+
+    private func changedStyleKeys(
+        fromDone: Set<String>,
+        fromNew: Set<String>,
+        toDone: Set<String>,
+        toNew: Set<String>
+    ) -> Set<String> {
+        var changed = fromDone.symmetricDifference(toDone)
+        changed.formUnion(fromNew.symmetricDifference(toNew))
+        return changed
     }
 
     final class Coordinator {
@@ -260,10 +349,26 @@ private struct Representable: NSViewRepresentable {
         var appliedText = "\u{0}"
         var appliedDone: Set<String> = []
         var appliedNewKeys: Set<String> = []
+        var spansByKey: [String: [NSRange]] = [:]
+        var cachedWrapSource: String?
+        var cachedWrapWidth: CGFloat = -1
+        var cachedWrapText: String?
         private var reportingVisible = false
 
         init(parent: Representable) {
             self.parent = parent
+        }
+
+        func rewrap(availableWidth: CGFloat) {
+            guard let textView else {
+                return
+            }
+            parent.syncText(
+                textView,
+                coordinator: self,
+                forceAttributes: false,
+                availableWidth: availableWidth
+            )
         }
 
         deinit {
@@ -439,6 +544,7 @@ private final class ResultNSTextView: NSTextView {
         storage.addLayoutManager(layoutManager)
         layoutManager.addTextContainer(container)
         self.init(frame: .zero, textContainer: container)
+        layoutManager.usesDefaultHyphenation = false
     }
 
     override func setFrameSize(_ newSize: NSSize) {
@@ -447,6 +553,8 @@ private final class ResultNSTextView: NSTextView {
             size.width = max(size.width, clipWidth)
         }
         super.setFrameSize(size)
+        let width = max(0, size.width - textContainerInset.width * 2)
+        coordinator?.rewrap(availableWidth: width)
     }
 
     override func menu(for event: NSEvent) -> NSMenu? {

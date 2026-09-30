@@ -310,10 +310,10 @@ struct ContentView: View {
             markHistory.record(from: markState, to: state)
             lastActionWasMark = true
         }
+        session.recipeSectionsForSave = recipeSections
         var next = completion
-        next.applyDone(state.done, sections: recipeSections)
-        apply(next)
-        refreshNewUnkerned()
+        next.applyDone(state.done)
+        session.completedBlocks = next.blocks
     }
 
     private func copyAll() {
@@ -346,6 +346,7 @@ struct ContentView: View {
 
     private func syncCompletion() {
         generated.refresh(field1: session.field1, format: session.format)
+        session.recipeSectionsForSave = recipeSections
         var next = completion
         next.sync(sections: recipeSections)
         if next != completion {
